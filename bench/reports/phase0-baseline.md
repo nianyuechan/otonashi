@@ -133,8 +133,104 @@ powershell -File bench\scripts\Invoke-BenchScenario.ps1 -Variant old  -Workload 
 
 ## 8. 阶段零后续项
 
-- [ ] 渲染链路基线（go-render 压测：队列等待、渲染耗时、浏览器恢复）
+- [x] 渲染链路基线（2026-11-15 Z3 完成，见 §9.4）
 - [ ] 群聊路径基线（等 Go 版实现 groupCD/文本去重对齐后补）
-- [ ] CPU/内存剖析（Go pprof 端点已就绪：`internal/observability`，`YZGO_PPROF_ADDR` 可选开启；Node --inspect heap/eventLoopDelay）定位阶段耗时构成
-- [ ] 依据本基线设定目标值与不回退门槛（写入 plan.md）
-- [ ] 长时稳定性窗口（≥6 小时，观察 RSS 斜率与 GC）
+- [x] CPU/内存剖析（2026-11-15 Z1 当前 HEAD 重采，见 `phase0-profile-2026-11-15.md`）
+- [x] 依据本基线设定目标值与不回退门槛（2026-11-15 收口，见 plan.md §3"阶段零目标/回退门槛"表）
+- [ ] 长时稳定性窗口（≥6 小时，观察 RSS 斜率与 GC；2026-11-15 收口轮最长窗口 30 分钟，见 §9.3 限制）
+
+## 9. 2026-11-15 阶段零收口结果
+
+本轮在 HEAD `87ba8cb` 上补齐阶段零剩余测量；速率口径全程三分（requested / actual_injection / reported eps）。所有新结果文件名跟随 handoff §6.3 约定，未覆盖任何历史证据。
+
+### 9.1 当前 HEAD 统一验证（P0-1）
+
+| 系列 | 窗口（UTC+8） | 空闲虚拟内存 | 结果 |
+|---|---|---|---|
+| 默认三次（testgo-head-run1..3） | 02:18–02:19 | 1.58→0.12GB（commit 28.3/29.8GB 贴限） | **3× exit=1，链接器提交限额 OOM**（run2 显式 `link.exe: exit status 0xc0000017`；run1/3 同类，日志留档 artifacts-gocache） |
+| `-p=1` 备用四次（testgo-head-p1-run1..4） | 02:20–02:24 | 1.84→4.1GB（期间系统释放约 2.5GB） | pass / **停滞类超时**（TestSQLiteConcurrentWrites 120s 包级超时，goroutine dump 显示单连接池等待+阻塞 fsync，无死锁模式）/ pass / pass |
+| 默认三次重试（testgo-head2-run1..3） | 02:37–02:38 | ~4.25GB | **3× exit=0（29s/29s/26s），默认验收满足** |
+
+结论：代码验证通过（默认连续三次 exit 0）；02:18 窗口的三次失败为环境提交限额 OOM，不是测试断言失败；`-p=1` 系列中的停滞超时用 dump 留证并被前后两轮通过括住。
+
+### 9.2 Z1：当前 HEAD CPU/内存剖析（详见 `phase0-profile-2026-11-15.md`）
+
+- 二进制：`yunzai-bench.exe` SHA256 `1d0402cf…d7e626083d9`、`onebot-bench.exe` `90639e05…16f4306cc`，构建自 `87ba8cb`；manifest 与五类 profile（cpu/heap/goroutine/block/mutex × 250/600 两档）在 `bench/env/profiles/current-2026-11-15/`。
+- 250 档（actual 215.5/s）：30s CPU 窗口单核 1.67%，p99 0.53ms，missing=0；600 档（actual 436.3/s）：4.10%，p99 0.43ms，missing=0。
+- 结论：block 100% 为空闲等待（selectgo：timeoutLoop/pingLoop），mutex 仅运行时内部几十至几百毫秒；heap inuse 2–2.6MB，goroutine 恒 9。**200–400 msg/s 消息链路无 CPU/锁/队列瓶颈**；分配集中在每事件 JSON 解码与 SDK 事件复制（`Manager.withPlugin` cum 57%）。
+
+### 9.3 Z2：真实插件 + SQLite 逐消息写入（WAL+NORMAL 实验开关，默认仍 FULL）
+
+`bench.store` 每消息 Set+Get、键按账号/群/用户隔离。三次运行全部 FAIL 于 `missing_replies>0`（硬标准），但 **store 错误全部为 0、action_errors ≤1、写入路径本身健康**：
+
+| 运行 | 时长 | requested/actual | sent | expected | paired | **missing** | p99 | max | CPU | RSS 峰值 | 断连 | 慢写(>1s) | 结果 |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|---|
+| 200 target run3（30 分钟） | 1800s | 250 / 215.3/s | 387530 | 193765 | 191680 | **2085（1.08%）** | 0.56ms | 12,302ms | 6.5% | 38.1MB | 1/8（03:00:07） | 865 | **FAIL** |
+| 200 target run4（30 分钟） | 1800s | 250 / 215.6/s | 388088 | 194044 | 191640 | **2404（1.24%）** | 0.51ms | 22,816ms | 6.3% | 36.3MB | 1/8（03:42:59） | 398 | **FAIL** |
+| 400 target run1（15 分钟） | 900s | 600 / 431.7/s | 388525 | 194263 | 188738 | **5525（2.84%）** | 0.50ms | 11,227ms | 7.2% | 38.5MB | 2/8（03:58:40、04:00:57） | 575 | **FAIL** |
+
+逐窗口证据（missing 与断连时间逐秒对应，缺失全部集中在停滞窗口内已推送的事件）：
+
+- run3：02:59:52.084–03:00:07.250（15.2s，1640 条）↔ 03:00:07 断连；03:10:15.176–03:10:19.276（445 条）↔ 尾部 12.3s 停滞吃掉 grace。
+- run4：03:42:37.583–03:42:59.847（22.3s，2403 条）↔ 03:42:59.856 断连；另 1 条孤立。
+- 400target：03:58:26.745–03:58:40.231（13.5s，2922 条）↔ 03:58:40.236 断连；04:00:45.666–04:00:57.516（11.9s，2602 条）↔ 04:00:57.521 断连。
+
+机制与 `phase0-profile-2026-11-14.md` §2.5 记录一致：**机器级 IO 停滞 ≥10s → 回复/心跳 10s 超时 → `conn.CloseNow()` 连接断开 → 停滞窗口内已推送事件的回复丢失并计入 missing**；负载器重连续跑（`87ba8cb`）使负载在断连后恢复，但窗口内回复不可恢复。当晚停滞频发的环境背景：系统提交限额 28.3/29.8GB 贴限（16GB 物理内存 + 14GB 页面文件），本轮三次运行各自出现 1–2 个停滞窗口。两次 30 分钟尝试均失败后按 handoff 停止重试。
+
+写入路径本身（WAL+NORMAL）：store 错误 0；逐 2000 条汇总 avg 4.5–21ms（含 WAL 自动 checkpoint 停顿，单次 max 0.28–0.62s）；`-wal` 文件稳定在 ~4MB。
+
+### 9.4 Z3：固定页面真实 Chromium/EdgeCore 渲染（PASS）
+
+EdgeCore 157：`C:\Program Files (x86)\Microsoft\EdgeCore\157.0.4341.46\msedge.exe`；go-render 监听 127.0.0.1:18080；bot 用 `cmd/yunzai` 构建（SHA256 `dd7978d7…ed597`，`yunzai-bench` 入口硬编码 `DisableBuiltinDebug=true` 不注册 `#render`，详见 §9.7）；配置由仓库模板 `bench/configs/config-render.yaml` 复制。
+
+| 阶段 | go-render 参数 | 注入 | 结果 | 证据 |
+|---|---|---|---|---|
+| 单次 | concurrency 1 / queue 1 | 1/s × 60s（60 条） | **60/60 图片段成功**（text_replies=0、action_errors=0）；单次渲染 avg 0.52s、全部 ≤1s；浏览器启动 1 次 | `go-render-single-run1.json` + `render-metrics-single.txt`（success=60） |
+| 并发/队列 | concurrency 2 / queue 2 | 8/s × 60s（478 条） | **success=234 + queue_full=244**（429 瞬时拒绝，累计 3.6ms）；bot 对应 234 图片 + **244 条降级文本**（1:1）；action_errors=0 | `go-render-concurrent-run1.json` + `render-metrics-concurrent.txt` |
+| 失败降级 | go-render 已停止 | 1/s × 10s（10 条） | **10/10 降级文本**"图片暂时不可用：渲染服务暂不可用，请稍后重试。"；无崩溃；**goroutine 总数 9**（与空载一致，无泄漏/无 pending 堆积） | `go-render-fallback-run1.json` + `goroutine-fallback-midrun.txt` |
+| 恢复 | 重启 go-render（1/1） | 1/s × 30s（30 条） | **30/30 图片段成功**，渲染链路自动恢复 | `go-render-recovery-run1.json` + `render-metrics-recovery.txt` |
+
+渲染延迟单独成表，不与消息核心 p99 混算：固定页面单次 0.52s（并发 2 时 avg 0.97s）；降级文本即时返回。
+
+### 9.5 Z4-A：默认 FULL 低速 30 分钟窗口（PASS，仅低速基线）
+
+`go-reply-group-default-full-low-30m-run1.json`（04:20:47–04:51:02，1800s，无实验开关，`-store` 开启）：
+
+| 指标 | 值 |
+|---|---|
+| requested / actual / reported | 10 / **9.93/s** / 9.88（requested≈actual：FULL 容量上限 ~9–11 提交/s 恰好承接 10/s） |
+| sent / expected / paired / **missing** | 17882 / 8941 / 8941 / **0** |
+| action_errors / store 错误 / 慢写(>1s) | 0 / 0 / 11 |
+| p50 / p95 / p99 / max | 0.39 / 0.53 / 1.16 / 3.97ms |
+| CPU 均值 / RSS 峰值 | 0.84% / 26.5MB |
+| 断连 | 0 |
+
+结论：**默认 FULL 在 10 msg/s 低速下可以无损承接 30 分钟**（本机 G: 机械盘 FULL 容量 ~9–11 提交/s，actual 9.93/s 已贴上限）。这**不是**"默认 FULL 可承载 200/s"的证据——200 target 下 FULL 会积压到 dispatcher 占满、连接断开（`phase0-profile-2026-11-14.md` §2.2 已采证，本轮 Z2 用 WAL+NORMAL 实验）。
+
+### 9.6 SQLite 独立基准原始输出（2026-11-15 重跑）
+
+源码入库 `bench/tools/sqlite-diag/`（原 `artifacts-gocache/sqlite-diag`，gofmt 修正）；原始输出 `bench/env/results/sqlite-diag-2026-11-15.txt`（100 提交 × 4 持久性组合 × G:/C: × 2 轮，顺序单连接）：
+
+| 组合 | G:（机械盘） | C:（NVMe） |
+|---|---:|---:|
+| FULL + 回滚日志（当前默认） | **9.3–11.8 提交/s**（p50 72–84ms） | 298.8–314.4 提交/s |
+| NORMAL + 回滚日志 | 15.1；0.8（round2 命中 118.8s 停滞，max=118,790ms——本轮现场再次捕获机器级停滞） | 378.9–390.4 提交/s |
+| **WAL + NORMAL**（Z2 实验开关） | **22,411–28,708 提交/s** | 20,445–25,003 提交/s |
+| WAL + FULL | 24.9–32.8 提交/s | 1,577.7–1,681.3 提交/s |
+
+与历史结论（FULL ~8.9–9.7、WAL+NORMAL ~2.2–2.5 万）一致；本轮再次确认"默认 FULL 无法承载 200 msg/s（需 ~222 写/s），差距 20 倍以上"。
+
+### 9.7 本轮记录的实现事实与脚本改动
+
+- **`cmd/yunzai-bench` 入口硬编码 `DisableBuiltinDebug: true`**：基准入口永远不注册内置调试插件，`#render` 规则不存在——Z3 必须用 `cmd/yunzai`（尊重 `debug.enabled`）承载渲染负载。为此 `Invoke-BenchScenario.ps1` 新增 `-BotExecutable` 参数（默认不变，仍 yunzai-bench.exe），渲染轮传 `yunzai.exe`。
+- `Invoke-BenchScenario.ps1`：`-Workload` 增加 `render`；`render` 轮自动从仓库模板 `bench/configs/config-render.yaml` 复制运行时配置（运行时副本仍被 .gitignore 忽略，模板为唯一证据来源）。
+- `bench/internal/loadgen/config.go`：`-workload` 帮助文本同步（reply、scan 或 render）；消息生成/指标/重连语义未动。
+- 新增 `bench/scripts/Invoke-Z1Profile.ps1`（Z1 剖析采集：构建+SHA256 记录+五类 profile+pprof top+manifest 元数据，防覆盖/端口检查/精确 PID 停止）。
+- 全部为测量/脚本/文档改动，无生产语义修改；`go test` 全量通过（§9.1 默认三次）。
+
+### 9.8 阶段零收口限制
+
+- Z2 200 target 30 分钟 `missing=0` 硬标准未达成：瓶颈不在消息链路（p99 0.5ms、CPU 6.5%）也不在存储写入（store 错误 0、avg <21ms），而在**机器级 IO 停滞（≥10s）触发断连导致的窗口性回复丢失**；当晚提交限额贴限（28.3/29.8GB）加剧停滞频率。停滞为低频事件（历史全量测试约 1/10 出现率），30 分钟窗口命中概率不可忽略；在受控内存环境（commit 余量 ≥8GB）下的复测尚未进行，列为后续项。
+- `-race` 仍未运行（CGO_ENABLED=0，缺 C 编译器）。
+- 渲染仅覆盖固定页面，不含任意 HTML/真实模板；单浏览器实例、未测崩溃恢复（仅测进程停止后的降级与重启恢复）。
+- 长时稳定性仅 30 分钟窗口，≥6 小时 RSS 斜率窗口未做。
