@@ -88,7 +88,10 @@ func (p *workerPlugin) Stop(context.Context) error {
 func TestSessionConversationAndShutdownThroughOneBot(t *testing.T) {
 	for _, messageType := range []string{"private", "group"} {
 		t.Run(messageType, func(t *testing.T) {
-			ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+			// 与 runNoteConversation 相同的停滞容忍口径：实测本机存在 ~30s 的
+			// 机器级 IO 停滞（多个并行测试包同时被拖慢），正常会话在数百毫秒内
+			// 完成；30s 只吸收瞬态停滞，真实卡死仍会失败并留下会话记录。
+			ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 			defer cancel()
 			conversation := make(chan error, 1)
 			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {

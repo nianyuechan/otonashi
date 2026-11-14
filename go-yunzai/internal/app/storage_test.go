@@ -8,7 +8,9 @@ import (
 	"net/http/httptest"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
+	"sync"
 	"testing"
 	"time"
 
@@ -42,11 +44,37 @@ func TestNewWiresConfiguredRedisBackend(t *testing.T) {
 	}
 }
 
+// runNoteConversation drives one #note conversation against a fresh
+// application over a fake OneBot WebSocket, restarting the same SQLite file
+// when the caller reuses path. Any exit path must stop the application in a
+// fixed order (cancel → wait Run → Close → server.Close) before returning, so
+// t.TempDir cleanup never races a live SQLite handle. The overall deadline is
+// deliberately generous: one observed full-suite failure stalled a single
+// store operation for ≥8s (system IO hiccup, not lock contention —
+// busy_timeout caps lock waits at 2.5s and errors instead of hanging). The
+// deadline absorbs transient stalls, and step evidence plus a goroutine dump
+// make any real hang diagnosable instead of just reporting "timed out".
 func runNoteConversation(t *testing.T, path, messageType string, steps []noteStep, prepare func(*App)) {
 	t.Helper()
-	ctx, cancel := context.WithTimeout(context.Background(), 8*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 	conversation := make(chan error, 1)
+	var traceMu sync.Mutex
+	traceStart := time.Now()
+	var trace []string
+	record := func(format string, args ...any) {
+		traceMu.Lock()
+		defer traceMu.Unlock()
+		trace = append(trace, fmt.Sprintf("+%dms %s", time.Since(traceStart).Milliseconds(), fmt.Sprintf(format, args...)))
+	}
+	dump := func(why string) {
+		traceMu.Lock()
+		traceCopy := strings.Join(trace, "\n")
+		traceMu.Unlock()
+		state := make([]byte, 1<<16)
+		state = state[:runtime.Stack(state, true)]
+		t.Logf("%s\n步骤记录:\n%s\n当前 goroutine:\n%s", why, traceCopy, state)
+	}
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 		conn, err := websocket.Accept(w, req, nil)
 		if err != nil {
@@ -63,6 +91,7 @@ func runNoteConversation(t *testing.T, path, messageType string, steps []noteSte
 			if messageType == "group" {
 				incoming["group_id"] = 30
 			}
+			record("step %d: 推送 %q", i, step.input)
 			data, _ := json.Marshal(incoming)
 			if err := conn.Write(ctx, websocket.MessageText, data); err != nil {
 				conversation <- err
@@ -73,6 +102,7 @@ func runNoteConversation(t *testing.T, path, messageType string, steps []noteSte
 				conversation <- err
 				return
 			}
+			record("step %d: 收到回复动作", i)
 			var action struct {
 				Action string `json:"action"`
 				Echo   string `json:"echo"`
@@ -106,10 +136,10 @@ func runNoteConversation(t *testing.T, path, messageType string, steps []noteSte
 				return
 			}
 		}
+		record("全部 %d 步完成", len(steps))
 		conversation <- nil
 		_, _, _ = conn.Read(ctx)
 	}))
-	defer server.Close()
 	cfg := config.Default()
 	cfg.Storage.Path = path
 	cfg.OneBot.URL = "ws" + strings.TrimPrefix(server.URL, "http")
@@ -119,21 +149,44 @@ func runNoteConversation(t *testing.T, path, messageType string, steps []noteSte
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer application.Close()
+	finished := make(chan error, 1)
+	// t.Cleanup 在调用方 t.TempDir 的清理之前运行（LIFO），保证任何失败路径都
+	// 先有序停止应用、释放 SQLite 句柄，再轮到临时目录删除。正常路径已在函数
+	// 体内完成同样的停止序列，这里通过 stopped 跳过重复等待。
+	stopped := false
+	t.Cleanup(func() {
+		cancel()
+		if !stopped {
+			select {
+			case err := <-finished:
+				if err != nil {
+					t.Errorf("application run error during cleanup: %v", err)
+				}
+			case <-time.After(5 * time.Second):
+				dump("清理期间应用 5 秒内未停止")
+			}
+			if err := application.Close(); err != nil {
+				t.Errorf("application close during cleanup: %v", err)
+			}
+		}
+		server.Close()
+	})
 	if prepare != nil {
 		prepare(application)
 	}
-	finished := make(chan error, 1)
 	go func() { finished <- application.Run(ctx) }()
 	select {
 	case err := <-conversation:
 		if err != nil {
+			dump("note conversation failed")
 			t.Fatal(err)
 		}
 	case <-ctx.Done():
+		dump("note conversation timed out")
 		t.Fatal("note conversation timed out")
 	}
 	if err := application.dispatcher.WaitContext(ctx); err != nil {
+		dump("dispatcher drain timed out")
 		t.Fatal(err)
 	}
 	cancel()
@@ -142,12 +195,14 @@ func runNoteConversation(t *testing.T, path, messageType string, steps []noteSte
 		if err != nil {
 			t.Fatal(err)
 		}
-	case <-time.After(2 * time.Second):
+	case <-time.After(5 * time.Second):
+		dump("application did not stop")
 		t.Fatal("application did not stop")
 	}
 	if err := application.Close(); err != nil {
 		t.Fatal(err)
 	}
+	stopped = true
 }
 
 func TestNoteSurvivesApplicationRestartThroughOneBot(t *testing.T) {

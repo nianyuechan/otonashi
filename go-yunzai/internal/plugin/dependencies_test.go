@@ -134,7 +134,9 @@ func TestTasksReceiveScopedStoreAndFreshConfig(t *testing.T) {
 		t.Fatal(err)
 	}
 	startManager(t, manager)
-	deadline := time.NewTimer(3 * time.Second)
+	// 任务每毫秒触发，正常观察即时完成；30s 宽限期吸收实测存在的机器级 IO
+	// 停滞（~30s，多进程同时被拖慢），只影响真实失败时的报告速度。
+	deadline := time.NewTimer(30 * time.Second)
 	defer deadline.Stop()
 	select {
 	case value := <-seen:
@@ -146,6 +148,16 @@ func TestTasksReceiveScopedStoreAndFreshConfig(t *testing.T) {
 	}
 	if err := registry.Replace(map[string]pluginconfig.Layers{"task": {User: map[string]any{"x": "new"}}}); err != nil {
 		t.Fatal(err)
+	}
+	// 第二阶段重置计时器：共享的短计时器会在 Replace 之前把余量烧掉；实测本机
+	// 存在 ~30s 的机器级 IO 停滞（多进程同时被拖慢），任务每毫秒触发、正常观察
+	// 即时完成，宽期限只影响真实失败时的报告速度。
+	if !deadline.Reset(30 * time.Second) {
+		// 停滞期间计时器已触发：排空残留信号再重新计时。
+		select {
+		case <-deadline.C:
+		default:
+		}
 	}
 	for {
 		select {

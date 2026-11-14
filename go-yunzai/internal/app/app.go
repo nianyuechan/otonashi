@@ -75,7 +75,11 @@ func NewWith(cfg config.Config, opts Options) (*App, error) {
 		return nil, err
 	}
 
-	openCtx, cancelOpen := context.WithTimeout(context.Background(), 5*time.Second)
+	// 存储打开预算 30s：实测本机存在持续 ~30s 的机器级 IO 停滞（多进程同时被
+	// 拖慢），停滞期间 SQLite 的阻塞 IO 无法被 context 中断，ctx 只能在 IO 返回
+	// 后生效；放宽预算可避免"慢但能完成"的启动被过早判定失败。真正损坏的路径
+	// （权限/文件锁）仍然立即报错。
+	openCtx, cancelOpen := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancelOpen()
 	store, err := openStorage(openCtx, cfg.Storage)
 	if err != nil {
