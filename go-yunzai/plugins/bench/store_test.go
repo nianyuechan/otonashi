@@ -145,3 +145,34 @@ func TestStorePluginSurfacesStoreErrors(t *testing.T) {
 		t.Fatalf("expected ErrStoreUnavailable from get, got %v", err)
 	}
 }
+
+// TestStorePluginGroupKeyFallsBackToSender 验证群消息缺少顶层 user_id 时键按
+// sender.user_id 隔离（OneBot v11 群事件 user_id 可选，负载器 group 事件不带）。
+func TestStorePluginGroupKeyFallsBackToSender(t *testing.T) {
+	handler, _ := storeHandler(t)
+	ctx := &sdk.Context{
+		Event: &sdk.Event{
+			MessageType: "group",
+			GroupID:     20001,
+			Message:     []sdk.Segment{{Type: "text", Data: map[string]any{"text": "bench 1"}}},
+			Sender:      sdk.SenderInfo{UserID: 10001},
+		},
+		Runtime: sdk.RuntimeContext{
+			AccountID:   2081344177,
+			MessageType: "group",
+			GroupID:     20001,
+		},
+		Store: &stubStore{data: map[string][]byte{}},
+	}
+	if _, err := handler(context.Background(), ctx); err != nil {
+		t.Fatalf("group write failed: %v", err)
+	}
+	store := ctx.Store.(*stubStore)
+	if _, ok := store.data["bench:a:2081344177:t:group:g:20001:u:10001"]; !ok {
+		keys := make([]string, 0, len(store.data))
+		for key := range store.data {
+			keys = append(keys, key)
+		}
+		t.Fatalf("sender-isolated key missing, got %v", keys)
+	}
+}

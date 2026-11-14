@@ -67,9 +67,16 @@ func (p *StorePlugin) handleWrite(ctx context.Context, pluginCtx *sdk.Context) (
 			}
 		}
 	}
+	// OneBot v11 群消息可以没有顶层 user_id（本负载器的 group 事件就不带），
+	// 此时 Runtime.UserID 为 0；发送者身份取 sender.user_id，保证群聊键按用户
+	// 隔离（2026-11-15 采证：缺失时键坍缩到每群一个，出现跨事件回读串值）。
+	userID := pluginCtx.Runtime.UserID
+	if userID == 0 {
+		userID = pluginCtx.Event.Sender.UserID
+	}
 	key := fmt.Sprintf("bench:a:%d:t:%s:g:%d:u:%d",
 		pluginCtx.Runtime.AccountID, pluginCtx.Runtime.MessageType,
-		pluginCtx.Runtime.GroupID, pluginCtx.Runtime.UserID)
+		pluginCtx.Runtime.GroupID, userID)
 	value := text.Bytes()
 
 	start := time.Now()
