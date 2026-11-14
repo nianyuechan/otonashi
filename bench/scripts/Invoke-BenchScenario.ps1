@@ -17,6 +17,9 @@ param(
     [double]$Rate = 20,
     [int]$DurationSec = 60,
     [int]$Count = 500,
+    [ValidateSet('private', 'group')][string]$MessageType = 'private',
+    [int]$GroupCount = 1,
+    [int]$UserCount = 1,
     [string]$OutFile = '',
     [switch]$KeepBot
 )
@@ -98,7 +101,7 @@ try {
     # 负载器参数。-out 使用相对路径：绝对路径含空格（G:\ALL WORK\...），
     # Start-Process 拼接后会截断后续 flag 解析。
     $benchOutRelative = 'results\' + (Split-Path -Leaf $OutFile)
-    $benchArgs = @('-workload', $Workload, '-scenario', $Scenario, '-pid', $botProc.Id, '-out', $benchOutRelative)
+    $benchArgs = @('-workload', $Workload, '-scenario', $Scenario, '-pid', $botProc.Id, '-out', $benchOutRelative, '-message-type', $MessageType, '-group-count', $GroupCount, '-user-count', $UserCount)
     if ($Scenario -eq 'steady') {
         $benchArgs += @('-rate', $Rate, '-duration', ('{0}s' -f $DurationSec))
     } else {

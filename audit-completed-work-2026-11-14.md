@@ -180,7 +180,7 @@
 | H2 | 已修 | 新增 `sdk.CapabilityStorage`；`Context.Store`/`TaskContext.Store` 仅在插件声明 `storage` 时注入，否则为 `nil`；内置调试插件补声明；新增能力门控测试。 |
 | H3 | 已修 | `config.Validate` 拒绝 URL query 中的 `access_token`/`token`/`secret`/`password`/`authorization`；连接日志用 `redactURL` 清除 userinfo/query/fragment；新增配置与脱敏测试。 |
 | M1 | 已修 | `Client.Run` 建立独立的 event context，断线只取消当前连接，不取消在途事件；新增断线不取消在途事件测试。 |
-| M2 | 已修 | `Dispatcher` 默认最多 256 个并发事件，超过后由读取循环形成背压；新增并发上限测试。 |
+| M2 | 已修 | `Dispatcher` 默认最多 256 个并发事件，超过后由读取循环形成背压；新增并发上限测试；`dispatch.max_concurrent` 已做成配置项（1–4096）。 |
 | M3 | 未改 | `synchronous(FULL)` + 单连接仍是写入基线。切换 WAL/NORMAL 涉及持久性取舍，且现有代码注释记录了快速重启时的锁竞争；需先做写入压测再决定，不在本轮盲改。 |
 | M4 | 已修 | 冷却表按分钟惰性清理过期项；新增 50 个主体过期清理测试。 |
 | M5 | 已修 | `browserManager.newPage` 用独立 `startMu` 串行化获取，启动浏览器期间不再持有 `mu`；`close` 不被启动阻塞；新增阻塞启动/关闭测试。 |
@@ -196,6 +196,8 @@
 | L7 | 已修 | `#render` 超过 8 MiB 的 PNG 不发送，改为文本提示；新增测试。 |
 | L8 | 已修 | 权限只对 `MessageType == "group"` 且 `GroupID > 0` 的事件授予 owner/admin；新增非 group 事件测试。 |
 | L9 | 已修（文档） | README 说明停止时先停收新事件、5 秒内等待在途事件，超时取消并丢弃。 |
+
+容量目标（2026-11-14 确认）：100 个群、2 万注册用户、峰值 200 msg/s，按 2 倍余量设计。新增 `-message-type group`、`-group-count`、`-user-count` 负载参数，并以 100 群/2 万发送者轮转实测到 **221 eps、0 丢失、p99 0.47ms、CPU 1.3%、RSS 20.8MB**。该结果只覆盖简单基准规则，不含真实插件、存储写入、渲染和多账号，详见 `bench/reports/capacity-100-groups-200rps.md`。
 
 验证：`scripts/Test-Go.ps1` 在全部修复后对 go-yunzai、go-render、bench 三模块的 fmt/test/build/vet 通过；完整 `go test ./...` 曾出现一次 `TestNoteSurvivesApplicationRestartThroughOneBot/private` 的 SQLite 打开超时，单独复跑通过（与 M3 的持久化/锁取舍相关，未在本轮改存储引擎）。H1 已用 QPC 重采两轮，结果见 `bench/reports/phase0-baseline.md`。`-race` 仍未运行（缺 CGO/C 编译器）。
 

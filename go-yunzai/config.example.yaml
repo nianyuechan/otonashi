@@ -16,6 +16,9 @@ render:
   fallback_text: "图片暂时不可用"
 log:
   level: info
+dispatch:
+  # 同时处理的事件上限；200 msg/s 设计目标下默认 256 足够，突发可调高。
+  max_concurrent: 256
 debug:
   # 内置调试插件默认关闭；仅在本地验证时显式开启。
   enabled: false

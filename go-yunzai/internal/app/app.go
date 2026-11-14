@@ -49,7 +49,7 @@ func NewWith(cfg config.Config, opts Options) (*App, error) {
 		return nil, fmt.Errorf("create logger: %w", err)
 	}
 
-	dispatcher := dispatch.New(logger)
+	dispatcher := dispatch.NewWithLimit(logger, cfg.Dispatch.MaxConcurrent)
 	onebotClient, err := onebotv11.NewClient(onebotv11.Options{
 		URL:               cfg.OneBot.URL,
 		AccessToken:       cfg.OneBot.AccessToken,

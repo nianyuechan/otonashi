@@ -56,6 +56,9 @@ type Config struct {
 	SelfID         int64
 	UserID         int64
 	GroupID        int64
+	MessageType    string
+	GroupCount     int
+	UserCount      int
 	Warmup         time.Duration
 	ReplyGrace     time.Duration
 	SamplePID      int
@@ -97,6 +100,15 @@ func (c Config) validate() error {
 	if c.SelfID <= 0 || c.UserID <= 0 || c.GroupID <= 0 {
 		return errors.New("self-id/user-id/group-id 必须为正数")
 	}
+	if c.MessageType != "" && c.MessageType != "private" && c.MessageType != "group" {
+		return errors.New("message-type 必须是 private 或 group")
+	}
+	if c.GroupCount < 0 || c.UserCount < 0 {
+		return errors.New("group-count/user-count 不能为负")
+	}
+	if c.MessageType == "group" && (c.GroupCount <= 0 || c.GroupID <= 0) {
+		return errors.New("group 模式需要正数 group-count/group-id")
+	}
 	if c.Warmup < 0 || c.ReplyGrace < 0 {
 		return errors.New("warmup/grace 不能为负")
 	}
@@ -128,6 +140,9 @@ func ParseFlags(args []string) (Config, error) {
 	fs.Int64Var(&cfg.SelfID, "self-id", 2081344177, "机器人账号")
 	fs.Int64Var(&cfg.UserID, "user-id", 10001, "私聊用户")
 	fs.Int64Var(&cfg.GroupID, "group-id", 20001, "群号")
+	fs.StringVar(&cfg.MessageType, "message-type", "private", "private 或 group")
+	fs.IntVar(&cfg.GroupCount, "group-count", 1, "group 模式下轮转的群数量")
+	fs.IntVar(&cfg.UserCount, "user-count", 1, "轮转的发送者用户数量")
 	fs.DurationVar(&cfg.Warmup, "warmup", 2*time.Second, "连接建立后的预热等待")
 	fs.DurationVar(&cfg.ReplyGrace, "grace", 10*time.Second, "停止推送后等待回复的时长")
 	fs.IntVar(&cfg.SamplePID, "pid", 0, "被测进程 PID，用于 CPU/内存采样")

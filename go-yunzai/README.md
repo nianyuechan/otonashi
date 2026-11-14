@@ -37,7 +37,7 @@ Copy-Item config.example.yaml config.yaml
 
 只有获得真实联机授权并自行启动 SnowLuma 后才应执行上述运行命令。联调期间使用了临时配置文件，验证结束后已删除；项目不会提交真实 token。
 
-配置项包括 WS 地址、token、日志级别、请求超时、WS ping 间隔、重连初始/最大退避和调试开关（`debug.enabled`，默认 `false`）与回复文本。默认请求超时为 10 秒，不沿用旧实现的固定 60 秒；默认 ping 间隔 20 秒，重连退避为 500ms 至 30s。
+配置项包括 WS 地址、token、日志级别、请求超时、WS ping 间隔、重连初始/最大退避、调试开关（`debug.enabled`，默认 `false`）与回复文本，以及 `dispatch.max_concurrent`（默认 256，允许 1–4096）。默认请求超时为 10 秒，不沿用旧实现的固定 60 秒；默认 ping 间隔 20 秒，重连退避为 500ms 至 30s。多群部署时并发上限可按压测结果调高。
 
 `plugins` 配置包含 `masters`（机器人账号 ID → 主人用户 ID 列表）、`allowed_capabilities`、`allow_users/deny_users`、`allow_groups/deny_groups` 和 `cooldown`。默认为空列表及零冷却；空白名单表示不限制，黑名单优先。配置中账号与用户/群 ID 必须为正数，冷却不能为负数。能力包括 `messages`、`render`、`storage`；`sdk.Context.Store` 只有在插件声明 `storage` 时才注入，未声明时为 `nil`。限制能力时，内置调试插件需要同时允许 `messages`、`render` 和 `storage`；缺少任一个会导致注册失败。配置目前在启动时加载，不提供热更新。
 

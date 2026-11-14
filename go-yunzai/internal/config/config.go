@@ -16,12 +16,18 @@ import (
 const DefaultDebugReply = "[go-yunzai] M1 调试回复"
 
 type Config struct {
-	OneBot  OneBot  `yaml:"onebot"`
-	Render  Render  `yaml:"render"`
-	Log     Log     `yaml:"log"`
-	Debug   Debug   `yaml:"debug"`
-	Plugins Plugins `yaml:"plugins"`
-	Storage Storage `yaml:"storage"`
+	OneBot   OneBot   `yaml:"onebot"`
+	Render   Render   `yaml:"render"`
+	Log      Log      `yaml:"log"`
+	Debug    Debug    `yaml:"debug"`
+	Dispatch Dispatch `yaml:"dispatch"`
+	Plugins  Plugins  `yaml:"plugins"`
+	Storage  Storage  `yaml:"storage"`
+}
+
+// Dispatch 控制入站事件的并发处理上限。
+type Dispatch struct {
+	MaxConcurrent int `yaml:"max_concurrent"`
 }
 
 type Storage struct {
@@ -111,9 +117,10 @@ func Default() Config {
 			MaxConcurrent: 4,
 			FallbackText:  "图片暂时不可用",
 		},
-		Log:     Log{Level: "info"},
-		Debug:   Debug{Reply: DefaultDebugReply},
-		Storage: Storage{Backend: "sqlite", Path: "data/plugin-state.sqlite"},
+		Log:      Log{Level: "info"},
+		Debug:    Debug{Reply: DefaultDebugReply},
+		Dispatch: Dispatch{MaxConcurrent: 256},
+		Storage:  Storage{Backend: "sqlite", Path: "data/plugin-state.sqlite"},
 	}
 }
 
@@ -203,6 +210,9 @@ func (c Config) Validate() error {
 	}
 	if c.Plugins.Cooldown < 0 {
 		return fmt.Errorf("plugins.cooldown must be non-negative")
+	}
+	if c.Dispatch.MaxConcurrent <= 0 || c.Dispatch.MaxConcurrent > 4096 {
+		return fmt.Errorf("dispatch.max_concurrent must be between 1 and 4096")
 	}
 	for account, users := range c.Plugins.Masters {
 		if account <= 0 {

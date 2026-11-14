@@ -239,11 +239,18 @@ func (s *session) write(payload []byte) error {
 // 功能差异对比而不是性能对比。
 func (s *session) push(ctx context.Context, spec messageSpec, index int) error {
 	at := time.Now()
+	messageType := s.cfg.MessageType
+	userID := s.cfg.UserID
+	groupID := int64(0)
+	if messageType == "group" {
+		groupID = s.cfg.GroupID + int64(index%s.cfg.GroupCount)
+		userID = s.cfg.UserID + int64(index%s.cfg.UserCount)
+	}
 	s.mu.Lock()
 	s.msgID++
 	record := EventRecord{
 		Index: index, Seq: spec.Seq, Text: spec.Text, SentNS: at.UnixNano(),
-		MessageType: "private",
+		MessageType: messageType,
 	}
 	s.events = append(s.events, record)
 	eventIndex := len(s.events) - 1
@@ -258,19 +265,25 @@ func (s *session) push(ctx context.Context, spec messageSpec, index int) error {
 		"time":         at.Unix(),
 		"self_id":      s.cfg.SelfID,
 		"post_type":    "message",
-		"message_type": "private",
+		"message_type": messageType,
 		"message_id":   messageID,
-		"user_id":      s.cfg.UserID,
-		"sub_type":     "friend",
 		"message": []map[string]any{{
 			"type": "text",
 			"data": map[string]any{"text": spec.Text},
 		}},
 		"raw_message": spec.Text,
 		"sender": map[string]any{
-			"user_id": s.cfg.UserID, "nickname": "bench-user",
+			"user_id": userID, "nickname": "bench-user",
 			"sex": "unknown", "age": 18,
 		},
+	}
+	if messageType == "group" {
+		event["group_id"] = groupID
+		event["sub_type"] = "normal"
+		event["sender"].(map[string]any)["role"] = "member"
+	} else {
+		event["user_id"] = userID
+		event["sub_type"] = "friend"
 	}
 	payload, err := json.Marshal(event)
 	if err != nil {

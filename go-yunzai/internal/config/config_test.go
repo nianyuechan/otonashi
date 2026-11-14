@@ -30,6 +30,9 @@ func TestLoadExample(t *testing.T) {
 	if cfg.Storage.Backend != "sqlite" || cfg.Storage.Path != "data/plugin-state.sqlite" || cfg.Storage.Redis.MaxRetries != 2 {
 		t.Fatalf("unexpected storage config: %+v", cfg.Storage)
 	}
+	if cfg.Dispatch.MaxConcurrent != 256 {
+		t.Fatalf("unexpected dispatch config: %+v", cfg.Dispatch)
+	}
 }
 
 func TestValidateRedisStorage(t *testing.T) {
@@ -85,6 +88,23 @@ func TestValidateRejectsMissingToken(t *testing.T) {
 	cfg := Default()
 	if err := cfg.Validate(); err == nil {
 		t.Fatal("Validate() accepted an empty token")
+	}
+}
+
+func TestValidateDispatchConcurrency(t *testing.T) {
+	cfg := Default()
+	cfg.OneBot.AccessToken = "unit-test-token"
+	cfg.Dispatch.MaxConcurrent = 0
+	if err := cfg.Validate(); err == nil {
+		t.Fatal("Validate() accepted zero dispatch concurrency")
+	}
+	cfg.Dispatch.MaxConcurrent = 4097
+	if err := cfg.Validate(); err == nil {
+		t.Fatal("Validate() accepted dispatch concurrency above 4096")
+	}
+	cfg.Dispatch.MaxConcurrent = 512
+	if err := cfg.Validate(); err != nil {
+		t.Fatalf("valid dispatch concurrency rejected: %v", err)
 	}
 }
 

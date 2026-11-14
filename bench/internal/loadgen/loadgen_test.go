@@ -113,6 +113,7 @@ func TestRespondAnswersActions(t *testing.T) {
 	session.mu.Lock()
 	session.events = append(session.events, EventRecord{Index: 0, Seq: 1, Text: "bench 1", SentNS: time.Now().UnixNano()})
 	session.sentIndex[1] = 0
+	session.sentAt[1] = clockNow()
 	session.mu.Unlock()
 
 	reply := incomingAction{
