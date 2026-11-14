@@ -199,12 +199,13 @@
 
 容量目标（2026-11-14 确认）：100 个群、2 万注册用户、峰值 200 msg/s，按 2 倍余量设计。新增 `-message-type group`、`-group-count`、`-user-count` 负载参数，并以 100 群/2 万发送者轮转实测到 **221 eps、0 丢失、p99 0.47ms、CPU 1.3%、RSS 20.8MB**。该结果只覆盖简单基准规则，不含真实插件、存储写入、渲染和多账号，详见 `bench/reports/capacity-100-groups-200rps.md`。
 
-验证：`scripts/Test-Go.ps1` 在全部修复后对 go-yunzai、go-render、bench 三模块的 fmt/test/build/vet 通过；完整 `go test ./...` 曾出现一次 `TestNoteSurvivesApplicationRestartThroughOneBot/private` 的 SQLite 打开超时，单独复跑通过（与 M3 的持久化/锁取舍相关，未在本轮改存储引擎）。H1 已用 QPC 重采两轮，结果见 `bench/reports/phase0-baseline.md`。`-race` 仍未运行（缺 CGO/C 编译器）。
+验证：`scripts/Test-Go.ps1` 在 d9dd8ce 上对 go-yunzai、go-render、bench 三模块的 fmt/test/build/vet 通过；纳入当前未提交 pprof 改动后复跑，`TestNoteSurvivesApplicationRestartThroughOneBot/private` 在 10.06s 超时失败，随即单独复跑该测试 0.85s 通过。失败原因是 M3 现有 SQLite `synchronous(FULL)` + 单连接在快速重启/清理时的间歇锁竞争，不是 pprof 测试失败；完整套件尚未稳定通过。H1 已用 QPC 重采两轮，结果见 `bench/reports/phase0-baseline.md`。`-race` 仍未运行（缺 CGO/C 编译器）。
 
 ## 九、审计限制
 
 - 未运行 `go test -race`：环境 `CGO_ENABLED=0`，缺 C 编译器。
 - 未启动 SnowLuma 或 Chromium 做真实联调，真实链路结论沿用 README 记录。
 - 未逐行审读全部约 1.1 万行 Go 代码，重点覆盖"已完成"声称对应的路径。
-- 基线数字仅从现有 JSON 复算，未重新采集；H1 的修复需要重新采集才能给出新结论。
-- 统一验证脚本复跑发生在第一轮审计；第二版只修正表述和补充时钟实验，未重跑完整验证、未重新采集基准。
+- H1 已用 QPC 重采两轮稳态并纳入基线报告；旧版稳态仍沿用早期原始 JSON。工作区另有未提交的 Go/旧版突发 QPC 重采和 400/600/700 msg/s 群聊结果，尚未复核或纳入本报告。容量结果来自 100 群/2 万发送者轮转的合成负载。
+- 修复后统一验证脚本曾在 d9dd8ce 通过；当前工作区加入未提交 pprof 改动后复跑，SQLite 重启用例再次超时（单独复跑通过），说明完整套件仍不稳定。本轮未运行 `-race`、未启动 SnowLuma/Chromium 做真实联调。
+- 工作区当前另有未提交的 pprof 端点、命令入口改动和 400/600/700 msg/s 群聊结果；这些尚未复核、测试或纳入本报告与容量报告。
