@@ -137,12 +137,20 @@ try {
         $benchArgs += @('-mode', 'client', '-url', 'ws://127.0.0.1:2536/OneBotv11')
     }
     New-Item -ItemType Directory -Path (Split-Path -Parent $OutFile) -Force | Out-Null
-    Remove-Item -LiteralPath $OutFile -Force -ErrorAction SilentlyContinue
+    # 旧结果文件必须在启动负载器之前删除成功：如果删除静默失败而负载器写入也
+    # 失败，后面的 Test-Path 会把旧文件当成新结果，产出伪造的"成功"。这里显式
+    # 失败并断言文件确实消失。
+    if (Test-Path -LiteralPath $OutFile) {
+        Remove-Item -LiteralPath $OutFile -Force -ErrorAction Stop
+        if (Test-Path -LiteralPath $OutFile) { throw "旧结果文件删除失败（可能被其他进程占用）: $OutFile" }
+    }
     # 日志名跟随结果文件名：固定名（go-reply-steady.log）会把每次运行的日志
     # 覆盖到同一批文件上，曾经覆盖掉已跟踪的历史证据。
     $benchLog = Join-Path $envDir ('results\{0}.log' -f (Split-Path -Leaf $OutFile))
     New-Item -ItemType Directory -Path (Split-Path -Parent $benchLog) -Force | Out-Null
     Write-Host "负载器参数: $($benchArgs -join ' ')"
+    # 本次运行时间窗起点：结果 JSON 的 finished_at 必须不早于它。
+    $runStart = Get-Date
     $benchProc = Start-Process -FilePath $benchExe -ArgumentList ($benchArgs -join ' ') `
         -WorkingDirectory $envDir -RedirectStandardOutput $benchLog `
         -RedirectStandardError ($benchLog + '.err') -PassThru -WindowStyle Hidden
@@ -160,8 +168,32 @@ try {
     $resultText = [System.IO.File]::ReadAllText($OutFile, [System.Text.Encoding]::UTF8)
     $result = $resultText | ConvertFrom-Json
     $s = $result.summary
-    Write-Host ('结果: sent={0} paired={1} missing={2} eps={3:N1} p50={4:N2}ms p95={5:N2}ms p99={6:N2}ms max={7:N2}ms cpu_avg={8:N1}% rss_max={9:N1}MB' -f `
-        $s.sent, $s.paired_replies, $s.missing_replies, $s.throughput_eps, `
+    # 结果必须是本次运行产出：sent > 0 且 finished_at 在本次运行时间窗内。
+    # 即使删除断言已通过，也要防止任何残留旧结果被误读为本次成功。
+    if (-not $s -or -not $s.sent -or [int]$s.sent -le 0) {
+        throw "结果文件缺少 summary.sent 或 sent<=0，不是有效结果: $OutFile"
+    }
+    $finishedAt = [DateTimeOffset]::Parse($result.finished_at)
+    if ($finishedAt.LocalDateTime -lt $runStart.AddSeconds(-2)) {
+        throw ("结果 finished_at ({0}) 早于本次运行开始 ({1})，疑似旧结果文件: {2}" -f `
+            $result.finished_at, $runStart.ToString('yyyy-MM-dd HH:mm:ss'), $OutFile)
+    }
+    # 双口径：actual injection（sent / 事件首尾 sent_ns 差）是容量判定口径；
+    # reported eps 分母含 10s grace，系统性低于 actual，不能拿它判达标。
+    # 新结果 JSON 自带 actual_injection_eps；旧结果没有该字段时按同一口径复算。
+    $actual = $s.actual_injection_eps
+    if ($null -eq $actual) {
+        $events = @($result.events | Where-Object { $_.sent_ns -gt 0 })
+        if ($events.Count -ge 2) {
+            $firstNs = ($events | Measure-Object -Property sent_ns -Minimum).Minimum
+            $lastNs = ($events | Measure-Object -Property sent_ns -Maximum).Maximum
+            if ($lastNs -gt $firstNs) {
+                $actual = $s.sent / (($lastNs - $firstNs) / 1e9)
+            }
+        }
+    }
+    Write-Host ('结果: sent={0} paired={1} missing={2} actual_injection={3:N1}/s reported_eps={4:N1} p50={5:N2}ms p95={6:N2}ms p99={7:N2}ms max={8:N2}ms cpu_avg={9:N1}% rss_max={10:N1}MB' -f `
+        $s.sent, $s.paired_replies, $s.missing_replies, $actual, $s.throughput_eps, `
         $s.latency_p50_ms, $s.latency_p95_ms, $s.latency_p99_ms, $s.latency_max_ms, `
         $s.cpu_avg_percent, ($s.rss_max_bytes / 1MB))
     Write-Host "输出: $OutFile"

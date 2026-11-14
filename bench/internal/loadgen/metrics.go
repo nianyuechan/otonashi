@@ -37,6 +37,10 @@ type Summary struct {
 	ActionErrors    int     `json:"action_errors"`
 	ThroughputEPS   float64 `json:"throughput_eps"`
 	LoadWallMS      float64 `json:"load_wall_ms"`
+	// ActualInjectionEPS 由事件首尾 sent_ns 计算：负载窗口内的持续注入速率。
+	// 与命令行 requested（目标速率）和 ThroughputEPS（分母含 grace）区分，
+	// 容量判定以这个口径为准。
+	ActualInjectionEPS float64 `json:"actual_injection_eps"`
 
 	LatencyCount  int     `json:"latency_count"`
 	LatencyMeanMS float64 `json:"latency_mean_ms"`
@@ -113,6 +117,27 @@ func latencies(events []EventRecord) []float64 {
 	return out
 }
 
+// actualInjectionEPS 用事件首尾 sent_ns 计算持续注入速率：sent / 事件时间跨度。
+// 单一事件或时间跨度为 0 时返回 0（无法定义速率）。
+func actualInjectionEPS(events []EventRecord, sent int) float64 {
+	first, last := int64(0), int64(0)
+	for _, event := range events {
+		if event.SentNS <= 0 {
+			continue
+		}
+		if first == 0 || event.SentNS < first {
+			first = event.SentNS
+		}
+		if event.SentNS > last {
+			last = event.SentNS
+		}
+	}
+	if first == 0 || last <= first {
+		return 0
+	}
+	return float64(sent) / (float64(last-first) / 1e9)
+}
+
 // BuildSummary 由事件与采样记录计算汇总。
 func BuildSummary(events []EventRecord, samples []SampleRecord, actionCount, actionErrors, loadWallMS float64, sent int) Summary {
 	summary := Summary{
@@ -124,6 +149,7 @@ func BuildSummary(events []EventRecord, samples []SampleRecord, actionCount, act
 	if loadWallMS > 0 {
 		summary.ThroughputEPS = float64(sent) / (loadWallMS / 1000)
 	}
+	summary.ActualInjectionEPS = actualInjectionEPS(events, sent)
 	for _, event := range events {
 		if event.Seq > 0 {
 			summary.ExpectedReplies++

@@ -8,11 +8,15 @@
 
 ## 0. 速率的三种口径（必须区分）
 
+**三者严格不等：requested ≠ actual injection ≠ reported eps。**
+
 | 口径 | 定义 | 说明 |
 |---|---|---|
 | requested | 命令行 `-rate` | 负载器的目标速率，不等于实际注入 |
 | actual injection | `sent / (最后一条 sent_ns − 第一条 sent_ns)` | 负载窗口内的持续注入速率，**容量判定使用这个口径** |
-| reported eps | `summary.throughput_eps = sent / load_wall_ms` | 分母含 2s 预热 + 10s grace，系统性低于 actual injection，仅作历史口径参考 |
+| reported eps | `summary.throughput_eps = sent / (load_wall_ms / 1000)`，分母单位为秒 | `load_wall_ms` 从预热结束、负载开始前起算（`run.go` 的 `monitorStart`），分母只含负载窗口 + 10s grace，**不含 2s 预热**；grace 计入分母使其系统性低于 actual injection |
+
+2026-11-14 起，结果 JSON 的 `summary` 新增 `actual_injection_eps` 字段（由 `events` 首尾 `sent_ns` 计算），`Invoke-BenchScenario.ps1` 同时打印 `actual_injection` 与 `reported_eps` 两个口径。已提交的 `*-verified-run*.json` 不重写，其 JSON 不含该字段，按上表 actual injection 口径用事件首尾 `sent_ns` 复算即可（700 档 verified-run1 复算得 543.3/s）。
 
 单线程负载器（推送 → `sleep` 到 `at+interval`）每条消息有约 0.4–0.6ms 的周期开销（定时器睡眠过冲 + 推送成本），因此 requested 越高，actual injection 越接近 `1/(1/requested + ~0.5ms)`，始终低于 requested。**这是负载器到顶，不是服务端到顶**：900 msg/s 请求下 actual injection 仍有 639 msg/s，而服务端 p99 全程 ≤ 0.68ms、CPU ≤ 2.5%，没有任何饱和迹象。
 
@@ -44,7 +48,7 @@
 ## 2. 结论
 
 - **2 倍目标（400 msg/s）已按实际注入验证**：请求 600 msg/s 两轮 actual injection 437.1/436.9 msg/s，请求 700 msg/s 两轮 543.3/543.1 msg/s，均 ≥ 400，且全部 `missing_replies=0`、p99 ≤ 0.55ms、CPU ≤ 2.5%、RSS 峰值约 19.6MB。请求 400 msg/s 时 actual injection 只有约 327 msg/s（负载器周期开销），**不能以"requested=400"作为通过依据**；判据是 actual injection ≥ 400 的四轮可复现结果。
-- reported eps（如 700 档 465.4）系统性低于 actual injection（543.1），差异来自 grace/预热计入分母；引用历史 JSON 中的 `throughput_eps` 时必须注明该口径。
+- reported eps（如 700 档 465.4）系统性低于 actual injection（543.1），差异来自 10s grace 计入分母（预热不计入，`load_wall_ms` 从预热结束后起算）；引用历史 JSON 中的 `throughput_eps` 时必须注明该口径。不要拿 reported eps 判定容量达标：700 档 reported 465.5 曾被误读为"未达 400"，实际 actual injection 是 543.3。
 - 服务端远未饱和：actual injection 从 327 提到 639 msg/s（1.95 倍），p99 从 0.63 降到 0.47ms，CPU 从 1.4% 升到 2.5%。瓶颈是单线程负载器每周期 ~0.4–0.6ms 的开销（定时器睡眠过冲 + 推送成本），继续提高注入速率需要多负载器并行或负载器改造，而不是服务端优化。
 - `dispatch.max_concurrent` 默认 256（配置项，1–4096）：在 ≥2 倍设计目标、p99 0.5ms 的实测下未触顶；接入耗时更长的插件前建议按 `go-yunzai/README.md` 的运维说明评估。
 

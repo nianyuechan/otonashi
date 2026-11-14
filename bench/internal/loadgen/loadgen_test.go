@@ -305,6 +305,39 @@ func TestWriteResultAtomic(t *testing.T) {
 	}
 }
 
+// TestBuildSummaryActualInjectionEPS 验证 actual_injection_eps 由事件首尾
+// sent_ns 计算，并与 reported eps（分母含 grace）区分。
+func TestBuildSummaryActualInjectionEPS(t *testing.T) {
+	start := time.Now().UnixNano()
+	const count = 500
+	span := int64(time.Second) // 500 条事件均匀铺满 1s → actual 500/s
+	events := make([]EventRecord, count)
+	for i := range events {
+		events[i] = EventRecord{Index: i, Seq: int64(i + 1), SentNS: start + span*int64(i)/(count-1)}
+	}
+	// load_wall_ms = 2000ms（负载窗口 + grace）→ reported eps = 250。
+	summary := BuildSummary(events, nil, 0, 0, 2000, count)
+	if math.Abs(summary.ActualInjectionEPS-500) > 0.01 {
+		t.Fatalf("actual_injection_eps = %v, want 500", summary.ActualInjectionEPS)
+	}
+	if math.Abs(summary.ThroughputEPS-250) > 0.01 {
+		t.Fatalf("throughput_eps = %v, want 250（分母为 load_wall_ms）", summary.ThroughputEPS)
+	}
+	if summary.ActualInjectionEPS == summary.ThroughputEPS {
+		t.Fatal("actual 与 reported 口径不应相同")
+	}
+	// 空事件、单事件、时间跨度为 0 都无法定义速率，应为 0 而不是 NaN。
+	if got := actualInjectionEPS(nil, 0); got != 0 {
+		t.Fatalf("空事件 actual = %v, want 0", got)
+	}
+	if got := actualInjectionEPS([]EventRecord{{SentNS: start}}, 1); got != 0 {
+		t.Fatalf("单事件 actual = %v, want 0", got)
+	}
+	if got := actualInjectionEPS([]EventRecord{{SentNS: start}, {SentNS: start}}, 2); got != 0 {
+		t.Fatalf("时间跨度为 0 的 actual = %v, want 0", got)
+	}
+}
+
 func TestConfigValidate(t *testing.T) {
 	base := Config{
 		Mode: ModeServer, Listen: "127.0.0.1:3002", Workload: WorkloadReply, Kind: KindSteady,
