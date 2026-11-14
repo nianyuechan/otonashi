@@ -60,7 +60,9 @@ try {
             if ($unformatted.Count -gt 0) {
                 throw "存在未格式化的 Go 文件：$($unformatted -join ', ')"
             }
-            Invoke-GoCheck -Arguments @('test', './...', '-count=1', '-timeout=60s')
+            # 包级期限 120s：本机存在 ~30s 机器级 IO 停滞，60s 对 app/storage 等
+            # 已知 ~30-40s 的并行测试包余量不足；应用预算与测试自身期限不变。
+            Invoke-GoCheck -Arguments @('test', './...', '-count=1', '-timeout=120s')
             Invoke-GoCheck -Arguments @('build', './...')
             Invoke-GoCheck -Arguments @('vet', './...')
             if ($Race) {
