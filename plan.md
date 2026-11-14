@@ -455,6 +455,14 @@ Yunzai GitHub 插件整合候选（按插件索引和仓库说明于 2026-11-14 
 - 2 倍群聊容量验证：100 群/2 万发送者下，请求 600/700 msg/s 时实际注入 437–543 msg/s、`missing_replies=0`、p99 ≤ 0.55ms，实际注入速率达到 2 倍目标（400 msg/s）；单线程负载器每周期约 0.4–0.6ms 开销是注入速率受限的主因，900 msg/s 请求下实际注入 639 msg/s、服务端 p99 仍 0.47ms/CPU 2.5%，服务端远未饱和。详见 `capacity-100-groups-200rps.md`。
 - 基准脚本防残留加固：`Invoke-BenchScenario.ps1` 启动前按精确路径清理 `bench\env` 下残留 bot、`Stop-Tree` 增加校验与兜底强杀（此前 8 个残留 bot 曾导致一轮结果打到不受监控的旧进程上，相关结果作废重采）。
 
+交接后修复轮已完成（2026-11-14，详见 `audit-completed-work-2026-11-14.md` 第八节"本轮"各行）：
+
+- 修复 group 负载模式校验缺口：`-user-count 0` 此前能通过校验并在 `session.push` 触发除零 panic，现要求 group 模式 `GroupCount > 0 && UserCount > 0`，并补拒绝用例。
+- 存储打开预算 30s → 60s：实测机器级 IO 停滞 30.23s 超出旧预算，同类停滞仍会把"慢但能完成"的启动判死；测试停滞容忍期限同步上调（会话 ctx 90s > 预算 60s），保证测试不先于应用超时；`busy_timeout` 注释与审计表述修正——文件锁等待上限 2.5s，连接池等待与阻塞 IO 不受其限制，锁竞争未被声称完全排除。
+- 负载器结果 JSON 新增 `actual_injection_eps`（事件首尾 `sent_ns` 计算），脚本同时打印 actual/reported 双口径；容量报告第 0 节修正 reported eps 公式与分母说明（负载窗口 + grace，不含预热），明确 requested ≠ actual injection ≠ reported eps；已提交 JSON 不重写，700 档新采集一轮 actual 543.6 / reported 465.8 / missing 0 与既有口径一致。
+- `Invoke-BenchScenario.ps1` 删除旧结果文件改为显式失败并断言删除成功，运行结束后校验 `sent > 0` 与 `finished_at` 在本次运行时间窗内，防止把被占用/残留的旧结果误读为本次成功。
+- 清理 4 个被 `*-verified-run*.json` 取代的未跟踪旧结果；交接提示词同步更新。
+
 ## 5. 总体完成条件
 
 项目达到可切换状态前，至少需要满足：
