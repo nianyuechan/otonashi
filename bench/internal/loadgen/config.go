@@ -136,7 +136,7 @@ func ParseFlags(args []string) (Config, error) {
 	fs.StringVar(&cfg.URL, "url", "", "client 模式下被测机器人的 ws:// 地址")
 	fs.StringVar(&cfg.Listen, "listen", "127.0.0.1:3002", "server 模式监听地址")
 	fs.StringVar(&cfg.Token, "token", "bench-token", "OneBot access token（只做声明，负载器不校验）")
-	fs.StringVar((*string)(&cfg.Workload), "workload", string(WorkloadReply), "reply 或 scan")
+	fs.StringVar((*string)(&cfg.Workload), "workload", string(WorkloadReply), "reply、scan 或 render（render 为固定 #render 页面，仅主人权限）")
 	fs.StringVar((*string)(&cfg.Kind), "scenario", string(KindSteady), "steady 或 burst")
 	fs.Float64Var(&cfg.Rate, "rate", 20, "steady 场景每秒消息数")
 	fs.DurationVar(&cfg.Duration, "duration", 60*time.Second, "steady 场景持续时长")

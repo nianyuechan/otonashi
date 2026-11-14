@@ -1,0 +1,30 @@
+# Z3 渲染链路基线专用配置：调试插件开启、#render 仅主人（10001）、
+# 渲染客户端并发 24 以便压到 go-render 的队列上限；其余与基准配置一致。
+onebot:
+  url: ws://127.0.0.1:3002/
+  access_token: bench-token
+  request_timeout: 10s
+  heartbeat_interval: 20s
+  reconnect:
+    initial: 500ms
+    max: 5s
+render:
+  url: http://127.0.0.1:18080
+  timeout: 15s
+  max_retries: 0
+  retry_backoff: 100ms
+  max_concurrent: 24
+  fallback_text: 图片暂时不可用
+log:
+  level: info
+dispatch:
+  max_concurrent: 256
+debug:
+  enabled: true
+  reply: "[go-yunzai] M1 调试回复"
+plugins:
+  masters:
+    2081344177: [10001]
+storage:
+  backend: sqlite
+  path: data/plugin-state.sqlite

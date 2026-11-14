@@ -12,7 +12,9 @@
 [CmdletBinding()]
 param(
     [ValidateSet('go', 'old')][string]$Variant = 'go',
-    [ValidateSet('reply', 'scan')][string]$Workload = 'reply',
+    # render：固定 #render 页面（仅主人），驱动阶段零渲染链路基线；渲染耗时
+    # 单独报告，不混入消息核心延迟分位数。配置由仓库模板复制（见启动分支）。
+    [ValidateSet('reply', 'scan', 'render')][string]$Workload = 'reply',
     [ValidateSet('steady', 'burst')][string]$Scenario = 'steady',
     [double]$Rate = 20,
     [int]$DurationSec = 60,
@@ -24,6 +26,10 @@ param(
     # 追加到被测 Go bot 的命令行参数（如 -store、-config config-render.yaml）；
     # 重复的 -config 以最后一个为准（flag 包语义）。
     [string[]]$BotExtraArgs = @(),
+    # 覆盖被测 Go bot 可执行文件（默认 bench\env\go-yunzai\yunzai-bench.exe）。
+    # Z3 渲染链路必须用 cmd/yunzai 构建的 yunzai.exe：yunzai-bench 入口硬编码
+    # DisableBuiltinDebug=true，不注册内置调试插件，#render 规则不存在。
+    [string]$BotExecutable = '',
     [switch]$KeepBot
 )
 
@@ -80,7 +86,13 @@ function Stop-Tree([System.Diagnostics.Process]$Proc) {
 # 残留的同路径 bot 会与新一轮被测进程竞争 3002 连接（重连退避可能先连上），
 # 使负载打到不受监控的旧进程上。只按 bench 环境内的精确可执行路径清理，
 # 不做按进程名的宽匹配。
-$strayBots = @(Get-Process yunzai-bench -ErrorAction SilentlyContinue | Where-Object { $_.Path -eq (Join-Path $envDir 'go-yunzai\yunzai-bench.exe') })
+$candidateBotPaths = @((Join-Path $envDir 'go-yunzai\yunzai-bench.exe'))
+$botPath = Join-Path $envDir 'go-yunzai\yunzai-bench.exe'
+if ($BotExecutable) {
+    $botPath = (Resolve-Path -LiteralPath $BotExecutable -ErrorAction Stop).Path
+    $candidateBotPaths += $botPath
+}
+$strayBots = @(Get-Process yunzai-bench,yunzai -ErrorAction SilentlyContinue | Where-Object { $_.Path -in $candidateBotPaths })
 if ($strayBots.Count -gt 0) {
     Write-Host ("发现 {0} 个残留 yunzai-bench 进程，先按精确路径清理: {1}" -f $strayBots.Count, (($strayBots | ForEach-Object Id) -join ','))
     foreach ($stray in $strayBots) {
@@ -116,8 +128,17 @@ try {
         Write-Host "旧版就绪 pid=$($botProc.Id)"
     } else {
         $botDir = Join-Path $envDir 'go-yunzai'
+        if ($Workload -eq 'render') {
+            # 渲染配置的唯一可复现来源是仓库内模板；运行时副本（被 .gitignore
+            # 忽略的 bench/env/go-yunzai/config-render.yaml）每次运行都从这里
+            # 重新复制，不以运行时副本为证据。
+            $renderTemplate = Join-Path $envRoot 'configs\config-render.yaml'
+            if (-not (Test-Path -LiteralPath $renderTemplate)) { throw "渲染配置模板不存在: $renderTemplate" }
+            Copy-Item -LiteralPath $renderTemplate -Destination (Join-Path $botDir 'config-render.yaml') -Force
+            Write-Host '已从仓库模板复制 config-render.yaml（Z3 渲染基线配置）'
+        }
         Remove-Item -LiteralPath (Join-Path $botDir 'run.log') -Force -ErrorAction SilentlyContinue
-        $botProc = Start-Process -FilePath (Join-Path $botDir 'yunzai-bench.exe') `
+        $botProc = Start-Process -FilePath $botPath `
             -ArgumentList (@('-config', 'config.yaml') + $BotExtraArgs) `
             -WorkingDirectory $botDir -RedirectStandardOutput (Join-Path $botDir 'run.log') `
             -RedirectStandardError (Join-Path $botDir 'run.err') -PassThru -WindowStyle Hidden

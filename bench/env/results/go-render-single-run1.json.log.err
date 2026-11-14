@@ -1,0 +1,6 @@
+time=2026-11-15T04:14:23.814+08:00 level=INFO msg=等待被测机器人连入 listen=127.0.0.1:3002 deadline=120s
+time=2026-11-15T04:14:24.969+08:00 level=INFO msg=被测机器人已连入
+time=2026-11-15T04:14:24.970+08:00 level=INFO msg=预热等待 duration=2s
+time=2026-11-15T04:14:26.971+08:00 level=INFO msg=开始稳定负载 rate=1 duration=1m0s workload=render
+time=2026-11-15T04:15:27.007+08:00 level=INFO msg=负载推送完成，等待尾部回复 grace=10s
+time=2026-11-15T04:15:37.011+08:00 level=INFO msg=基准完成 sent=60 paired=0 missing=0 eps=0.9 p50_ms=0.00 p95_ms=0.00 p99_ms=0.00 max_ms=0.00 cpu_avg=0.2 rss_max_mb=19.0 out=results\go-render-single-run1.json

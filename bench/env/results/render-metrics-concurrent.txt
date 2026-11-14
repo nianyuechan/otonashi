@@ -1,0 +1,43 @@
+﻿# HELP render_active_requests Number of renders currently executing on pages.
+# TYPE render_active_requests gauge
+render_active_requests 0
+# HELP render_browser_starts_total Total Chromium process starts, including crash recovery.
+# TYPE render_browser_starts_total counter
+render_browser_starts_total 1
+# HELP render_duration_seconds End-to-end render request duration, including queueing.
+# TYPE render_duration_seconds histogram
+render_duration_seconds_bucket{result="queue_full",le="0.05"} 244
+render_duration_seconds_bucket{result="queue_full",le="0.1"} 244
+render_duration_seconds_bucket{result="queue_full",le="0.25"} 244
+render_duration_seconds_bucket{result="queue_full",le="0.5"} 244
+render_duration_seconds_bucket{result="queue_full",le="1"} 244
+render_duration_seconds_bucket{result="queue_full",le="1.6"} 244
+render_duration_seconds_bucket{result="queue_full",le="2.5"} 244
+render_duration_seconds_bucket{result="queue_full",le="4"} 244
+render_duration_seconds_bucket{result="queue_full",le="8"} 244
+render_duration_seconds_bucket{result="queue_full",le="15"} 244
+render_duration_seconds_bucket{result="queue_full",le="30"} 244
+render_duration_seconds_bucket{result="queue_full",le="+Inf"} 244
+render_duration_seconds_sum{result="queue_full"} 0.0036032
+render_duration_seconds_count{result="queue_full"} 244
+render_duration_seconds_bucket{result="success",le="0.05"} 0
+render_duration_seconds_bucket{result="success",le="0.1"} 0
+render_duration_seconds_bucket{result="success",le="0.25"} 0
+render_duration_seconds_bucket{result="success",le="0.5"} 0
+render_duration_seconds_bucket{result="success",le="1"} 173
+render_duration_seconds_bucket{result="success",le="1.6"} 234
+render_duration_seconds_bucket{result="success",le="2.5"} 234
+render_duration_seconds_bucket{result="success",le="4"} 234
+render_duration_seconds_bucket{result="success",le="8"} 234
+render_duration_seconds_bucket{result="success",le="15"} 234
+render_duration_seconds_bucket{result="success",le="30"} 234
+render_duration_seconds_bucket{result="success",le="+Inf"} 234
+render_duration_seconds_sum{result="success"} 226.09129030000008
+render_duration_seconds_count{result="success"} 234
+# HELP render_queue_length Number of render requests waiting for a page.
+# TYPE render_queue_length gauge
+render_queue_length 0
+# HELP render_requests_total Total render requests by result.
+# TYPE render_requests_total counter
+render_requests_total{result="queue_full"} 244
+render_requests_total{result="success"} 234

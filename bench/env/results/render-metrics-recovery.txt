@@ -1,0 +1,28 @@
+﻿# HELP render_active_requests Number of renders currently executing on pages.
+# TYPE render_active_requests gauge
+render_active_requests 0
+# HELP render_browser_starts_total Total Chromium process starts, including crash recovery.
+# TYPE render_browser_starts_total counter
+render_browser_starts_total 1
+# HELP render_duration_seconds End-to-end render request duration, including queueing.
+# TYPE render_duration_seconds histogram
+render_duration_seconds_bucket{result="success",le="0.05"} 0
+render_duration_seconds_bucket{result="success",le="0.1"} 0
+render_duration_seconds_bucket{result="success",le="0.25"} 0
+render_duration_seconds_bucket{result="success",le="0.5"} 0
+render_duration_seconds_bucket{result="success",le="1"} 30
+render_duration_seconds_bucket{result="success",le="1.6"} 30
+render_duration_seconds_bucket{result="success",le="2.5"} 30
+render_duration_seconds_bucket{result="success",le="4"} 30
+render_duration_seconds_bucket{result="success",le="8"} 30
+render_duration_seconds_bucket{result="success",le="15"} 30
+render_duration_seconds_bucket{result="success",le="30"} 30
+render_duration_seconds_bucket{result="success",le="+Inf"} 30
+render_duration_seconds_sum{result="success"} 15.6537533
+render_duration_seconds_count{result="success"} 30
+# HELP render_queue_length Number of render requests waiting for a page.
+# TYPE render_queue_length gauge
+render_queue_length 0
+# HELP render_requests_total Total render requests by result.
+# TYPE render_requests_total counter
+render_requests_total{result="success"} 30
