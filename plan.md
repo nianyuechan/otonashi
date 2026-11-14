@@ -446,6 +446,15 @@ Yunzai GitHub 插件整合候选（按插件索引和仓库说明于 2026-11-14 
 - 最近一次完整验证的首次运行中，`TestNoteStorageFailureRepliesUnavailable` 等待 SQLite 打开时超时；该用例单独运行通过，完整验证随后复跑通过三个 Go 模块的格式、测试、构建和 `vet`。
 - `go test -race` 尚未完成；当前环境缺少启用 CGO 所需的 C 编译器条件。
 
+交接验证轮已完成（2026-11-14，见 `audit-completed-work-2026-11-14.md` 第八节）：
+
+- SQLite 重启测试稳定化（停滞已采证）：完整验证第 2 次运行真实复现同类停滞——本机存在持续 ~30s 的机器级 IO 停滞（app/plugin/storage/render 多个并行测试包同时被拖慢，会话测试失败于存储打开超时）；modernc SQLite 阻塞 IO 在停滞期间无法被 context 中断，`busy_timeout(2500)` 下锁竞争最多 2.5s 报错，排除锁竞争根因。修复：`runNoteConversation` 与会话测试改为 30s 停滞容忍口径，`runNoteConversation` 失败路径改为 `t.Cleanup` 有序停止（cancel → 等待 Run → Close → server.Close）并增加步骤耗时与 goroutine dump 证据；`openStorage` 打开预算 5s→30s；plugin 任务配置测试两阶段改用独立 30s 计时器。存储层 `synchronous(FULL)` 保持不变。
+- 新增可选 pprof 端点（`internal/observability`）：`YZGO_PPROF_ADDR` 默认关闭，仅允许 loopback，非回环地址拒绝并有测试；README 记录运维口径与生产警告。
+- 负载器结果 JSON 参数自记录（`message_type`/`group_count`/`user_count` 等），容量参数证据不再依赖文件名。
+- 基线同批次重采纳入：旧版基准副本修复后首次成功重跑，两侧同批次稳态/突发对照（`phase0-baseline.md` 4.4），方向与第一批一致。
+- 2 倍群聊容量验证：100 群/2 万发送者下，请求 600/700 msg/s 时实际注入 437–543 msg/s、`missing_replies=0`、p99 ≤ 0.55ms，实际注入速率达到 2 倍目标（400 msg/s）；单线程负载器每周期约 0.4–0.6ms 开销是注入速率受限的主因，900 msg/s 请求下实际注入 639 msg/s、服务端 p99 仍 0.47ms/CPU 2.5%，服务端远未饱和。详见 `capacity-100-groups-200rps.md`。
+- 基准脚本防残留加固：`Invoke-BenchScenario.ps1` 启动前按精确路径清理 `bench\env` 下残留 bot、`Stop-Tree` 增加校验与兜底强杀（此前 8 个残留 bot 曾导致一轮结果打到不受监控的旧进程上，相关结果作废重采）。
+
 ## 5. 总体完成条件
 
 项目达到可切换状态前，至少需要满足：

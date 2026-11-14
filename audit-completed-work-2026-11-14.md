@@ -181,7 +181,7 @@
 | H3 | 已修 | `config.Validate` 拒绝 URL query 中的 `access_token`/`token`/`secret`/`password`/`authorization`；连接日志用 `redactURL` 清除 userinfo/query/fragment；新增配置与脱敏测试。 |
 | M1 | 已修 | `Client.Run` 建立独立的 event context，断线只取消当前连接，不取消在途事件；新增断线不取消在途事件测试。 |
 | M2 | 已修 | `Dispatcher` 默认最多 256 个并发事件，超过后由读取循环形成背压；新增并发上限测试；`dispatch.max_concurrent` 已做成配置项（1–4096）。 |
-| M3 | 未改 | `synchronous(FULL)` + 单连接仍是写入基线。切换 WAL/NORMAL 涉及持久性取舍，且现有代码注释记录了快速重启时的锁竞争；需先做写入压测再决定，不在本轮盲改。 |
+| M3 | 未改（取舍已记录，重启竞争已定位） | `synchronous(FULL)` + 单连接仍是写入基线；`Open` 已带 `busy_timeout(2500)` 并保留默认回滚日志（`internal/storage/sqlite.go` 注释记录了不再在每次启动切换 journal_mode 的原因）。交接轮复核结论：锁竞争最多让单次操作在 2.5s 后以"存储不可用"报错返回，**不可能造成 8 秒会话超时**；此前怀疑的"快速重启锁竞争"不是该失败的原因。切换 WAL/NORMAL 涉及持久性取舍，仍需真实写入压测后再决定，不盲改。 |
 | M4 | 已修 | 冷却表按分钟惰性清理过期项；新增 50 个主体过期清理测试。 |
 | M5 | 已修 | `browserManager.newPage` 用独立 `startMu` 串行化获取，启动浏览器期间不再持有 `mu`；`close` 不被启动阻塞；新增阻塞启动/关闭测试。 |
 | M6 | 已修 | `browserManager` 增加 `closed` 状态，`close` 后 `newPage` 返回 `errBrowserManagerClosed`，不会重建浏览器；新增测试。 |
@@ -196,16 +196,19 @@
 | L7 | 已修 | `#render` 超过 8 MiB 的 PNG 不发送，改为文本提示；新增测试。 |
 | L8 | 已修 | 权限只对 `MessageType == "group"` 且 `GroupID > 0` 的事件授予 owner/admin；新增非 group 事件测试。 |
 | L9 | 已修（文档） | README 说明停止时先停收新事件、5 秒内等待在途事件，超时取消并丢弃。 |
+| 交接轮-测试稳定化 | 已修（根因已采证） | **根因证据**：交接轮完整验证第 2 次运行真实复现同一类停滞——`TestSessionConversationAndShutdownThroughOneBot/group` 失败于 `open plugin storage: context deadline exceeded`（30.23s），同一时间窗内 internal/plugin（`TestTasksReceiveScopedStoreAndFreshConfig` 30.61s）、internal/storage（37.5s）、internal/render（31.3s）多个并行测试包同时被拖慢到 30 秒量级：本机存在持续 ~30s 的机器级 IO 停滞。modernc SQLite 的阻塞 IO（建表 fsync）在停滞期间无法被 context 中断，deadline 只能在 IO 返回后生效——这解释了原 note 测试失败的完整链条：存储操作卡 8s+ → 8s 会话期限触发 → 卡住的操作仍持有连接 → `application.Close()` 无法释放句柄 → TempDir 清理报"文件占用"。`busy_timeout(2500)` 下的锁竞争最多 2.5s 报错返回，与该签名矛盾，排除锁竞争根因。**修复**：(1) `runNoteConversation`（`internal/app/storage_test.go`）失败路径改为 `t.Cleanup` 有序停止（cancel → 等待 Run（5s + goroutine dump）→ Close → server.Close），LIFO 保证先于 `t.TempDir` 删除执行；增加步骤级耗时记录与超时时全量 goroutine dump；会话期限 8s → 30s 吸收实测停滞（正常会话 0.3–0.6s）。(2) 会话测试 ctx 5s → 30s（同口径）。(3) `openStorage`（`internal/app/app.go`）打开预算 5s → 30s：停滞期间阻塞 IO 本就无法提前取消，放宽预算避免"慢但能完成"的启动被过早判死；损坏路径仍立即报错。(4) `TestTasksReceiveScopedStoreAndFreshConfig` 两阶段改用独立 30s 计时器（原共享 3s 计时器会在停滞期间烧完）。 |
+| 交接轮-pprof 端点 | 已修（loopback-only） | 新增 `internal/observability`：`YZGO_PPROF_ADDR` 未设置时不监听；地址解析后必须是 loopback（127.0.0.0/8 或 ::1），`0.0.0.0`、`::`、空主机名、解析到非回环的主机名一律拒绝并有测试覆盖；采样率在监听成功后才开启，stop 归零。README 增加用途、环境变量、默认关闭、仅本地、生产警告与采样开销说明。`cmd/yunzai`、`cmd/yunzai-bench` 接线。 |
+| 交接轮-负载器参数自记录 | 已修 | 负载器结果 JSON 新增 `message_type`/`group_count`/`user_count`/`user_id`/`group_id` 字段：容量验证的参数证据取自 JSON 本身，不再依赖文件名（此前未提交的 400/600/700 结果无法自证群数/发送者数）。 |
 
-容量目标（2026-11-14 确认）：100 个群、2 万注册用户、峰值 200 msg/s，按 2 倍余量设计。新增 `-message-type group`、`-group-count`、`-user-count` 负载参数，并以 100 群/2 万发送者轮转实测到 **221 eps、0 丢失、p99 0.47ms、CPU 1.3%、RSS 20.8MB**。该结果只覆盖简单基准规则，不含真实插件、存储写入、渲染和多账号，详见 `bench/reports/capacity-100-groups-200rps.md`。
+容量目标（2026-11-14 确认）：100 个群、2 万注册用户、峰值 200 msg/s，按 2 倍余量设计。新增 `-message-type group`、`-group-count`、`-user-count` 负载参数，并以 100 群/2 万发送者轮转实测到 **221 eps、0 丢失、p99 0.47ms、CPU 1.3%、RSS 20.8MB**。交接轮补充：2 倍目标已按实际注入验证——请求 600/700 msg/s 时实际注入 437–543 msg/s（四轮）、`missing_replies=0`、p99 ≤ 0.55ms；请求速率 ≠ 实际注入 ≠ reported eps（分母含 grace），三口径区分见 `bench/reports/capacity-100-groups-200rps.md`。负载器每周期 ~0.4–0.6ms 开销使 900 msg/s 请求只注入 639 msg/s，而服务端 p99 全程 ≤ 0.68ms、CPU ≤ 2.5%，未饱和；继续提高注入需多负载器或负载器改造。该结果只覆盖简单基准规则，不含真实插件、存储写入、渲染和多账号。负载器结果 JSON 自 2026-11-14 起自记录 `message_type`/`group_count`/`user_count` 等参数，参数证据不再依赖文件名；此前未提交的 400/600/700 结果（19:40–19:46 采集）无法自证参数，已由新采集的 `*-verified-run*.json` 取代。
 
-验证：`scripts/Test-Go.ps1` 在 d9dd8ce 上对 go-yunzai、go-render、bench 三模块的 fmt/test/build/vet 通过；纳入当前未提交 pprof 改动后复跑，`TestNoteSurvivesApplicationRestartThroughOneBot/private` 在 10.06s 超时失败，随即单独复跑该测试 0.85s 通过。失败原因是 M3 现有 SQLite `synchronous(FULL)` + 单连接在快速重启/清理时的间歇锁竞争，不是 pprof 测试失败；完整套件尚未稳定通过。H1 已用 QPC 重采两轮，结果见 `bench/reports/phase0-baseline.md`。`-race` 仍未运行（缺 CGO/C 编译器）。
+验证（交接轮最终口径）：`TestNoteSurvivesApplicationRestartThroughOneBot -count=20` 通过（13.5s）；修复后 `scripts/Test-Go.ps1` 连续 3 次通过 go-yunzai、go-render、bench 三模块的 fmt/test/build/vet（日志 `bench/env` 工作区外留档 artifacts-gocache/testgo-final2-run1..3）。此前同日历史：原 pprof 未提交改动下的复跑曾出现 note 测试 10.06s 超时（单独复跑 0.85s 通过，当时误判为 M3 锁竞争）；交接轮第 1 次 3 连跑的 run2 真实复现同类停滞并定位根因为机器级 IO 停滞（见"交接轮-测试稳定化"行），据此扩大修复后获得 3 连通过。本报告旧版"M3 锁竞争导致测试失败"的表述作废。H1 已用 QPC 重采两轮并纳入基线报告，同批次重采见 4.4。`-race` 仍未运行（缺 CGO/C 编译器）。
 
 ## 九、审计限制
 
 - 未运行 `go test -race`：环境 `CGO_ENABLED=0`，缺 C 编译器。
 - 未启动 SnowLuma 或 Chromium 做真实联调，真实链路结论沿用 README 记录。
 - 未逐行审读全部约 1.1 万行 Go 代码，重点覆盖"已完成"声称对应的路径。
-- H1 已用 QPC 重采两轮稳态并纳入基线报告；旧版稳态仍沿用早期原始 JSON。工作区另有未提交的 Go/旧版突发 QPC 重采和 400/600/700 msg/s 群聊结果，尚未复核或纳入本报告。容量结果来自 100 群/2 万发送者轮转的合成负载。
-- 修复后统一验证脚本曾在 d9dd8ce 通过；当前工作区加入未提交 pprof 改动后复跑，SQLite 重启用例再次超时（单独复跑通过），说明完整套件仍不稳定。本轮未运行 `-race`、未启动 SnowLuma/Chromium 做真实联调。
-- 工作区当前另有未提交的 pprof 端点、命令入口改动和 400/600/700 msg/s 群聊结果；这些尚未复核、测试或纳入本报告与容量报告。
+- H1 已用 QPC 重采两轮稳态并纳入基线报告；同批次重采（19:34–19:39）已补齐旧版对照并纳入 `phase0-baseline.md` 4.4，第一批原始 JSON 保留为历史证据。容量结果来自 100 群/2 万发送者轮转的合成负载。
+- SQLite 重启用例的失败触发在本轮已采证：交接轮完整验证第 2 次运行复现同类停滞（~30s 机器级 IO 停滞，多并行测试包同时被拖慢，`TestSessionConversationAndShutdownThroughOneBot/group` 失败于存储打开超时）。此前 `-count=20` 单测、全量套件 4 次、`go test ./...` 并行 10 次均未复现，说明停滞为低频事件；测试已改为停滞容忍口径 + 有序清理 + 证据采集，再复现时可直接定位停滞点。
+- 工作区状态：上一轮曾把 10 个已跟踪基准 JSON 覆盖为新批次数据（其中 4 个是其他结果文件的逐字节复制，`go-reply-steady.json` 被换成 700rps 群聊结果）；本轮已把非重复的新数据保存为 `go-reply-steady-qpc2-run1/2.json` 后将已跟踪文件恢复到 HEAD 提交版本，新证据文件（burst/steady QPC 重采、400–900 档群聊验证）以新文件名入库，无任何历史证据丢失。

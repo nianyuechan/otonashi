@@ -1,0 +1,4098 @@
+{
+  "protocol_version": "1",
+  "mode": "client",
+  "workload": "reply",
+  "kind": "burst",
+  "rate": 20,
+  "duration_ms": 60000,
+  "count": 500,
+  "self_id": 2081344177,
+  "started_at": "2026-11-14T19:35:52+08:00",
+  "finished_at": "2026-11-14T19:36:04+08:00",
+  "summary": {
+    "sent": 500,
+    "paired_replies": 250,
+    "unpaired_replies": 250,
+    "expected_replies": 250,
+    "missing_replies": 0,
+    "action_count": 263,
+    "action_errors": 0,
+    "throughput_eps": 49.88009921510871,
+    "load_wall_ms": 10024.0378,
+    "latency_count": 250,
+    "latency_mean_ms": 630.7196716000001,
+    "latency_p50_ms": 719.85825,
+    "latency_p90_ms": 1011.2688300000001,
+    "latency_p95_ms": 1022.67777,
+    "latency_p99_ms": 1035.002152,
+    "latency_max_ms": 1037.8619,
+    "cpu_avg_percent": 6.118725157591645,
+    "cpu_max_percent": 29.68772562671476,
+    "rss_avg_bytes": 107944960,
+    "rss_max_bytes": 148881408
+  },
+  "events": [
+    {
+      "index": 0,
+      "seq": 1,
+      "message_type": "private",
+      "text": "bench 1",
+      "sent_ns": 1794656154567790500,
+      "reply_ns": 1794656154582740300,
+      "latency_ms": 15.2007
+    },
+    {
+      "index": 1,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154568008200
+    },
+    {
+      "index": 2,
+      "seq": 2,
+      "message_type": "private",
+      "text": "bench 2",
+      "sent_ns": 1794656154568008200,
+      "reply_ns": 1794656154883789400,
+      "latency_ms": 316.0302
+    },
+    {
+      "index": 3,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154568008200
+    },
+    {
+      "index": 4,
+      "seq": 3,
+      "message_type": "private",
+      "text": "bench 3",
+      "sent_ns": 1794656154568008200,
+      "reply_ns": 1794656154885771200,
+      "latency_ms": 317.8766
+    },
+    {
+      "index": 5,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154568008200
+    },
+    {
+      "index": 6,
+      "seq": 4,
+      "message_type": "private",
+      "text": "bench 4",
+      "sent_ns": 1794656154568008200,
+      "reply_ns": 1794656154886666600,
+      "latency_ms": 318.6372
+    },
+    {
+      "index": 7,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154568008200
+    },
+    {
+      "index": 8,
+      "seq": 5,
+      "message_type": "private",
+      "text": "bench 5",
+      "sent_ns": 1794656154568008200,
+      "reply_ns": 1794656154887511100,
+      "latency_ms": 319.4266
+    },
+    {
+      "index": 9,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154568008200
+    },
+    {
+      "index": 10,
+      "seq": 6,
+      "message_type": "private",
+      "text": "bench 6",
+      "sent_ns": 1794656154568008200,
+      "reply_ns": 1794656154888391400,
+      "latency_ms": 320.1808
+    },
+    {
+      "index": 11,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154568008200
+    },
+    {
+      "index": 12,
+      "seq": 7,
+      "message_type": "private",
+      "text": "bench 7",
+      "sent_ns": 1794656154568532200,
+      "reply_ns": 1794656154888935400,
+      "latency_ms": 321.0054
+    },
+    {
+      "index": 13,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154568532200
+    },
+    {
+      "index": 14,
+      "seq": 8,
+      "message_type": "private",
+      "text": "bench 8",
+      "sent_ns": 1794656154568532200,
+      "reply_ns": 1794656154890738600,
+      "latency_ms": 322.7154
+    },
+    {
+      "index": 15,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154568532200
+    },
+    {
+      "index": 16,
+      "seq": 9,
+      "message_type": "private",
+      "text": "bench 9",
+      "sent_ns": 1794656154568532200,
+      "reply_ns": 1794656154891963000,
+      "latency_ms": 323.4775
+    },
+    {
+      "index": 17,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154568532200
+    },
+    {
+      "index": 18,
+      "seq": 10,
+      "message_type": "private",
+      "text": "bench 10",
+      "sent_ns": 1794656154568532200,
+      "reply_ns": 1794656154892794300,
+      "latency_ms": 324.168
+    },
+    {
+      "index": 19,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154568532200
+    },
+    {
+      "index": 20,
+      "seq": 11,
+      "message_type": "private",
+      "text": "bench 11",
+      "sent_ns": 1794656154568532200,
+      "reply_ns": 1794656154893551500,
+      "latency_ms": 324.9138
+    },
+    {
+      "index": 21,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154568532200
+    },
+    {
+      "index": 22,
+      "seq": 12,
+      "message_type": "private",
+      "text": "bench 12",
+      "sent_ns": 1794656154568532200,
+      "reply_ns": 1794656154894431300,
+      "latency_ms": 325.6657
+    },
+    {
+      "index": 23,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154569051900
+    },
+    {
+      "index": 24,
+      "seq": 13,
+      "message_type": "private",
+      "text": "bench 13",
+      "sent_ns": 1794656154569051900,
+      "reply_ns": 1794656154895503500,
+      "latency_ms": 326.5675
+    },
+    {
+      "index": 25,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154569105400
+    },
+    {
+      "index": 26,
+      "seq": 14,
+      "message_type": "private",
+      "text": "bench 14",
+      "sent_ns": 1794656154569105400,
+      "reply_ns": 1794656154896202300,
+      "latency_ms": 327.3954
+    },
+    {
+      "index": 27,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154569105400
+    },
+    {
+      "index": 28,
+      "seq": 15,
+      "message_type": "private",
+      "text": "bench 15",
+      "sent_ns": 1794656154569105400,
+      "reply_ns": 1794656154896749600,
+      "latency_ms": 328.2101
+    },
+    {
+      "index": 29,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154569105400
+    },
+    {
+      "index": 30,
+      "seq": 16,
+      "message_type": "private",
+      "text": "bench 16",
+      "sent_ns": 1794656154569105400,
+      "reply_ns": 1794656154899483000,
+      "latency_ms": 330.158
+    },
+    {
+      "index": 31,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154569105400
+    },
+    {
+      "index": 32,
+      "seq": 17,
+      "message_type": "private",
+      "text": "bench 17",
+      "sent_ns": 1794656154569105400,
+      "reply_ns": 1794656154900002100,
+      "latency_ms": 331.0522
+    },
+    {
+      "index": 33,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154569105400
+    },
+    {
+      "index": 34,
+      "seq": 18,
+      "message_type": "private",
+      "text": "bench 18",
+      "sent_ns": 1794656154569105400,
+      "reply_ns": 1794656154902047800,
+      "latency_ms": 333.1151
+    },
+    {
+      "index": 35,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154569105400
+    },
+    {
+      "index": 36,
+      "seq": 19,
+      "message_type": "private",
+      "text": "bench 19",
+      "sent_ns": 1794656154569636700,
+      "reply_ns": 1794656154903264200,
+      "latency_ms": 333.8827
+    },
+    {
+      "index": 37,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154569636700
+    },
+    {
+      "index": 38,
+      "seq": 20,
+      "message_type": "private",
+      "text": "bench 20",
+      "sent_ns": 1794656154569720900,
+      "reply_ns": 1794656154904061900,
+      "latency_ms": 334.6544
+    },
+    {
+      "index": 39,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154569720900
+    },
+    {
+      "index": 40,
+      "seq": 21,
+      "message_type": "private",
+      "text": "bench 21",
+      "sent_ns": 1794656154569720900,
+      "reply_ns": 1794656154904577900,
+      "latency_ms": 335.3882
+    },
+    {
+      "index": 41,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154569720900
+    },
+    {
+      "index": 42,
+      "seq": 22,
+      "message_type": "private",
+      "text": "bench 22",
+      "sent_ns": 1794656154569720900,
+      "reply_ns": 1794656154906025400,
+      "latency_ms": 336.117
+    },
+    {
+      "index": 43,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154569720900
+    },
+    {
+      "index": 44,
+      "seq": 23,
+      "message_type": "private",
+      "text": "bench 23",
+      "sent_ns": 1794656154569720900,
+      "reply_ns": 1794656154906537800,
+      "latency_ms": 336.826
+    },
+    {
+      "index": 45,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154569720900
+    },
+    {
+      "index": 46,
+      "seq": 24,
+      "message_type": "private",
+      "text": "bench 24",
+      "sent_ns": 1794656154569720900,
+      "reply_ns": 1794656154907424600,
+      "latency_ms": 337.58
+    },
+    {
+      "index": 47,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154569720900
+    },
+    {
+      "index": 48,
+      "seq": 25,
+      "message_type": "private",
+      "text": "bench 25",
+      "sent_ns": 1794656154569720900,
+      "reply_ns": 1794656154908426200,
+      "latency_ms": 338.3045
+    },
+    {
+      "index": 49,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154569720900
+    },
+    {
+      "index": 50,
+      "seq": 26,
+      "message_type": "private",
+      "text": "bench 26",
+      "sent_ns": 1794656154569720900,
+      "reply_ns": 1794656154909225900,
+      "latency_ms": 339.0313
+    },
+    {
+      "index": 51,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154570243400
+    },
+    {
+      "index": 52,
+      "seq": 27,
+      "message_type": "private",
+      "text": "bench 27",
+      "sent_ns": 1794656154570293200,
+      "reply_ns": 1794656154911298300,
+      "latency_ms": 341.0521
+    },
+    {
+      "index": 53,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154570293200
+    },
+    {
+      "index": 54,
+      "seq": 28,
+      "message_type": "private",
+      "text": "bench 28",
+      "sent_ns": 1794656154570293200,
+      "reply_ns": 1794656154912020100,
+      "latency_ms": 341.8665
+    },
+    {
+      "index": 55,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154570293200
+    },
+    {
+      "index": 56,
+      "seq": 29,
+      "message_type": "private",
+      "text": "bench 29",
+      "sent_ns": 1794656154570293200,
+      "reply_ns": 1794656154912536800,
+      "latency_ms": 342.5858
+    },
+    {
+      "index": 57,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154570293200
+    },
+    {
+      "index": 58,
+      "seq": 30,
+      "message_type": "private",
+      "text": "bench 30",
+      "sent_ns": 1794656154570293200,
+      "reply_ns": 1794656154912536800,
+      "latency_ms": 343.4069
+    },
+    {
+      "index": 59,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154570293200
+    },
+    {
+      "index": 60,
+      "seq": 31,
+      "message_type": "private",
+      "text": "bench 31",
+      "sent_ns": 1794656154570293200,
+      "reply_ns": 1794656154914020900,
+      "latency_ms": 344.1424
+    },
+    {
+      "index": 61,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154570293200
+    },
+    {
+      "index": 62,
+      "seq": 32,
+      "message_type": "private",
+      "text": "bench 32",
+      "sent_ns": 1794656154570293200,
+      "reply_ns": 1794656154915622700,
+      "latency_ms": 344.9332
+    },
+    {
+      "index": 63,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154570293200
+    },
+    {
+      "index": 64,
+      "seq": 33,
+      "message_type": "private",
+      "text": "bench 33",
+      "sent_ns": 1794656154570293200,
+      "reply_ns": 1794656154916139200,
+      "latency_ms": 345.7465
+    },
+    {
+      "index": 65,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154570803900
+    },
+    {
+      "index": 66,
+      "seq": 34,
+      "message_type": "private",
+      "text": "bench 34",
+      "sent_ns": 1794656154570817400,
+      "reply_ns": 1794656154917062500,
+      "latency_ms": 346.703
+    },
+    {
+      "index": 67,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154570875500
+    },
+    {
+      "index": 68,
+      "seq": 35,
+      "message_type": "private",
+      "text": "bench 35",
+      "sent_ns": 1794656154570875500,
+      "reply_ns": 1794656154919077300,
+      "latency_ms": 348.4522
+    },
+    {
+      "index": 69,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154570875500
+    },
+    {
+      "index": 70,
+      "seq": 36,
+      "message_type": "private",
+      "text": "bench 36",
+      "sent_ns": 1794656154570875500,
+      "reply_ns": 1794656154920096900,
+      "latency_ms": 349.3012
+    },
+    {
+      "index": 71,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154570875500
+    },
+    {
+      "index": 72,
+      "seq": 37,
+      "message_type": "private",
+      "text": "bench 37",
+      "sent_ns": 1794656154570875500,
+      "reply_ns": 1794656154920610300,
+      "latency_ms": 350.0991
+    },
+    {
+      "index": 73,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154570875500
+    },
+    {
+      "index": 74,
+      "seq": 38,
+      "message_type": "private",
+      "text": "bench 38",
+      "sent_ns": 1794656154570875500,
+      "reply_ns": 1794656154921752000,
+      "latency_ms": 350.864
+    },
+    {
+      "index": 75,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154570875500
+    },
+    {
+      "index": 76,
+      "seq": 39,
+      "message_type": "private",
+      "text": "bench 39",
+      "sent_ns": 1794656154570875500,
+      "reply_ns": 1794656154922584700,
+      "latency_ms": 351.6322
+    },
+    {
+      "index": 77,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154570875500
+    },
+    {
+      "index": 78,
+      "seq": 40,
+      "message_type": "private",
+      "text": "bench 40",
+      "sent_ns": 1794656154570875500,
+      "reply_ns": 1794656154923421000,
+      "latency_ms": 352.3749
+    },
+    {
+      "index": 79,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154571385400
+    },
+    {
+      "index": 80,
+      "seq": 41,
+      "message_type": "private",
+      "text": "bench 41",
+      "sent_ns": 1794656154571441600,
+      "reply_ns": 1794656154924531800,
+      "latency_ms": 353.1676
+    },
+    {
+      "index": 81,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154571460400
+    },
+    {
+      "index": 82,
+      "seq": 42,
+      "message_type": "private",
+      "text": "bench 42",
+      "sent_ns": 1794656154571460400,
+      "reply_ns": 1794656154925047100,
+      "latency_ms": 354.045
+    },
+    {
+      "index": 83,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154571460400
+    },
+    {
+      "index": 84,
+      "seq": 43,
+      "message_type": "private",
+      "text": "bench 43",
+      "sent_ns": 1794656154571460400,
+      "reply_ns": 1794656154926150100,
+      "latency_ms": 355.1358
+    },
+    {
+      "index": 85,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154571460400
+    },
+    {
+      "index": 86,
+      "seq": 44,
+      "message_type": "private",
+      "text": "bench 44",
+      "sent_ns": 1794656154571460400,
+      "reply_ns": 1794656154927314600,
+      "latency_ms": 355.999
+    },
+    {
+      "index": 87,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154571460400
+    },
+    {
+      "index": 88,
+      "seq": 45,
+      "message_type": "private",
+      "text": "bench 45",
+      "sent_ns": 1794656154571460400,
+      "reply_ns": 1794656154928567700,
+      "latency_ms": 356.8472
+    },
+    {
+      "index": 89,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154571460400
+    },
+    {
+      "index": 90,
+      "seq": 46,
+      "message_type": "private",
+      "text": "bench 46",
+      "sent_ns": 1794656154571460400,
+      "reply_ns": 1794656154929199700,
+      "latency_ms": 357.6749
+    },
+    {
+      "index": 91,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154571460400
+    },
+    {
+      "index": 92,
+      "seq": 47,
+      "message_type": "private",
+      "text": "bench 47",
+      "sent_ns": 1794656154571985400,
+      "reply_ns": 1794656154930180900,
+      "latency_ms": 358.4125
+    },
+    {
+      "index": 93,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154571985400
+    },
+    {
+      "index": 94,
+      "seq": 48,
+      "message_type": "private",
+      "text": "bench 48",
+      "sent_ns": 1794656154572050500,
+      "reply_ns": 1794656154931196000,
+      "latency_ms": 359.1282
+    },
+    {
+      "index": 95,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154572050500
+    },
+    {
+      "index": 96,
+      "seq": 49,
+      "message_type": "private",
+      "text": "bench 49",
+      "sent_ns": 1794656154572050500,
+      "reply_ns": 1794656154932713700,
+      "latency_ms": 360.6812
+    },
+    {
+      "index": 97,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154572050500
+    },
+    {
+      "index": 98,
+      "seq": 50,
+      "message_type": "private",
+      "text": "bench 50",
+      "sent_ns": 1794656154572050500,
+      "reply_ns": 1794656154933370200,
+      "latency_ms": 361.5651
+    },
+    {
+      "index": 99,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154572050500
+    },
+    {
+      "index": 100,
+      "seq": 51,
+      "message_type": "private",
+      "text": "bench 51",
+      "sent_ns": 1794656154572050500,
+      "reply_ns": 1794656154934329300,
+      "latency_ms": 362.4764
+    },
+    {
+      "index": 101,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154572050500
+    },
+    {
+      "index": 102,
+      "seq": 52,
+      "message_type": "private",
+      "text": "bench 52",
+      "sent_ns": 1794656154572050500,
+      "reply_ns": 1794656154934846300,
+      "latency_ms": 363.225
+    },
+    {
+      "index": 103,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154572050500
+    },
+    {
+      "index": 104,
+      "seq": 53,
+      "message_type": "private",
+      "text": "bench 53",
+      "sent_ns": 1794656154572050500,
+      "reply_ns": 1794656154936155400,
+      "latency_ms": 363.9022
+    },
+    {
+      "index": 105,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154572050500
+    },
+    {
+      "index": 106,
+      "seq": 54,
+      "message_type": "private",
+      "text": "bench 54",
+      "sent_ns": 1794656154572050500,
+      "reply_ns": 1794656154936916200,
+      "latency_ms": 364.7406
+    },
+    {
+      "index": 107,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154572571800
+    },
+    {
+      "index": 108,
+      "seq": 55,
+      "message_type": "private",
+      "text": "bench 55",
+      "sent_ns": 1794656154572621300,
+      "reply_ns": 1794656154937428200,
+      "latency_ms": 365.4388
+    },
+    {
+      "index": 109,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154572621300
+    },
+    {
+      "index": 110,
+      "seq": 56,
+      "message_type": "private",
+      "text": "bench 56",
+      "sent_ns": 1794656154572621300,
+      "reply_ns": 1794656154938626300,
+      "latency_ms": 366.2802
+    },
+    {
+      "index": 111,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154572621300
+    },
+    {
+      "index": 112,
+      "seq": 57,
+      "message_type": "private",
+      "text": "bench 57",
+      "sent_ns": 1794656154572621300,
+      "reply_ns": 1794656154940144800,
+      "latency_ms": 368.0421
+    },
+    {
+      "index": 113,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154572621300
+    },
+    {
+      "index": 114,
+      "seq": 58,
+      "message_type": "private",
+      "text": "bench 58",
+      "sent_ns": 1794656154572621300,
+      "reply_ns": 1794656154941377700,
+      "latency_ms": 368.8021
+    },
+    {
+      "index": 115,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154572621300
+    },
+    {
+      "index": 116,
+      "seq": 59,
+      "message_type": "private",
+      "text": "bench 59",
+      "sent_ns": 1794656154572621300,
+      "reply_ns": 1794656154942326400,
+      "latency_ms": 369.6671
+    },
+    {
+      "index": 117,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154572621300
+    },
+    {
+      "index": 118,
+      "seq": 60,
+      "message_type": "private",
+      "text": "bench 60",
+      "sent_ns": 1794656154572621300,
+      "reply_ns": 1794656154942846100,
+      "latency_ms": 370.4651
+    },
+    {
+      "index": 119,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154572621300
+    },
+    {
+      "index": 120,
+      "seq": 61,
+      "message_type": "private",
+      "text": "bench 61",
+      "sent_ns": 1794656154572621300,
+      "reply_ns": 1794656154944108200,
+      "latency_ms": 371.2254
+    },
+    {
+      "index": 121,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154573144500
+    },
+    {
+      "index": 122,
+      "seq": 62,
+      "message_type": "private",
+      "text": "bench 62",
+      "sent_ns": 1794656154573144500,
+      "reply_ns": 1794656154944865500,
+      "latency_ms": 371.9215
+    },
+    {
+      "index": 123,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154573210900
+    },
+    {
+      "index": 124,
+      "seq": 63,
+      "message_type": "private",
+      "text": "bench 63",
+      "sent_ns": 1794656154573210900,
+      "reply_ns": 1794656154945378500,
+      "latency_ms": 372.6586
+    },
+    {
+      "index": 125,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154573210900
+    },
+    {
+      "index": 126,
+      "seq": 64,
+      "message_type": "private",
+      "text": "bench 64",
+      "sent_ns": 1794656154573210900,
+      "reply_ns": 1794656154946479400,
+      "latency_ms": 373.4719
+    },
+    {
+      "index": 127,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154573210900
+    },
+    {
+      "index": 128,
+      "seq": 65,
+      "message_type": "private",
+      "text": "bench 65",
+      "sent_ns": 1794656154573210900,
+      "reply_ns": 1794656154947377500,
+      "latency_ms": 374.2845
+    },
+    {
+      "index": 129,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154573210900
+    },
+    {
+      "index": 130,
+      "seq": 66,
+      "message_type": "private",
+      "text": "bench 66",
+      "sent_ns": 1794656154573210900,
+      "reply_ns": 1794656154949608200,
+      "latency_ms": 376.0864
+    },
+    {
+      "index": 131,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154573210900
+    },
+    {
+      "index": 132,
+      "seq": 67,
+      "message_type": "private",
+      "text": "bench 67",
+      "sent_ns": 1794656154573210900,
+      "reply_ns": 1794656154950126400,
+      "latency_ms": 376.867
+    },
+    {
+      "index": 133,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154573210900
+    },
+    {
+      "index": 134,
+      "seq": 68,
+      "message_type": "private",
+      "text": "bench 68",
+      "sent_ns": 1794656154573210900,
+      "reply_ns": 1794656154951040000,
+      "latency_ms": 377.8857
+    },
+    {
+      "index": 135,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154573735200
+    },
+    {
+      "index": 136,
+      "seq": 69,
+      "message_type": "private",
+      "text": "bench 69",
+      "sent_ns": 1794656154573735200,
+      "reply_ns": 1794656154952129700,
+      "latency_ms": 378.632
+    },
+    {
+      "index": 137,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154573808600
+    },
+    {
+      "index": 138,
+      "seq": 70,
+      "message_type": "private",
+      "text": "bench 70",
+      "sent_ns": 1794656154573808600,
+      "reply_ns": 1794656154952971200,
+      "latency_ms": 379.4303
+    },
+    {
+      "index": 139,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154573808600
+    },
+    {
+      "index": 140,
+      "seq": 71,
+      "message_type": "private",
+      "text": "bench 71",
+      "sent_ns": 1794656154573808600,
+      "reply_ns": 1794656154953983600,
+      "latency_ms": 380.1773
+    },
+    {
+      "index": 141,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154573808600
+    },
+    {
+      "index": 142,
+      "seq": 72,
+      "message_type": "private",
+      "text": "bench 72",
+      "sent_ns": 1794656154573808600,
+      "reply_ns": 1794656154954664000,
+      "latency_ms": 380.9117
+    },
+    {
+      "index": 143,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154573808600
+    },
+    {
+      "index": 144,
+      "seq": 73,
+      "message_type": "private",
+      "text": "bench 73",
+      "sent_ns": 1794656154573808600,
+      "reply_ns": 1794656154955544200,
+      "latency_ms": 381.727
+    },
+    {
+      "index": 145,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154573808600
+    },
+    {
+      "index": 146,
+      "seq": 74,
+      "message_type": "private",
+      "text": "bench 74",
+      "sent_ns": 1794656154573808600,
+      "reply_ns": 1794656154957062900,
+      "latency_ms": 383.814
+    },
+    {
+      "index": 147,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154573808600
+    },
+    {
+      "index": 148,
+      "seq": 75,
+      "message_type": "private",
+      "text": "bench 75",
+      "sent_ns": 1794656154573808600,
+      "reply_ns": 1794656154958054900,
+      "latency_ms": 384.5244
+    },
+    {
+      "index": 149,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154573808600
+    },
+    {
+      "index": 150,
+      "seq": 76,
+      "message_type": "private",
+      "text": "bench 76",
+      "sent_ns": 1794656154574332400,
+      "reply_ns": 1794656154959424100,
+      "latency_ms": 385.3989
+    },
+    {
+      "index": 151,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154574393100
+    },
+    {
+      "index": 152,
+      "seq": 77,
+      "message_type": "private",
+      "text": "bench 77",
+      "sent_ns": 1794656154574393100,
+      "reply_ns": 1794656154959935200,
+      "latency_ms": 386.1107
+    },
+    {
+      "index": 153,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154574393100
+    },
+    {
+      "index": 154,
+      "seq": 78,
+      "message_type": "private",
+      "text": "bench 78",
+      "sent_ns": 1794656154574393100,
+      "reply_ns": 1794656154961088800,
+      "latency_ms": 386.8521
+    },
+    {
+      "index": 155,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154574393100
+    },
+    {
+      "index": 156,
+      "seq": 79,
+      "message_type": "private",
+      "text": "bench 79",
+      "sent_ns": 1794656154574393100,
+      "reply_ns": 1794656154961603000,
+      "latency_ms": 387.6201
+    },
+    {
+      "index": 157,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154574393100
+    },
+    {
+      "index": 158,
+      "seq": 80,
+      "message_type": "private",
+      "text": "bench 80",
+      "sent_ns": 1794656154574393100,
+      "reply_ns": 1794656154962761100,
+      "latency_ms": 388.3522
+    },
+    {
+      "index": 159,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154574393100
+    },
+    {
+      "index": 160,
+      "seq": 81,
+      "message_type": "private",
+      "text": "bench 81",
+      "sent_ns": 1794656154574393100,
+      "reply_ns": 1794656154963272300,
+      "latency_ms": 389.1651
+    },
+    {
+      "index": 161,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154574393100
+    },
+    {
+      "index": 162,
+      "seq": 82,
+      "message_type": "private",
+      "text": "bench 82",
+      "sent_ns": 1794656154574393100,
+      "reply_ns": 1794656154964460200,
+      "latency_ms": 389.8985
+    },
+    {
+      "index": 163,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154574393100
+    },
+    {
+      "index": 164,
+      "seq": 83,
+      "message_type": "private",
+      "text": "bench 83",
+      "sent_ns": 1794656154574915100,
+      "reply_ns": 1794656154966184700,
+      "latency_ms": 391.2693
+    },
+    {
+      "index": 165,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154574915100
+    },
+    {
+      "index": 166,
+      "seq": 84,
+      "message_type": "private",
+      "text": "bench 84",
+      "sent_ns": 1794656154574915100,
+      "reply_ns": 1794656154966706800,
+      "latency_ms": 392.0665
+    },
+    {
+      "index": 167,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154574915100
+    },
+    {
+      "index": 168,
+      "seq": 85,
+      "message_type": "private",
+      "text": "bench 85",
+      "sent_ns": 1794656154574915100,
+      "reply_ns": 1794656154967222600,
+      "latency_ms": 392.8667
+    },
+    {
+      "index": 169,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154574915100
+    },
+    {
+      "index": 170,
+      "seq": 86,
+      "message_type": "private",
+      "text": "bench 86",
+      "sent_ns": 1794656154574915100,
+      "reply_ns": 1794656154968490300,
+      "latency_ms": 393.7236
+    },
+    {
+      "index": 171,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154574915100
+    },
+    {
+      "index": 172,
+      "seq": 87,
+      "message_type": "private",
+      "text": "bench 87",
+      "sent_ns": 1794656154574915100,
+      "reply_ns": 1794656154969416000,
+      "latency_ms": 394.4489
+    },
+    {
+      "index": 173,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154574915100
+    },
+    {
+      "index": 174,
+      "seq": 88,
+      "message_type": "private",
+      "text": "bench 88",
+      "sent_ns": 1794656154574915100,
+      "reply_ns": 1794656154970423300,
+      "latency_ms": 395.1448
+    },
+    {
+      "index": 175,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154574915100
+    },
+    {
+      "index": 176,
+      "seq": 89,
+      "message_type": "private",
+      "text": "bench 89",
+      "sent_ns": 1794656154574915100,
+      "reply_ns": 1794656154970992500,
+      "latency_ms": 395.8701
+    },
+    {
+      "index": 177,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154575447900
+    },
+    {
+      "index": 178,
+      "seq": 90,
+      "message_type": "private",
+      "text": "bench 90",
+      "sent_ns": 1794656154575447900,
+      "reply_ns": 1794656154972168300,
+      "latency_ms": 396.6972
+    },
+    {
+      "index": 179,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154575447900
+    },
+    {
+      "index": 180,
+      "seq": 91,
+      "message_type": "private",
+      "text": "bench 91",
+      "sent_ns": 1794656154575545900,
+      "reply_ns": 1794656154972683200,
+      "latency_ms": 397.9141
+    },
+    {
+      "index": 181,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154575545900
+    },
+    {
+      "index": 182,
+      "seq": 92,
+      "message_type": "private",
+      "text": "bench 92",
+      "sent_ns": 1794656154575545900,
+      "reply_ns": 1794656154974036300,
+      "latency_ms": 398.6685
+    },
+    {
+      "index": 183,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154575545900
+    },
+    {
+      "index": 184,
+      "seq": 93,
+      "message_type": "private",
+      "text": "bench 93",
+      "sent_ns": 1794656154575545900,
+      "reply_ns": 1794656154974862000,
+      "latency_ms": 399.4743
+    },
+    {
+      "index": 185,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154575545900
+    },
+    {
+      "index": 186,
+      "seq": 94,
+      "message_type": "private",
+      "text": "bench 94",
+      "sent_ns": 1794656154575545900,
+      "reply_ns": 1794656154975751100,
+      "latency_ms": 400.2151
+    },
+    {
+      "index": 187,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154575545900
+    },
+    {
+      "index": 188,
+      "seq": 95,
+      "message_type": "private",
+      "text": "bench 95",
+      "sent_ns": 1794656154575545900,
+      "reply_ns": 1794656154976778300,
+      "latency_ms": 401.0976
+    },
+    {
+      "index": 189,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154575545900
+    },
+    {
+      "index": 190,
+      "seq": 96,
+      "message_type": "private",
+      "text": "bench 96",
+      "sent_ns": 1794656154575545900,
+      "reply_ns": 1794656154977290100,
+      "latency_ms": 401.8037
+    },
+    {
+      "index": 191,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154575545900
+    },
+    {
+      "index": 192,
+      "seq": 97,
+      "message_type": "private",
+      "text": "bench 97",
+      "sent_ns": 1794656154576067200,
+      "reply_ns": 1794656154978323900,
+      "latency_ms": 402.5281
+    },
+    {
+      "index": 193,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154576067200
+    },
+    {
+      "index": 194,
+      "seq": 98,
+      "message_type": "private",
+      "text": "bench 98",
+      "sent_ns": 1794656154576116600,
+      "reply_ns": 1794656154979138100,
+      "latency_ms": 403.2432
+    },
+    {
+      "index": 195,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154576116600
+    },
+    {
+      "index": 196,
+      "seq": 99,
+      "message_type": "private",
+      "text": "bench 99",
+      "sent_ns": 1794656154576116600,
+      "reply_ns": 1794656154979802300,
+      "latency_ms": 403.9988
+    },
+    {
+      "index": 197,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154576116600
+    },
+    {
+      "index": 198,
+      "seq": 100,
+      "message_type": "private",
+      "text": "bench 100",
+      "sent_ns": 1794656154576116600,
+      "reply_ns": 1794656154981325100,
+      "latency_ms": 405.5359
+    },
+    {
+      "index": 199,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154576116600
+    },
+    {
+      "index": 200,
+      "seq": 101,
+      "message_type": "private",
+      "text": "bench 101",
+      "sent_ns": 1794656154576116600,
+      "reply_ns": 1794656154982775100,
+      "latency_ms": 406.4471
+    },
+    {
+      "index": 201,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154576116600
+    },
+    {
+      "index": 202,
+      "seq": 102,
+      "message_type": "private",
+      "text": "bench 102",
+      "sent_ns": 1794656154576116600,
+      "reply_ns": 1794656154983838100,
+      "latency_ms": 407.3643
+    },
+    {
+      "index": 203,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154576116600
+    },
+    {
+      "index": 204,
+      "seq": 103,
+      "message_type": "private",
+      "text": "bench 103",
+      "sent_ns": 1794656154576116600,
+      "reply_ns": 1794656154984743400,
+      "latency_ms": 408.1896
+    },
+    {
+      "index": 205,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154576116600
+    },
+    {
+      "index": 206,
+      "seq": 104,
+      "message_type": "private",
+      "text": "bench 104",
+      "sent_ns": 1794656154576642900,
+      "reply_ns": 1794656154985622200,
+      "latency_ms": 408.9987
+    },
+    {
+      "index": 207,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154576642900
+    },
+    {
+      "index": 208,
+      "seq": 105,
+      "message_type": "private",
+      "text": "bench 105",
+      "sent_ns": 1794656154576642900,
+      "reply_ns": 1794656154986135100,
+      "latency_ms": 409.7011
+    },
+    {
+      "index": 209,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154576642900
+    },
+    {
+      "index": 210,
+      "seq": 106,
+      "message_type": "private",
+      "text": "bench 106",
+      "sent_ns": 1794656154576642900,
+      "reply_ns": 1794656154987275200,
+      "latency_ms": 410.4945
+    },
+    {
+      "index": 211,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154576642900
+    },
+    {
+      "index": 212,
+      "seq": 107,
+      "message_type": "private",
+      "text": "bench 107",
+      "sent_ns": 1794656154576642900,
+      "reply_ns": 1794656154988146600,
+      "latency_ms": 411.2597
+    },
+    {
+      "index": 213,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154576642900
+    },
+    {
+      "index": 214,
+      "seq": 108,
+      "message_type": "private",
+      "text": "bench 108",
+      "sent_ns": 1794656154576642900,
+      "reply_ns": 1794656154988666200,
+      "latency_ms": 412.0999
+    },
+    {
+      "index": 215,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154576642900
+    },
+    {
+      "index": 216,
+      "seq": 109,
+      "message_type": "private",
+      "text": "bench 109",
+      "sent_ns": 1794656154576642900,
+      "reply_ns": 1794656154990552900,
+      "latency_ms": 413.5135
+    },
+    {
+      "index": 217,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154576642900
+    },
+    {
+      "index": 218,
+      "seq": 110,
+      "message_type": "private",
+      "text": "bench 110",
+      "sent_ns": 1794656154576642900,
+      "reply_ns": 1794656154991378600,
+      "latency_ms": 414.2765
+    },
+    {
+      "index": 219,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154576642900
+    },
+    {
+      "index": 220,
+      "seq": 111,
+      "message_type": "private",
+      "text": "bench 111",
+      "sent_ns": 1794656154576642900,
+      "reply_ns": 1794656155284257100,
+      "latency_ms": 707.1005
+    },
+    {
+      "index": 221,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154576642900
+    },
+    {
+      "index": 222,
+      "seq": 112,
+      "message_type": "private",
+      "text": "bench 112",
+      "sent_ns": 1794656154576642900,
+      "reply_ns": 1794656155284822500,
+      "latency_ms": 707.9219
+    },
+    {
+      "index": 223,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154576642900
+    },
+    {
+      "index": 224,
+      "seq": 113,
+      "message_type": "private",
+      "text": "bench 113",
+      "sent_ns": 1794656154576642900,
+      "reply_ns": 1794656155286142100,
+      "latency_ms": 708.7982
+    },
+    {
+      "index": 225,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154576642900
+    },
+    {
+      "index": 226,
+      "seq": 114,
+      "message_type": "private",
+      "text": "bench 114",
+      "sent_ns": 1794656154576642900,
+      "reply_ns": 1794656155286728000,
+      "latency_ms": 709.6299
+    },
+    {
+      "index": 227,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154576642900
+    },
+    {
+      "index": 228,
+      "seq": 115,
+      "message_type": "private",
+      "text": "bench 115",
+      "sent_ns": 1794656154576642900,
+      "reply_ns": 1794656155287607300,
+      "latency_ms": 710.3703
+    },
+    {
+      "index": 229,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154576642900
+    },
+    {
+      "index": 230,
+      "seq": 116,
+      "message_type": "private",
+      "text": "bench 116",
+      "sent_ns": 1794656154576642900,
+      "reply_ns": 1794656155288716600,
+      "latency_ms": 711.1522
+    },
+    {
+      "index": 231,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154576642900
+    },
+    {
+      "index": 232,
+      "seq": 117,
+      "message_type": "private",
+      "text": "bench 117",
+      "sent_ns": 1794656154577661300,
+      "reply_ns": 1794656155289522100,
+      "latency_ms": 711.8695
+    },
+    {
+      "index": 233,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154577661300
+    },
+    {
+      "index": 234,
+      "seq": 118,
+      "message_type": "private",
+      "text": "bench 118",
+      "sent_ns": 1794656154577661300,
+      "reply_ns": 1794656155291040900,
+      "latency_ms": 713.5237
+    },
+    {
+      "index": 235,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154577661300
+    },
+    {
+      "index": 236,
+      "seq": 119,
+      "message_type": "private",
+      "text": "bench 119",
+      "sent_ns": 1794656154577661300,
+      "reply_ns": 1794656155291040900,
+      "latency_ms": 714.2973
+    },
+    {
+      "index": 237,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154577661300
+    },
+    {
+      "index": 238,
+      "seq": 120,
+      "message_type": "private",
+      "text": "bench 120",
+      "sent_ns": 1794656154577661300,
+      "reply_ns": 1794656155292842700,
+      "latency_ms": 715.2609
+    },
+    {
+      "index": 239,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154577661300
+    },
+    {
+      "index": 240,
+      "seq": 121,
+      "message_type": "private",
+      "text": "bench 121",
+      "sent_ns": 1794656154577661300,
+      "reply_ns": 1794656155293705900,
+      "latency_ms": 716.0013
+    },
+    {
+      "index": 241,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154577661300
+    },
+    {
+      "index": 242,
+      "seq": 122,
+      "message_type": "private",
+      "text": "bench 122",
+      "sent_ns": 1794656154577661300,
+      "reply_ns": 1794656155294524000,
+      "latency_ms": 716.7692
+    },
+    {
+      "index": 243,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154577661300
+    },
+    {
+      "index": 244,
+      "seq": 123,
+      "message_type": "private",
+      "text": "bench 123",
+      "sent_ns": 1794656154577661300,
+      "reply_ns": 1794656155295355300,
+      "latency_ms": 717.4395
+    },
+    {
+      "index": 245,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154577661300
+    },
+    {
+      "index": 246,
+      "seq": 124,
+      "message_type": "private",
+      "text": "bench 124",
+      "sent_ns": 1794656154577661300,
+      "reply_ns": 1794656155296196300,
+      "latency_ms": 718.2834
+    },
+    {
+      "index": 247,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154577661300
+    },
+    {
+      "index": 248,
+      "seq": 125,
+      "message_type": "private",
+      "text": "bench 125",
+      "sent_ns": 1794656154577661300,
+      "reply_ns": 1794656155296716400,
+      "latency_ms": 718.9769
+    },
+    {
+      "index": 249,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154577661300
+    },
+    {
+      "index": 250,
+      "seq": 126,
+      "message_type": "private",
+      "text": "bench 126",
+      "sent_ns": 1794656154577661300,
+      "reply_ns": 1794656155298841300,
+      "latency_ms": 720.7396
+    },
+    {
+      "index": 251,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154577661300
+    },
+    {
+      "index": 252,
+      "seq": 127,
+      "message_type": "private",
+      "text": "bench 127",
+      "sent_ns": 1794656154577661300,
+      "reply_ns": 1794656155299655300,
+      "latency_ms": 721.6293
+    },
+    {
+      "index": 253,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154577661300
+    },
+    {
+      "index": 254,
+      "seq": 128,
+      "message_type": "private",
+      "text": "bench 128",
+      "sent_ns": 1794656154577661300,
+      "reply_ns": 1794656155300672400,
+      "latency_ms": 722.6943
+    },
+    {
+      "index": 255,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154577661300
+    },
+    {
+      "index": 256,
+      "seq": 129,
+      "message_type": "private",
+      "text": "bench 129",
+      "sent_ns": 1794656154577661300,
+      "reply_ns": 1794656155301885500,
+      "latency_ms": 723.7098
+    },
+    {
+      "index": 257,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154577661300
+    },
+    {
+      "index": 258,
+      "seq": 130,
+      "message_type": "private",
+      "text": "bench 130",
+      "sent_ns": 1794656154578670800,
+      "reply_ns": 1794656155301885500,
+      "latency_ms": 724.3785
+    },
+    {
+      "index": 259,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154578721800
+    },
+    {
+      "index": 260,
+      "seq": 131,
+      "message_type": "private",
+      "text": "bench 131",
+      "sent_ns": 1794656154578721800,
+      "reply_ns": 1794656155303211100,
+      "latency_ms": 725.1116
+    },
+    {
+      "index": 261,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154578721800
+    },
+    {
+      "index": 262,
+      "seq": 132,
+      "message_type": "private",
+      "text": "bench 132",
+      "sent_ns": 1794656154578721800,
+      "reply_ns": 1794656155304426100,
+      "latency_ms": 725.8278
+    },
+    {
+      "index": 263,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154578721800
+    },
+    {
+      "index": 264,
+      "seq": 133,
+      "message_type": "private",
+      "text": "bench 133",
+      "sent_ns": 1794656154578721800,
+      "reply_ns": 1794656155305457900,
+      "latency_ms": 726.5476
+    },
+    {
+      "index": 265,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154578721800
+    },
+    {
+      "index": 266,
+      "seq": 134,
+      "message_type": "private",
+      "text": "bench 134",
+      "sent_ns": 1794656154578721800,
+      "reply_ns": 1794656155307024300,
+      "latency_ms": 728.3265
+    },
+    {
+      "index": 267,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154578721800
+    },
+    {
+      "index": 268,
+      "seq": 135,
+      "message_type": "private",
+      "text": "bench 135",
+      "sent_ns": 1794656154578721800,
+      "reply_ns": 1794656155307855500,
+      "latency_ms": 729.0637
+    },
+    {
+      "index": 269,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154578721800
+    },
+    {
+      "index": 270,
+      "seq": 136,
+      "message_type": "private",
+      "text": "bench 136",
+      "sent_ns": 1794656154578721800,
+      "reply_ns": 1794656155308664000,
+      "latency_ms": 729.9521
+    },
+    {
+      "index": 271,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154578721800
+    },
+    {
+      "index": 272,
+      "seq": 137,
+      "message_type": "private",
+      "text": "bench 137",
+      "sent_ns": 1794656154578721800,
+      "reply_ns": 1794656155309187800,
+      "latency_ms": 730.6871
+    },
+    {
+      "index": 273,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154579249100
+    },
+    {
+      "index": 274,
+      "seq": 138,
+      "message_type": "private",
+      "text": "bench 138",
+      "sent_ns": 1794656154579249100,
+      "reply_ns": 1794656155310440000,
+      "latency_ms": 731.4105
+    },
+    {
+      "index": 275,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154579319800
+    },
+    {
+      "index": 276,
+      "seq": 139,
+      "message_type": "private",
+      "text": "bench 139",
+      "sent_ns": 1794656154579319800,
+      "reply_ns": 1794656155311444900,
+      "latency_ms": 732.1062
+    },
+    {
+      "index": 277,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154579319800
+    },
+    {
+      "index": 278,
+      "seq": 140,
+      "message_type": "private",
+      "text": "bench 140",
+      "sent_ns": 1794656154579319800,
+      "reply_ns": 1794656155312288500,
+      "latency_ms": 732.862
+    },
+    {
+      "index": 279,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154579319800
+    },
+    {
+      "index": 280,
+      "seq": 141,
+      "message_type": "private",
+      "text": "bench 141",
+      "sent_ns": 1794656154579319800,
+      "reply_ns": 1794656155312805900,
+      "latency_ms": 733.5301
+    },
+    {
+      "index": 281,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154579319800
+    },
+    {
+      "index": 282,
+      "seq": 142,
+      "message_type": "private",
+      "text": "bench 142",
+      "sent_ns": 1794656154579319800,
+      "reply_ns": 1794656155313332000,
+      "latency_ms": 734.2325
+    },
+    {
+      "index": 283,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154579319800
+    },
+    {
+      "index": 284,
+      "seq": 143,
+      "message_type": "private",
+      "text": "bench 143",
+      "sent_ns": 1794656154579319800,
+      "reply_ns": 1794656155315417700,
+      "latency_ms": 736.0551
+    },
+    {
+      "index": 285,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154579319800
+    },
+    {
+      "index": 286,
+      "seq": 144,
+      "message_type": "private",
+      "text": "bench 144",
+      "sent_ns": 1794656154579319800,
+      "reply_ns": 1794656155316274800,
+      "latency_ms": 737.0119
+    },
+    {
+      "index": 287,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154579319800
+    },
+    {
+      "index": 288,
+      "seq": 145,
+      "message_type": "private",
+      "text": "bench 145",
+      "sent_ns": 1794656154579831400,
+      "reply_ns": 1794656155317411700,
+      "latency_ms": 738.2301
+    },
+    {
+      "index": 289,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154579849300
+    },
+    {
+      "index": 290,
+      "seq": 146,
+      "message_type": "private",
+      "text": "bench 146",
+      "sent_ns": 1794656154579849300,
+      "reply_ns": 1794656155318599900,
+      "latency_ms": 739.2987
+    },
+    {
+      "index": 291,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154579849300
+    },
+    {
+      "index": 292,
+      "seq": 147,
+      "message_type": "private",
+      "text": "bench 147",
+      "sent_ns": 1794656154579849300,
+      "reply_ns": 1794656155319741800,
+      "latency_ms": 740.1569
+    },
+    {
+      "index": 293,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154579849300
+    },
+    {
+      "index": 294,
+      "seq": 148,
+      "message_type": "private",
+      "text": "bench 148",
+      "sent_ns": 1794656154579849300,
+      "reply_ns": 1794656155320685800,
+      "latency_ms": 740.9074
+    },
+    {
+      "index": 295,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154579849300
+    },
+    {
+      "index": 296,
+      "seq": 149,
+      "message_type": "private",
+      "text": "bench 149",
+      "sent_ns": 1794656154579849300,
+      "reply_ns": 1794656155321530300,
+      "latency_ms": 741.6696
+    },
+    {
+      "index": 297,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154579849300
+    },
+    {
+      "index": 298,
+      "seq": 150,
+      "message_type": "private",
+      "text": "bench 150",
+      "sent_ns": 1794656154579849300,
+      "reply_ns": 1794656155323360200,
+      "latency_ms": 743.5486
+    },
+    {
+      "index": 299,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154579849300
+    },
+    {
+      "index": 300,
+      "seq": 151,
+      "message_type": "private",
+      "text": "bench 151",
+      "sent_ns": 1794656154579849300,
+      "reply_ns": 1794656155324353600,
+      "latency_ms": 744.3568
+    },
+    {
+      "index": 301,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154579849300
+    },
+    {
+      "index": 302,
+      "seq": 152,
+      "message_type": "private",
+      "text": "bench 152",
+      "sent_ns": 1794656154579849300,
+      "reply_ns": 1794656155325371600,
+      "latency_ms": 745.0723
+    },
+    {
+      "index": 303,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154579849300
+    },
+    {
+      "index": 304,
+      "seq": 153,
+      "message_type": "private",
+      "text": "bench 153",
+      "sent_ns": 1794656154579849300,
+      "reply_ns": 1794656155326213400,
+      "latency_ms": 745.7814
+    },
+    {
+      "index": 305,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154579849300
+    },
+    {
+      "index": 306,
+      "seq": 154,
+      "message_type": "private",
+      "text": "bench 154",
+      "sent_ns": 1794656154579849300,
+      "reply_ns": 1794656155326770500,
+      "latency_ms": 746.7006
+    },
+    {
+      "index": 307,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154579849300
+    },
+    {
+      "index": 308,
+      "seq": 155,
+      "message_type": "private",
+      "text": "bench 155",
+      "sent_ns": 1794656154579849300,
+      "reply_ns": 1794656155327697700,
+      "latency_ms": 747.4264
+    },
+    {
+      "index": 309,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154579849300
+    },
+    {
+      "index": 310,
+      "seq": 156,
+      "message_type": "private",
+      "text": "bench 156",
+      "sent_ns": 1794656154579849300,
+      "reply_ns": 1794656155328853100,
+      "latency_ms": 748.1872
+    },
+    {
+      "index": 311,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154579849300
+    },
+    {
+      "index": 312,
+      "seq": 157,
+      "message_type": "private",
+      "text": "bench 157",
+      "sent_ns": 1794656154579849300,
+      "reply_ns": 1794656155329657200,
+      "latency_ms": 748.926
+    },
+    {
+      "index": 313,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154579849300
+    },
+    {
+      "index": 314,
+      "seq": 158,
+      "message_type": "private",
+      "text": "bench 158",
+      "sent_ns": 1794656154579849300,
+      "reply_ns": 1794656155330482000,
+      "latency_ms": 749.6677
+    },
+    {
+      "index": 315,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154580870000
+    },
+    {
+      "index": 316,
+      "seq": 159,
+      "message_type": "private",
+      "text": "bench 159",
+      "sent_ns": 1794656154580870000,
+      "reply_ns": 1794656155332025600,
+      "latency_ms": 751.4173
+    },
+    {
+      "index": 317,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154580870000
+    },
+    {
+      "index": 318,
+      "seq": 160,
+      "message_type": "private",
+      "text": "bench 160",
+      "sent_ns": 1794656154580986900,
+      "reply_ns": 1794656155332874900,
+      "latency_ms": 752.2244
+    },
+    {
+      "index": 319,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154580986900
+    },
+    {
+      "index": 320,
+      "seq": 161,
+      "message_type": "private",
+      "text": "bench 161",
+      "sent_ns": 1794656154580986900,
+      "reply_ns": 1794656155333892800,
+      "latency_ms": 753.1757
+    },
+    {
+      "index": 321,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154581096900
+    },
+    {
+      "index": 322,
+      "seq": 162,
+      "message_type": "private",
+      "text": "bench 162",
+      "sent_ns": 1794656154581096900,
+      "reply_ns": 1794656155334937400,
+      "latency_ms": 753.9724
+    },
+    {
+      "index": 323,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154581096900
+    },
+    {
+      "index": 324,
+      "seq": 163,
+      "message_type": "private",
+      "text": "bench 163",
+      "sent_ns": 1794656154581096900,
+      "reply_ns": 1794656155335455800,
+      "latency_ms": 754.6544
+    },
+    {
+      "index": 325,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154581096900
+    },
+    {
+      "index": 326,
+      "seq": 164,
+      "message_type": "private",
+      "text": "bench 164",
+      "sent_ns": 1794656154581096900,
+      "reply_ns": 1794656155336678800,
+      "latency_ms": 755.3487
+    },
+    {
+      "index": 327,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154581096900
+    },
+    {
+      "index": 328,
+      "seq": 165,
+      "message_type": "private",
+      "text": "bench 165",
+      "sent_ns": 1794656154581096900,
+      "reply_ns": 1794656155337196300,
+      "latency_ms": 756.0255
+    },
+    {
+      "index": 329,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154581096900
+    },
+    {
+      "index": 330,
+      "seq": 166,
+      "message_type": "private",
+      "text": "bench 166",
+      "sent_ns": 1794656154581096900,
+      "reply_ns": 1794656155338300200,
+      "latency_ms": 756.8435
+    },
+    {
+      "index": 331,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154581096900
+    },
+    {
+      "index": 332,
+      "seq": 167,
+      "message_type": "private",
+      "text": "bench 167",
+      "sent_ns": 1794656154581096900,
+      "reply_ns": 1794656155338816000,
+      "latency_ms": 757.4991
+    },
+    {
+      "index": 333,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154581639700
+    },
+    {
+      "index": 334,
+      "seq": 168,
+      "message_type": "private",
+      "text": "bench 168",
+      "sent_ns": 1794656154581639700,
+      "reply_ns": 1794656155340634800,
+      "latency_ms": 759.1142
+    },
+    {
+      "index": 335,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154581639700
+    },
+    {
+      "index": 336,
+      "seq": 169,
+      "message_type": "private",
+      "text": "bench 169",
+      "sent_ns": 1794656154581639700,
+      "reply_ns": 1794656155341627800,
+      "latency_ms": 759.8647
+    },
+    {
+      "index": 337,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154581639700
+    },
+    {
+      "index": 338,
+      "seq": 170,
+      "message_type": "private",
+      "text": "bench 170",
+      "sent_ns": 1794656154581639700,
+      "reply_ns": 1794656155342206300,
+      "latency_ms": 760.728
+    },
+    {
+      "index": 339,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154581639700
+    },
+    {
+      "index": 340,
+      "seq": 171,
+      "message_type": "private",
+      "text": "bench 171",
+      "sent_ns": 1794656154581639700,
+      "reply_ns": 1794656155343248900,
+      "latency_ms": 761.3826
+    },
+    {
+      "index": 341,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154581639700
+    },
+    {
+      "index": 342,
+      "seq": 172,
+      "message_type": "private",
+      "text": "bench 172",
+      "sent_ns": 1794656154582147200,
+      "reply_ns": 1794656155343993100,
+      "latency_ms": 762.0457
+    },
+    {
+      "index": 343,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154582158200
+    },
+    {
+      "index": 344,
+      "seq": 173,
+      "message_type": "private",
+      "text": "bench 173",
+      "sent_ns": 1794656154582224600,
+      "reply_ns": 1794656155344517800,
+      "latency_ms": 762.7292
+    },
+    {
+      "index": 345,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154582224600
+    },
+    {
+      "index": 346,
+      "seq": 174,
+      "message_type": "private",
+      "text": "bench 174",
+      "sent_ns": 1794656154582224600,
+      "reply_ns": 1794656155345798600,
+      "latency_ms": 763.4115
+    },
+    {
+      "index": 347,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154582224600
+    },
+    {
+      "index": 348,
+      "seq": 175,
+      "message_type": "private",
+      "text": "bench 175",
+      "sent_ns": 1794656154582224600,
+      "reply_ns": 1794656155346570100,
+      "latency_ms": 764.0454
+    },
+    {
+      "index": 349,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154582224600
+    },
+    {
+      "index": 350,
+      "seq": 176,
+      "message_type": "private",
+      "text": "bench 176",
+      "sent_ns": 1794656154582224600,
+      "reply_ns": 1794656155347089500,
+      "latency_ms": 764.7298
+    },
+    {
+      "index": 351,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154582224600
+    },
+    {
+      "index": 352,
+      "seq": 177,
+      "message_type": "private",
+      "text": "bench 177",
+      "sent_ns": 1794656154582740300,
+      "reply_ns": 1794656155348947900,
+      "latency_ms": 766.3284
+    },
+    {
+      "index": 353,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154582740300
+    },
+    {
+      "index": 354,
+      "seq": 178,
+      "message_type": "private",
+      "text": "bench 178",
+      "sent_ns": 1794656154582740300,
+      "reply_ns": 1794656155350159700,
+      "latency_ms": 767.3086
+    },
+    {
+      "index": 355,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154582740300
+    },
+    {
+      "index": 356,
+      "seq": 179,
+      "message_type": "private",
+      "text": "bench 179",
+      "sent_ns": 1794656154582740300,
+      "reply_ns": 1794656155350679000,
+      "latency_ms": 768.2959
+    },
+    {
+      "index": 357,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154582740300
+    },
+    {
+      "index": 358,
+      "seq": 180,
+      "message_type": "private",
+      "text": "bench 180",
+      "sent_ns": 1794656154582740300,
+      "reply_ns": 1794656155351840000,
+      "latency_ms": 769.0259
+    },
+    {
+      "index": 359,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154582740300
+    },
+    {
+      "index": 360,
+      "seq": 181,
+      "message_type": "private",
+      "text": "bench 181",
+      "sent_ns": 1794656154582740300,
+      "reply_ns": 1794656155352701800,
+      "latency_ms": 769.6216
+    },
+    {
+      "index": 361,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154582740300
+    },
+    {
+      "index": 362,
+      "seq": 182,
+      "message_type": "private",
+      "text": "bench 182",
+      "sent_ns": 1794656154582740300,
+      "reply_ns": 1794656155353587600,
+      "latency_ms": 770.3189
+    },
+    {
+      "index": 363,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154582740300
+    },
+    {
+      "index": 364,
+      "seq": 183,
+      "message_type": "private",
+      "text": "bench 183",
+      "sent_ns": 1794656154582740300,
+      "reply_ns": 1794656155354369200,
+      "latency_ms": 771.0714
+    },
+    {
+      "index": 365,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154582740300
+    },
+    {
+      "index": 366,
+      "seq": 184,
+      "message_type": "private",
+      "text": "bench 184",
+      "sent_ns": 1794656154582740300,
+      "reply_ns": 1794656155355412700,
+      "latency_ms": 771.8749
+    },
+    {
+      "index": 367,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154582740300
+    },
+    {
+      "index": 368,
+      "seq": 185,
+      "message_type": "private",
+      "text": "bench 185",
+      "sent_ns": 1794656154582740300,
+      "reply_ns": 1794656155356049800,
+      "latency_ms": 772.5991
+    },
+    {
+      "index": 369,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154583779100
+    },
+    {
+      "index": 370,
+      "seq": 186,
+      "message_type": "private",
+      "text": "bench 186",
+      "sent_ns": 1794656154583779100,
+      "reply_ns": 1794656155357575100,
+      "latency_ms": 774.3184
+    },
+    {
+      "index": 371,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154583779100
+    },
+    {
+      "index": 372,
+      "seq": 187,
+      "message_type": "private",
+      "text": "bench 187",
+      "sent_ns": 1794656154583779100,
+      "reply_ns": 1794656155358696100,
+      "latency_ms": 775.0634
+    },
+    {
+      "index": 373,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154583779100
+    },
+    {
+      "index": 374,
+      "seq": 188,
+      "message_type": "private",
+      "text": "bench 188",
+      "sent_ns": 1794656154583779100,
+      "reply_ns": 1794656155359922300,
+      "latency_ms": 775.9053
+    },
+    {
+      "index": 375,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154583779100
+    },
+    {
+      "index": 376,
+      "seq": 189,
+      "message_type": "private",
+      "text": "bench 189",
+      "sent_ns": 1794656154583779100,
+      "reply_ns": 1794656155479068000,
+      "latency_ms": 895.0571
+    },
+    {
+      "index": 377,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154583779100
+    },
+    {
+      "index": 378,
+      "seq": 190,
+      "message_type": "private",
+      "text": "bench 190",
+      "sent_ns": 1794656154583779100,
+      "reply_ns": 1794656155479809800,
+      "latency_ms": 895.7829
+    },
+    {
+      "index": 379,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154583779100
+    },
+    {
+      "index": 380,
+      "seq": 191,
+      "message_type": "private",
+      "text": "bench 191",
+      "sent_ns": 1794656154584312700,
+      "reply_ns": 1794656155480329000,
+      "latency_ms": 896.4856
+    },
+    {
+      "index": 381,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154584312700
+    },
+    {
+      "index": 382,
+      "seq": 192,
+      "message_type": "private",
+      "text": "bench 192",
+      "sent_ns": 1794656154584312700,
+      "reply_ns": 1794656155481382700,
+      "latency_ms": 897.2449
+    },
+    {
+      "index": 383,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154584312700
+    },
+    {
+      "index": 384,
+      "seq": 193,
+      "message_type": "private",
+      "text": "bench 193",
+      "sent_ns": 1794656154584312700,
+      "reply_ns": 1794656155482521800,
+      "latency_ms": 898.1078
+    },
+    {
+      "index": 385,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154584312700
+    },
+    {
+      "index": 386,
+      "seq": 194,
+      "message_type": "private",
+      "text": "bench 194",
+      "sent_ns": 1794656154584312700,
+      "reply_ns": 1794656155483622900,
+      "latency_ms": 899.1146
+    },
+    {
+      "index": 387,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154584312700
+    },
+    {
+      "index": 388,
+      "seq": 195,
+      "message_type": "private",
+      "text": "bench 195",
+      "sent_ns": 1794656154584312700,
+      "reply_ns": 1794656155484549400,
+      "latency_ms": 899.9202
+    },
+    {
+      "index": 389,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154584312700
+    },
+    {
+      "index": 390,
+      "seq": 196,
+      "message_type": "private",
+      "text": "bench 196",
+      "sent_ns": 1794656154584312700,
+      "reply_ns": 1794656155485072700,
+      "latency_ms": 900.6972
+    },
+    {
+      "index": 391,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154584312700
+    },
+    {
+      "index": 392,
+      "seq": 197,
+      "message_type": "private",
+      "text": "bench 197",
+      "sent_ns": 1794656154584819400,
+      "reply_ns": 1794656155486284900,
+      "latency_ms": 901.4782
+    },
+    {
+      "index": 393,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154584844700
+    },
+    {
+      "index": 394,
+      "seq": 198,
+      "message_type": "private",
+      "text": "bench 198",
+      "sent_ns": 1794656154584844700,
+      "reply_ns": 1794656155487971500,
+      "latency_ms": 903.0884
+    },
+    {
+      "index": 395,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154584844700
+    },
+    {
+      "index": 396,
+      "seq": 199,
+      "message_type": "private",
+      "text": "bench 199",
+      "sent_ns": 1794656154584844700,
+      "reply_ns": 1794656155488891800,
+      "latency_ms": 903.8931
+    },
+    {
+      "index": 397,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154584844700
+    },
+    {
+      "index": 398,
+      "seq": 200,
+      "message_type": "private",
+      "text": "bench 200",
+      "sent_ns": 1794656154584844700,
+      "reply_ns": 1794656155489708500,
+      "latency_ms": 904.6253
+    },
+    {
+      "index": 399,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154584844700
+    },
+    {
+      "index": 400,
+      "seq": 201,
+      "message_type": "private",
+      "text": "bench 201",
+      "sent_ns": 1794656154584844700,
+      "reply_ns": 1794656155490544900,
+      "latency_ms": 905.3476
+    },
+    {
+      "index": 401,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154584844700
+    },
+    {
+      "index": 402,
+      "seq": 202,
+      "message_type": "private",
+      "text": "bench 202",
+      "sent_ns": 1794656154584844700,
+      "reply_ns": 1794656155491385600,
+      "latency_ms": 906.1013
+    },
+    {
+      "index": 403,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154584844700
+    },
+    {
+      "index": 404,
+      "seq": 203,
+      "message_type": "private",
+      "text": "bench 203",
+      "sent_ns": 1794656154585361500,
+      "reply_ns": 1794656155491906100,
+      "latency_ms": 906.7633
+    },
+    {
+      "index": 405,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154585361500
+    },
+    {
+      "index": 406,
+      "seq": 204,
+      "message_type": "private",
+      "text": "bench 204",
+      "sent_ns": 1794656154585361500,
+      "reply_ns": 1794656155492969200,
+      "latency_ms": 907.5077
+    },
+    {
+      "index": 407,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154585361500
+    },
+    {
+      "index": 408,
+      "seq": 205,
+      "message_type": "private",
+      "text": "bench 205",
+      "sent_ns": 1794656154585361500,
+      "reply_ns": 1794656155493800000,
+      "latency_ms": 908.2271
+    },
+    {
+      "index": 409,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154585361500
+    },
+    {
+      "index": 410,
+      "seq": 206,
+      "message_type": "private",
+      "text": "bench 206",
+      "sent_ns": 1794656154585361500,
+      "reply_ns": 1794656155494326400,
+      "latency_ms": 908.9452
+    },
+    {
+      "index": 411,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154585361500
+    },
+    {
+      "index": 412,
+      "seq": 207,
+      "message_type": "private",
+      "text": "bench 207",
+      "sent_ns": 1794656154585361500,
+      "reply_ns": 1794656155495452500,
+      "latency_ms": 909.7193
+    },
+    {
+      "index": 413,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154585361500
+    },
+    {
+      "index": 414,
+      "seq": 208,
+      "message_type": "private",
+      "text": "bench 208",
+      "sent_ns": 1794656154585361500,
+      "reply_ns": 1794656155496330600,
+      "latency_ms": 910.5335
+    },
+    {
+      "index": 415,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154585870900
+    },
+    {
+      "index": 416,
+      "seq": 209,
+      "message_type": "private",
+      "text": "bench 209",
+      "sent_ns": 1794656154585916900,
+      "reply_ns": 1794656155497175000,
+      "latency_ms": 911.2416
+    },
+    {
+      "index": 417,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154585916900
+    },
+    {
+      "index": 418,
+      "seq": 210,
+      "message_type": "private",
+      "text": "bench 210",
+      "sent_ns": 1794656154585916900,
+      "reply_ns": 1794656155497752000,
+      "latency_ms": 911.9995
+    },
+    {
+      "index": 419,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154585916900
+    },
+    {
+      "index": 420,
+      "seq": 211,
+      "message_type": "private",
+      "text": "bench 211",
+      "sent_ns": 1794656154585916900,
+      "reply_ns": 1794656155498875700,
+      "latency_ms": 912.7684
+    },
+    {
+      "index": 421,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154585916900
+    },
+    {
+      "index": 422,
+      "seq": 212,
+      "message_type": "private",
+      "text": "bench 212",
+      "sent_ns": 1794656154585916900,
+      "reply_ns": 1794656155499412700,
+      "latency_ms": 913.5858
+    },
+    {
+      "index": 423,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154585916900
+    },
+    {
+      "index": 424,
+      "seq": 213,
+      "message_type": "private",
+      "text": "bench 213",
+      "sent_ns": 1794656154585916900,
+      "reply_ns": 1794656155500722500,
+      "latency_ms": 914.4586
+    },
+    {
+      "index": 425,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154585916900
+    },
+    {
+      "index": 426,
+      "seq": 214,
+      "message_type": "private",
+      "text": "bench 214",
+      "sent_ns": 1794656154585916900,
+      "reply_ns": 1794656155501243700,
+      "latency_ms": 915.2001
+    },
+    {
+      "index": 427,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154585916900
+    },
+    {
+      "index": 428,
+      "seq": 215,
+      "message_type": "private",
+      "text": "bench 215",
+      "sent_ns": 1794656154586448200,
+      "reply_ns": 1794656155502353200,
+      "latency_ms": 915.8939
+    },
+    {
+      "index": 429,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154586448200
+    },
+    {
+      "index": 430,
+      "seq": 216,
+      "message_type": "private",
+      "text": "bench 216",
+      "sent_ns": 1794656154586448200,
+      "reply_ns": 1794656155502876200,
+      "latency_ms": 916.6418
+    },
+    {
+      "index": 431,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154586448200
+    },
+    {
+      "index": 432,
+      "seq": 217,
+      "message_type": "private",
+      "text": "bench 217",
+      "sent_ns": 1794656154586448200,
+      "reply_ns": 1794656155503984700,
+      "latency_ms": 917.3362
+    },
+    {
+      "index": 433,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154586448200
+    },
+    {
+      "index": 434,
+      "seq": 218,
+      "message_type": "private",
+      "text": "bench 218",
+      "sent_ns": 1794656154586448200,
+      "reply_ns": 1794656155504510600,
+      "latency_ms": 918.1316
+    },
+    {
+      "index": 435,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154586448200
+    },
+    {
+      "index": 436,
+      "seq": 219,
+      "message_type": "private",
+      "text": "bench 219",
+      "sent_ns": 1794656154586448200,
+      "reply_ns": 1794656155593025900,
+      "latency_ms": 1006.1724
+    },
+    {
+      "index": 437,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154586448200
+    },
+    {
+      "index": 438,
+      "seq": 220,
+      "message_type": "private",
+      "text": "bench 220",
+      "sent_ns": 1794656154586448200,
+      "reply_ns": 1794656155593549200,
+      "latency_ms": 1006.824
+    },
+    {
+      "index": 439,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154586957100
+    },
+    {
+      "index": 440,
+      "seq": 221,
+      "message_type": "private",
+      "text": "bench 221",
+      "sent_ns": 1794656154587038400,
+      "reply_ns": 1794656155594313300,
+      "latency_ms": 1007.5287
+    },
+    {
+      "index": 441,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154587038400
+    },
+    {
+      "index": 442,
+      "seq": 222,
+      "message_type": "private",
+      "text": "bench 222",
+      "sent_ns": 1794656154587038400,
+      "reply_ns": 1794656155595125000,
+      "latency_ms": 1008.1801
+    },
+    {
+      "index": 443,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154587038400
+    },
+    {
+      "index": 444,
+      "seq": 223,
+      "message_type": "private",
+      "text": "bench 223",
+      "sent_ns": 1794656154587038400,
+      "reply_ns": 1794656155595649700,
+      "latency_ms": 1008.8676
+    },
+    {
+      "index": 445,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154587038400
+    },
+    {
+      "index": 446,
+      "seq": 224,
+      "message_type": "private",
+      "text": "bench 224",
+      "sent_ns": 1794656154587038400,
+      "reply_ns": 1794656155596683300,
+      "latency_ms": 1010.0011
+    },
+    {
+      "index": 447,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154587038400
+    },
+    {
+      "index": 448,
+      "seq": 225,
+      "message_type": "private",
+      "text": "bench 225",
+      "sent_ns": 1794656154587038400,
+      "reply_ns": 1794656155598414800,
+      "latency_ms": 1011.1946
+    },
+    {
+      "index": 449,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154587038400
+    },
+    {
+      "index": 450,
+      "seq": 226,
+      "message_type": "private",
+      "text": "bench 226",
+      "sent_ns": 1794656154587038400,
+      "reply_ns": 1794656155599428700,
+      "latency_ms": 1011.9369
+    },
+    {
+      "index": 451,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154587567600
+    },
+    {
+      "index": 452,
+      "seq": 227,
+      "message_type": "private",
+      "text": "bench 227",
+      "sent_ns": 1794656154587567600,
+      "reply_ns": 1794656155599966400,
+      "latency_ms": 1012.7591
+    },
+    {
+      "index": 453,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154587567600
+    },
+    {
+      "index": 454,
+      "seq": 228,
+      "message_type": "private",
+      "text": "bench 228",
+      "sent_ns": 1794656154587567600,
+      "reply_ns": 1794656155600495100,
+      "latency_ms": 1013.5152
+    },
+    {
+      "index": 455,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154587567600
+    },
+    {
+      "index": 456,
+      "seq": 229,
+      "message_type": "private",
+      "text": "bench 229",
+      "sent_ns": 1794656154587567600,
+      "reply_ns": 1794656155601506400,
+      "latency_ms": 1014.2798
+    },
+    {
+      "index": 457,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154587567600
+    },
+    {
+      "index": 458,
+      "seq": 230,
+      "message_type": "private",
+      "text": "bench 230",
+      "sent_ns": 1794656154587567600,
+      "reply_ns": 1794656155602586200,
+      "latency_ms": 1015.003
+    },
+    {
+      "index": 459,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154587567600
+    },
+    {
+      "index": 460,
+      "seq": 231,
+      "message_type": "private",
+      "text": "bench 231",
+      "sent_ns": 1794656154587567600,
+      "reply_ns": 1794656155603373300,
+      "latency_ms": 1015.7446
+    },
+    {
+      "index": 461,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154587567600
+    },
+    {
+      "index": 462,
+      "seq": 232,
+      "message_type": "private",
+      "text": "bench 232",
+      "sent_ns": 1794656154587567600,
+      "reply_ns": 1794656155604197700,
+      "latency_ms": 1016.4519
+    },
+    {
+      "index": 463,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154587567600
+    },
+    {
+      "index": 464,
+      "seq": 233,
+      "message_type": "private",
+      "text": "bench 233",
+      "sent_ns": 1794656154587567600,
+      "reply_ns": 1794656155605716000,
+      "latency_ms": 1017.8206
+    },
+    {
+      "index": 465,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154588090000
+    },
+    {
+      "index": 466,
+      "seq": 234,
+      "message_type": "private",
+      "text": "bench 234",
+      "sent_ns": 1794656154588090000,
+      "reply_ns": 1794656155607014100,
+      "latency_ms": 1018.8861
+    },
+    {
+      "index": 467,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154588161500
+    },
+    {
+      "index": 468,
+      "seq": 235,
+      "message_type": "private",
+      "text": "bench 235",
+      "sent_ns": 1794656154588161500,
+      "reply_ns": 1794656155607534900,
+      "latency_ms": 1019.9151
+    },
+    {
+      "index": 469,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154588161500
+    },
+    {
+      "index": 470,
+      "seq": 236,
+      "message_type": "private",
+      "text": "bench 236",
+      "sent_ns": 1794656154588161500,
+      "reply_ns": 1794656155609245100,
+      "latency_ms": 1020.9645
+    },
+    {
+      "index": 471,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154588161500
+    },
+    {
+      "index": 472,
+      "seq": 237,
+      "message_type": "private",
+      "text": "bench 237",
+      "sent_ns": 1794656154588161500,
+      "reply_ns": 1794656155609766100,
+      "latency_ms": 1022.0863
+    },
+    {
+      "index": 473,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154588161500
+    },
+    {
+      "index": 474,
+      "seq": 238,
+      "message_type": "private",
+      "text": "bench 238",
+      "sent_ns": 1794656154588161500,
+      "reply_ns": 1794656155611005500,
+      "latency_ms": 1023.1617
+    },
+    {
+      "index": 475,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154588161500
+    },
+    {
+      "index": 476,
+      "seq": 239,
+      "message_type": "private",
+      "text": "bench 239",
+      "sent_ns": 1794656154588161500,
+      "reply_ns": 1794656155612532100,
+      "latency_ms": 1024.2806
+    },
+    {
+      "index": 477,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154588161500
+    },
+    {
+      "index": 478,
+      "seq": 240,
+      "message_type": "private",
+      "text": "bench 240",
+      "sent_ns": 1794656154588161500,
+      "reply_ns": 1794656155613550800,
+      "latency_ms": 1025.4567
+    },
+    {
+      "index": 479,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154588161500
+    },
+    {
+      "index": 480,
+      "seq": 241,
+      "message_type": "private",
+      "text": "bench 241",
+      "sent_ns": 1794656154588667500,
+      "reply_ns": 1794656155615555000,
+      "latency_ms": 1027.4481
+    },
+    {
+      "index": 481,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154588678400
+    },
+    {
+      "index": 482,
+      "seq": 242,
+      "message_type": "private",
+      "text": "bench 242",
+      "sent_ns": 1794656154588724300,
+      "reply_ns": 1794656155617420700,
+      "latency_ms": 1028.6896
+    },
+    {
+      "index": 483,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154588724300
+    },
+    {
+      "index": 484,
+      "seq": 243,
+      "message_type": "private",
+      "text": "bench 243",
+      "sent_ns": 1794656154588724300,
+      "reply_ns": 1794656155617944900,
+      "latency_ms": 1029.7923
+    },
+    {
+      "index": 485,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154588724300
+    },
+    {
+      "index": 486,
+      "seq": 244,
+      "message_type": "private",
+      "text": "bench 244",
+      "sent_ns": 1794656154588724300,
+      "reply_ns": 1794656155618942500,
+      "latency_ms": 1030.8936
+    },
+    {
+      "index": 487,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154588724300
+    },
+    {
+      "index": 488,
+      "seq": 245,
+      "message_type": "private",
+      "text": "bench 245",
+      "sent_ns": 1794656154588724300,
+      "reply_ns": 1794656155620991000,
+      "latency_ms": 1032.0249
+    },
+    {
+      "index": 489,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154588724300
+    },
+    {
+      "index": 490,
+      "seq": 246,
+      "message_type": "private",
+      "text": "bench 246",
+      "sent_ns": 1794656154588724300,
+      "reply_ns": 1794656155622148500,
+      "latency_ms": 1033.0626
+    },
+    {
+      "index": 491,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154588724300
+    },
+    {
+      "index": 492,
+      "seq": 247,
+      "message_type": "private",
+      "text": "bench 247",
+      "sent_ns": 1794656154588724300,
+      "reply_ns": 1794656155622671100,
+      "latency_ms": 1034.3416
+    },
+    {
+      "index": 493,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154588724300
+    },
+    {
+      "index": 494,
+      "seq": 248,
+      "message_type": "private",
+      "text": "bench 248",
+      "sent_ns": 1794656154588724300,
+      "reply_ns": 1794656155624860200,
+      "latency_ms": 1035.6368
+    },
+    {
+      "index": 495,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154589239300
+    },
+    {
+      "index": 496,
+      "seq": 249,
+      "message_type": "private",
+      "text": "bench 249",
+      "sent_ns": 1794656154589286300,
+      "reply_ns": 1794656155626038700,
+      "latency_ms": 1036.7306
+    },
+    {
+      "index": 497,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#ping",
+      "sent_ns": 1794656154589286300
+    },
+    {
+      "index": 498,
+      "seq": 250,
+      "message_type": "private",
+      "text": "bench 250",
+      "sent_ns": 1794656154589286300,
+      "reply_ns": 1794656155627236300,
+      "latency_ms": 1037.8619
+    },
+    {
+      "index": 499,
+      "seq": 0,
+      "message_type": "private",
+      "text": "#help",
+      "sent_ns": 1794656154589286300
+    }
+  ],
+  "samples": [
+    {
+      "at_ms": 1794656153542,
+      "cpu_percent": 1.5614881556751226,
+      "rss_bytes": 126025728
+    },
+    {
+      "at_ms": 1794656154542,
+      "cpu_percent": 0,
+      "rss_bytes": 126025728
+    },
+    {
+      "at_ms": 1794656155542,
+      "cpu_percent": 26.55259057319808,
+      "rss_bytes": 144560128
+    },
+    {
+      "at_ms": 1794656156542,
+      "cpu_percent": 29.68772562671476,
+      "rss_bytes": 148881408
+    },
+    {
+      "at_ms": 1794656157542,
+      "cpu_percent": 0,
+      "rss_bytes": 148881408
+    },
+    {
+      "at_ms": 1794656158542,
+      "cpu_percent": 0,
+      "rss_bytes": 148881408
+    },
+    {
+      "at_ms": 1794656159542,
+      "cpu_percent": 7.81357592940548,
+      "rss_bytes": 78794752
+    },
+    {
+      "at_ms": 1794656160542,
+      "cpu_percent": 7.809321606106314,
+      "rss_bytes": 74657792
+    },
+    {
+      "at_ms": 1794656161542,
+      "cpu_percent": 0,
+      "rss_bytes": 74657792
+    },
+    {
+      "at_ms": 1794656162542,
+      "cpu_percent": 0,
+      "rss_bytes": 74657792
+    },
+    {
+      "at_ms": 1794656163542,
+      "cpu_percent": 0,
+      "rss_bytes": 74657792
+    },
+    {
+      "at_ms": 1794656164543,
+      "cpu_percent": 0,
+      "rss_bytes": 74657792
+    }
+  ]
+}

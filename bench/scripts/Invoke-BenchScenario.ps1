@@ -60,7 +60,31 @@ $benchProc = $null
 function Stop-Tree([System.Diagnostics.Process]$Proc) {
     if ($Proc -and -not $Proc.HasExited) {
         try { & taskkill /PID $Proc.Id /T /F 2>$null | Out-Null } catch {}
+        # taskkill 可能静默失败；残留进程会在下一轮抢走 3002 连接，
+        # 导致监控采样盯住空闲进程、冷启动一致性被破坏。这里校验并兜底强杀。
+        try {
+            $Proc.Refresh()
+            if (-not $Proc.HasExited) {
+                Start-Sleep -Milliseconds 500
+                $Proc.Refresh()
+                if (-not $Proc.HasExited) {
+                    Stop-Process -Id $Proc.Id -Force -ErrorAction SilentlyContinue
+                }
+            }
+        } catch {}
     }
+}
+# 残留的同路径 bot 会与新一轮被测进程竞争 3002 连接（重连退避可能先连上），
+# 使负载打到不受监控的旧进程上。只按 bench 环境内的精确可执行路径清理，
+# 不做按进程名的宽匹配。
+$strayBots = @(Get-Process yunzai-bench -ErrorAction SilentlyContinue | Where-Object { $_.Path -eq (Join-Path $envDir 'go-yunzai\yunzai-bench.exe') })
+if ($strayBots.Count -gt 0) {
+    Write-Host ("发现 {0} 个残留 yunzai-bench 进程，先按精确路径清理: {1}" -f $strayBots.Count, (($strayBots | ForEach-Object Id) -join ','))
+    foreach ($stray in $strayBots) {
+        try { & taskkill /PID $stray.Id /T /F 2>$null | Out-Null } catch {}
+        Stop-Process -Id $stray.Id -Force -ErrorAction SilentlyContinue
+    }
+    Start-Sleep -Milliseconds 800
 }
 try {
     if ($Variant -eq 'old') {
@@ -114,7 +138,9 @@ try {
     }
     New-Item -ItemType Directory -Path (Split-Path -Parent $OutFile) -Force | Out-Null
     Remove-Item -LiteralPath $OutFile -Force -ErrorAction SilentlyContinue
-    $benchLog = Join-Path $envDir ('results\{0}-{1}-{2}.log' -f $Variant, $Workload, $Scenario)
+    # 日志名跟随结果文件名：固定名（go-reply-steady.log）会把每次运行的日志
+    # 覆盖到同一批文件上，曾经覆盖掉已跟踪的历史证据。
+    $benchLog = Join-Path $envDir ('results\{0}.log' -f (Split-Path -Leaf $OutFile))
     New-Item -ItemType Directory -Path (Split-Path -Parent $benchLog) -Force | Out-Null
     Write-Host "负载器参数: $($benchArgs -join ' ')"
     $benchProc = Start-Process -FilePath $benchExe -ArgumentList ($benchArgs -join ' ') `

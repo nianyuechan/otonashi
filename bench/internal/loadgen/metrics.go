@@ -54,19 +54,25 @@ type Summary struct {
 
 // Result 是写入磁盘的完整结果。
 type Result struct {
-	ProtocolVersion string         `json:"protocol_version"`
-	Mode            string         `json:"mode"`
-	Workload        string         `json:"workload"`
-	Kind            string         `json:"kind"`
-	Rate            float64        `json:"rate,omitempty"`
-	DurationMS      float64        `json:"duration_ms,omitempty"`
-	Count           int            `json:"count,omitempty"`
-	SelfID          int64          `json:"self_id"`
-	StartedAt       string         `json:"started_at"`
-	FinishedAt      string         `json:"finished_at"`
-	Summary         Summary        `json:"summary"`
-	Events          []EventRecord  `json:"events"`
-	Samples         []SampleRecord `json:"samples"`
+	ProtocolVersion string  `json:"protocol_version"`
+	Mode            string  `json:"mode"`
+	Workload        string  `json:"workload"`
+	Kind            string  `json:"kind"`
+	Rate            float64 `json:"rate,omitempty"`
+	DurationMS      float64 `json:"duration_ms,omitempty"`
+	Count           int     `json:"count,omitempty"`
+	SelfID          int64   `json:"self_id"`
+	// 消息构造参数自记录：容量验证的参数证据取自 JSON 本身，而不是文件名。
+	UserID      int64          `json:"user_id,omitempty"`
+	GroupID     int64          `json:"group_id,omitempty"`
+	MessageType string         `json:"message_type,omitempty"`
+	GroupCount  int            `json:"group_count,omitempty"`
+	UserCount   int            `json:"user_count,omitempty"`
+	StartedAt   string         `json:"started_at"`
+	FinishedAt  string         `json:"finished_at"`
+	Summary     Summary        `json:"summary"`
+	Events      []EventRecord  `json:"events"`
+	Samples     []SampleRecord `json:"samples"`
 }
 
 // percentile 对已排序切片取分位数（线性插值）。
