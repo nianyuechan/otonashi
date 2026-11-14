@@ -84,7 +84,10 @@ func (p *StorePlugin) handleWrite(ctx context.Context, pluginCtx *sdk.Context) (
 	}
 	if !bytes.Equal(readback, value) {
 		p.errors.Add(1)
-		return sdk.Stop, fmt.Errorf("bench.store readback mismatch: got %d bytes, want %d", len(readback), len(value))
+		// 值是基准消息文本（bench <seq>/#ping/#help），不是用户数据，打印前
+		// 64 字节用于定位同长度不同内容的罕见不匹配。
+		return sdk.Stop, fmt.Errorf("bench.store readback mismatch: got %d bytes %q, want %d bytes %q",
+			len(readback), preview(readback), len(value), preview(value))
 	}
 	elapsed := time.Since(start)
 	total := p.writes.Add(1)
@@ -118,3 +121,12 @@ func (p *StorePlugin) handleWrite(ctx context.Context, pluginCtx *sdk.Context) (
 func (p *StorePlugin) Start(context.Context) error { return nil }
 
 func (p *StorePlugin) Stop(context.Context) error { return nil }
+
+// preview 截断字节切片用于诊断日志。
+func preview(b []byte) string {
+	const limit = 64
+	if len(b) > limit {
+		return string(b[:limit]) + "..."
+	}
+	return string(b)
+}
