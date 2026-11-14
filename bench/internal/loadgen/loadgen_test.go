@@ -336,4 +336,21 @@ func TestConfigValidate(t *testing.T) {
 	if err := bad.validate(); err == nil {
 		t.Fatal("client 模式缺少 url 应被拒绝")
 	}
+	good := base
+	good.MessageType = "group"
+	good.GroupCount = 1
+	good.UserCount = 1
+	if err := good.validate(); err != nil {
+		t.Fatalf("合法 group 配置被拒绝: %v", err)
+	}
+	bad = good
+	bad.UserCount = 0
+	if err := bad.validate(); err == nil {
+		t.Fatal("group 模式 user-count=0 应被拒绝（session.push 会除零 panic）")
+	}
+	bad = good
+	bad.GroupCount = 0
+	if err := bad.validate(); err == nil {
+		t.Fatal("group 模式 group-count=0 应被拒绝")
+	}
 }

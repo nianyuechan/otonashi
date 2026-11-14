@@ -106,8 +106,9 @@ func (c Config) validate() error {
 	if c.GroupCount < 0 || c.UserCount < 0 {
 		return errors.New("group-count/user-count 不能为负")
 	}
-	if c.MessageType == "group" && (c.GroupCount <= 0 || c.GroupID <= 0) {
-		return errors.New("group 模式需要正数 group-count/group-id")
+	// group 模式下 push 用 UserCount 做模运算，0 会在第一条消息触发除零 panic。
+	if c.MessageType == "group" && (c.GroupCount <= 0 || c.UserCount <= 0 || c.GroupID <= 0) {
+		return errors.New("group 模式需要正数 group-count/user-count/group-id")
 	}
 	if c.Warmup < 0 || c.ReplyGrace < 0 {
 		return errors.New("warmup/grace 不能为负")
