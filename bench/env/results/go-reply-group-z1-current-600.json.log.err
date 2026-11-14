@@ -1,0 +1,6 @@
+time=2026-11-15T02:32:20.916+08:00 level=INFO msg=等待被测机器人连入 listen=127.0.0.1:3002 deadline=120s
+time=2026-11-15T02:32:21.916+08:00 level=INFO msg=被测机器人已连入
+time=2026-11-15T02:32:21.937+08:00 level=INFO msg=预热等待 duration=2s
+time=2026-11-15T02:32:23.957+08:00 level=INFO msg=开始稳定负载 rate=600 duration=3m0s workload=reply
+time=2026-11-15T02:35:23.958+08:00 level=INFO msg=负载推送完成，等待尾部回复 grace=10s
+time=2026-11-15T02:35:34.084+08:00 level=INFO msg=基准完成 sent=78525 paired=39263 missing=0 eps=413.2 p50_ms=0.25 p95_ms=0.35 p99_ms=0.43 max_ms=4.21 cpu_avg=1.9 rss_max_mb=21.2 out=results\go-reply-group-z1-current-600.json

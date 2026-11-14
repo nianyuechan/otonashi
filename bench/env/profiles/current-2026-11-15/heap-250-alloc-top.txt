@@ -1,0 +1,33 @@
+﻿File: yunzai-bench.exe
+Build ID: G:\ALL WORK\闊虫棤\闊虫棤\bench\env\go-yunzai\yunzai-bench.exe2026-11-15 02:28:15.1614839 +0800 CST
+Type: alloc_space
+Time: 2026-11-15 02:29:50 CST
+Showing nodes accounting for 141.70MB, 94.14% of 150.51MB total
+Dropped 57 nodes (cum <= 0.75MB)
+Showing top 25 nodes out of 89
+      flat  flat%   sum%        cum   cum%
+   19.51MB 12.96% 12.96%    19.51MB 12.96%  io.ReadAll
+   18.50MB 12.29% 25.26%    30.01MB 19.94%  github.com/trss-yunzai/go-yunzai/internal/plugin.toSDKEvent
+   11.50MB  7.64% 32.90%    21.51MB 14.29%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.DecodeEvent
+   11.50MB  7.64% 40.54%    11.50MB  7.64%  github.com/trss-yunzai/go-yunzai/internal/plugin.cloneData (inline)
+       9MB  5.98% 46.52%    86.01MB 57.15%  github.com/trss-yunzai/go-yunzai/internal/plugin.(*Manager).withPlugin
+       8MB  5.32% 51.84%       26MB 17.28%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).SendMessage
+    7.50MB  4.98% 56.82%       11MB  7.31%  context.withCancel (inline)
+       7MB  4.65% 61.47%        7MB  4.65%  context.AfterFunc
+       6MB  3.99% 65.46%        6MB  3.99%  context.(*cancelCtx).Done
+       5MB  3.32% 68.78%        5MB  3.32%  reflect.mapassign_faststr0
+       4MB  2.66% 71.44%        4MB  2.66%  bytes.Clone (inline)
+       4MB  2.66% 74.10%     8.50MB  5.65%  context.WithDeadlineCause
+    3.50MB  2.33% 76.42%     5.50MB  3.65%  context.(*cancelCtx).propagateCancel
+    3.50MB  2.33% 78.75%    51.52MB 34.23%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).readLoop
+       3MB  1.99% 80.74%     3.50MB  2.33%  github.com/trss-yunzai/go-yunzai/internal/pluginconfig.(*Snapshot).View
+    2.50MB  1.66% 82.41%       16MB 10.63%  github.com/trss-yunzai/go-yunzai/plugins/bench.handleEcho
+    2.50MB  1.66% 84.07%     2.50MB  1.66%  encoding/json/v2.newUnmarshalErrorAfter
+    2.50MB  1.66% 85.73%     2.50MB  1.66%  time.newTimer
+    2.50MB  1.66% 87.39%     2.50MB  1.66%  reflect.unsafe_New
+    2.01MB  1.33% 88.72%     5.01MB  3.33%  encoding/json/v2.makeStringArshaler.func2
+       2MB  1.33% 90.05%        2MB  1.33%  encoding/json/jsontext.(*Value).UnmarshalJSON
+       2MB  1.33% 91.38%        2MB  1.33%  strings.(*Builder).WriteString (inline)
+    1.50MB     1% 92.38%     1.50MB     1%  runtime.mallocgc
+    1.50MB     1% 93.38%     1.50MB     1%  reflect.makemap
+    1.16MB  0.77% 94.14%     1.16MB  0.77%  runtime/pprof.StartCPUProfile

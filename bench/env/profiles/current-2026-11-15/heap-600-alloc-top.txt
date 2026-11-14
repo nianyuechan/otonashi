@@ -1,0 +1,33 @@
+﻿File: yunzai-bench.exe
+Build ID: G:\ALL WORK\闊虫棤\闊虫棤\bench\env\go-yunzai\yunzai-bench.exe2026-11-15 02:32:15.6456906 +0800 CST
+Type: alloc_space
+Time: 2026-11-15 02:33:50 CST
+Showing nodes accounting for 286.58MB, 94.02% of 304.81MB total
+Dropped 82 nodes (cum <= 1.52MB)
+Showing top 25 nodes out of 74
+      flat  flat%   sum%        cum   cum%
+   36.52MB 11.98% 11.98%    36.52MB 11.98%  io.ReadAll
+   26.51MB  8.70% 20.68%    49.01MB 16.08%  github.com/trss-yunzai/go-yunzai/internal/plugin.toSDKEvent
+   26.01MB  8.53% 29.21%    44.51MB 14.60%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.DecodeEvent
+      25MB  8.20% 37.41%    32.01MB 10.50%  context.(*cancelCtx).propagateCancel
+   22.51MB  7.38% 44.80%    22.51MB  7.38%  github.com/trss-yunzai/go-yunzai/internal/plugin.cloneData (inline)
+   18.50MB  6.07% 50.87%   182.53MB 59.88%  github.com/trss-yunzai/go-yunzai/internal/plugin.(*Manager).withPlugin
+      18MB  5.91% 56.77%       18MB  5.91%  context.AfterFunc
+      12MB  3.94% 60.71%       12MB  3.94%  context.(*cancelCtx).Done
+      11MB  3.61% 64.32%    56.51MB 18.54%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).SendMessage
+      10MB  3.28% 67.60%       10MB  3.28%  reflect.mapassign_faststr0
+      10MB  3.28% 70.88%       26MB  8.53%  context.withCancel (inline)
+      10MB  3.28% 74.16%       10MB  3.28%  reflect.unsafe_New
+    9.50MB  3.12% 77.28%   106.04MB 34.79%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).readLoop
+       9MB  2.95% 80.23%        9MB  2.95%  bytes.Clone (inline)
+    6.50MB  2.13% 82.37%    35.51MB 11.65%  github.com/trss-yunzai/go-yunzai/plugins/bench.handleEcho
+    5.50MB  1.80% 84.17%     5.50MB  1.80%  encoding/json.transformUnmarshalError
+    4.50MB  1.48% 85.65%     4.50MB  1.48%  encoding/json/v2.newUnmarshalErrorAfter
+    4.50MB  1.48% 87.12%     4.50MB  1.48%  time.newTimer
+       4MB  1.31% 88.44%    24.50MB  8.04%  context.WithDeadlineCause
+       4MB  1.31% 89.75%     5.50MB  1.80%  github.com/trss-yunzai/go-yunzai/internal/pluginconfig.(*Snapshot).View
+       3MB  0.98% 90.73%       22MB  7.22%  github.com/trss-yunzai/go-yunzai/plugins/bench.(*Plugin).Register.func2
+       3MB  0.98% 91.72%        3MB  0.98%  encoding/json/jsontext.(*Value).UnmarshalJSON
+    2.51MB  0.82% 92.54%     7.01MB  2.30%  encoding/json/v2.makeStringArshaler.func2
+    2.50MB  0.82% 93.36%     2.50MB  0.82%  runtime.mallocgc
+    2.01MB  0.66% 94.02%     2.01MB  0.66%  sync.(*Pool).pinSlow

@@ -1,0 +1,33 @@
+﻿File: yunzai-bench.exe
+Build ID: G:\ALL WORK\闊虫棤\闊虫棤\bench\env\go-yunzai\yunzai-bench.exe2026-11-15 02:32:15.6456906 +0800 CST
+Type: cpu
+Time: 2026-11-15 02:33:20 CST
+Duration: 30s, Total samples = 1.23s ( 4.10%)
+Showing nodes accounting for 0.64s, 52.03% of 1.23s total
+Showing top 25 nodes out of 299
+      flat  flat%   sum%        cum   cum%
+     0.13s 10.57% 10.57%      0.13s 10.57%  runtime.semawakeup
+     0.12s  9.76% 20.33%      0.14s 11.38%  runtime.cgocall
+     0.04s  3.25% 23.58%      0.04s  3.25%  encoding/json/internal/jsonwire.ConsumeSimpleString (inline)
+     0.03s  2.44% 26.02%      0.24s 19.51%  encoding/json/v2.makeStructArshaler.func3
+     0.03s  2.44% 28.46%      0.03s  2.44%  runtime.cheaprandu64 (inline)
+     0.03s  2.44% 30.89%      0.03s  2.44%  runtime.nextFreeFast (inline)
+     0.02s  1.63% 32.52%      0.03s  2.44%  encoding/json/jsontext.(*decoderState).PeekKind
+     0.02s  1.63% 34.15%      0.07s  5.69%  encoding/json/jsontext.(*decoderState).consumeValue
+     0.02s  1.63% 35.77%      0.02s  1.63%  internal/runtime/maps.(*Map).Used
+     0.02s  1.63% 37.40%      0.03s  2.44%  runtime.netpoll
+     0.02s  1.63% 39.02%      0.02s  1.63%  runtime.semasleep
+     0.02s  1.63% 40.65%      0.02s  1.63%  runtime.stkbucket
+     0.02s  1.63% 42.28%      0.05s  4.07%  runtime.unlock2
+     0.01s  0.81% 43.09%      0.01s  0.81%  context.WithDeadlineCause
+     0.01s  0.81% 43.90%      0.01s  0.81%  encoding/json/internal/jsonwire.ConsumeWhitespace (inline)
+     0.01s  0.81% 44.72%      0.01s  0.81%  encoding/json/jsontext.(*decoderState).ReadToken
+     0.01s  0.81% 45.53%      0.05s  4.07%  encoding/json/jsontext.(*decoderState).ReadValue
+     0.01s  0.81% 46.34%      0.01s  0.81%  encoding/json/jsontext.(*stateMachine).reset
+     0.01s  0.81% 47.15%      0.01s  0.81%  encoding/json/jsontext.getBufferedEncoder
+     0.01s  0.81% 47.97%      0.01s  0.81%  encoding/json/jsontext.stateEntry.needImplicitColon (inline)
+     0.01s  0.81% 48.78%      0.01s  0.81%  encoding/json/v2.lookupArshaler
+     0.01s  0.81% 49.59%      0.01s  0.81%  encoding/json/v2.makeString
+     0.01s  0.81% 50.41%      0.03s  2.44%  encoding/json/v2.newUnmarshalErrorAfter
+     0.01s  0.81% 51.22%      0.02s  1.63%  github.com/coder/websocket.(*msgReader).read
+     0.01s  0.81% 52.03%      0.01s  0.81%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).eventContext

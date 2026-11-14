@@ -1,0 +1,33 @@
+﻿File: yunzai-bench.exe
+Build ID: G:\ALL WORK\闊虫棤\闊虫棤\bench\env\go-yunzai\yunzai-bench.exe2026-11-15 02:28:15.1614839 +0800 CST
+Type: delay
+Time: 2026-11-15 02:29:50 CST
+Showing nodes accounting for 203.91s, 100% of 203.91s total
+Dropped 47 nodes (cum <= 1.02s)
+Showing top 25 nodes out of 29
+      flat  flat%   sum%        cum   cum%
+   203.91s   100%   100%    203.91s   100%  runtime.selectgo
+         0     0%   100%     86.74s 42.54%  github.com/coder/websocket.(*Conn).timeoutLoop
+         0     0%   100%     86.74s 42.54%  github.com/coder/websocket.newConn.gowrap1
+         0     0%   100%      3.97s  1.95%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).Run
+         0     0%   100%      2.72s  1.33%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).SendMessage
+         0     0%   100%     80.35s 39.40%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).pingLoop
+         0     0%   100%     80.35s 39.40%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).serve.func1
+         0     0%   100%      3.52s  1.72%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.sleep
+         0     0%   100%      3.97s  1.95%  github.com/trss-yunzai/go-yunzai/internal/app.(*App).Run
+         0     0%   100%      3.97s  1.95%  github.com/trss-yunzai/go-yunzai/internal/app.RunWith
+         0     0%   100%      2.72s  1.33%  github.com/trss-yunzai/go-yunzai/internal/dispatch.(*Dispatcher).Dispatch.func1
+         0     0%   100%      2.72s  1.33%  github.com/trss-yunzai/go-yunzai/internal/plugin.(*Manager).HandleEvent
+         0     0%   100%      2.72s  1.33%  github.com/trss-yunzai/go-yunzai/internal/plugin.(*Manager).HandleEvent.func4
+         0     0%   100%      2.72s  1.33%  github.com/trss-yunzai/go-yunzai/internal/plugin.(*Manager).withPlugin
+         0     0%   100%      2.72s  1.33%  github.com/trss-yunzai/go-yunzai/internal/plugin.(*senderAdapter).SendMessage
+         0     0%   100%      2.72s  1.33%  github.com/trss-yunzai/go-yunzai/internal/plugin.callHandler
+         0     0%   100%      2.72s  1.33%  github.com/trss-yunzai/go-yunzai/internal/plugin.senderAdapter.SendMessage
+         0     0%   100%      2.72s  1.33%  github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk.(*Context).Reply
+         0     0%   100%      1.36s  0.67%  github.com/trss-yunzai/go-yunzai/plugins/bench.handleEcho
+         0     0%   100%      3.97s  1.95%  main.main
+         0     0%   100%      3.97s  1.95%  main.run
+         0     0%   100%     30.13s 14.78%  net/http.(*ServeMux).ServeHTTP
+         0     0%   100%     30.13s 14.78%  net/http.(*Server).Serve.gowrap3
+         0     0%   100%     30.13s 14.78%  net/http.(*conn).serve
+         0     0%   100%     30.13s 14.78%  net/http.HandlerFunc.ServeHTTP

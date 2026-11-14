@@ -1,0 +1,32 @@
+﻿File: yunzai-bench.exe
+Build ID: G:\ALL WORK\闊虫棤\闊虫棤\bench\env\go-yunzai\yunzai-bench.exe2026-11-15 02:28:15.1614839 +0800 CST
+Type: goroutine
+Time: 2026-11-15 02:29:50 CST
+Showing nodes accounting for 9, 100% of 9 total
+Showing top 25 nodes out of 59
+      flat  flat%   sum%        cum   cum%
+         6 66.67% 66.67%          6 66.67%  runtime.gopark
+         1 11.11% 77.78%          1 11.11%  runtime.cgocall
+         1 11.11% 88.89%          1 11.11%  runtime.goroutineProfileWithLabels
+         1 11.11%   100%          1 11.11%  runtime.notetsleepg
+         0     0%   100%          1 11.11%  bufio.(*Reader).ReadByte
+         0     0%   100%          1 11.11%  bufio.(*Reader).fill
+         0     0%   100%          1 11.11%  database/sql.(*DB).connectionOpener
+         0     0%   100%          1 11.11%  github.com/coder/websocket.(*Conn).Read
+         0     0%   100%          1 11.11%  github.com/coder/websocket.(*Conn).Reader (inline)
+         0     0%   100%          1 11.11%  github.com/coder/websocket.(*Conn).readFrameHeader
+         0     0%   100%          1 11.11%  github.com/coder/websocket.(*Conn).readLoop
+         0     0%   100%          1 11.11%  github.com/coder/websocket.(*Conn).reader
+         0     0%   100%          1 11.11%  github.com/coder/websocket.(*Conn).timeoutLoop
+         0     0%   100%          1 11.11%  github.com/coder/websocket.readFrameHeader
+         0     0%   100%          1 11.11%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).Run
+         0     0%   100%          1 11.11%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).pingLoop
+         0     0%   100%          1 11.11%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).readLoop
+         0     0%   100%          1 11.11%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).serve
+         0     0%   100%          1 11.11%  github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).serve.func1
+         0     0%   100%          1 11.11%  github.com/trss-yunzai/go-yunzai/internal/app.(*App).Run
+         0     0%   100%          1 11.11%  github.com/trss-yunzai/go-yunzai/internal/app.RunWith
+         0     0%   100%          1 11.11%  github.com/trss-yunzai/go-yunzai/internal/observability.StartPprof.func5
+         0     0%   100%          1 11.11%  internal/poll.(*FD).Accept
+         0     0%   100%          2 22.22%  internal/poll.(*FD).Read
+         0     0%   100%          1 11.11%  internal/poll.(*FD).Read.func2

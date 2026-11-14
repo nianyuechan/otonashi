@@ -1,0 +1,79 @@
+goroutine profile: total 9
+1 @ 0x7ff616a6b7f1 0x7ff616ada6b8 0x7ff616bceb13 0x7ff616adfca1
+#	0x7ff616ada6b7	os/signal.signal_recv+0x97	G:/ALL WORK/音无/tools/go/src/runtime/sigqueue.go:152
+#	0x7ff616bceb12	os/signal.loop+0x12		G:/ALL WORK/音无/tools/go/src/os/signal/signal_unix.go:23
+
+1 @ 0x7ff616a94ab1 0x7ff616ad783d 0x7ff616dc2591 0x7ff616dc2265 0x7ff616dbf1c9 0x7ff616dd9254 0x7ff616dd9c9c 0x7ff616d37c69 0x7ff616d397ef 0x7ff616d57f2e 0x7ff616d362dc 0x7ff616adfca1
+#	0x7ff616dc2590	runtime/pprof.writeRuntimeProfile+0xb0	G:/ALL WORK/音无/tools/go/src/runtime/pprof/pprof.go:848
+#	0x7ff616dc2264	runtime/pprof.writeGoroutine+0x44	G:/ALL WORK/音无/tools/go/src/runtime/pprof/pprof.go:781
+#	0x7ff616dbf1c8	runtime/pprof.(*Profile).WriteTo+0x148	G:/ALL WORK/音无/tools/go/src/runtime/pprof/pprof.go:405
+#	0x7ff616dd9253	net/http/pprof.handler.ServeHTTP+0x553	G:/ALL WORK/音无/tools/go/src/net/http/pprof/pprof.go:272
+#	0x7ff616dd9c9b	net/http/pprof.Index+0xdb		G:/ALL WORK/音无/tools/go/src/net/http/pprof/pprof.go:391
+#	0x7ff616d37c68	net/http.HandlerFunc.ServeHTTP+0x28	G:/ALL WORK/音无/tools/go/src/net/http/server.go:2362
+#	0x7ff616d397ee	net/http.(*ServeMux).ServeHTTP+0x1ce	G:/ALL WORK/音无/tools/go/src/net/http/server.go:2927
+#	0x7ff616d57f2d	net/http.serverHandler.ServeHTTP+0x8d	G:/ALL WORK/音无/tools/go/src/net/http/server.go:3440
+#	0x7ff616d362db	net/http.(*conn).serve+0x6db		G:/ALL WORK/音无/tools/go/src/net/http/server.go:2161
+
+1 @ 0x7ff616ad58be 0x7ff616adc888 0x7ff616af019e 0x7ff616af6d4a 0x7ff616b42adc 0x7ff616b3fa4d 0x7ff616b40447 0x7ff616c18705 0x7ff616c22b85 0x7ff616d2fe52 0x7ff616adfca1
+#	0x7ff616adc887	syscall.syscalln+0x47				G:/ALL WORK/音无/tools/go/src/runtime/syscall_windows.go:427
+#	0x7ff616af019d	syscall.SyscallN+0x1d				G:/ALL WORK/音无/tools/go/src/syscall/dll_windows.go:99
+#	0x7ff616af6d49	syscall.WSARecv+0xe9				G:/ALL WORK/音无/tools/go/src/syscall/zsyscall_windows.go:1304
+#	0x7ff616b42adb	internal/poll.(*FD).Read.func2+0x5b		G:/ALL WORK/音无/tools/go/src/internal/poll/fd_windows.go:635
+#	0x7ff616b3fa4c	internal/poll.(*FD).execIO+0x1ec		G:/ALL WORK/音无/tools/go/src/internal/poll/fd_windows.go:303
+#	0x7ff616b40446	internal/poll.(*FD).Read+0x226			G:/ALL WORK/音无/tools/go/src/internal/poll/fd_windows.go:633
+#	0x7ff616c18704	net.(*netFD).Read+0x24				G:/ALL WORK/音无/tools/go/src/net/fd_posix.go:68
+#	0x7ff616c22b84	net.(*conn).Read+0x44				G:/ALL WORK/音无/tools/go/src/net/net.go:196
+#	0x7ff616d2fe51	net/http.(*connReader).backgroundRead+0x31	G:/ALL WORK/音无/tools/go/src/net/http/server.go:742
+
+1 @ 0x7ff616ad8aea 0x7ff616a97f77 0x7ff616ad7c45 0x7ff616b3ef87 0x7ff616b3f6a5 0x7ff616b3fade 0x7ff616b40447 0x7ff616c18705 0x7ff616c22b85 0x7ff616d50d08 0x7ff616cb04c3 0x7ff616cb0bc7 0x7ff616d644e7 0x7ff616d65b55 0x7ff616d65445 0x7ff616d66a4f 0x7ff616d64efe 0x7ff616d64ef9 0x7ff616d6c59c 0x7ff616d6c305 0x7ff616d6bb93 0x7ff61703c6a6 0x7ff61703cba5 0x7ff61703f170 0x7ff61703ec17 0x7ff616aa0cfb 0x7ff616adfca1
+#	0x7ff616ad7c44	internal/poll.runtime_pollWait+0x84							G:/ALL WORK/音无/tools/go/src/runtime/netpoll.go:351
+#	0x7ff616b3ef86	internal/poll.(*pollDesc).wait+0x26							G:/ALL WORK/音无/tools/go/src/internal/poll/fd_poll_runtime.go:84
+#	0x7ff616b3f6a4	internal/poll.(*FD).waitIO+0x44								G:/ALL WORK/音无/tools/go/src/internal/poll/fd_windows.go:233
+#	0x7ff616b3fadd	internal/poll.(*FD).execIO+0x27d							G:/ALL WORK/音无/tools/go/src/internal/poll/fd_windows.go:310
+#	0x7ff616b40446	internal/poll.(*FD).Read+0x226								G:/ALL WORK/音无/tools/go/src/internal/poll/fd_windows.go:633
+#	0x7ff616c18704	net.(*netFD).Read+0x24									G:/ALL WORK/音无/tools/go/src/net/fd_posix.go:68
+#	0x7ff616c22b84	net.(*conn).Read+0x44									G:/ALL WORK/音无/tools/go/src/net/net.go:196
+#	0x7ff616d50d07	net/http.(*readWriteCloserBody).Read+0x87						G:/ALL WORK/音无/tools/go/src/net/http/transport.go:2811
+#	0x7ff616cb04c2	bufio.(*Reader).fill+0x102								G:/ALL WORK/音无/tools/go/src/bufio/bufio.go:113
+#	0x7ff616cb0bc6	bufio.(*Reader).ReadByte+0x26								G:/ALL WORK/音无/tools/go/src/bufio/bufio.go:273
+#	0x7ff616d644e6	github.com/coder/websocket.readFrameHeader+0x86						G:/ALL WORK/音无/gopath/pkg/mod/github.com/coder/websocket@v1.8.12/frame.go:55
+#	0x7ff616d65b54	github.com/coder/websocket.(*Conn).readFrameHeader+0xd4					G:/ALL WORK/音无/gopath/pkg/mod/github.com/coder/websocket@v1.8.12/read.go:227
+#	0x7ff616d65444	github.com/coder/websocket.(*Conn).readLoop+0x64					G:/ALL WORK/音无/gopath/pkg/mod/github.com/coder/websocket@v1.8.12/read.go:185
+#	0x7ff616d66a4e	github.com/coder/websocket.(*Conn).reader+0x10e						G:/ALL WORK/音无/gopath/pkg/mod/github.com/coder/websocket@v1.8.12/read.go:347
+#	0x7ff616d64efd	github.com/coder/websocket.(*Conn).Reader+0x1d						G:/ALL WORK/音无/gopath/pkg/mod/github.com/coder/websocket@v1.8.12/read.go:37
+#	0x7ff616d64ef8	github.com/coder/websocket.(*Conn).Read+0x18						G:/ALL WORK/音无/gopath/pkg/mod/github.com/coder/websocket@v1.8.12/read.go:43
+#	0x7ff616d6c59b	github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).readLoop+0x5b	G:/ALL WORK/音无/音无/go-yunzai/internal/adapter/onebotv11/client.go:224
+#	0x7ff616d6c304	github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).serve+0x104	G:/ALL WORK/音无/音无/go-yunzai/internal/adapter/onebotv11/client.go:197
+#	0x7ff616d6bb92	github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).Run+0x5b2		G:/ALL WORK/音无/音无/go-yunzai/internal/adapter/onebotv11/client.go:146
+#	0x7ff61703c6a5	github.com/trss-yunzai/go-yunzai/internal/app.(*App).Run+0xc5				G:/ALL WORK/音无/音无/go-yunzai/internal/app/app.go:141
+#	0x7ff61703cba4	github.com/trss-yunzai/go-yunzai/internal/app.RunWith+0x144				G:/ALL WORK/音无/音无/go-yunzai/internal/app/app.go:187
+#	0x7ff61703f16f	main.run+0x4af										G:/ALL WORK/音无/音无/go-yunzai/cmd/yunzai-bench/main.go:48
+#	0x7ff61703ec16	main.main+0x16										G:/ALL WORK/音无/音无/go-yunzai/cmd/yunzai-bench/main.go:22
+#	0x7ff616aa0cfa	runtime.main+0x3fa									G:/ALL WORK/音无/tools/go/src/runtime/proc.go:302
+
+1 @ 0x7ff616ad8aea 0x7ff616a97f77 0x7ff616ad7c45 0x7ff616b3ef87 0x7ff616b3f6a5 0x7ff616b3fade 0x7ff616b417a5 0x7ff616b41a2d 0x7ff616c1980b 0x7ff616c29f5b 0x7ff616c28f70 0x7ff616d3af99 0x7ff616dde805 0x7ff616adfca1
+#	0x7ff616ad7c44	internal/poll.runtime_pollWait+0x84						G:/ALL WORK/音无/tools/go/src/runtime/netpoll.go:351
+#	0x7ff616b3ef86	internal/poll.(*pollDesc).wait+0x26						G:/ALL WORK/音无/tools/go/src/internal/poll/fd_poll_runtime.go:84
+#	0x7ff616b3f6a4	internal/poll.(*FD).waitIO+0x44							G:/ALL WORK/音无/tools/go/src/internal/poll/fd_windows.go:233
+#	0x7ff616b3fadd	internal/poll.(*FD).execIO+0x27d						G:/ALL WORK/音无/tools/go/src/internal/poll/fd_windows.go:310
+#	0x7ff616b417a4	internal/poll.(*FD).acceptOne+0x84						G:/ALL WORK/音无/tools/go/src/internal/poll/fd_windows.go:1133
+#	0x7ff616b41a2c	internal/poll.(*FD).Accept+0x18c						G:/ALL WORK/音无/tools/go/src/internal/poll/fd_windows.go:1168
+#	0x7ff616c1980a	net.(*netFD).accept+0x4a							G:/ALL WORK/音无/tools/go/src/net/fd_windows.go:201
+#	0x7ff616c29f5a	net.(*TCPListener).accept+0x1a							G:/ALL WORK/音无/tools/go/src/net/tcpsock_posix.go:159
+#	0x7ff616c28f6f	net.(*TCPListener).Accept+0x2f							G:/ALL WORK/音无/tools/go/src/net/tcpsock.go:387
+#	0x7ff616d3af98	net/http.(*Server).Serve+0x378							G:/ALL WORK/音无/tools/go/src/net/http/server.go:3578
+#	0x7ff616dde804	github.com/trss-yunzai/go-yunzai/internal/observability.StartPprof.func5+0x24	G:/ALL WORK/音无/音无/go-yunzai/internal/observability/pprof.go:65
+
+1 @ 0x7ff616ad8aea 0x7ff616ab2c57 0x7ff616bcee5c 0x7ff616adfca1
+#	0x7ff616bcee5b	os/signal.NotifyContext.func1+0x7b	G:/ALL WORK/音无/tools/go/src/os/signal/signal.go:304
+
+1 @ 0x7ff616ad8aea 0x7ff616ab2c57 0x7ff616d61275 0x7ff616adfca1
+#	0x7ff616d61274	github.com/coder/websocket.(*Conn).timeoutLoop+0x194	G:/ALL WORK/音无/gopath/pkg/mod/github.com/coder/websocket@v1.8.12/conn.go:174
+
+1 @ 0x7ff616ad8aea 0x7ff616ab2c57 0x7ff616d6c451 0x7ff616d6e293 0x7ff616adfca1
+#	0x7ff616d6c450	github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).pingLoop+0xd0	G:/ALL WORK/音无/音无/go-yunzai/internal/adapter/onebotv11/client.go:207
+#	0x7ff616d6e292	github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11.(*Client).serve.func1+0x52	G:/ALL WORK/音无/音无/go-yunzai/internal/adapter/onebotv11/client.go:194
+
+1 @ 0x7ff616ad8aea 0x7ff616ab2c57 0x7ff616e48769 0x7ff616adfca1
+#	0x7ff616e48768	database/sql.(*DB).connectionOpener+0x88	G:/ALL WORK/音无/tools/go/src/database/sql/sql.go:1266
+

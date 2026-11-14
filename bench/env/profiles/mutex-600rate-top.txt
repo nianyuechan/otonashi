@@ -1,0 +1,28 @@
+File: yunzai-bench.exe
+Build ID: G:\ALL WORK\音无\音无\bench\env\go-yunzai\yunzai-bench.exe2026-11-15 00:06:53.6657389 +0800 CST
+Type: delay
+Time: 2026-11-15 00:13:49 CST
+Showing nodes accounting for 50.03ms, 100% of 50.03ms total
+Dropped 3 nodes (cum <= 0.25ms)
+Showing top 20 nodes out of 21
+      flat  flat%   sum%        cum   cum%
+   50.03ms   100%   100%    50.03ms   100%  runtime.unlock (inline)
+         0     0%   100%     3.85ms  7.70%  runtime.(*gcControllerState).enlistWorker
+         0     0%   100%     8.47ms 16.93%  runtime.forEachP (inline)
+         0     0%   100%     8.47ms 16.93%  runtime.forEachP.func1
+         0     0%   100%     8.47ms 16.93%  runtime.forEachPInternal
+         0     0%   100%    12.32ms 24.63%  runtime.gcBgMarkWorker
+         0     0%   100%     3.85ms  7.70%  runtime.gcBgMarkWorker.func2
+         0     0%   100%     3.85ms  7.70%  runtime.gcDrain
+         0     0%   100%     0.36ms  0.71%  runtime.gcDrainMarkWorkerDedicated (inline)
+         0     0%   100%     3.50ms  6.99%  runtime.gcDrainMarkWorkerIdle (inline)
+         0     0%   100%     8.47ms 16.93%  runtime.gcMarkDone
+         0     0%   100%     8.47ms 16.93%  runtime.gcMarkTermination
+         0     0%   100%    37.68ms 75.32%  runtime.incidlelocked
+         0     0%   100%    37.68ms 75.32%  runtime.mstart
+         0     0%   100%    37.68ms 75.32%  runtime.mstart0
+         0     0%   100%    37.68ms 75.32%  runtime.mstart1
+         0     0%   100%     3.85ms  7.70%  runtime.preemptM
+         0     0%   100%     3.85ms  7.70%  runtime.preemptone
+         0     0%   100%    37.68ms 75.32%  runtime.retake
+         0     0%   100%    37.68ms 75.32%  runtime.sysmon

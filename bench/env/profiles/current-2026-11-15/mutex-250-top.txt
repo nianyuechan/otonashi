@@ -1,0 +1,20 @@
+﻿File: yunzai-bench.exe
+Build ID: G:\ALL WORK\闊虫棤\闊虫棤\bench\env\go-yunzai\yunzai-bench.exe2026-11-15 02:28:15.1614839 +0800 CST
+Type: delay
+Time: 2026-11-15 02:29:50 CST
+Showing nodes accounting for 24.99ms, 100% of 24.99ms total
+      flat  flat%   sum%        cum   cum%
+   24.99ms   100%   100%    24.99ms   100%  runtime.unlock (inline)
+         0     0%   100%     7.99ms 31.98%  runtime.(*gcControllerState).enlistWorker
+         0     0%   100%    16.99ms 68.02%  runtime.findRunnable
+         0     0%   100%     7.99ms 31.98%  runtime.gcBgMarkWorker
+         0     0%   100%     7.99ms 31.98%  runtime.gcBgMarkWorker.func2
+         0     0%   100%     7.99ms 31.98%  runtime.gcDrain
+         0     0%   100%     7.99ms 31.98%  runtime.gcDrainMarkWorkerDedicated (inline)
+         0     0%   100%    16.99ms 68.02%  runtime.mcall
+         0     0%   100%    16.99ms 68.02%  runtime.park_m
+         0     0%   100%     7.99ms 31.98%  runtime.preemptM
+         0     0%   100%     7.99ms 31.98%  runtime.preemptone
+         0     0%   100%    16.99ms 68.02%  runtime.runSafePointFn
+         0     0%   100%    16.99ms 68.02%  runtime.schedule
+         0     0%   100%     7.99ms 31.98%  runtime.systemstack

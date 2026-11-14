@@ -1,0 +1,20 @@
+﻿{
+    "rate_requested":  600,
+    "actual_injection_eps":  436.30,
+    "reported_eps":  413.25,
+    "sent":  78525,
+    "paired_replies":  39263,
+    "missing_replies":  0,
+    "latency_p99_ms":  0.43453799999999976,
+    "cpu_avg_percent":  1.8700983013206183,
+    "rss_max_mb":  21.22,
+    "started_at":  "2026-11-15T02:32:20.2931824+08:00",
+    "finished_at":  "2026-11-15T02:35:33.0000000+08:00",
+    "cpu_window_seconds":  30,
+    "bot_pid":  29680,
+    "commit":  "87ba8cb106a7929188bcc27bc6e974e528cd6718",
+    "bot_sha256":  "1d0402cfee212724c968d9e767f5cb5c2fc12480719f9992d7165d7e626083d9",
+    "bench_sha256":  "90639e059e6b29f4cd1d3954951bfb33562a65be92e64166cb774fb16f4306cc",
+    "build_time":  "2026-11-15T02:32:15.6456906+08:00",
+    "out_file":  "G:\\ALL WORK\\音无\\音无\\bench\\env\\results\\go-reply-group-z1-current-600.json"
+}
