@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log/slog"
 	"net/http"
+	"net/url"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -39,10 +40,11 @@ type Options struct {
 type Client struct {
 	opts Options
 
-	mu      sync.Mutex
-	conn    *websocket.Conn
-	pending map[string]chan responseResult
-	echo    atomic.Uint64
+	mu       sync.Mutex
+	conn     *websocket.Conn
+	pending  map[string]chan responseResult
+	echo     atomic.Uint64
+	eventCtx context.Context
 }
 
 type wireResponse struct {
@@ -103,6 +105,18 @@ func NewClient(opts Options) (*Client, error) {
 
 // Run 维持唯一的 Universal 正向 WS 连接，直到 ctx 结束。
 func (c *Client) Run(ctx context.Context) error {
+	eventCtx, eventCancel := context.WithCancel(ctx)
+	defer eventCancel()
+	c.mu.Lock()
+	c.eventCtx = eventCtx
+	c.mu.Unlock()
+	defer func() {
+		c.mu.Lock()
+		if c.eventCtx == eventCtx {
+			c.eventCtx = nil
+		}
+		c.mu.Unlock()
+	}()
 	delay := c.opts.ReconnectInitial
 	for {
 		if ctx.Err() != nil {
@@ -126,7 +140,7 @@ func (c *Client) Run(ctx context.Context) error {
 			continue
 		}
 
-		c.opts.Logger.Info("OneBot connected", "url", c.opts.URL)
+		c.opts.Logger.Info("OneBot connected", "url", redactURL(c.opts.URL))
 		c.attach(conn)
 		connectedAt := time.Now()
 		err = c.serve(ctx, conn)
@@ -223,8 +237,17 @@ func (c *Client) readLoop(ctx context.Context, conn *websocket.Conn) error {
 			c.opts.Logger.Warn("ignore malformed OneBot event", "error", err)
 			continue
 		}
-		c.opts.Handler.Dispatch(ctx, evt)
+		c.opts.Handler.Dispatch(c.eventContext(ctx), evt)
 	}
+}
+
+func (c *Client) eventContext(fallback context.Context) context.Context {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	if c.eventCtx != nil {
+		return c.eventCtx
+	}
+	return fallback
 }
 
 func (c *Client) completeResponse(response wireResponse) {
@@ -353,4 +376,17 @@ func nextBackoff(current, max time.Duration) time.Duration {
 		return max
 	}
 	return current * 2
+}
+
+// redactURL keeps only scheme, host and path so credentials in userinfo or
+// query parameters never reach logs.
+func redactURL(raw string) string {
+	parsed, err := url.Parse(raw)
+	if err != nil {
+		return "<invalid-url>"
+	}
+	parsed.User = nil
+	parsed.RawQuery = ""
+	parsed.Fragment = ""
+	return parsed.String()
 }

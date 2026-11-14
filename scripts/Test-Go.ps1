@@ -71,7 +71,7 @@ try {
             Pop-Location
         }
     }
-    Write-Host '两个 Go 模块全部验证通过。'
+    Write-Host '三个 Go 模块全部验证通过。'
 }
 finally {
     foreach ($name in $previousEnvironment.Keys) {

@@ -10,7 +10,7 @@ func (p policyState) permissions(evt *event.Event) sdk.Permissions {
 	if evt.SelfID > 0 && evt.UserID > 0 {
 		_, result.IsMaster = p.masters[evt.SelfID][evt.UserID]
 	}
-	if evt.GroupID > 0 && evt.MessageType != "private" && (evt.Sender.UserID == 0 || evt.Sender.UserID == evt.UserID) {
+	if evt.MessageType == "group" && evt.GroupID > 0 && (evt.Sender.UserID == 0 || evt.Sender.UserID == evt.UserID) {
 		result.IsOwner = evt.Sender.Role == "owner"
 		result.IsAdmin = result.IsOwner || evt.Sender.Role == "admin"
 	}

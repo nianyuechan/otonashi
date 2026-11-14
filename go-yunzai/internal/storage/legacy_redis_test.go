@@ -100,7 +100,9 @@ func TestLegacyPipelineExposesPartialCommandFailure(t *testing.T) {
 	}
 }
 
-func TestLegacyJSONCompatibilityFixture(t *testing.T) {
+// 该用例只验证 Go 侧 JSON 编解码往返，不代表旧版真实写入字节的兼容性；
+// 真实旧数据迁移仍需单独 fixture。
+func TestLegacyJSONGoRoundTrip(t *testing.T) {
 	backend, _ := openTestRedis(t)
 	legacy := backend.Legacy()
 	payload := map[string]any{"isStop": true, "time": 123.0}

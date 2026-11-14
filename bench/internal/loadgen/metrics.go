@@ -87,13 +87,22 @@ func percentile(sorted []float64, p float64) float64 {
 	return sorted[lower]*(1-fraction) + sorted[upper]*fraction
 }
 
-// Latencies 返回配对回复的延迟毫秒列表（保持推送顺序，未排序）。
+// latencies 返回所有已配对回复的延迟毫秒列表（保持推送顺序，未排序）。
+// 零延迟样本同样保留：它们代表计时分辨率的下界，而不是“没有回复”。
 func latencies(events []EventRecord) []float64 {
 	out := make([]float64, 0, len(events))
 	for _, event := range events {
-		if event.LatencyMS > 0 {
-			out = append(out, event.LatencyMS)
+		if event.ReplyNS <= 0 {
+			continue
 		}
+		latency := event.LatencyMS
+		if latency <= 0 && event.SentNS > 0 {
+			latency = float64(event.ReplyNS-event.SentNS) / 1e6
+		}
+		if latency < 0 {
+			latency = 0
+		}
+		out = append(out, latency)
 	}
 	return out
 }

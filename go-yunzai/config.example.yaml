@@ -17,6 +17,8 @@ render:
 log:
   level: info
 debug:
+  # 内置调试插件默认关闭；仅在本地验证时显式开启。
+  enabled: false
   reply: "[go-yunzai] M1 调试回复"
 storage:
   backend: sqlite
@@ -34,7 +36,7 @@ storage:
 plugins:
   # 按机器人账号配置主人用户 ID；默认不授予任何人主人权限。
   masters: {}
-  # 空能力白名单表示不限制；内置调试插件使用 messages 和 render。
+  # 空能力白名单表示不限制；内置调试插件使用 messages、render 和 storage。
   allowed_capabilities: []
   allow_users: []
   deny_users: []

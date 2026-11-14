@@ -15,6 +15,9 @@ type Capability string
 const (
 	CapabilityMessages Capability = "messages"
 	CapabilityRender   Capability = "render"
+	// CapabilityStorage grants access to the plugin-scoped key/value store.
+	// Context.Store and TaskContext.Store are nil without this declaration.
+	CapabilityStorage Capability = "storage"
 )
 
 // Policy controls which plugin capabilities and event subjects may run.
@@ -67,8 +70,9 @@ type TaskFunc func(context.Context, *TaskContext) error
 type TaskContext struct {
 	PluginID string
 	Sender   Sender
-	Store    KVStore
-	Config   ConfigView
+	// Store is nil unless the plugin declares CapabilityStorage.
+	Store  KVStore
+	Config ConfigView
 }
 
 // RegexEngine identifies the regular expression implementation used by a rule.
@@ -106,8 +110,9 @@ type Context struct {
 	Runtime     RuntimeContext
 	Session     Session
 	Permissions Permissions
-	Store       KVStore
-	Config      ConfigView
+	// Store is nil unless the plugin declares CapabilityStorage.
+	Store  KVStore
+	Config ConfigView
 }
 
 // Session registers a one-shot continuation for the next message from the

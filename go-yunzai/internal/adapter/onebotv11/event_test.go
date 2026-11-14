@@ -51,6 +51,17 @@ func TestDecodeEventRejectsNonArrayMessage(t *testing.T) {
 	}
 }
 
+func TestDecodeEventRejectsEmptyArrayMessage(t *testing.T) {
+	for _, raw := range []string{
+		`{"post_type":"message","message_type":"private","user_id":1001,"message":null}`,
+		`{"post_type":"message","message_type":"private","user_id":1001,"message":[]}`,
+	} {
+		if _, err := DecodeEvent([]byte(raw)); err == nil {
+			t.Fatalf("DecodeEvent() accepted empty message payload %q", raw)
+		}
+	}
+}
+
 func TestDecodeEventRequiresPostType(t *testing.T) {
 	if _, err := DecodeEvent([]byte(`{"self_id":9000}`)); err == nil {
 		t.Fatal("DecodeEvent() accepted event without post_type")

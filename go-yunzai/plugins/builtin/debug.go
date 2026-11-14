@@ -13,6 +13,10 @@ import (
 
 const RenderCommand = "#render"
 
+// maxRenderImageBytes bounds the PNG payload sent through OneBot. A 32 MiB
+// image becomes roughly 44 MiB after base64 encoding.
+const maxRenderImageBytes = 8 << 20
+
 // DebugHandler 用固定文本回复私聊和群消息。
 type DebugHandler struct {
 	sender   message.Sender
@@ -66,7 +70,11 @@ func (h *DebugHandler) handleRender(ctx context.Context, evt *event.Event) error
 
 	segments := []message.Segment{message.Text(outcome.Text)}
 	if outcome.Image != nil && len(outcome.Image.Data) > 0 {
-		segments = []message.Segment{message.ImagePNG(outcome.Image.Data)}
+		if len(outcome.Image.Data) > maxRenderImageBytes {
+			segments = []message.Segment{message.Text("渲染图片超过 8 MiB，已跳过发送")}
+		} else {
+			segments = []message.Segment{message.ImagePNG(outcome.Image.Data)}
+		}
 	}
 	if segments[0].Type == "text" && strings.TrimSpace(segments[0].Data["text"].(string)) == "" {
 		segments = []message.Segment{message.Text("图片暂时不可用")}

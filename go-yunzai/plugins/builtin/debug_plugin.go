@@ -27,7 +27,7 @@ func (p *DebugPlugin) Descriptor() sdk.Descriptor {
 		Version:      "0.1.0",
 		Priority:     100,
 		Events:       []string{"message"},
-		Capabilities: []sdk.Capability{sdk.CapabilityMessages, sdk.CapabilityRender},
+		Capabilities: []sdk.Capability{sdk.CapabilityMessages, sdk.CapabilityRender, sdk.CapabilityStorage},
 	}
 }
 
@@ -38,7 +38,17 @@ func (p *DebugPlugin) Register(router sdk.Router) error {
 		return err
 	}
 	if err := router.Rule(sdk.Rule{
-		ID: "builtin.debug.session", Event: "message", Pattern: `^#session$`,
+		ID: "builtin.debug.render", Event: "message", Pattern: `^\s*#render\s*$`, Permission: sdk.PermissionMaster,
+	}, func(ctx context.Context, pluginCtx *sdk.Context) (sdk.Result, error) {
+		if pluginCtx == nil || pluginCtx.Event == nil {
+			return sdk.Stop, nil
+		}
+		return sdk.Stop, p.handler.HandleEvent(ctx, fromSDKEvent(pluginCtx.Event))
+	}); err != nil {
+		return err
+	}
+	if err := router.Rule(sdk.Rule{
+		ID: "builtin.debug.session", Event: "message", Pattern: `^#session$`, Permission: sdk.PermissionMaster,
 	}, func(ctx context.Context, pluginCtx *sdk.Context) (sdk.Result, error) {
 		if err := pluginCtx.Session.Set(30*time.Second, func(ctx context.Context, next *sdk.Context) (sdk.Result, error) {
 			_, err := next.Reply(ctx, sdk.Segment{Type: "text", Data: map[string]any{"text": "[go-yunzai] 会话验证完成"}})
@@ -72,7 +82,7 @@ func (p *DebugPlugin) Stop(context.Context) error { return nil }
 func fromSDKEvent(evt *sdk.Event) *event.Event {
 	segments := make([]message.Segment, len(evt.Message))
 	for i, segment := range evt.Message {
-		segments[i] = message.Segment{Type: segment.Type, Data: segment.Data}
+		segments[i] = message.Segment{Type: segment.Type, Data: cloneSegmentData(segment.Data)}
 	}
 	return &event.Event{
 		Time:          evt.Time,
@@ -93,6 +103,17 @@ func fromSDKEvent(evt *sdk.Event) *event.Event {
 		Flag:          evt.Flag,
 		Comment:       evt.Comment,
 		Interval:      evt.Interval,
-		Status:        evt.Status,
+		Status:        cloneSegmentData(evt.Status),
 	}
+}
+
+func cloneSegmentData(data map[string]any) map[string]any {
+	if data == nil {
+		return nil
+	}
+	clone := make(map[string]any, len(data))
+	for key, value := range data {
+		clone[key] = value
+	}
+	return clone
 }

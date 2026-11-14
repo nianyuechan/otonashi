@@ -153,12 +153,12 @@
 | 阶段 | 声称 | 核验结果 |
 |---|---|---|
 | 零 | 双轮基线、报告、目标数值 | 脚本和数据存在、数字可复算；稳态延迟口径有 H1 缺陷，目标数值仍空 |
-| 一 | 构建验证、示例配置、Git 基线 | 构建/示例/脚本通过；`.git` 仍未建立 |
-| 二 | 4 个生命周期缺陷修复 + 回归 | 测试存在并通过；M5/M6 关闭/重启路径仍有残留风险 |
+| 一 | 构建验证、示例配置、Git 基线 | 构建/示例/脚本通过；Git 基线已建立（`551a8c5`，218 files） |
+| 二 | 4 个生命周期缺陷修复 + 回归 | 测试存在并通过；M5/M6 已补关闭/启动互斥与 closed 状态测试 |
 | 三 | 离线闭环、真实握手、一次真实发消息 | 离线闭环有测试；真实入站未验证（README 记录，需第二账号） |
 | 四 | PNG 段、降级、超时 | 实现与测试一致；M7 属渲染服务通用 API 风险，M8 为默认启用风险 |
-| 五 | 规则、权限、会话、任务、动态加载 | 实现与测试较完整；H2 存储依赖未受能力约束、M2 无界并发 |
-| 六 | SQLite、Redis、legacy、配置快照 | 实现与测试存在；M3 性能特征、M4 无界 map、L3 测试范围 |
+| 五 | 规则、权限、会话、任务、动态加载 | 实现与测试较完整；H2 存储能力与 M2 并发上限已修，M1 事件上下文已修 |
+| 六 | SQLite、Redis、legacy、配置快照 | 实现与测试存在；M3 待压测，M4 冷却清理已修，L3 仅改测试命名 |
 
 ## 七、建议修复顺序
 
@@ -170,7 +170,36 @@
 6. **M1/M2 事件 ctx 与并发上限**（1–2 天）：需要设计决策，放在控制面之前。
 7. 其余按阶段七至十一推进。
 
-## 八、审计限制
+## 八、修复落地状态（2026-11-14）
+
+基线：Git 仓库已初始化，修复前快照为 `551a8c5`（218 files，`baseline: snapshot before audit fixes`）。
+
+| 项 | 状态 | 落地内容 |
+|---|---|---|
+| H1 | 已修并重采 | `metrics.go` 纳入全部 `ReplyNS > 0` 样本（含 0），不再按 `LatencyMS > 0` 过滤；`session.go` 在 Windows 用 `QueryPerformanceCounter` 计时（其他平台回退 `time.Since`），并在 `push` 记录高精度起点。QPC 重采两轮均为 593/593 样本、0 个 `0ms`：p50 0.41–0.42ms、p95 0.83–0.86ms、p99 1.33–1.36ms。`phase0-baseline.md` 原"1/11"改为 p50 约 1/7、p95 约 1/6、p99 约 1/27–1/47；突发 250/250 数字保留。旧版本轮因 node_modules 缺 `es-toolkit` 未能重跑，沿用 15:53 原始 JSON。 |
+| H2 | 已修 | 新增 `sdk.CapabilityStorage`；`Context.Store`/`TaskContext.Store` 仅在插件声明 `storage` 时注入，否则为 `nil`；内置调试插件补声明；新增能力门控测试。 |
+| H3 | 已修 | `config.Validate` 拒绝 URL query 中的 `access_token`/`token`/`secret`/`password`/`authorization`；连接日志用 `redactURL` 清除 userinfo/query/fragment；新增配置与脱敏测试。 |
+| M1 | 已修 | `Client.Run` 建立独立的 event context，断线只取消当前连接，不取消在途事件；新增断线不取消在途事件测试。 |
+| M2 | 已修 | `Dispatcher` 默认最多 256 个并发事件，超过后由读取循环形成背压；新增并发上限测试。 |
+| M3 | 未改 | `synchronous(FULL)` + 单连接仍是写入基线。切换 WAL/NORMAL 涉及持久性取舍，且现有代码注释记录了快速重启时的锁竞争；需先做写入压测再决定，不在本轮盲改。 |
+| M4 | 已修 | 冷却表按分钟惰性清理过期项；新增 50 个主体过期清理测试。 |
+| M5 | 已修 | `browserManager.newPage` 用独立 `startMu` 串行化获取，启动浏览器期间不再持有 `mu`；`close` 不被启动阻塞；新增阻塞启动/关闭测试。 |
+| M6 | 已修 | `browserManager` 增加 `closed` 状态，`close` 后 `newPage` 返回 `errBrowserManagerClosed`，不会重建浏览器；新增测试。 |
+| M7 | 未改，范围受限 | 渲染服务默认监听 `127.0.0.1:8080`；`#render` 只渲染固定页面并已限制为主人命令。任意 HTML 调用方的出站隔离仍需网络策略/Chromium 沙箱，单独设计。 |
+| M8 | 已修 | `debug.enabled` 配置默认 `false`，`app.NewWith` 据此注册调试插件；`config.example.yaml` 增加开关；`#render`/`#session` 限制 `PermissionMaster`；`#note` 保持按用户/会话隔离（不限制普通用户，避免改变其演示语义）。 |
+| L1 | 已修 | 脚本与 README、plan.md 统一为三个模块。 |
+| L2 | 已修 | 基线报告披露 `latency_count/paired_replies` 与零值过滤，撤下不可引用分位数。 |
+| L3 | 已修（仅命名） | 用例改名为 `TestLegacyJSONGoRoundTrip` 并注明只验证 Go 编解码往返；真实旧字节 fixture 仍未完成。 |
+| L4 | 已修（可观测） | `SQLite.Path()` 返回绝对路径，启动日志打印实际数据库路径；相对路径解析规则不变。 |
+| L5 | 已修 | `DecodeEvent` 拒绝 `message: null` 与空数组；新增测试。 |
+| L6 | 已修 | `toSDKEvent`/`fromSDKEvent` 复制 `segment.Data` 与 `Status` map；避免插件间共享可变引用。 |
+| L7 | 已修 | `#render` 超过 8 MiB 的 PNG 不发送，改为文本提示；新增测试。 |
+| L8 | 已修 | 权限只对 `MessageType == "group"` 且 `GroupID > 0` 的事件授予 owner/admin；新增非 group 事件测试。 |
+| L9 | 已修（文档） | README 说明停止时先停收新事件、5 秒内等待在途事件，超时取消并丢弃。 |
+
+验证：`scripts/Test-Go.ps1` 在全部修复后对 go-yunzai、go-render、bench 三模块的 fmt/test/build/vet 通过；完整 `go test ./...` 曾出现一次 `TestNoteSurvivesApplicationRestartThroughOneBot/private` 的 SQLite 打开超时，单独复跑通过（与 M3 的持久化/锁取舍相关，未在本轮改存储引擎）。H1 已用 QPC 重采两轮，结果见 `bench/reports/phase0-baseline.md`。`-race` 仍未运行（缺 CGO/C 编译器）。
+
+## 九、审计限制
 
 - 未运行 `go test -race`：环境 `CGO_ENABLED=0`，缺 C 编译器。
 - 未启动 SnowLuma 或 Chromium 做真实联调，真实链路结论沿用 README 记录。

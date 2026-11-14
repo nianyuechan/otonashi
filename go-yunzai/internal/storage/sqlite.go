@@ -21,6 +21,7 @@ import (
 
 type SQLite struct {
 	db        *sql.DB
+	path      string
 	now       func() time.Time
 	closed    atomic.Bool
 	closeOnce sync.Once
@@ -63,7 +64,7 @@ func Open(ctx context.Context, path string) (*SQLite, error) {
 	}
 	db.SetMaxOpenConns(1)
 	db.SetMaxIdleConns(1)
-	s := &SQLite{db: db, now: time.Now}
+	s := &SQLite{db: db, path: abs, now: time.Now}
 	// Keep the default rollback journal. Switching journal_mode during every
 	// process start requires an exclusive lock and made rapid restart compete
 	// with a previous close; busy_timeout still protects ordinary writes.
@@ -89,6 +90,9 @@ func Open(ctx context.Context, path string) (*SQLite, error) {
 func (s *SQLite) Scope(pluginID string) sdk.KVStore {
 	return scoped{s: s, namespace: "yzgo:" + pluginID + ":v1"}
 }
+
+// Path 返回打开时解析出的绝对数据库路径。
+func (s *SQLite) Path() string { return s.path }
 
 func (s *SQLite) Close() error {
 	s.closeOnce.Do(func() {

@@ -67,6 +67,9 @@ func DecodeEvent(data []byte) (*event.Event, error) {
 		if err := json.Unmarshal(wire.Message, &segments); err != nil {
 			return nil, fmt.Errorf("decode OneBot array message: %w", err)
 		}
+		if len(segments) == 0 {
+			return nil, fmt.Errorf("decode OneBot message: array message must not be empty")
+		}
 		evt.Message = segments
 	}
 	return evt, nil

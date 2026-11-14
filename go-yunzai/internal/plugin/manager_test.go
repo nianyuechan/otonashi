@@ -313,3 +313,69 @@ func TestManagerCooldownIsPerSubject(t *testing.T) {
 		t.Fatalf("calls after expiry = %d, want 3", calls)
 	}
 }
+
+func TestManagerGatesStoreOnStorageCapability(t *testing.T) {
+	for _, declared := range []bool{false, true} {
+		name := "without storage capability"
+		if declared {
+			name = "with storage capability"
+		}
+		t.Run(name, func(t *testing.T) {
+			manager := NewWithOptions(&fakeSender{}, nil, Options{})
+			var hasStore bool
+			descriptor := sdk.Descriptor{ID: "store-check", Version: "1"}
+			if declared {
+				descriptor.Capabilities = []sdk.Capability{sdk.CapabilityStorage}
+			}
+			if err := manager.Register(&fakePlugin{descriptor: descriptor, rules: func(r sdk.Router) error {
+				return r.Rule(sdk.Rule{ID: "capture", Event: "message"}, func(_ context.Context, c *sdk.Context) (sdk.Result, error) {
+					hasStore = c.Store != nil
+					return sdk.Stop, nil
+				})
+			}}); err != nil {
+				t.Fatal(err)
+			}
+			startManager(t, manager)
+			if err := manager.HandleEvent(context.Background(), &event.Event{PostType: "message", UserID: 1001}); err != nil {
+				t.Fatal(err)
+			}
+			if hasStore != declared {
+				t.Fatalf("Store injected = %v, want %v", hasStore, declared)
+			}
+		})
+	}
+}
+
+func TestManagerCooldownSweepsExpiredEntries(t *testing.T) {
+	now := time.Unix(100, 0)
+	manager := NewWithOptions(&fakeSender{}, nil, Options{
+		Policy: sdk.Policy{Cooldown: time.Minute},
+		Now:    func() time.Time { return now },
+	})
+	plugin := &fakePlugin{
+		descriptor: sdk.Descriptor{ID: "cooldown", Version: "1.0.0"},
+		rules: func(router sdk.Router) error {
+			return router.Rule(sdk.Rule{ID: "cooldown.message", Event: "message"}, func(context.Context, *sdk.Context) (sdk.Result, error) {
+				return sdk.Next, nil
+			})
+		},
+	}
+	if err := manager.Register(plugin); err != nil {
+		t.Fatal(err)
+	}
+	startManager(t, manager)
+	for userID := int64(1); userID <= 50; userID++ {
+		if err := manager.HandleEvent(context.Background(), &event.Event{PostType: "message", UserID: userID}); err != nil {
+			t.Fatal(err)
+		}
+	}
+	now = now.Add(2 * time.Minute)
+	if err := manager.HandleEvent(context.Background(), &event.Event{PostType: "message", UserID: 1}); err != nil {
+		t.Fatal(err)
+	}
+	manager.cooldownMu.Lock()
+	defer manager.cooldownMu.Unlock()
+	if len(manager.cooldowns) != 1 {
+		t.Fatalf("cooldown table kept %d expired entries, want 1", len(manager.cooldowns)-1)
+	}
+}

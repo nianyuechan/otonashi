@@ -158,11 +158,15 @@ func (m *Manager) withPlugin(ctx context.Context, run *managerRun, p eventPlugin
 		return
 	}
 	publicEvent := toSDKEvent(evt)
-	fn(ctx, &sdk.Context{
+	pluginCtx := &sdk.Context{
 		Event: publicEvent, Runtime: runtimeContext(evt), Permissions: permissions,
 		Sender: senderAdapter{sender: m.sender}, Session: pr.sessions.scope(p.plugin.descriptor.ID, publicEvent),
-		Store: m.storeFor(p.plugin.descriptor.ID, pr), Config: settings.View(p.plugin.descriptor.ID, evt.SelfID, evt.GroupID),
-	})
+		Config: settings.View(p.plugin.descriptor.ID, evt.SelfID, evt.GroupID),
+	}
+	if declaresStorage(p.plugin.descriptor.Capabilities) {
+		pluginCtx.Store = m.storeFor(p.plugin.descriptor.ID, pr)
+	}
+	fn(ctx, pluginCtx)
 }
 
 func descriptorMatches(d sdk.Descriptor, evt *event.Event) bool {

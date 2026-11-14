@@ -18,19 +18,20 @@ import (
 
 // Manager owns plugin registration, lifecycle, and rule dispatch.
 type Manager struct {
-	lifecycleMu sync.Mutex
-	mu          sync.RWMutex
-	plugins     []*registeredPlugin
-	sender      message.Sender
-	logger      *slog.Logger
-	run         *managerRun
-	order       uint64
-	policy      policyState
-	stores      StoreProvider
-	configs     *pluginconfig.Registry
-	now         func() time.Time
-	cooldownMu  sync.Mutex
-	cooldowns   map[string]time.Time
+	lifecycleMu   sync.Mutex
+	mu            sync.RWMutex
+	plugins       []*registeredPlugin
+	sender        message.Sender
+	logger        *slog.Logger
+	run           *managerRun
+	order         uint64
+	policy        policyState
+	stores        StoreProvider
+	configs       *pluginconfig.Registry
+	now           func() time.Time
+	cooldownMu    sync.Mutex
+	cooldowns     map[string]time.Time
+	cooldownSweep time.Time
 }
 
 // Options configures plugin admission and event filtering.
@@ -219,6 +220,15 @@ func (p policyState) validateCapabilities(capabilities []sdk.Capability) error {
 	return nil
 }
 
+func declaresStorage(capabilities []sdk.Capability) bool {
+	for _, capability := range capabilities {
+		if capability == sdk.CapabilityStorage {
+			return true
+		}
+	}
+	return false
+}
+
 func (p policyState) allowsEvent(evt *event.Event) bool {
 	if _, denied := p.denyUsers[evt.UserID]; denied && evt.UserID != 0 {
 		return false
@@ -250,6 +260,14 @@ func (m *Manager) takeCooldown(pluginID, ruleID string, evt *event.Event, durati
 	now := m.now()
 	m.cooldownMu.Lock()
 	defer m.cooldownMu.Unlock()
+	if now.Sub(m.cooldownSweep) >= time.Minute {
+		for staleKey, until := range m.cooldowns {
+			if !until.After(now) {
+				delete(m.cooldowns, staleKey)
+			}
+		}
+		m.cooldownSweep = now
+	}
 	if until, ok := m.cooldowns[key]; ok && until.After(now) {
 		return false
 	}
@@ -369,7 +387,7 @@ func (s senderAdapter) SendMessage(ctx context.Context, outgoing sdk.Outgoing) (
 func toSDKEvent(evt *event.Event) *sdk.Event {
 	segments := make([]sdk.Segment, len(evt.Message))
 	for i, segment := range evt.Message {
-		segments[i] = sdk.Segment{Type: segment.Type, Data: segment.Data}
+		segments[i] = sdk.Segment{Type: segment.Type, Data: cloneData(segment.Data)}
 	}
 	return &sdk.Event{
 		Time:          evt.Time,
@@ -390,8 +408,19 @@ func toSDKEvent(evt *event.Event) *sdk.Event {
 		Flag:          evt.Flag,
 		Comment:       evt.Comment,
 		Interval:      evt.Interval,
-		Status:        evt.Status,
+		Status:        cloneData(evt.Status),
 	}
+}
+
+func cloneData(data map[string]any) map[string]any {
+	if data == nil {
+		return nil
+	}
+	clone := make(map[string]any, len(data))
+	for key, value := range data {
+		clone[key] = value
+	}
+	return clone
 }
 
 func runtimeContext(evt *event.Event) sdk.RuntimeContext {

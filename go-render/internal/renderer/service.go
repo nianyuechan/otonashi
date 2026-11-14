@@ -13,8 +13,9 @@ import (
 )
 
 var (
-	ErrPageCrashed    = errors.New("page crashed")
-	ErrBrowserCrashed = errors.New("browser crashed")
+	ErrPageCrashed          = errors.New("page crashed")
+	ErrBrowserCrashed       = errors.New("browser crashed")
+	errBrowserManagerClosed = errors.New("browser manager is closed")
 )
 
 type Page interface {
@@ -113,7 +114,7 @@ func (s *Service) Start(ctx context.Context) error {
 			for _, created := range slots {
 				_ = created.page.Close()
 			}
-			_ = s.manager.close()
+			_ = s.manager.reset()
 			s.mu.Lock()
 			s.started = false
 			s.mu.Unlock()
@@ -277,35 +278,63 @@ type browserManager struct {
 	startTimeout time.Duration
 
 	mu         sync.Mutex
+	startMu    sync.Mutex
 	browser    Browser
 	generation uint64
+	closed     bool
 }
 
 func (m *browserManager) newPage(ctx context.Context) (pageSlot, error) {
+	// Serialize page acquisition without holding mu: starting a browser can
+	// block for seconds, and close/generation queries must not wait on it.
+	m.startMu.Lock()
+	defer m.startMu.Unlock()
+
 	m.mu.Lock()
-	defer m.mu.Unlock()
-	startCtx, cancel := context.WithTimeout(ctx, m.startTimeout)
-	defer cancel()
-	if m.browser != nil && done(m.browser.Done()) {
-		_ = m.browser.Close()
+	if m.closed {
+		m.mu.Unlock()
+		return pageSlot{}, errBrowserManagerClosed
+	}
+	browser := m.browser
+	generation := m.generation
+	if browser != nil && done(browser.Done()) {
+		_ = browser.Close()
+		browser = nil
 		m.browser = nil
 	}
-	if m.browser == nil {
-		browser, err := m.factory(startCtx)
+	m.mu.Unlock()
+
+	startCtx, cancel := context.WithTimeout(ctx, m.startTimeout)
+	defer cancel()
+	if browser == nil {
+		started, err := m.factory(startCtx)
 		if err != nil {
 			return pageSlot{}, fmt.Errorf("start browser: %w", err)
 		}
-		m.browser = browser
+		m.mu.Lock()
+		if m.closed {
+			m.mu.Unlock()
+			_ = started.Close()
+			return pageSlot{}, errBrowserManagerClosed
+		}
+		m.browser = started
 		m.generation++
+		generation = m.generation
+		m.mu.Unlock()
 		m.metrics.browserStarts.Inc()
+		browser = started
 	}
-	page, err := m.browser.NewPage(startCtx)
+	page, err := browser.NewPage(startCtx)
 	if err != nil {
-		_ = m.browser.Close()
-		m.browser = nil
+		m.mu.Lock()
+		if m.browser == browser {
+			_ = browser.Close()
+			m.browser = nil
+		}
+		m.mu.Unlock()
 		return pageSlot{}, fmt.Errorf("create page: %w", err)
 	}
-	return pageSlot{page: page, generation: m.generation}, nil
+	return pageSlot{page: page, generation: generation}, nil
 }
 
 func (m *browserManager) currentGeneration() uint64 {
@@ -332,9 +361,20 @@ func (m *browserManager) invalidate(generation uint64) {
 	m.browser = nil
 }
 
+func (m *browserManager) reset() error {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+	return m.closeBrowser()
+}
+
 func (m *browserManager) close() error {
 	m.mu.Lock()
 	defer m.mu.Unlock()
+	m.closed = true
+	return m.closeBrowser()
+}
+
+func (m *browserManager) closeBrowser() error {
 	if m.browser == nil {
 		return nil
 	}

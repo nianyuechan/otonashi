@@ -114,6 +114,7 @@ func runNoteConversation(t *testing.T, path, messageType string, steps []noteSte
 	cfg.Storage.Path = path
 	cfg.OneBot.URL = "ws" + strings.TrimPrefix(server.URL, "http")
 	cfg.OneBot.AccessToken = "offline-test-token"
+	cfg.Debug.Enabled = true
 	application, err := New(cfg)
 	if err != nil {
 		t.Fatal(err)

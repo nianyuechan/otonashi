@@ -79,7 +79,8 @@ type Log struct {
 }
 
 type Debug struct {
-	Reply string `yaml:"reply"`
+	Enabled bool   `yaml:"enabled"`
+	Reply   string `yaml:"reply"`
 }
 
 type Render struct {
@@ -164,6 +165,9 @@ func (c Config) Validate() error {
 	if u.User != nil {
 		return fmt.Errorf("onebot.url must not contain credentials")
 	}
+	if sensitiveQueryValue(u.Query()) {
+		return fmt.Errorf("onebot.url must not contain credentials in query parameters")
+	}
 	if strings.TrimSpace(c.OneBot.AccessToken) == "" {
 		return fmt.Errorf("onebot.access_token is required")
 	}
@@ -223,4 +227,14 @@ func (c Config) Validate() error {
 		}
 	}
 	return nil
+}
+
+func sensitiveQueryValue(values url.Values) bool {
+	for key := range values {
+		switch strings.ToLower(key) {
+		case "access_token", "token", "secret", "password", "authorization":
+			return true
+		}
+	}
+	return false
 }

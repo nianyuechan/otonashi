@@ -25,6 +25,7 @@ type session struct {
 	mu          sync.Mutex
 	events      []EventRecord
 	sentIndex   map[int64]int // seq -> events 下标
+	sentAt      map[int64]int64
 	actionCount int
 	actionErrs  int
 	writeMu     sync.Mutex
@@ -33,7 +34,7 @@ type session struct {
 func newSession(cfg Config, conn *websocket.Conn, log *slog.Logger) *session {
 	return &session{
 		cfg: cfg, conn: conn, log: log, gen: newGenerator(cfg.Workload),
-		sentIndex: make(map[int64]int),
+		sentIndex: make(map[int64]int), sentAt: make(map[int64]int64),
 	}
 }
 
@@ -208,8 +209,21 @@ func (s *session) recordReply(text string, at time.Time) {
 		s.log.Warn("同一序号收到重复回复", "seq", seq)
 		return
 	}
+	start, ok := s.sentAt[seq]
+	var latency time.Duration
+	if ok {
+		latency = clockDuration(start, clockNow())
+	} else {
+		// 兼容直接构造 EventRecord 的调用方和旧结果回放；push 路径总是写入
+		// 高精度计时起点。
+		latency = time.Duration(at.UnixNano() - s.events[index].SentNS)
+	}
+	if latency < 0 {
+		latency = 0
+	}
+	delete(s.sentAt, seq)
 	s.events[index].ReplyNS = at.UnixNano()
-	s.events[index].LatencyMS = float64(at.UnixNano()-s.events[index].SentNS) / 1e6
+	s.events[index].LatencyMS = float64(latency) / 1e6
 }
 
 func (s *session) write(payload []byte) error {
@@ -236,6 +250,7 @@ func (s *session) push(ctx context.Context, spec messageSpec, index int) error {
 	messageID := s.msgID
 	if spec.Seq > 0 {
 		s.sentIndex[spec.Seq] = eventIndex
+		s.sentAt[spec.Seq] = clockNow()
 	}
 	s.mu.Unlock()
 

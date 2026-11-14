@@ -37,9 +37,9 @@ Copy-Item config.example.yaml config.yaml
 
 只有获得真实联机授权并自行启动 SnowLuma 后才应执行上述运行命令。联调期间使用了临时配置文件，验证结束后已删除；项目不会提交真实 token。
 
-配置项包括 WS 地址、token、日志级别、请求超时、WS ping 间隔、重连初始/最大退避和调试回复文本。默认请求超时为 10 秒，不沿用旧实现的固定 60 秒；默认 ping 间隔 20 秒，重连退避为 500ms 至 30s。
+配置项包括 WS 地址、token、日志级别、请求超时、WS ping 间隔、重连初始/最大退避和调试开关（`debug.enabled`，默认 `false`）与回复文本。默认请求超时为 10 秒，不沿用旧实现的固定 60 秒；默认 ping 间隔 20 秒，重连退避为 500ms 至 30s。
 
-`plugins` 配置包含 `masters`（机器人账号 ID → 主人用户 ID 列表）、`allowed_capabilities`、`allow_users/deny_users`、`allow_groups/deny_groups` 和 `cooldown`。默认为空列表及零冷却；空白名单表示不限制，黑名单优先。配置中账号与用户/群 ID 必须为正数，冷却不能为负数。限制能力时，内置调试插件需要同时允许 `messages` 和 `render`；缺少任一个会导致注册失败。配置目前在启动时加载，不提供热更新。
+`plugins` 配置包含 `masters`（机器人账号 ID → 主人用户 ID 列表）、`allowed_capabilities`、`allow_users/deny_users`、`allow_groups/deny_groups` 和 `cooldown`。默认为空列表及零冷却；空白名单表示不限制，黑名单优先。配置中账号与用户/群 ID 必须为正数，冷却不能为负数。能力包括 `messages`、`render`、`storage`；`sdk.Context.Store` 只有在插件声明 `storage` 时才注入，未声明时为 `nil`。限制能力时，内置调试插件需要同时允许 `messages`、`render` 和 `storage`；缺少任一个会导致注册失败。配置目前在启动时加载，不提供热更新。
 
 ## 离线测试
 
@@ -51,9 +51,9 @@ Copy-Item config.example.yaml config.yaml
 & ..\scripts\Test-Go.ps1
 ```
 
-脚本依次检查 `go-yunzai` 和 `go-render` 的格式、单元测试、构建与 `vet`，遇到失败立即退出。默认使用 `G:\ALL WORK\音无\tools\go\bin\go.exe`，本次运行的 `GOPATH`、`GOMODCACHE`、`GOCACHE`、`GOTMPDIR`、`TEMP/TMP` 均放在 `G:\ALL WORK\音无` 下，结束后恢复原有进程环境。可用 `-GoExecutable`、`-CacheRoot` 覆盖路径。系统和用户级 Go 配置未全局迁移，直接调用 Go 时需要自行设置路径。
+脚本依次检查 `go-yunzai`、`go-render` 和 `bench` 的格式、单元测试、构建与 `vet`，遇到失败立即退出。默认使用 `G:\ALL WORK\音无\tools\go\bin\go.exe`，本次运行的 `GOPATH`、`GOMODCACHE`、`GOCACHE`、`GOTMPDIR`、`TEMP/TMP` 均放在 `G:\ALL WORK\音无` 下，结束后恢复原有进程环境。可用 `-GoExecutable`、`-CacheRoot` 覆盖路径。系统和用户级 Go 配置未全局迁移，直接调用 Go 时需要自行设置路径。
 
-2026-11-14，该脚本对两个模块的检查全部通过。可选 `-Race` 需要预先配置 CGO 和 C 编译器；当前环境尚未完成该项验证。
+2026-11-14，该脚本对三个模块的检查全部通过。可选 `-Race` 需要预先配置 CGO 和 C 编译器；当前环境尚未完成该项验证。
 
 假 OneBot WS 服务端覆盖：
 
@@ -104,10 +104,12 @@ ok   github.com/trss-yunzai/go-yunzai/internal/config 1.378s
 - 只实现 Universal WS 上的 `send_msg`，群和私聊共用该动作；尚未实现其他 OneBot API。
 - 同时支持 WS ping 与 OneBot heartbeat 事件解码；蓝图未规定“连续丢失几次 heartbeat 后主动断开”，M1 未自行增加该策略。
 - 重连使用无抖动指数退避；连接稳定达到最大退避时长后，下次退避重置为初始值。
-- 单事件内按插件优先级和注册顺序调用规则，不同事件可并发；规则支持短路结果、能力策略、用户/群黑白名单和按主体冷却。
+- 单事件内按插件优先级和注册顺序调用规则，不同事件可并发；默认最多 256 个事件同时处理，超过后由适配器读取循环形成背压。
 - 插件上下文提供账号、用户、群、消息 ID 和消息类型等统一运行时字段。
+- 内置调试插件默认关闭，需在配置中设置 `debug.enabled: true` 才注册；`#render` 和 `#session` 仅主人可用，`#note` 按账号/会话/用户隔离且受 `note_max_bytes` 限制。
 - 调试处理器回复固定文本，不回显用户正文；默认文本为 `[go-yunzai] M1 调试回复`。
-- 调试处理器启用渲染客户端后，收到独立的 `#render` 文本消息会渲染固定测试页面并发送 OneBot `image` 段；普通消息仍回复固定文本。
+- 调试处理器启用渲染客户端后，主人发送独立的 `#render` 文本消息会渲染固定测试页面并发送 OneBot `image` 段；超过 8 MiB 的 PNG 不发送并回复提示。普通消息仍回复固定文本。
+- 停止时先停止接收新事件，再在 `DefaultShutdownTimeout`（5 秒）内等待在途事件；超时后取消剩余处理器并丢弃，未完成的事件可能没有回复。
 - `reportSelfMessage=false` 是 SnowLuma 侧配置。离线 fake 不上报自消息；真实配置与行为未在 M1 改动或验证。
 
 ## 真实 SnowLuma 验证（2026-11-14）

@@ -269,6 +269,25 @@ func TestBuildSummaryCounts(t *testing.T) {
 	}
 }
 
+func TestBuildSummaryKeepsZeroLatencyPairedReplies(t *testing.T) {
+	now := time.Now().UnixNano()
+	events := []EventRecord{
+		{Index: 0, Seq: 1, Text: "bench 1", SentNS: now, ReplyNS: now},
+		{Index: 1, Seq: 2, Text: "bench 2", SentNS: now, ReplyNS: now + 1_000, LatencyMS: 0.001},
+		{Index: 2, Seq: 3, Text: "bench 3", SentNS: now},
+	}
+	summary := BuildSummary(events, nil, 2, 0, 1000, 3)
+	if summary.PairedReplies != 2 || summary.MissingReplies != 1 {
+		t.Fatalf("配对计数错误: %+v", summary)
+	}
+	if summary.LatencyCount != summary.PairedReplies {
+		t.Fatalf("latency_count = %d, paired_replies = %d；零延迟样本被丢弃", summary.LatencyCount, summary.PairedReplies)
+	}
+	if summary.LatencyP50MS != 0.0005 || summary.LatencyMaxMS != 0.001 {
+		t.Fatalf("零延迟样本未参与分位数: %+v", summary)
+	}
+}
+
 func TestWriteResultAtomic(t *testing.T) {
 	dir := t.TempDir()
 	path := filepath.Join(dir, "result.json")

@@ -89,6 +89,7 @@ func TestRoleContextDoesNotTrustPrivateOrMismatchedSender(t *testing.T) {
 	for _, evt := range []*event.Event{
 		{MessageType: "private", GroupID: 0, UserID: 20, Sender: event.Sender{UserID: 20, Role: "owner"}},
 		{MessageType: "group", GroupID: 30, UserID: 20, Sender: event.Sender{UserID: 21, Role: "owner"}},
+		{MessageType: "message_sent", GroupID: 30, UserID: 20, Sender: event.Sender{UserID: 20, Role: "owner"}},
 	} {
 		if got := policy.permissions(evt); got.IsAdmin || got.IsOwner || got.IsMaster {
 			t.Fatalf("untrusted role granted permissions: %+v", got)

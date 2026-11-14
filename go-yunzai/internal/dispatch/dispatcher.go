@@ -8,19 +8,30 @@ import (
 	"github.com/trss-yunzai/go-yunzai/internal/event"
 )
 
+// DefaultMaxConcurrent 限制同时处理的事件数，避免突发流量无限创建 goroutine。
+const DefaultMaxConcurrent = 256
+
 // Dispatcher 分发事件，不增加跨事件串行队列。
 type Dispatcher struct {
 	mu       sync.RWMutex
 	handlers []event.Handler
 	logger   *slog.Logger
 	wg       sync.WaitGroup
+	slots    chan struct{}
 }
 
 func New(logger *slog.Logger) *Dispatcher {
+	return NewWithLimit(logger, DefaultMaxConcurrent)
+}
+
+func NewWithLimit(logger *slog.Logger, maxConcurrent int) *Dispatcher {
 	if logger == nil {
 		logger = slog.Default()
 	}
-	return &Dispatcher{logger: logger}
+	if maxConcurrent <= 0 {
+		maxConcurrent = 1
+	}
+	return &Dispatcher{logger: logger, slots: make(chan struct{}, maxConcurrent)}
 }
 
 func (d *Dispatcher) Register(handler event.Handler) {
@@ -30,6 +41,11 @@ func (d *Dispatcher) Register(handler event.Handler) {
 }
 
 func (d *Dispatcher) Dispatch(ctx context.Context, evt *event.Event) {
+	select {
+	case d.slots <- struct{}{}:
+	case <-ctx.Done():
+		return
+	}
 	d.mu.RLock()
 	handlers := append([]event.Handler(nil), d.handlers...)
 	d.wg.Add(1)
@@ -37,6 +53,7 @@ func (d *Dispatcher) Dispatch(ctx context.Context, evt *event.Event) {
 
 	go func() {
 		defer d.wg.Done()
+		defer func() { <-d.slots }()
 		for _, handler := range handlers {
 			if err := handler.HandleEvent(ctx, evt); err != nil {
 				d.logger.Error("event handler failed", "post_type", evt.PostType, "error", err)

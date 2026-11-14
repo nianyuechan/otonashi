@@ -219,7 +219,7 @@ func shutdownContext(ctx context.Context) (context.Context, context.CancelFunc) 
 func (m *Manager) activate(p *registeredPlugin) {
 	for _, task := range p.tasks {
 		p.run.wg.Add(1)
-		go m.runTask(p.run, p.descriptor.ID, task)
+		go m.runTask(p.run, p, task)
 	}
 	p.run.ready = true
 }
@@ -365,18 +365,21 @@ func callLifecycle(fn func(context.Context) error, ctx context.Context) (err err
 	return fn(ctx)
 }
 
-func (m *Manager) runTask(run *pluginRun, pluginID string, task registeredTask) {
+func (m *Manager) runTask(run *pluginRun, plugin *registeredPlugin, task registeredTask) {
 	defer run.wg.Done()
 	invoke := func() {
 		if run.ctx.Err() != nil {
 			return
 		}
 		taskCtx := &sdk.TaskContext{
-			PluginID: pluginID, Sender: senderAdapter{sender: m.sender},
-			Store: m.storeFor(pluginID, run), Config: m.configs.Snapshot().View(pluginID, 0, 0),
+			PluginID: plugin.descriptor.ID, Sender: senderAdapter{sender: m.sender},
+			Config: m.configs.Snapshot().View(plugin.descriptor.ID, 0, 0),
+		}
+		if declaresStorage(plugin.descriptor.Capabilities) {
+			taskCtx.Store = m.storeFor(plugin.descriptor.ID, run)
 		}
 		if err := callTask(task.handle, run.ctx, taskCtx); err != nil && run.ctx.Err() == nil {
-			m.logger.Error("plugin task failed", "plugin", pluginID, "task", task.task.ID, "error", err)
+			m.logger.Error("plugin task failed", "plugin", plugin.descriptor.ID, "task", task.task.ID, "error", err)
 		}
 	}
 	if task.task.Every == 0 {

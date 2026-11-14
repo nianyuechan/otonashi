@@ -82,6 +82,9 @@ func NewWith(cfg config.Config, opts Options) (*App, error) {
 		renderer.Close()
 		return nil, fmt.Errorf("open plugin storage: %w", err)
 	}
+	if sqlite, ok := store.(*storage.SQLite); ok {
+		logger.Info("plugin storage opened", "path", sqlite.Path())
+	}
 	settings, err := pluginconfig.New(cfg.Plugins.Settings)
 	if err != nil {
 		renderer.Close()
@@ -92,7 +95,7 @@ func NewWith(cfg config.Config, opts Options) (*App, error) {
 		Policy: cfg.Plugins.SDKPolicy(), Stores: store, Config: settings,
 	})
 	// 在 Run 接收协议流量之前完成插件注册。
-	if !opts.DisableBuiltinDebug {
+	if !opts.DisableBuiltinDebug && cfg.Debug.Enabled {
 		if err := plugins.Register(builtin.NewDebugPlugin(onebotClient, renderer, cfg.Debug.Reply)); err != nil {
 			renderer.Close()
 			_ = store.Close()

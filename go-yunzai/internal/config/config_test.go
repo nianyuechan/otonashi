@@ -96,3 +96,18 @@ func TestValidateRejectsCredentialURL(t *testing.T) {
 		t.Fatal("Validate() accepted credentials in the URL")
 	}
 }
+
+func TestValidateRejectsQueryToken(t *testing.T) {
+	for _, raw := range []string{
+		"ws://127.0.0.1:3001/?access_token=secret",
+		"ws://127.0.0.1:3001/?Token=secret",
+		"ws://127.0.0.1:3001/?password=secret",
+	} {
+		cfg := Default()
+		cfg.OneBot.AccessToken = "unit-test-token"
+		cfg.OneBot.URL = raw
+		if err := cfg.Validate(); err == nil {
+			t.Fatalf("Validate() accepted query credentials in %q", raw)
+		}
+	}
+}

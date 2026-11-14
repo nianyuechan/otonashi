@@ -84,6 +84,29 @@ func TestDebugHandlerRenderFailureSendsFallbackText(t *testing.T) {
 	}
 }
 
+func TestDebugHandlerSkipsOversizedRenderImage(t *testing.T) {
+	sender := &captureSender{}
+	renderer := &fakeRenderer{outcome: render.Outcome{
+		Image: &render.Image{Data: make([]byte, maxRenderImageBytes+1)},
+	}}
+	handler := NewDebugHandlerWithRenderer(sender, renderer, "固定回复")
+
+	if err := handler.HandleEvent(context.Background(), &event.Event{
+		PostType:    "message",
+		MessageType: "private",
+		UserID:      1001,
+		Message:     []message.Segment{message.Text(RenderCommand)},
+	}); err != nil {
+		t.Fatalf("HandleEvent() error = %v", err)
+	}
+	if len(sender.outgoing.Message) != 1 || sender.outgoing.Message[0].Type != "text" {
+		t.Fatalf("oversized image was sent: %+v", sender.outgoing.Message)
+	}
+	if sender.outgoing.Message[0].Data["text"] != "渲染图片超过 8 MiB，已跳过发送" {
+		t.Fatalf("unexpected oversized-image reply: %#v", sender.outgoing.Message[0].Data["text"])
+	}
+}
+
 func TestDebugHandlerNormalMessageKeepsFixedReply(t *testing.T) {
 	sender := &captureSender{}
 	renderer := &fakeRenderer{outcome: render.Outcome{Image: &render.Image{Data: []byte("unused")}}}

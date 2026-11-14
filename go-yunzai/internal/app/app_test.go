@@ -36,10 +36,24 @@ func TestNewAppliesConfiguredPluginCapabilities(t *testing.T) {
 	cfg.Storage.Path = filepath.Join(t.TempDir(), "plugins.sqlite")
 	cfg.OneBot.AccessToken = "offline-test-token"
 	cfg.Plugins.AllowedCapabilities = []sdk.Capability{sdk.CapabilityMessages}
+	cfg.Debug.Enabled = true
 	if application, err := New(cfg); err == nil {
 		application.Close()
 		t.Fatal("application ignored configured capability policy")
 	}
+}
+
+func TestNewOmitsDebugPluginWhenDisabled(t *testing.T) {
+	cfg := config.Default()
+	cfg.Storage.Path = filepath.Join(t.TempDir(), "plugins.sqlite")
+	cfg.OneBot.AccessToken = "offline-test-token"
+	cfg.Plugins.AllowedCapabilities = []sdk.Capability{sdk.CapabilityMessages}
+	cfg.Debug.Enabled = false
+	application, err := New(cfg)
+	if err != nil {
+		t.Fatalf("New() rejected a config without the debug plugin: %v", err)
+	}
+	application.Close()
 }
 
 type workerPlugin struct {
@@ -146,6 +160,8 @@ func TestSessionConversationAndShutdownThroughOneBot(t *testing.T) {
 			cfg.Storage.Path = filepath.Join(t.TempDir(), "plugins.sqlite")
 			cfg.OneBot.URL = "ws" + strings.TrimPrefix(server.URL, "http")
 			cfg.OneBot.AccessToken = "offline-test-token"
+			cfg.Debug.Enabled = true
+			cfg.Plugins.Masters = map[int64][]int64{10: {20}}
 			application, err := New(cfg)
 			if err != nil {
 				t.Fatal(err)

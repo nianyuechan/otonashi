@@ -517,3 +517,73 @@ func TestNextBackoffIsExponentialAndCapped(t *testing.T) {
 		t.Fatalf("nextBackoff() = %v, want cap 80ms", got)
 	}
 }
+
+type contextCaptureDispatcher struct {
+	started  chan context.Context
+	finished chan error
+}
+
+func (d *contextCaptureDispatcher) Dispatch(ctx context.Context, _ *event.Event) {
+	d.started <- ctx
+	time.Sleep(100 * time.Millisecond)
+	d.finished <- ctx.Err()
+}
+
+func TestDisconnectDoesNotCancelInFlightEvent(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+		conn, err := websocket.Accept(w, req, nil)
+		if err != nil {
+			return
+		}
+		defer conn.CloseNow()
+		eventFrame := map[string]any{
+			"post_type": "message", "message_type": "private", "self_id": 10,
+			"user_id": 20, "message_id": 1,
+			"message": []map[string]any{{"type": "text", "data": map[string]any{"text": "hello"}}},
+		}
+		data, _ := json.Marshal(eventFrame)
+		if err := conn.Write(context.Background(), websocket.MessageText, data); err != nil {
+			return
+		}
+		conn.CloseNow()
+	}))
+	defer server.Close()
+
+	dispatcher := &contextCaptureDispatcher{started: make(chan context.Context, 1), finished: make(chan error, 1)}
+	client, err := NewClient(Options{
+		URL: "ws" + strings.TrimPrefix(server.URL, "http"), AccessToken: "test-token",
+		Handler: dispatcher, Logger: slog.New(slog.NewTextHandler(io.Discard, nil)),
+		RequestTimeout: time.Second, HeartbeatInterval: time.Second,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	go func() { _ = client.Run(ctx) }()
+	select {
+	case <-dispatcher.started:
+	case <-time.After(2 * time.Second):
+		t.Fatal("event was not dispatched")
+	}
+	select {
+	case err := <-dispatcher.finished:
+		if err != nil {
+			t.Fatalf("disconnect canceled the in-flight event: %v", err)
+		}
+	case <-time.After(2 * time.Second):
+		t.Fatal("dispatched event did not finish")
+	}
+}
+
+func TestRedactURLRemovesCredentials(t *testing.T) {
+	cases := map[string]string{
+		"ws://user:pass@127.0.0.1:3001/path?access_token=secret#frag": "ws://127.0.0.1:3001/path",
+		"ws://127.0.0.1:3001/?token=secret":                           "ws://127.0.0.1:3001/",
+	}
+	for raw, want := range cases {
+		if got := redactURL(raw); got != want {
+			t.Fatalf("redactURL(%q) = %q, want %q", raw, got, want)
+		}
+	}
+}

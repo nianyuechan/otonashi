@@ -31,6 +31,13 @@ func openTestStore(t *testing.T, path string) *SQLite {
 func TestSQLitePersistenceNamespacesAndValueOwnership(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "子目录", "状态 #100%.sqlite")
 	s := openTestStore(t, path)
+	abs, err := filepath.Abs(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if s.Path() != abs {
+		t.Fatalf("Path() = %q, want %q", s.Path(), abs)
+	}
 	ctx := context.Background()
 	a, b := s.Scope("plugin:a"), s.Scope("plugin")
 	for key, value := range map[string][]byte{"key": []byte("durable"), "empty": nil, "v1:key": []byte("opaque")} {

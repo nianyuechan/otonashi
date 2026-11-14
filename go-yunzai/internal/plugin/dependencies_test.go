@@ -22,7 +22,7 @@ func TestStoreRevokedAfterUnloadAndDataRetainedOnReload(t *testing.T) {
 	manager := NewWithOptions(nil, nil, Options{Stores: backend})
 	var handle sdk.KVStore
 	makePlugin := func() *fakePlugin {
-		return &fakePlugin{descriptor: sdk.Descriptor{ID: "persistent", Version: "1"}, rules: func(r sdk.Router) error {
+		return &fakePlugin{descriptor: sdk.Descriptor{ID: "persistent", Version: "1", Capabilities: []sdk.Capability{sdk.CapabilityStorage}}, rules: func(r sdk.Router) error {
 			return r.Rule(sdk.Rule{ID: "capture", Event: "message"}, func(ctx context.Context, c *sdk.Context) (sdk.Result, error) {
 				handle = c.Store
 				return sdk.Stop, nil
@@ -117,7 +117,7 @@ func TestTasksReceiveScopedStoreAndFreshConfig(t *testing.T) {
 	registry, _ := pluginconfig.New(map[string]pluginconfig.Layers{"task": {User: map[string]any{"x": "old"}}})
 	manager := NewWithOptions(nil, nil, Options{Stores: backend, Config: registry})
 	seen := make(chan string, 32)
-	p := &fakePlugin{descriptor: sdk.Descriptor{ID: "task", Version: "1"}, rules: func(r sdk.Router) error {
+	p := &fakePlugin{descriptor: sdk.Descriptor{ID: "task", Version: "1", Capabilities: []sdk.Capability{sdk.CapabilityStorage}}, rules: func(r sdk.Router) error {
 		return r.Task(sdk.Task{ID: "write", Every: time.Millisecond}, func(ctx context.Context, c *sdk.TaskContext) error {
 			value, _ := c.Config.Get("x")
 			if err := c.Store.Set(ctx, "value", value, 0); err != nil {

@@ -413,6 +413,74 @@ func TestServiceCloseReturnsWhenWorkerExceedsDeadline(t *testing.T) {
 	}
 }
 
+func TestBrowserManagerDoesNotRestartAfterClose(t *testing.T) {
+	var starts atomic.Int32
+	factory := func(context.Context) (Browser, error) {
+		starts.Add(1)
+		browser := &fakeBrowser{done: make(chan struct{})}
+		browser.newPage = func() Page { return &fakePage{} }
+		return browser, nil
+	}
+	manager := &browserManager{factory: factory, metrics: NewMetrics(prometheus.NewRegistry()), startTimeout: time.Second}
+	slot, err := manager.newPage(context.Background())
+	if err != nil {
+		t.Fatalf("newPage() error = %v", err)
+	}
+	if err := slot.page.Close(); err != nil {
+		t.Fatal(err)
+	}
+	if err := manager.close(); err != nil {
+		t.Fatalf("close() error = %v", err)
+	}
+	if _, err := manager.newPage(context.Background()); !errors.Is(err, errBrowserManagerClosed) {
+		t.Fatalf("newPage() after close error = %v, want errBrowserManagerClosed", err)
+	}
+	if starts.Load() != 1 {
+		t.Fatalf("browser factory starts = %d, want 1", starts.Load())
+	}
+}
+
+func TestBrowserManagerCloseDoesNotWaitForBrowserStart(t *testing.T) {
+	entered := make(chan struct{})
+	release := make(chan struct{})
+	browser := &fakeBrowser{done: make(chan struct{})}
+	browser.newPage = func() Page { return &fakePage{} }
+	factory := func(context.Context) (Browser, error) {
+		close(entered)
+		<-release
+		return browser, nil
+	}
+	manager := &browserManager{factory: factory, metrics: NewMetrics(prometheus.NewRegistry()), startTimeout: time.Second}
+	result := make(chan error, 1)
+	go func() {
+		_, err := manager.newPage(context.Background())
+		result <- err
+	}()
+	<-entered
+	closed := make(chan error, 1)
+	go func() { closed <- manager.close() }()
+	select {
+	case err := <-closed:
+		if err != nil {
+			t.Fatal(err)
+		}
+	case <-time.After(200 * time.Millisecond):
+		t.Fatal("close() blocked on an in-progress browser start")
+	}
+	close(release)
+	select {
+	case err := <-result:
+		if !errors.Is(err, errBrowserManagerClosed) {
+			t.Fatalf("newPage() error = %v, want errBrowserManagerClosed", err)
+		}
+	case <-time.After(time.Second):
+		t.Fatal("newPage() did not finish")
+	}
+	if browser.closed.Load() != 1 {
+		t.Fatalf("browser started after close was not released: closed=%d", browser.closed.Load())
+	}
+}
+
 func assertErrorCode(t *testing.T, err error, code string) {
 	t.Helper()
 	var apiErr *api.Error
