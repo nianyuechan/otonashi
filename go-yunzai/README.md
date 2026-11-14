@@ -278,3 +278,22 @@ ok   github.com/trss-yunzai/go-yunzai/internal/render 1.827s
 - 新增显式 Redis legacy 适配器，保留旧核心的 `Yz:...` 原始键、JSON 字节、秒级 TTL 和 `INCR` 计数行为。它只对兼容/迁移代码开放；`Batch` 使用普通 pipeline，逐条返回结果，错误不会被包装成事务成功。`Inspect` 只读取指定键并返回大小、SHA-256、JSON 有效性和 TTL，不返回值也不写回。
 
 本批新增 SQLite 持久化、Redis 适配、TTL、命名空间、并发写入、关闭/取消/损坏数据库错误、配置原子替换、插件卸载重载和 OneBot 重启对话测试。旧 LevelDB/SQLite 数据迁移、持久化会话和媒体 worker 仍在后续批次。
+
+## 运维：可选 pprof 端点与事件并发上限
+
+### pprof 剖析端点（默认关闭）
+
+`cmd/yunzai` 与 `cmd/yunzai-bench` 支持可选的 pprof HTTP 端点，用于阶段零的 CPU/block/mutex/heap 剖析采集：
+
+- 默认完全不监听。只有设置环境变量 `YZGO_PPROF_ADDR`（如 `127.0.0.1:6060`）才会启动；未设置或为空时不打开任何端口。
+- **只允许 loopback**：地址解析后必须是 `127.0.0.0/8` 或 `::1`。`0.0.0.0`、`::`、空主机名（`":6060"`）以及解析到非回环地址的主机名一律拒绝并启动失败。测试覆盖了非回环地址被拒绝的用例。
+- 路径：`/debug/pprof/`（heap/goroutine/block/mutex 等索引页）、`/debug/pprof/profile`（CPU 采样）、`/debug/pprof/trace`、`/debug/pprof/cmdline`、`/debug/pprof/symbol`。
+- 采样开销：启用时 block 采样每 10µs 一次、mutex 采样 1/100。对空闲或低负载进程开销可忽略，但会带来额外的运行时记录成本；`stop`（进程退出）会把采样率归零。长期生产进程不要默认开启。
+- **生产环境不要暴露 pprof 端点到本机之外**：它可以直接导出进程内存内容和全部 goroutine 栈。仅在单机剖析时使用 loopback 地址，用完后删除环境变量并重启进程。
+
+### `dispatch.max_concurrent`（事件并发上限）
+
+`dispatch.max_concurrent` 限制同时处理的事件数（配置范围 1–4096，默认 256），超出的事件在 OneBot 读循环处等待空闲槽位，形成背压，不会无限创建 goroutine。
+
+- 默认值按 100 群/2 万发送者轮转的容量验证结果（221 eps、p99 0.47ms）有充足余量；见 `bench/reports/capacity-100-groups-200rps.md`。
+- 若要压更高消息速率或接入耗时较长的插件处理，建议先调到 512 并用基准复测 p95/p99，不要无依据地调大。

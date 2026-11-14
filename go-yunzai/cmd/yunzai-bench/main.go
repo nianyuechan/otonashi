@@ -5,6 +5,7 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"log/slog"
 	"os"
 	"os/signal"
@@ -12,6 +13,7 @@ import (
 
 	"github.com/trss-yunzai/go-yunzai/internal/app"
 	"github.com/trss-yunzai/go-yunzai/internal/config"
+	"github.com/trss-yunzai/go-yunzai/internal/observability"
 	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
 	"github.com/trss-yunzai/go-yunzai/plugins/bench"
 )
@@ -31,6 +33,11 @@ func run() error {
 	if err != nil {
 		return err
 	}
+	pprofStop, err := observability.StartPprofFromEnv()
+	if err != nil {
+		return fmt.Errorf("start pprof: %w", err)
+	}
+	defer pprofStop()
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 	return app.RunWith(ctx, cfg, app.Options{
