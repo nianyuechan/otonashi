@@ -54,10 +54,7 @@ func Open(ctx context.Context, path string) (*SQLite, error) {
 		uriPath = "/" + uriPath // Windows drive paths need file:///G:/...
 	}
 	dsn := url.URL{Scheme: "file", Path: uriPath}
-	query := url.Values{}
-	query.Add("_pragma", "busy_timeout(2500)")
-	query.Add("_pragma", "synchronous(FULL)")
-	dsn.RawQuery = query.Encode()
+	dsn.RawQuery = experimentPragmas().Encode()
 	db, err := sql.Open("sqlite", dsn.String())
 	if err != nil {
 		return nil, sdk.ErrStoreUnavailable
@@ -83,6 +80,25 @@ func Open(ctx context.Context, path string) (*SQLite, error) {
 		return nil, sdk.ErrStoreUnavailable
 	}
 	return s, nil
+}
+
+// experimentPragmas 返回连接 DSN 的 pragma 组合。默认保持 synchronous(FULL) +
+// 回滚日志；设置 YZGO_STORAGE_EXPERIMENT=wal-normal 时改用 WAL +
+// synchronous(NORMAL)，这是阶段零 Z2 的显式对照实验开关（2026-11-15）：默认
+// FULL 在本机 G: 机械盘上实测只有 ~9 提交/秒，无法承载 200 msg/s 目标；WAL +
+// NORMAL 实测 ~2 万提交/秒，代价是进程崩溃或断电时可能丢失最后若干未
+// checkpoint 的事务（持久性换吞吐，默认不启用）。journal_mode(WAL) 在启动时
+// 需要短暂独占锁；本开关只用于单实例基准实验，快速重启竞争场景不适用。
+func experimentPragmas() url.Values {
+	query := url.Values{}
+	query.Add("_pragma", "busy_timeout(2500)")
+	if os.Getenv("YZGO_STORAGE_EXPERIMENT") == "wal-normal" {
+		query.Add("_pragma", "journal_mode(WAL)")
+		query.Add("_pragma", "synchronous(NORMAL)")
+	} else {
+		query.Add("_pragma", "synchronous(FULL)")
+	}
+	return query
 }
 
 // Scope binds a namespace using a separate SQL column and bound parameters;

@@ -193,3 +193,38 @@ func TestSQLiteConcurrentWrites(t *testing.T) {
 	}
 	wg.Wait()
 }
+
+// TestExperimentWALNormalPragmaSwitch 验证 YZGO_STORAGE_EXPERIMENT=wal-normal
+// 确实切换到 WAL + synchronous(NORMAL)，且未设置时保持默认 FULL + 回滚日志。
+func TestExperimentWALNormalPragmaSwitch(t *testing.T) {
+	queryJournalMode := func(s *SQLite) string {
+		var mode string
+		if err := s.db.QueryRow("PRAGMA journal_mode").Scan(&mode); err != nil {
+			t.Fatalf("read journal_mode: %v", err)
+		}
+		return mode
+	}
+
+	store := openTestStore(t, filepath.Join(t.TempDir(), "default.sqlite"))
+	if mode := queryJournalMode(store); mode != "delete" {
+		t.Fatalf("default journal_mode = %q, want delete (rollback journal)", mode)
+	}
+	scope := store.Scope("probe")
+	if err := scope.Set(context.Background(), "k", []byte("v"), 0); err != nil {
+		t.Fatalf("default store write: %v", err)
+	}
+
+	t.Setenv("YZGO_STORAGE_EXPERIMENT", "wal-normal")
+	wal := openTestStore(t, filepath.Join(t.TempDir(), "wal.sqlite"))
+	if mode := queryJournalMode(wal); mode != "wal" {
+		t.Fatalf("experiment journal_mode = %q, want wal", mode)
+	}
+	scope = wal.Scope("probe")
+	if err := scope.Set(context.Background(), "k", []byte("v"), 0); err != nil {
+		t.Fatalf("experiment store write: %v", err)
+	}
+	value, err := scope.Get(context.Background(), "k")
+	if err != nil || string(value) != "v" {
+		t.Fatalf("experiment store read = %q, %v", value, err)
+	}
+}
