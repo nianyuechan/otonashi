@@ -1,0 +1,15 @@
+time=2026-11-15T00:16:52.716+08:00 level=INFO msg=等待被测机器人连入 listen=127.0.0.1:3002 deadline=120s
+time=2026-11-15T00:16:54.125+08:00 level=INFO msg=被测机器人已连入
+time=2026-11-15T00:16:54.149+08:00 level=INFO msg=预热等待 duration=2s
+time=2026-11-15T00:16:56.175+08:00 level=INFO msg=开始稳定负载 rate=250 duration=30m0s workload=reply
+gc 1 @4.987s 0%: 0+0.52+0 ms clock, 0+0.52/1.5/0+0 ms cpu, 3->3->0 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 2 @8.010s 0%: 0+0.62+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->0 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 3 @11.198s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->0 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 4 @14.275s 0%: 0+0.53+0 ms clock, 0+0/1.6/0+0 ms cpu, 3->3->0 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 5 @17.092s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 3->4->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 6 @19.603s 0%: 0+0.35+0 ms clock, 0+0/1.7/0.30+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 7 @22.255s 0%: 0+0.31+0 ms clock, 0+0/1.5/0.31+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 8 @24.668s 0%: 0.042+0+0 ms clock, 0.84+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 9 @27.091s 0%: 0+0.53+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 10 @30.316s 0%: 0.37+0.24+0 ms clock, 7.5+0/0.49/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+onebot-bench: 负载推送失败: 推送第 5816 条失败: failed to write msg: use of closed network connection

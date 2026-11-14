@@ -1,0 +1,285 @@
+time=2026-11-15T01:23:44.218+08:00 level=INFO msg=等待被测机器人连入 listen=127.0.0.1:3002 deadline=120s
+time=2026-11-15T01:23:45.528+08:00 level=INFO msg=被测机器人已连入
+time=2026-11-15T01:23:45.567+08:00 level=INFO msg=预热等待 duration=2s
+time=2026-11-15T01:23:47.587+08:00 level=INFO msg=开始稳定负载 rate=250 duration=30m0s workload=reply
+gc 1 @4.994s 0%: 0.11+0.53+0 ms clock, 2.3+0/0/0+0 ms cpu, 3->3->0 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 2 @6.728s 0%: 0+0.51+0 ms clock, 0+0/1.0/0+0 ms cpu, 3->3->0 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 3 @8.422s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->0 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 4 @10.156s 0%: 0.31+0.72+0 ms clock, 6.2+0/0/0+0 ms cpu, 3->4->0 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 5 @11.726s 0%: 0+0.58+0 ms clock, 0+0/0.59/0.56+0 ms cpu, 3->3->0 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 6 @13.244s 0%: 0+0.57+0 ms clock, 0+0.54/0.69/0.062+0 ms cpu, 3->3->0 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 7 @14.889s 0%: 0+0.59+0 ms clock, 0+0/2.8/0+0 ms cpu, 3->3->0 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 8 @16.624s 0%: 0+0.61+0 ms clock, 0+0/3.0/0.63+0 ms cpu, 3->3->0 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 9 @18.283s 0%: 0+0.51+0 ms clock, 0+0/0.51/0+0 ms cpu, 3->3->0 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 10 @19.743s 0%: 0+0.53+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 11 @21.278s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 12 @22.955s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 13 @24.284s 0%: 0+0.94+0 ms clock, 0+0/1.8/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 14 @25.733s 0%: 0+0.91+0 ms clock, 0+0/0/0+0 ms cpu, 3->4->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 15 @27.022s 0%: 0+0.61+0 ms clock, 0+0/0.61/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 16 @28.618s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 17 @29.872s 0%: 0+0.60+0 ms clock, 0+0/0.60/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 18 @31.342s 0%: 0+0.85+0 ms clock, 0+0/0.85/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 19 @32.735s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 20 @34.169s 0%: 0+0.67+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 21 @35.520s 0%: 0+0.52+0 ms clock, 0+0/0.52/0+0 ms cpu, 3->4->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 22 @36.372s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 23 @37.514s 0%: 0.28+0+0 ms clock, 5.7+0/0.29/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 24 @38.844s 0%: 0+0.99+0 ms clock, 0+0/0.99/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 25 @40.138s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 26 @41.372s 0%: 0.12+0+0 ms clock, 2.4+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 27 @42.747s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 3->4->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 28 @43.925s 0%: 0+0.53+0 ms clock, 0+0/0.53/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 29 @45.080s 0%: 0.51+0.63+0 ms clock, 10+0/0.97/0.22+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 30 @45.775s 0%: 0+0.80+0 ms clock, 0+0/2.4/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 31 @46.855s 0%: 0.32+0.58+0 ms clock, 6.4+0/0.50/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 32 @48.023s 0%: 0+0.53+0 ms clock, 0+0/1.0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 33 @49.075s 0%: 0+0.82+0 ms clock, 0+0.31/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 34 @50.102s 0%: 0+0.51+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 35 @51.281s 0%: 0+0+0.50 ms clock, 0+0/0/0+10 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 36 @52.308s 0%: 0+0.55+0 ms clock, 0+0.50/1.2/0.067+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 37 @53.461s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 38 @54.471s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 39 @55.691s 0%: 0.13+0.51+0 ms clock, 2.6+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 40 @56.729s 0%: 0.039+0.53+0 ms clock, 0.79+0/0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 41 @57.145s 0%: 0+0.51+0 ms clock, 0+0/1.0/0+0 ms cpu, 3->3->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 42 @58.245s 0%: 0+0.53+0 ms clock, 0+0/1.0/0.50+0 ms cpu, 4->4->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 43 @59.439s 0%: 0+0+0.60 ms clock, 0+0/0/0+12 ms cpu, 4->4->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 44 @60.699s 0%: 0+0.60+0 ms clock, 0+0/2.3/1.1+0 ms cpu, 4->4->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 45 @61.982s 0%: 0+0.65+0 ms clock, 0+0/0.65/0+0 ms cpu, 4->4->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 46 @63.252s 0%: 0+0.68+0 ms clock, 0+0/0.20/0+0 ms cpu, 4->4->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 47 @64.418s 0%: 0.51+0.084+0 ms clock, 10+0.084/0.25/0.16+0 ms cpu, 4->4->1 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 48 @65.567s 0%: 0+0.15+0 ms clock, 0+0.15/0.15/0+0 ms cpu, 4->4->2 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 49 @66.716s 0%: 0.099+0.59+0 ms clock, 1.9+0/1.2/0+0 ms cpu, 4->4->2 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 50 @68.514s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 4->4->2 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 51 @69.160s 0%: 0+0.82+0 ms clock, 0+0/1.5/0+0 ms cpu, 4->4->2 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 52 @70.398s 0%: 0+0.55+0 ms clock, 0+0/1.1/0+0 ms cpu, 4->4->2 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 53 @71.603s 0%: 0+1.0+0 ms clock, 0+0/1.0/0+0 ms cpu, 4->4->2 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 54 @72.022s 0%: 0.18+0.52+0 ms clock, 3.6+0/1.0/0+0 ms cpu, 4->4->2 MB, 4 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 55 @73.422s 0%: 0+0.99+0 ms clock, 0+0/0.99/0+0 ms cpu, 4->4->2 MB, 5 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 56 @74.977s 0%: 0.51+0.54+0 ms clock, 10+0/1.0/0+0 ms cpu, 5->5->2 MB, 5 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 57 @76.493s 0%: 0+0.55+0 ms clock, 0+0/0.55/0+0 ms cpu, 5->5->2 MB, 5 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 58 @77.994s 0%: 0+0.99+0 ms clock, 0+0/1.9/0+0 ms cpu, 5->5->2 MB, 5 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 59 @79.443s 0%: 0+0.90+0 ms clock, 0+0/2.7/0.90+0 ms cpu, 5->5->2 MB, 5 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 60 @81.036s 0%: 0+1.0+0 ms clock, 0+0.50/1.1/1.1+0 ms cpu, 5->5->2 MB, 5 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 61 @82.568s 0%: 0+1.0+0 ms clock, 0+0/0/0+0 ms cpu, 5->5->2 MB, 5 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 62 @84.118s 0%: 0+0.69+0 ms clock, 0+0/1.4/0+0 ms cpu, 5->5->2 MB, 5 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 63 @85.547s 0%: 0.083+0.67+0 ms clock, 1.6+0/0.73/0.52+0 ms cpu, 5->5->2 MB, 5 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 64 @87.069s 0%: 0+0.58+0 ms clock, 0+0/1.1/0+0 ms cpu, 5->5->2 MB, 5 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 65 @88.449s 0%: 0.098+0.20+0 ms clock, 1.9+0/0.38/0.044+0 ms cpu, 5->5->2 MB, 5 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 66 @89.926s 0%: 0+0.52+1.0 ms clock, 0+0.52/0.52/0+21 ms cpu, 6->6->4 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 67 @92.480s 0%: 0+0.52+0 ms clock, 0+0/1.5/0+0 ms cpu, 8->8->2 MB, 8 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 68 @94.081s 0%: 0+0.75+0 ms clock, 0+0/0/0+0 ms cpu, 5->5->2 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 69 @95.764s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 5->5->2 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 70 @97.482s 0%: 0+1.0+0 ms clock, 0+0/2.7/0+0 ms cpu, 5->5->2 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 71 @99.169s 0%: 0+0.63+0 ms clock, 0+0/1.2/0+0 ms cpu, 5->5->2 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 72 @100.935s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 5->5->2 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 73 @102.673s 0%: 0+0.53+0 ms clock, 0+0/1.6/0.53+0 ms cpu, 5->5->2 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 74 @104.354s 0%: 0+0.89+0 ms clock, 0+0/3.5/0+0 ms cpu, 5->5->2 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 75 @106.211s 0%: 0+1.0+0 ms clock, 0+0/2.6/0+0 ms cpu, 5->5->2 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 76 @108.002s 0%: 0.52+0+0 ms clock, 10+0/0/0+0 ms cpu, 5->5->2 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 77 @109.917s 0%: 0+0.54+0 ms clock, 0+0/1.6/0+0 ms cpu, 5->5->2 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 78 @111.819s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 5->5->2 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 79 @112.362s 0%: 0+0.99+0 ms clock, 0+0/0.99/0+0 ms cpu, 6->6->4 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 80 @115.484s 0%: 0+1.0+0 ms clock, 0+0/3.2/0+0 ms cpu, 9->10->3 MB, 10 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 81 @117.561s 0%: 0+1.2+0 ms clock, 0+0.59/4.5/0.011+0 ms cpu, 6->6->3 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 82 @119.715s 0%: 0+0.54+0 ms clock, 0+0/0.54/0+0 ms cpu, 6->6->3 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 83 @121.780s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 6->6->3 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 84 @123.906s 0%: 0+0.68+0 ms clock, 0+0/2.0/0.68+0 ms cpu, 6->6->3 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 85 @125.849s 0%: 0+0.65+0 ms clock, 0+0/2.6/0+0 ms cpu, 6->6->3 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 86 @127.938s 0%: 0+0.54+0 ms clock, 0+0/2.1/0+0 ms cpu, 6->6->3 MB, 6 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 87 @130.031s 0%: 0+1.3+0 ms clock, 0+0/2.3/2.8+0 ms cpu, 6->6->3 MB, 7 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 88 @132.078s 0%: 0+0.61+0 ms clock, 0+0/2.9/0.57+0 ms cpu, 6->6->3 MB, 7 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 89 @134.213s 0%: 0+1.0+0 ms clock, 0+0/5.0/0+0 ms cpu, 6->6->3 MB, 7 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 90 @136.254s 0%: 0+1.0+0 ms clock, 0+0/1.0/0+0 ms cpu, 7->7->3 MB, 7 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 91 @138.430s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 7->7->3 MB, 7 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 92 @140.582s 0%: 0+2.2+0 ms clock, 0+0.049/4.4/1.0+0 ms cpu, 9->9->6 MB, 9 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 93 @144.542s 0%: 0+1.0+0 ms clock, 0+0/4.0/0+0 ms cpu, 12->12->4 MB, 12 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 94 @147.205s 0%: 0+0.80+0 ms clock, 0+0/2.4/0+0 ms cpu, 8->8->4 MB, 8 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 95 @149.841s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 8->8->4 MB, 8 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 96 @152.446s 0%: 0+0.92+0 ms clock, 0+0/1.8/0.92+0 ms cpu, 8->8->4 MB, 8 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 97 @155.097s 0%: 0+1.0+0 ms clock, 0+0/3.0/0+0 ms cpu, 8->8->4 MB, 8 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 98 @157.883s 0%: 0.33+0.56+0 ms clock, 6.6+0/2.2/0+0 ms cpu, 8->8->4 MB, 8 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 99 @160.513s 0%: 0+1.0+0 ms clock, 0+0.54/2.7/0.060+0 ms cpu, 8->8->4 MB, 8 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 100 @163.160s 0%: 0.22+0.54+0 ms clock, 4.5+0/2.6/0+0 ms cpu, 8->8->4 MB, 8 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 101 @165.952s 0%: 0+0.52+0 ms clock, 0+0/1.0/0+0 ms cpu, 8->8->4 MB, 8 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 102 @168.676s 0%: 0+0.53+0 ms clock, 0+0/1.0/0.016+0 ms cpu, 8->8->4 MB, 8 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 103 @171.374s 0%: 0+0.52+0 ms clock, 0+0/1.5/0.52+0 ms cpu, 8->8->4 MB, 8 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 104 @174.057s 0%: 0+0.91+0 ms clock, 0+0/0.74/0+0 ms cpu, 8->8->4 MB, 8 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 105 @176.173s 0%: 0+3.5+0 ms clock, 0+0/4.9/0+0 ms cpu, 10->11->7 MB, 11 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 106 @180.997s 0%: 0+1.0+0 ms clock, 0+0/3.2/0+0 ms cpu, 14->14->4 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 107 @209.850s time=2026-11-15T01:27:13.769+08:00 level=WARN msg=推送失败，尝试等待重连后继续 index=39887 error="failed to write msg: use of closed network connection" attempt=1
+0%: 0+1.0+0 ms clock, 0+0/3.0/0+0 ms cpu, 9->10->4 MB, 10 MB goal, 0 MB stacks, 0time=2026-11-15T01:27:14.269+08:00 level=WARN msg=被测机器人重连成功，继续负载 mode=server
+ MB globals, 20 P
+gc 108 @213.245s 0%: 0.12+0.56+0 ms clock, 2.4+0/2.8/0+0 ms cpu, 9->9->4 MB, 10 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 109 @216.375s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 9->9->4 MB, 10 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 110 @219.485s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 9->9->4 MB, 10 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 111 @222.705s 0%: 0+0.99+0 ms clock, 0+0/0/0+0 ms cpu, 9->10->4 MB, 10 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 112 @225.841s 0%: 0+0.99+0 ms clock, 0+0/0/0+0 ms cpu, 9->9->4 MB, 10 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 113 @229.129s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 9->10->4 MB, 10 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 114 @232.394s 0%: 0+1.2+0 ms clock, 0+0/1.5/0+0 ms cpu, 9->10->4 MB, 10 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 115 @235.540s 0%: 0+1.1+0 ms clock, 0+0/3.7/0.61+0 ms cpu, 9->10->4 MB, 10 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 116 @238.785s 0%: 0.28+0.52+0 ms clock, 5.7+0/0.52/1.0+0 ms cpu, 9->10->4 MB, 10 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 117 @241.942s 0%: 0+1.1+0 ms clock, 0+0.50/3.8/0.58+0 ms cpu, 10->10->4 MB, 10 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 118 @244.275s 0%: 0+1.6+0 ms clock, 0+0/2.8/0.58+0 ms cpu, 12->12->9 MB, 12 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 119 @250.066s 0%: 0+0.56+0 ms clock, 0+0/2.8/0.56+0 ms cpu, 17->17->5 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 120 @253.880s 0%: 0+0.55+0.50 ms clock, 0+0/1.0/0+10 ms cpu, 11->11->5 MB, 11 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 121 @257.541s 0%: 0+0.99+0 ms clock, 0+0/4.9/0+0 ms cpu, 11->11->5 MB, 11 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 122 @261.386s 0%: 0+1.0+0 ms clock, 0+0/2.1/0.53+0 ms cpu, 11->11->5 MB, 12 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 123 @265.137s 0%: 0+0.52+0 ms clock, 0+0/2.6/0.52+0 ms cpu, 11->11->5 MB, 11 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 124 @269.001s 0%: 0+1.1+0 ms clock, 0+0/3.6/3.5+0 ms cpu, 11->11->5 MB, 12 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 125 @272.854s 0%: 0+1.2+0 ms clock, 0+0/4.5/1.2+0 ms cpu, 11->11->5 MB, 12 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 126 @276.680s 0%: 0+1.0+0 ms clock, 0+0/4.7/1.5+0 ms cpu, 11->11->5 MB, 12 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 127 @280.517s 0%: 0+0.53+0 ms clock, 0+0/2.1/0.030+0 ms cpu, 11->11->5 MB, 12 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 128 @284.040s 0%: 0+0.58+0 ms clock, 0+0/1.6/0+0 ms cpu, 11->11->5 MB, 12 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 129 @287.715s 0%: 0+0.51+0 ms clock, 0+0/2.0/0+0 ms cpu, 12->12->6 MB, 12 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 130 @291.541s 0%: 0+1.0+0 ms clock, 0+0/3.7/0.54+0 ms cpu, 12->12->6 MB, 12 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 131 @295.545s 0%: 0+1.3+0 ms clock, 0+0/0/1.3+0 ms cpu, 12->12->6 MB, 12 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 132 @299.499s 0%: 0+0.52+0 ms clock, 0+0/2.1/0.52+0 ms cpu, 12->12->6 MB, 12 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 133 @300.043s 0%: 0.11+0.53+0 ms clock, 2.2+0/2.6/0.57+0 ms cpu, 12->12->7 MB, 13 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 134 @304.722s 0%: 0+1.1+0 ms clock, 0+0/4.9/1.0+0 ms cpu, 14->14->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 135 @309.588s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 14->15->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 136 @314.349s 0%: 0+1.0+0 ms clock, 0+0/4.2/0.60+0 ms cpu, 14->15->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 137 @319.151s 0%: 0+1.2+0 ms clock, 0+0/5.1/0+0 ms cpu, 15->15->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 138 @324.066s 0%: 0+0.77+0 ms clock, 0+0/2.3/0+0 ms cpu, 14->15->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 139 @328.879s 0%: 0+0.52+0 ms clock, 0+0/2.6/1.5+0 ms cpu, 15->15->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 140 @333.718s 0%: 0.52+0.59+0 ms clock, 10+0.066/2.9/0.53+0 ms cpu, 15->15->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 141 @338.720s 0%: 0+1.0+0 ms clock, 0+0.51/5.3/1.6+0 ms cpu, 15->15->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 142 @343.708s 0%: 0+1.0+0 ms clock, 0+0.035/2.6/1.6+0 ms cpu, 15->15->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 143 @348.714s 0%: 0+1.0+0 ms clock, 0+0/4.2/1.5+0 ms cpu, 15->15->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 144 @353.582s 0%: 0+0+0 ms clock, 0+0/0/0+0 ms cpu, 15->15->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 145 @358.463s 0%: 0+0.76+0 ms clock, 0+0/3.0/1.0+0 ms cpu, 15->15->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 146 @363.469s 0%: 0+0.62+0 ms clock, 0+0/3.1/0+0 ms cpu, 15->15->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 147 @368.423s 0%: 0+0.63+0 ms clock, 0+0.087/3.0/0.54+0 ms cpu, 15->15->7 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 148 @369.005s 0%: 0+0.52+0 ms clock, 0+0/1.6/0.52+0 ms cpu, 15->15->8 MB, 15 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 149 @374.887s 0%: 0+0.65+0 ms clock, 0+0/3.2/2.5+0 ms cpu, 17->17->8 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 150 @380.657s 0%: 0+1.4+0 ms clock, 0+0/2.8/1.0+0 ms cpu, 17->17->8 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 151 @386.429s 0%: 0+0.78+0 ms clock, 0+0/2.1/0.049+0 ms cpu, 17->17->8 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 152 @392.208s 0%: 0+0.88+0 ms clock, 0+0/4.4/0.88+0 ms cpu, 17->17->8 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 153 @398.117s 0%: 0+1.2+0 ms clock, 0+0/3.6/1.2+0 ms cpu, 17->17->8 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 154 @403.956s 0%: 0+1.2+0 ms clock, 0+0/3.6/2.5+0 ms cpu, 17->17->8 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 155 @409.848s 0%: 0+1.1+0 ms clock, 0+0.56/5.1/2.8+0 ms cpu, 17->17->8 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 156 @415.716s 0%: 0+1.1+0 ms clock, 0+0.50/3.9/0.66+0 ms cpu, 17->17->8 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 157 @421.657s 0%: 0+1.1+0 ms clock, 0+0/2.7/0+0 ms cpu, 17->17->8 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 158 @427.580s 0%: 0+1.1+0 ms clock, 0+0/5.7/1.7+0 ms cpu, 17->17->8 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 159 @433.383s 0%: 0+1.0+0 ms clock, 0+0/5.0/0+0 ms cpu, 17->17->8 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 160 @439.281s 0%: 0+1.0+0 ms clock, 0+0/4.0/3.0+0 ms cpu, 17->18->8 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 161 @445.066s 0%: 0+1.1+0 ms clock, 0+0/3.3/1.0+0 ms cpu, 17->17->8 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 162 @450.998s 0%: 0.13+1.0+0 ms clock, 2.7+0/4.3/2.1+0 ms cpu, 17->17->9 MB, 18 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 163 @454.993s 0%: 0+5.3+0 ms clock, 0+0/8.6/1.6+0 ms cpu, 23->23->17 MB, 23 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 164 @466.002s 0%: 0+0.52+0 ms clock, 0+0/2.1/1.5+0 ms cpu, 33->33->10 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 165 @473.029s 0%: 0+1.0+0 ms clock, 0+0/3.0/1.5+0 ms cpu, 21->21->10 MB, 21 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 166 @480.104s 0%: 0+1.0+0 ms clock, 0+0/3.0/0+0 ms cpu, 21->21->10 MB, 21 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 167 @487.164s 0%: 0+0.51+0 ms clock, 0+0/2.5/1.0+0 ms cpu, 21->21->10 MB, 21 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 168 @494.153s 0%: 0+0.76+0 ms clock, 0+0/3.8/0.79+0 ms cpu, 21->21->10 MB, 21 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 169 @501.144s 0%: 0+1.4+0 ms clock, 0+0/7.2/1.6+0 ms cpu, 21->21->10 MB, 21 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 170 @508.228s 0%: 0+1.2+0 ms clock, 0+0/4.0/0.032+0 ms cpu, 21->21->10 MB, 21 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 171 @515.260s 0%: 0+1.0+0 ms clock, 0+0/3.7/2.1+0 ms cpu, 21->21->10 MB, 21 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 172 @522.301s 0%: 0+1.0+0 ms clock, 0+0/2.6/2.7+0 ms cpu, 21->21->10 MB, 21 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 173 @529.415s 0%: 0+0.90+0 ms clock, 0+0/4.5/2.7+0 ms cpu, 21->21->10 MB, 22 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 174 @536.484s 0%: 0+1.0+0 ms clock, 0+0/4.3/3.9+0 ms cpu, 21->21->10 MB, 22 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 175 @543.457s 0%: 0+1.0+0 ms clock, 0+0/3.7/2.7+0 ms cpu, 21->22->11 MB, 22 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 176 @550.440s 0%: 0.29+0.54+0 ms clock, 5.9+0/2.7/1.6+0 ms cpu, 22->22->11 MB, 22 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 177 @557.369s 0%: 0+0.99+0 ms clock, 0+0/4.9/7.9+0 ms cpu, 22->22->11 MB, 22 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 178 @563.315s 0%: 0+1.4+0 ms clock, 0+0.85/2.8/0.85+0 ms cpu, 30->30->21 MB, 30 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 179 @583.786s 0%: 0+1.1+0 ms clock, 0+0/2.5/1.0+0 ms cpu, 42->42->14 MB, 43 MB goal, 0 MB stacks, 0 MB globals, 20 P
+time=2026-11-15T01:33:42.197+08:00 level=WARN msg=推送失败，尝试等待重连后继续 index=124147 error="failed to write msg: use of closed network connection" attempt=2
+time=2026-11-15T01:33:43.299+08:00 level=WARN msg=被测机器人重连成功，继续负载 mode=server
+gc 180 @600.615s 0%: 0+1.1+0 ms clock, 0+0/4.0/4.3+0 ms cpu, 27->27->14 MB, 28 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 181 @609.907s 0%: 0+1.0+0 ms clock, 0+0/4.0/7.0+0 ms cpu, 28->28->14 MB, 28 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 182 @619.292s 0%: 0+2.0+0 ms clock, 0+0/6.6/2.6+0 ms cpu, 28->28->14 MB, 28 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 183 @628.669s 0%: 0+1.0+0 ms clock, 0+0/3.6/4.2+0 ms cpu, 28->28->14 MB, 28 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 184 @638.040s 0%: 0+1.5+0 ms clock, 0+0/7.2/3.1+0 ms cpu, 28->28->14 MB, 28 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 185 @647.458s 0%: 0+1.3+0 ms clock, 0+0/5.5/4.7+0 ms cpu, 28->28->14 MB, 28 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 186 @656.898s 0%: 0+1.0+0 ms clock, 0+0/4.2/2.6+0 ms cpu, 28->28->14 MB, 28 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 187 @666.370s 0%: 0+1.0+0 ms clock, 0+0/4.7/2.7+0 ms cpu, 28->28->14 MB, 28 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 188 @675.834s 0%: 0+0.76+0 ms clock, 0+0/3.8/6.2+0 ms cpu, 28->28->14 MB, 28 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 189 @685.172s 0%: 0+1.1+0 ms clock, 0+0/5.5/2.9+0 ms cpu, 28->28->14 MB, 29 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 190 @694.563s 0%: 0+1.1+0 ms clock, 0+0/3.8/4.8+0 ms cpu, 28->28->14 MB, 29 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 191 @699.659s 0%: 0+1.6+0 ms clock, 0+0.54/2.7/3.2+0 ms cpu, 34->34->26 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 192 @717.452s 0%: 0+1.5+0 ms clock, 0+0/6.7/2.6+0 ms cpu, 52->52->16 MB, 54 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 193 @728.598s 0%: 0+0.96+0 ms clock, 0+0/3.8/0.96+0 ms cpu, 33->33->16 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 194 @739.562s 0%: 0.12+0.51+0 ms clock, 2.5+0/2.5/1.0+0 ms cpu, 33->33->16 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 195 @750.737s 0%: 0.16+1.0+0 ms clock, 3.3+0/4.7/3.1+0 ms cpu, 33->33->16 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 196 @761.845s 0%: 0+1.0+0 ms clock, 0+0/3.7/3.7+0 ms cpu, 33->33->16 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 197 @773.005s 0%: 0+1.6+0 ms clock, 0+0/7.0/3.7+0 ms cpu, 33->33->17 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 198 @784.242s 0%: 0+1.1+0 ms clock, 0+0/3.3/3.7+0 ms cpu, 33->33->17 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 199 @795.501s 0%: 0+1.0+0 ms clock, 0+0/4.8/4.9+0 ms cpu, 33->33->17 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 200 @806.616s 0%: 0+1.0+0 ms clock, 0+0.053/3.4/4.7+0 ms cpu, 33->33->17 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 201 @817.911s 0%: 0+1.1+0 ms clock, 0+0/4.5/6.2+0 ms cpu, 33->33->17 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 202 @829.150s 0%: 0+1.1+0 ms clock, 0+0/2.8/6.6+0 ms cpu, 33->33->17 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 203 @840.409s 0%: 0+2.1+0 ms clock, 0+0/7.3/6.3+0 ms cpu, 33->33->17 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 204 @851.567s 0%: 0+1.1+0 ms clock, 0+0/3.8/3.5+0 ms cpu, 33->34->17 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 205 @867.614s 0%: 0.23+1.1+0 ms clock, 4.7+0/5.1/2.9+0 ms cpu, 33->33->17 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 206 @886.744s 0%: 0+time=2026-11-15T01:38:30.662+08:00 level=WARN msg=推送失败，尝试等待重连后继续 index=182742 error="failed to write msg: use of closed network connection" attempt=3
+1.9+0 ms clock, 0+0/5.9/11+0 ms cpu, 33->34->20 MB, 34 MB goal, 0 MB stacks, 0 MB globals, 20 P
+time=2026-11-15T01:38:31.162+08:00 level=WARN msg=被测机器人重连成功，继续负载 mode=server
+gc 207 @900.435s 0%: 0+1.5+0 ms clock, 0+0/5.7/3.6+0 ms cpu, 40->40->20 MB, 41 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 208 @913.802s 0%: 0+1.1+0 ms clock, 0+0/4.5/4.8+0 ms cpu, 40->40->20 MB, 41 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 209 @927.161s 0%: 0.11+1.0+0 ms clock, 2.2+0/4.8/5.8+0 ms cpu, 40->40->20 MB, 41 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 210 @940.627s 0%: 0+1.0+0 ms clock, 0+0/4.1/5.2+0 ms cpu, 40->40->20 MB, 41 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 211 @954.002s 0%: 0+1.7+0 ms clock, 0+0/5.0/5.5+0 ms cpu, 40->40->20 MB, 41 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 212 @967.464s 0%: 0+1.1+0 ms clock, 0+0/3.9/8.3+0 ms cpu, 40->40->20 MB, 41 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 213 @980.876s 0%: 0+1.8+0 ms clock, 0+0/7.4/4.8+0 ms cpu, 40->40->20 MB, 41 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 214 @994.470s 0%: 0+1.1+0 ms clock, 0+0/5.4/7.9+0 ms cpu, 40->40->20 MB, 41 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 215 @1008.007s 0%: 0.077+1.6+0 ms clock, 1.5+0/5.6/10+0 ms cpu, 40->40->20 MB, 41 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 216 @1021.478s 0%: 0+1.6+0 ms clock, 0+0/5.9/7.4+0 ms cpu, 40->40->20 MB, 41 MB goal, 0 MB stacks, 0 MB globals, 20 P
+time=2026-11-15T01:41:01.202+08:00 level=WARN msg=推送失败，尝试等待重连后继续 index=215408 error="failed to write msg: use of closed network connection" attempt=4
+time=2026-11-15T01:41:10.459+08:00 level=WARN msg=被测机器人重连成功，继续负载 mode=server
+gc 217 @1048.873s 0%: 0.51+1.1+0 ms clock, 10+0/5.5/5.8+0 ms cpu, 40->40->20 MB, 41 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 218 @1062.345s 0%: 0+1.1+0 ms clock, 0+0/5.6/4.7+0 ms cpu, 40->40->20 MB, 41 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 219 @1075.668s 0%: 0.20+1.7+0 ms clock, 4.0+0.21/6.8/7.8+0 ms cpu, 40->40->20 MB, 41 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 220 @1089.234s 0%: 0+1.0+0 ms clock, 0+0/5.4/5.4+0 ms cpu, 41->41->21 MB, 42 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 221 @1102.522s 0%: 0+1.5+0 ms clock, 0+0/7.7/3.6+0 ms cpu, 41->41->21 MB, 42 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 222 @1107.494s 0%: 0+13+0 ms clock, 0+0.53/19/13+0 ms cpu, 49->49->41 MB, 49 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 223 @1133.774s 0%: 0+1.4+0 ms clock, 0+0/7.0/20+0 ms cpu, 81->81->26 MB, 83 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 224 @1150.782s 0%: 0+1.7+0 ms clock, 0+0/6.3/6.3+0 ms cpu, 52->52->26 MB, 53 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 225 @1168.310s 0%: 0+2.9+0 ms clock, 0+0/10/12+0 ms cpu, 52->52->26 MB, 53 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 226 @1186.106s 0%: 0+1.6+0 ms clock, 0+0/5.4/7.5+0 ms cpu, 52->52->26 MB, 54 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 227 @1203.754s 0%: 0+1.2+0 ms clock, 0+0/6.3/6.3+0 ms cpu, 53->53->27 MB, 54 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 228 @1221.565s 0%: 0+2.0+0 ms clock, 0+0/9.0/11+0 ms cpu, 53->53->27 MB, 54 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 229 @1239.474s 0%: 0+1.5+0 ms clock, 0+0/5.7/6.2+0 ms cpu, 53->53->27 MB, 54 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 230 @1258.979s 0%: 0+1.0+0 ms clock, 0+0/5.0/13+0 ms cpu, 53->53->27 MB, 54 MB goal, 0 MB stacks, 0 MB globals, 20 P
+time=2026-11-15T01:45:00.466+08:00 level=WARN msg=推送失败，尝试等待重连后继续 index=265399 error="failed to write msg: use of closed network connection" attempt=5
+time=2026-11-15T01:45:01.037+08:00 level=WARN msg=被测机器人重连成功，继续负载 mode=server
+gc 231 @1284.486s 0%: 0+2.0+0 ms clock, 0+0/6.0/6.0+0 ms cpu, 53->53->27 MB, 54 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 232 @1302.544s 0%: 0.14+1.2+0 ms clock, 2.8+0.15/6.0/8.0+0 ms cpu, 53->54->27 MB, 55 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 233 @1320.533s 0%: 0+1.6+0 ms clock, 0+0/6.9/12+0 ms cpu, 53->54->27 MB, 55 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 234 @1338.545s 0%: 0+1.9+0 ms clock, 0+0/7.3/11+0 ms cpu, 53->54->27 MB, 55 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 235 @1356.558s 0%: 0+1.6+0 ms clock, 0+0/4.9/11+0 ms cpu, 54->54->27 MB, 55 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 236 @1372.378s 0%: 0+2.1+0 ms clock, 0+1.0/6.8/9.9+0 ms cpu, 75->75->52 MB, 75 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 237 @1406.716s 0%: 0+2.1+0 ms clock, 0+0/9.8/14+0 ms cpu, 102->102->32 MB, 104 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 238 @1428.096s 0%: 0+1.6+0 ms clock, 0+0/5.4/12+0 ms cpu, 63->63->32 MB, 65 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 239 @1449.254s 0%: 0.14+1.6+0 ms clock, 2.8+0/8.3/8.3+0 ms cpu, 63->64->32 MB, 65 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 240 @1470.630s 0%: 0.14+2.4+0 ms clock, 2.8+0/10/15+0 ms cpu, 64->64->32 MB, 65 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 241 @1501.102s 0%: 0+2.2+0 ms clock, 0+0/8.7/10+0 ms cpu, 64->64->32 MB, 65 MB goal, 0 MB stacks, 0 MB globals, 20 P
+time=2026-11-15T01:48:51.043+08:00 level=WARN msg=推送失败，尝试等待重连后继续 index=315524 error="failed to write msg: use of closed network connection" attempt=6
+time=2026-11-15T01:48:55.067+08:00 level=WARN msg=被测机器人重连成功，继续负载 mode=server
+gc 242 @1529.172s 0%: 0+2.1+0 ms clock, 0+0/8.0/15+0 ms cpu, 64->64->32 MB, 65 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 243 @1550.645s 0%: 0+1.6+0 ms clock, 0+0/7.2/12+0 ms cpu, 64->64->32 MB, 65 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 244 @1572.240s 0%: 0+1.6+0 ms clock, 0+0/6.4/7.5+0 ms cpu, 64->64->32 MB, 65 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 245 @1593.957s 0%: 0+1.7+0 ms clock, 0+0/8.5/11+0 ms cpu, 64->64->32 MB, 65 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 246 @1619.652s 0%: 0+1.6+0 ms clock, 0+0/7.5/12+0 ms cpu, 64->64->32 MB, 66 MB goal, 0 MB stacks, 0 MB globals, 20 P
+time=2026-11-15T01:50:45.070+08:00 level=WARN msg=推送失败，尝试等待重连后继续 index=339534 error="failed to write msg: use of closed network connection" attempt=7
+time=2026-11-15T01:50:54.060+08:00 level=WARN msg=被测机器人重连成功，继续负载 mode=server
+gc 247 @1650.651s 0%: 0+2.1+0 ms clock, 0+0/8.2/11+0 ms cpu, 64->64->32 MB, 66 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 248 @1672.417s 0%: 0.023+1.8+0 ms clock, 0.47+0/7.7/16+0 ms cpu, 64->64->32 MB, 66 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 249 @1694.175s 0%: 0+1.5+0 ms clock, 0+0/5.1/13+0 ms cpu, 64->64->32 MB, 66 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 250 @1714.476s 0%: 0+3.1+0 ms clock, 0+1.0/8.0/15+0 ms cpu, 93->93->63 MB, 93 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 251 @1756.517s 0%: 0+1.7+0 ms clock, 0+0/8.6/15+0 ms cpu, 124->125->39 MB, 127 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 252 @1782.183s 0%: 0+1.6+0 ms clock, 0+0/8.1/16+0 ms cpu, 77->77->39 MB, 78 MB goal, 0 MB stacks, 0 MB globals, 20 P
+time=2026-11-15T01:53:47.587+08:00 level=INFO msg=负载推送完成，等待尾部回复 grace=10s
+time=2026-11-15T01:54:01.488+08:00 level=WARN msg=读循环提前结束 error="failed to get reader: failed to read frame header: read tcp 127.0.0.1:3002->127.0.0.1:51452: wsarecv: An existing connection was forcibly closed by the remote host."
+time=2026-11-15T01:54:01.490+08:00 level=WARN msg=读循环提前结束 error="failed to get reader: failed to read frame header: read tcp 127.0.0.1:3002->127.0.0.1:52160: wsarecv: An existing connection was forcibly closed by the remote host."
+time=2026-11-15T01:54:01.498+08:00 level=WARN msg=读循环提前结束 error="failed to get reader: failed to read frame header: read tcp 127.0.0.1:3002->127.0.0.1:53390: wsarecv: An existing connection was forcibly closed by the remote host."
+time=2026-11-15T01:54:01.500+08:00 level=WARN msg=读循环提前结束 error="failed to get reader: failed to read frame header: read tcp 127.0.0.1:3002->127.0.0.1:54822: wsarecv: An existing connection was forcibly closed by the remote host."
+time=2026-11-15T01:54:01.501+08:00 level=WARN msg=读循环提前结束 error="failed to get reader: failed to read frame header: read tcp 127.0.0.1:3002->127.0.0.1:55340: wsarecv: An existing connection was forcibly closed by the remote host."
+time=2026-11-15T01:54:01.503+08:00 level=WARN msg=读循环提前结束 error="failed to get reader: failed to read frame header: read tcp 127.0.0.1:3002->127.0.0.1:56131: wsarecv: An existing connection was forcibly closed by the remote host."
+time=2026-11-15T01:54:01.504+08:00 level=WARN msg=读循环提前结束 error="failed to get reader: failed to read frame header: read tcp 127.0.0.1:3002->127.0.0.1:56860: wsarecv: An existing connection was forcibly closed by the remote host."
+time=2026-11-15T01:54:01.525+08:00 level=WARN msg=读循环提前结束 error="failed to get reader: failed to read frame header: read tcp 127.0.0.1:3002->127.0.0.1:57293: wsarecv: An existing connection was forcibly closed by the remote host."
+gc 253 @1827.573s 0%: 0+30+0 ms clock, 0+0/42/25+0 ms cpu, 87->87->65 MB, 87 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 254 @1827.688s 0%: 0+7.0+0 ms clock, 0+0/9.8/11+0 ms cpu, 132->132->52 MB, 132 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 255 @1827.746s 0%: 0+11+0 ms clock, 0+0/10/24+0 ms cpu, 112->112->74 MB, 112 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 256 @1827.860s 0%: 0+19+0 ms clock, 0+0/22/13+0 ms cpu, 191->191->116 MB, 191 MB goal, 0 MB stacks, 0 MB globals, 20 P
+gc 257 @1828.053s 0%: 0+28+0 ms clock, 0+0/39/14+0 ms cpu, 295->295->196 MB, 295 MB goal, 0 MB stacks, 0 MB globals, 20 P
+time=2026-11-15T01:54:12.493+08:00 level=INFO msg=基准完成 sent=377380 paired=174835 missing=13855 eps=206.9 p50_ms=0.30 p95_ms=0.51 p99_ms=1.31 max_ms=29407.41 cpu_avg=7.7 rss_max_mb=39.9 out=results\go-reply-group-realwrite-200-wal-run2.json

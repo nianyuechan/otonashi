@@ -1,0 +1,10 @@
+time=2026-11-15T03:13:48.726+08:00 level=INFO msg=等待被测机器人连入 listen=127.0.0.1:3002 deadline=120s
+time=2026-11-15T03:13:49.827+08:00 level=INFO msg=被测机器人已连入
+time=2026-11-15T03:13:49.855+08:00 level=INFO msg=预热等待 duration=2s
+time=2026-11-15T03:13:51.875+08:00 level=INFO msg=开始稳定负载 rate=250 duration=30m0s workload=reply
+time=2026-11-15T03:36:46.553+08:00 level=WARN msg=收到未推送序号的回复 seq=148258
+time=2026-11-15T03:42:59.856+08:00 level=WARN msg=推送失败，尝试等待重连后继续 index=376992 error="failed to write msg: use of closed network connection" attempt=1
+time=2026-11-15T03:43:00.464+08:00 level=WARN msg=被测机器人重连成功，继续负载 mode=server
+time=2026-11-15T03:43:51.876+08:00 level=INFO msg=负载推送完成，等待尾部回复 grace=10s
+time=2026-11-15T03:43:51.959+08:00 level=WARN msg=读循环提前结束 error="failed to get reader: failed to read frame header: read tcp 127.0.0.1:3002->127.0.0.1:55756: wsarecv: An existing connection was forcibly closed by the remote host."
+time=2026-11-15T03:44:02.918+08:00 level=INFO msg=基准完成 sent=388088 paired=191640 missing=2404 eps=214.4 p50_ms=0.29 p95_ms=0.39 p99_ms=0.51 max_ms=22816.21 cpu_avg=6.3 rss_max_mb=36.3 out=results\go-reply-group-realwrite-200-wal-run4.json
