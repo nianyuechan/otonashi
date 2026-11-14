@@ -1,0 +1,50 @@
+onebot:
+  url: "ws://127.0.0.1:3001/"
+  # 请在本地或通过密钥注入流程替换；绝不要提交真实 token。
+  access_token: "replace-with-onebot-access-token"
+  request_timeout: 10s
+  heartbeat_interval: 20s
+  reconnect:
+    initial: 500ms
+    max: 30s
+render:
+  url: "http://127.0.0.1:8080"
+  timeout: 15s
+  max_retries: 1
+  retry_backoff: 100ms
+  max_concurrent: 4
+  fallback_text: "图片暂时不可用"
+log:
+  level: info
+debug:
+  reply: "[go-yunzai] M1 调试回复"
+storage:
+  backend: sqlite
+  # 相对启动目录；在本项目 G 盘目录启动时，数据库也保存在 G 盘。
+  path: "data/plugin-state.sqlite"
+  redis:
+    addr: "127.0.0.1:6379"
+    username: ""
+    password: ""
+    db: 0
+    max_retries: 2
+    dial_timeout: 2s
+    read_timeout: 2s
+    write_timeout: 2s
+plugins:
+  # 按机器人账号配置主人用户 ID；默认不授予任何人主人权限。
+  masters: {}
+  # 空能力白名单表示不限制；内置调试插件使用 messages 和 render。
+  allowed_capabilities: []
+  allow_users: []
+  deny_users: []
+  allow_groups: []
+  deny_groups: []
+  cooldown: 0s
+  settings:
+    builtin.debug:
+      defaults:
+        note_max_bytes: 4096
+      user: {}
+      # 浅覆盖顺序：default、账号:default、群、账号:群。
+      groups: {}

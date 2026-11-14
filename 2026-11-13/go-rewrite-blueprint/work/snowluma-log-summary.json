@@ -1,0 +1,89 @@
+{
+  "scope": "SnowLuma logs/snowluma-YYYY-MM-DD.log；只输出结构、计数和脱敏连接样本",
+  "files": {
+    "snowluma-2026-09-23.log": {
+      "levels": {
+        "INFO": 101,
+        "DEBUG": 38334,
+        "OK": 3646,
+        "WARN": 107
+      },
+      "events": {
+        "群": 3634,
+        "login": 1,
+        "群邀请": 1,
+        "群撤回": 28,
+        "入群": 7,
+        "群戳": 52,
+        "表情回应": 8,
+        "精华": 3,
+        "退群": 2
+      },
+      "lines": 42222,
+      "bytes": 6991555
+    },
+    "snowluma-2026-09-24.log": {
+      "levels": {
+        "WARN": 9189,
+        "DEBUG": 89345,
+        "OK": 8401,
+        "INFO": 168,
+        "ERROR": 4
+      },
+      "events": {
+        "群": 8378,
+        "群戳": 113,
+        "群撤回": 79,
+        "表情回应": 10,
+        "入群": 5,
+        "退群": 4
+      },
+      "lines": 107215,
+      "bytes": 17412609
+    }
+  },
+  "totals": {
+    "lines": 149437,
+    "levels": {
+      "INFO": 269,
+      "DEBUG": 127679,
+      "OK": 12047,
+      "WARN": 9296,
+      "ERROR": 4
+    },
+    "human_readable_event_categories": {
+      "群": 12012,
+      "login": 1,
+      "群邀请": 1,
+      "群撤回": 107,
+      "入群": 12,
+      "群戳": 165,
+      "表情回应": 18,
+      "精华": 3,
+      "退群": 6
+    },
+    "human_readable_event_markers": {
+      "[图片]": 3328,
+      "[表情]": 206,
+      "[视频]": 31,
+      "[语音]": 37
+    },
+    "action_name_mentions": {
+      "get_group_list": 1,
+      "get_login_info": 2,
+      "send_msg": 31
+    },
+    "json_object_lines": 0,
+    "json_field_presence": {},
+    "json_value_counts": {},
+    "connection_pattern_counts": {
+      "http_server": 2,
+      "ws_server": 9,
+      "ws_client": 9172
+    }
+  },
+  "limitations": [
+    "日志行是否包含完整 OneBot JSON 由 json_object_lines 与 field_presence 判断；人类可读 Event 行不能替代原始事件。",
+    "所有样本均已去除 Event 正文、长数字标识和已知凭据形式；不得把原日志直接作为公开测试夹具。"
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "http_server": [
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 42,
+      "text": "21:40:08 OK    [<id>] [OneBot.HTTP] [http-default] listening 127.0.0.1:3000/"
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 35431,
+      "text": "07:33:22 OK    [2406354517] [Event] <event-text-redacted>"
+    }
+  ],
+  "ws_server": [
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 43,
+      "text": "21:40:08 OK    [<id>] [OneBot.WS-Server] [ws-default] listening 127.0.0.1:3001/"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 39947,
+      "text": "23:53:59 DEBUG [<id>] [OneBot.WS-Server] [ws-default] rejected unauthorized WebSocket upgrade"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 39983,
+      "text": "23:54:04 DEBUG [<id>] [OneBot.WS-Server] [ws-default] rejected unauthorized WebSocket upgrade"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 39993,
+      "text": "23:54:09 DEBUG [<id>] [OneBot.WS-Server] [ws-default] rejected unauthorized WebSocket upgrade"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 39997,
+      "text": "23:54:14 DEBUG [<id>] [OneBot.WS-Server] [ws-default] rejected unauthorized WebSocket upgrade"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40042,
+      "text": "23:54:19 DEBUG [<id>] [OneBot.WS-Server] [ws-default] rejected unauthorized WebSocket upgrade"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40044,
+      "text": "23:54:24 DEBUG [<id>] [OneBot.WS-Server] [ws-default] rejected unauthorized WebSocket upgrade"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 42007,
+      "text": "23:59:08 WARN  [<id>] [OneBot.WS-Server] [ws-default] socket error: read ECONNRESET"
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 14674,
+      "text": "00:54:06 WARN  [<id>] [OneBot.WS-Server] [ws-default] socket error: read ECONNRESET"
+    }
+  ],
+  "ws_client": [
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 39861,
+      "text": "23:53:48 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:5099/ws: WebSocket handshake failed: Unexpected response status 200"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 39863,
+      "text": "23:53:53 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:5099/ws: WebSocket handshake failed: Unexpected response status 200"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 39927,
+      "text": "23:53:58 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:5099/ws: WebSocket handshake failed: Unexpected response status 200"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 39973,
+      "text": "23:54:03 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:5099/ws: WebSocket handshake failed: Unexpected response status 200"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 39984,
+      "text": "23:54:08 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:5099/ws: WebSocket handshake failed: Unexpected response status 200"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 39996,
+      "text": "23:54:10 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40000,
+      "text": "23:54:16 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40043,
+      "text": "23:54:21 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40066,
+      "text": "23:54:26 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40068,
+      "text": "23:54:31 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40087,
+      "text": "23:54:36 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40126,
+      "text": "23:54:41 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40183,
+      "text": "23:54:46 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40215,
+      "text": "23:54:51 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40216,
+      "text": "23:54:56 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40303,
+      "text": "23:55:01 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40379,
+      "text": "23:55:06 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40449,
+      "text": "23:55:11 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40461,
+      "text": "23:55:16 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40508,
+      "text": "23:55:21 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40569,
+      "text": "23:55:26 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40588,
+      "text": "23:55:31 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40605,
+      "text": "23:55:36 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40651,
+      "text": "23:55:41 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988"
+    }
+  ]
+}

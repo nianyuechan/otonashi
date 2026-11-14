@@ -1,0 +1,1160 @@
+{
+  "scope": "plugins 下源码的只读词法导入扫描；排除 .git/node_modules/resources/static/assets/public/dist 和 .min.js",
+  "limitations": [
+    "不是 AST 或运行时加载图；动态拼接 import、条件导入和字符串路径可能漏报。",
+    "cross_plugin 仅统计可静态解析的别名与相对路径，不包含 Handler/Runtime 等服务调用。",
+    "feature_lexical_hits 是引用上限，不代表功能已启用或任务实际加载。"
+  ],
+  "plugins": {
+    "adapter": {
+      "source_files_scanned": 7,
+      "cross_plugin_dependencies": {},
+      "package_imports": {
+        "file-type": 1,
+        "node-fetch": 2,
+        "node:child_process": 1,
+        "node:fs": 1,
+        "node:fs/promises": 1,
+        "node:path": 2,
+        "node:readline/promises": 1,
+        "ulid": 2,
+        "ws": 2,
+        "yaml": 1
+      },
+      "feature_lexical_hits": {
+        "child_process": 3,
+        "http_server": 1,
+        "scheduler": 2
+      },
+      "core_relative_import_files": 4
+    },
+    "agent-plugin": {
+      "source_files_scanned": 22,
+      "cross_plugin_dependencies": {
+        "lib": 1
+      },
+      "package_imports": {
+        "node:child_process": 4,
+        "node:fs": 2,
+        "node:fs/promises": 4,
+        "node:os": 1,
+        "node:path": 6,
+        "yaml": 1
+      },
+      "feature_lexical_hits": {
+        "child_process": 6
+      },
+      "core_relative_import_files": 1
+    },
+    "ark-plugin": {
+      "source_files_scanned": 34,
+      "cross_plugin_dependencies": {
+        "genshin": 3,
+        "miao-plugin": 45
+      },
+      "package_imports": {
+        "console": 1,
+        "fs": 9,
+        "lodash": 20,
+        "node-fetch": 1,
+        "node:fs": 8,
+        "node:util": 1,
+        "oicq": 1,
+        "path": 3,
+        "url": 1
+      },
+      "feature_lexical_hits": {
+        "context": 15,
+        "redis": 25
+      },
+      "core_relative_import_files": 4
+    },
+    "arknights-plugin": {
+      "source_files_scanned": 49,
+      "cross_plugin_dependencies": {
+        "other": 1
+      },
+      "package_imports": {
+        "child_process": 1,
+        "chokidar": 1,
+        "fs": 18,
+        "https": 1,
+        "icqq": 1,
+        "jsdom": 1,
+        "lodash": 10,
+        "module": 1,
+        "moment": 5,
+        "node-fetch": 1,
+        "node:crypto": 1,
+        "node:fs": 3,
+        "node:path": 2,
+        "node:vm": 1,
+        "oicq": 2,
+        "path": 7,
+        "puppeteer": 3,
+        "puppeteer-extra": 1,
+        "puppeteer-extra-plugin-stealth": 1,
+        "qrcode": 1,
+        "stream": 1,
+        "url": 1,
+        "yaml": 4
+      },
+      "feature_lexical_hits": {
+        "browser": 22,
+        "child_process": 9,
+        "context": 4,
+        "framework_task": 1,
+        "redis": 32,
+        "scheduler": 2
+      },
+      "core_relative_import_files": 5
+    },
+    "Atlas": {
+      "source_files_scanned": 10,
+      "cross_plugin_dependencies": {
+        "genshin": 1
+      },
+      "package_imports": {
+        "child_process": 1,
+        "fs": 1,
+        "node:fs": 3,
+        "oicq": 1,
+        "path": 2,
+        "yaml": 2
+      },
+      "feature_lexical_hits": {
+        "browser": 4,
+        "child_process": 1,
+        "framework_task": 1,
+        "redis": 3
+      },
+      "core_relative_import_files": 5
+    },
+    "bin": {
+      "source_files_scanned": 0,
+      "cross_plugin_dependencies": {},
+      "package_imports": {},
+      "feature_lexical_hits": {},
+      "core_relative_import_files": 0
+    },
+    "earth-k-plugin": {
+      "source_files_scanned": 57,
+      "cross_plugin_dependencies": {
+        "genshin": 4,
+        "other": 1
+      },
+      "package_imports": {
+        "alemonjs": 1,
+        "chalk": 1,
+        "child_process": 4,
+        "chokidar": 1,
+        "crypto": 1,
+        "fs": 25,
+        "http": 2,
+        "https-proxy-agent": 1,
+        "icqq": 1,
+        "image-size": 1,
+        "lodash": 13,
+        "module": 3,
+        "moment": 1,
+        "node-fetch": 31,
+        "node-schedule": 1,
+        "node:fs": 3,
+        "oicq": 4,
+        "os": 3,
+        "path": 3,
+        "puppeteer": 1,
+        "querystring": 1,
+        "stream": 1,
+        "systeminformation": 1,
+        "util": 1,
+        "yaml": 5
+      },
+      "feature_lexical_hits": {
+        "browser": 122,
+        "child_process": 13,
+        "framework_task": 1,
+        "redis": 7,
+        "scheduler": 5
+      },
+      "core_relative_import_files": 29
+    },
+    "earth-k-plugin-tmp": {
+      "source_files_scanned": 57,
+      "cross_plugin_dependencies": {
+        "genshin": 4,
+        "other": 1
+      },
+      "package_imports": {
+        "alemonjs": 1,
+        "chalk": 1,
+        "child_process": 4,
+        "chokidar": 1,
+        "crypto": 1,
+        "fs": 25,
+        "http": 2,
+        "https-proxy-agent": 1,
+        "icqq": 1,
+        "image-size": 1,
+        "lodash": 13,
+        "module": 3,
+        "moment": 1,
+        "node-fetch": 31,
+        "node-schedule": 1,
+        "node:fs": 3,
+        "oicq": 4,
+        "os": 3,
+        "path": 3,
+        "puppeteer": 1,
+        "querystring": 1,
+        "stream": 1,
+        "systeminformation": 1,
+        "util": 1,
+        "yaml": 5
+      },
+      "feature_lexical_hits": {
+        "browser": 122,
+        "child_process": 13,
+        "framework_task": 1,
+        "redis": 7,
+        "scheduler": 5
+      },
+      "core_relative_import_files": 29
+    },
+    "example": {
+      "source_files_scanned": 5,
+      "cross_plugin_dependencies": {},
+      "package_imports": {
+        "axios": 1,
+        "qrcode": 1
+      },
+      "feature_lexical_hits": {
+        "context": 2,
+        "framework_task": 1,
+        "redis": 5,
+        "scheduler": 1
+      },
+      "core_relative_import_files": 0
+    },
+    "FanSky_Qs": {
+      "source_files_scanned": 95,
+      "cross_plugin_dependencies": {
+        "genshin": 4,
+        "miao-plugin": 2
+      },
+      "package_imports": {
+        "axios": 11,
+        "child_process": 2,
+        "crypto": 2,
+        "fs": 31,
+        "https-proxy-agent": 2,
+        "lodash": 9,
+        "md5": 1,
+        "moment": 1,
+        "node-fetch": 6,
+        "node:fs": 2,
+        "oicq": 9,
+        "path": 4,
+        "stream": 1,
+        "url": 2,
+        "util": 1,
+        "yaml": 2
+      },
+      "feature_lexical_hits": {
+        "browser": 31,
+        "child_process": 2,
+        "framework_task": 2,
+        "redis": 158
+      },
+      "core_relative_import_files": 21
+    },
+    "flower-plugin": {
+      "source_files_scanned": 23,
+      "cross_plugin_dependencies": {
+        "genshin": 4,
+        "miao-plugin": 1
+      },
+      "package_imports": {
+        "child_process": 1,
+        "chokidar": 2,
+        "fs": 3,
+        "lodash": 14,
+        "moment": 3,
+        "node:fs": 7,
+        "os": 1,
+        "path": 3,
+        "yaml": 7
+      },
+      "feature_lexical_hits": {
+        "browser": 21,
+        "child_process": 1,
+        "redis": 10
+      },
+      "core_relative_import_files": 11
+    },
+    "genshin": {
+      "source_files_scanned": 54,
+      "cross_plugin_dependencies": {
+        "miao-plugin": 15
+      },
+      "package_imports": {
+        "chokidar": 1,
+        "crypto": 1,
+        "fs": 3,
+        "https-proxy-agent": 1,
+        "lodash": 28,
+        "md5": 1,
+        "moment": 10,
+        "node-fetch": 13,
+        "node:fs": 20,
+        "node:fs/promises": 1,
+        "node:path": 1,
+        "node:util": 1,
+        "path": 1,
+        "sequelize": 1,
+        "url": 1,
+        "yaml": 7
+      },
+      "feature_lexical_hits": {
+        "browser": 27,
+        "context": 13,
+        "framework_task": 1,
+        "redis": 58,
+        "sqlite": 10
+      },
+      "core_relative_import_files": 29
+    },
+    "Guoba-Plugin": {
+      "source_files_scanned": 101,
+      "cross_plugin_dependencies": {
+        "genshin": 2,
+        "miao-plugin": 2,
+        "other": 1,
+        "system": 1
+      },
+      "package_imports": {
+        "#guoba.adapter": 13,
+        "#guoba.framework": 36,
+        "#guoba.framework.utils": 1,
+        "#guoba.libs": 2,
+        "#guoba.platform": 44,
+        "#guoba.utils": 20,
+        "@yunzaijs/mys": 1,
+        "alemonjs": 1,
+        "chalk": 6,
+        "child_process": 6,
+        "chokidar": 2,
+        "express": 3,
+        "fs": 19,
+        "jsonwebtoken": 3,
+        "lodash": 17,
+        "moment": 5,
+        "multer": 1,
+        "net": 1,
+        "node-fetch": 6,
+        "oicq": 1,
+        "os": 5,
+        "path": 30,
+        "url": 1,
+        "util": 1,
+        "yaml": 3
+      },
+      "feature_lexical_hits": {
+        "browser": 2,
+        "child_process": 11,
+        "framework_task": 1,
+        "http_server": 25,
+        "redis": 23
+      },
+      "core_relative_import_files": 3
+    },
+    "liangshi-calc": {
+      "source_files_scanned": 781,
+      "cross_plugin_dependencies": {
+        "genshin": 1,
+        "miao-plugin": 7,
+        "other": 1
+      },
+      "package_imports": {
+        "#liangshi": 145,
+        "child_process": 1,
+        "chokidar": 1,
+        "fs": 1,
+        "lodash": 12,
+        "node:fs": 32,
+        "node:path": 6,
+        "yaml": 2
+      },
+      "feature_lexical_hits": {
+        "child_process": 1,
+        "redis": 2
+      },
+      "core_relative_import_files": 4
+    },
+    "logier-plugin": {
+      "source_files_scanned": 39,
+      "cross_plugin_dependencies": {
+        "other": 1
+      },
+      "package_imports": {
+        "child_process": 1,
+        "chokidar": 3,
+        "fs": 7,
+        "http": 1,
+        "https": 2,
+        "icqq": 1,
+        "lodash": 7,
+        "node-fetch": 4,
+        "node:fs": 4,
+        "oicq": 1,
+        "path": 5,
+        "puppeteer": 7,
+        "url": 1,
+        "yaml": 3
+      },
+      "feature_lexical_hits": {
+        "browser": 30,
+        "child_process": 3,
+        "context": 2,
+        "framework_task": 6,
+        "http_server": 2,
+        "redis": 40
+      },
+      "core_relative_import_files": 9
+    },
+    "mc-plugin": {
+      "source_files_scanned": 18,
+      "cross_plugin_dependencies": {
+        "other": 1
+      },
+      "package_imports": {
+        "child_process": 1,
+        "fs": 5,
+        "lodash": 3,
+        "module": 1,
+        "node:fs": 1,
+        "oicq": 1,
+        "path": 2,
+        "rcon-client": 1,
+        "ws": 1,
+        "yaml": 1
+      },
+      "feature_lexical_hits": {
+        "child_process": 8
+      },
+      "core_relative_import_files": 7
+    },
+    "memz-plugin": {
+      "source_files_scanned": 54,
+      "cross_plugin_dependencies": {
+        "other": 2
+      },
+      "package_imports": {
+        "#components": 13,
+        "#model": 6,
+        "axios": 3,
+        "chalk": 2,
+        "cheerio": 2,
+        "child_process": 2,
+        "chokidar": 3,
+        "cors": 1,
+        "dns": 1,
+        "express": 1,
+        "fs": 9,
+        "fuse.js": 1,
+        "http": 1,
+        "https": 3,
+        "https-proxy-agent": 1,
+        "iconv-lite": 1,
+        "ioredis": 2,
+        "lodash": 4,
+        "log4js": 1,
+        "moment": 2,
+        "mustache": 1,
+        "net": 1,
+        "node:fs": 2,
+        "node:fs/promises": 1,
+        "node:http": 1,
+        "node:https": 1,
+        "node:path": 4,
+        "os": 3,
+        "path": 9,
+        "ping": 1,
+        "punycode": 1,
+        "puppeteer": 2,
+        "systeminformation": 1,
+        "tls": 1,
+        "url": 5,
+        "util": 1,
+        "whois-json": 1,
+        "xlsx": 1,
+        "yaml": 2
+      },
+      "feature_lexical_hits": {
+        "browser": 19,
+        "child_process": 2,
+        "framework_task": 5,
+        "http_server": 14,
+        "redis": 20,
+        "sqlite": 1
+      },
+      "core_relative_import_files": 7
+    },
+    "miao-plugin": {
+      "source_files_scanned": 122,
+      "cross_plugin_dependencies": {},
+      "package_imports": {
+        "#miao": 82,
+        "#miao.models": 39,
+        "#miao.path": 17,
+        "cheerio": 1,
+        "child_process": 2,
+        "express": 1,
+        "express-art-template": 1,
+        "https-proxy-agent": 1,
+        "image-size": 1,
+        "lodash": 81,
+        "md5": 1,
+        "moment": 13,
+        "node-fetch": 8,
+        "node:fs": 15,
+        "node:util": 1,
+        "oicq": 1,
+        "path": 1,
+        "stream": 1,
+        "url": 1,
+        "util": 1
+      },
+      "feature_lexical_hits": {
+        "browser": 1,
+        "child_process": 4,
+        "context": 3,
+        "framework_task": 1,
+        "http_server": 7,
+        "redis": 44
+      },
+      "core_relative_import_files": 2
+    },
+    "mora-plugin": {
+      "source_files_scanned": 22,
+      "cross_plugin_dependencies": {
+        "genshin": 4,
+        "miao-plugin": 3
+      },
+      "package_imports": {
+        "child_process": 1,
+        "chokidar": 1,
+        "fs": 1,
+        "lodash": 14,
+        "moment": 2,
+        "node-fetch": 1,
+        "node:fs": 15,
+        "node:path": 1,
+        "oicq": 1,
+        "yaml": 2
+      },
+      "feature_lexical_hits": {
+        "browser": 9,
+        "child_process": 1,
+        "framework_task": 1,
+        "redis": 13
+      },
+      "core_relative_import_files": 9
+    },
+    "nai-plugin": {
+      "source_files_scanned": 22,
+      "cross_plugin_dependencies": {
+        "other": 1
+      },
+      "package_imports": {
+        "adm-zip": 1,
+        "axios": 6,
+        "child_process": 1,
+        "console": 1,
+        "cos-nodejs-sdk-v5": 1,
+        "crypto": 1,
+        "events": 1,
+        "form-data": 1,
+        "fs": 7,
+        "https-proxy-agent": 4,
+        "image-size": 1,
+        "lodash": 5,
+        "module": 1,
+        "node:fs": 1,
+        "oicq": 1,
+        "path": 3,
+        "util": 1,
+        "yaml": 1
+      },
+      "feature_lexical_hits": {
+        "child_process": 8,
+        "framework_task": 3,
+        "redis": 7
+      },
+      "core_relative_import_files": 8
+    },
+    "other": {
+      "source_files_scanned": 5,
+      "cross_plugin_dependencies": {
+        "miao-plugin": 3
+      },
+      "package_imports": {
+        "child_process": 1,
+        "lodash": 1,
+        "moment": 1,
+        "node:fs/promises": 2
+      },
+      "feature_lexical_hits": {
+        "child_process": 2,
+        "framework_task": 2,
+        "redis": 4
+      },
+      "core_relative_import_files": 2
+    },
+    "phi-plugin": {
+      "source_files_scanned": 74,
+      "cross_plugin_dependencies": {
+        "other": 1
+      },
+      "package_imports": {
+        "@vikadata/vika": 2,
+        "axios": 2,
+        "chalk": 1,
+        "child_process": 1,
+        "chokidar": 4,
+        "crypto": 1,
+        "crypto-js": 2,
+        "csvtojson": 1,
+        "fs": 7,
+        "icqq": 1,
+        "jszip": 2,
+        "lodash": 5,
+        "md5": 1,
+        "module": 1,
+        "node-fetch": 4,
+        "node:fs": 8,
+        "node:https": 2,
+        "node:os": 1,
+        "node:path": 5,
+        "node:timers/promises": 1,
+        "oicq": 5,
+        "path": 9,
+        "pinyin-pro": 1,
+        "puppeteer": 1,
+        "qrcode": 2,
+        "single-line-log": 1,
+        "ulid": 1,
+        "yaml": 3
+      },
+      "feature_lexical_hits": {
+        "browser": 24,
+        "child_process": 13,
+        "context": 14,
+        "framework_task": 10,
+        "redis": 44
+      },
+      "core_relative_import_files": 21
+    },
+    "pixiv-plugin": {
+      "source_files_scanned": 32,
+      "cross_plugin_dependencies": {
+        "other": 1
+      },
+      "package_imports": {
+        "#components": 9,
+        "#model": 6,
+        "#utils": 9,
+        "@pdf-lib/fontkit": 1,
+        "axios": 1,
+        "child_process": 1,
+        "chokidar": 2,
+        "crypto": 3,
+        "express": 1,
+        "fs": 4,
+        "https-proxy-agent": 2,
+        "lodash": 2,
+        "md5": 1,
+        "moment": 1,
+        "node-fetch": 1,
+        "node:fs": 1,
+        "node:fs/promises": 1,
+        "node:http": 1,
+        "node:https": 1,
+        "node:path": 1,
+        "path": 5,
+        "pdf-lib": 2,
+        "qs": 1,
+        "sharp": 1,
+        "socks-proxy-agent": 1,
+        "stream": 1,
+        "url": 1,
+        "util": 1,
+        "yaml": 4
+      },
+      "feature_lexical_hits": {
+        "child_process": 5,
+        "framework_task": 1,
+        "http_server": 13,
+        "sqlite": 1
+      },
+      "core_relative_import_files": 2
+    },
+    "plugins": {
+      "source_files_scanned": 0,
+      "cross_plugin_dependencies": {},
+      "package_imports": {},
+      "feature_lexical_hits": {},
+      "core_relative_import_files": 0
+    },
+    "rconsole-plugin": {
+      "source_files_scanned": 47,
+      "cross_plugin_dependencies": {},
+      "package_imports": {
+        "axios": 12,
+        "buffer": 1,
+        "child_process": 7,
+        "chokidar": 1,
+        "crypto": 2,
+        "form-data": 1,
+        "fs": 6,
+        "https": 1,
+        "https-proxy-agent": 2,
+        "lodash": 5,
+        "md5": 3,
+        "node-fetch": 4,
+        "node-id3": 1,
+        "node-schedule": 1,
+        "node:buffer": 1,
+        "node:child_process": 3,
+        "node:fs": 8,
+        "oicq": 1,
+        "os": 2,
+        "p-queue": 1,
+        "path": 14,
+        "qrcode": 2,
+        "querystring": 1,
+        "url": 1,
+        "util": 2,
+        "yaml": 2
+      },
+      "feature_lexical_hits": {
+        "browser": 25,
+        "child_process": 36,
+        "framework_task": 1,
+        "redis": 3,
+        "scheduler": 3
+      },
+      "core_relative_import_files": 5
+    },
+    "San-plugin": {
+      "source_files_scanned": 19,
+      "cross_plugin_dependencies": {
+        "other": 1
+      },
+      "package_imports": {
+        "@gradio/client": 1,
+        "axios": 2,
+        "child_process": 1,
+        "fs": 6,
+        "https": 1,
+        "js-yaml": 3,
+        "lodash": 2,
+        "module": 1,
+        "oicq": 1,
+        "path": 5,
+        "puppeteer": 2,
+        "url": 1
+      },
+      "feature_lexical_hits": {
+        "browser": 13,
+        "child_process": 8,
+        "context": 11
+      },
+      "core_relative_import_files": 7
+    },
+    "Speech-statistics-plugin": {
+      "source_files_scanned": 23,
+      "cross_plugin_dependencies": {},
+      "package_imports": {
+        "crypto": 1,
+        "express": 1,
+        "fs": 16,
+        "multer": 1,
+        "path": 13,
+        "puppeteer": 1,
+        "sharp": 1
+      },
+      "feature_lexical_hits": {
+        "browser": 3,
+        "http_server": 7,
+        "scheduler": 4
+      },
+      "core_relative_import_files": 1
+    },
+    "StarRail-plugin": {
+      "source_files_scanned": 52,
+      "cross_plugin_dependencies": {
+        "genshin": 13,
+        "miao-plugin": 2,
+        "other": 1,
+        "system": 1,
+        "xiaoyao-cvs-plugin": 1
+      },
+      "package_imports": {
+        "alemonjs": 1,
+        "child_process": 3,
+        "chokidar": 1,
+        "crypto": 2,
+        "fs": 15,
+        "lodash": 22,
+        "md5": 2,
+        "moment": 7,
+        "node-fetch": 15,
+        "node:fs": 5,
+        "oicq": 2,
+        "path": 3,
+        "yaml": 3
+      },
+      "feature_lexical_hits": {
+        "child_process": 13,
+        "context": 5,
+        "redis": 58
+      },
+      "core_relative_import_files": 11
+    },
+    "system": {
+      "source_files_scanned": 9,
+      "cross_plugin_dependencies": {},
+      "package_imports": {
+        "lodash": 1,
+        "moment": 1,
+        "node:fs/promises": 2,
+        "node:path": 1,
+        "ulid": 1,
+        "yaml": 1
+      },
+      "feature_lexical_hits": {
+        "context": 5,
+        "redis": 6
+      },
+      "core_relative_import_files": 6
+    },
+    "TRSS-Plugin": {
+      "source_files_scanned": 16,
+      "cross_plugin_dependencies": {
+        "miao-plugin": 1
+      },
+      "package_imports": {
+        "@highlightjs/cdn-assets": 2,
+        "ansi_up": 3,
+        "crypto": 1,
+        "data:text": 7,
+        "lodash": 2,
+        "markdown-it": 1,
+        "md5": 7,
+        "node-fetch": 1,
+        "node:child_process": 1,
+        "node:fs/promises": 7,
+        "node:path": 2,
+        "oicq": 1,
+        "path": 1,
+        "qrcode": 2,
+        "yaml": 1
+      },
+      "feature_lexical_hits": {
+        "browser": 24,
+        "child_process": 3,
+        "context": 21
+      },
+      "core_relative_import_files": 6
+    },
+    "waves-plugin": {
+      "source_files_scanned": 37,
+      "cross_plugin_dependencies": {
+        "other": 1
+      },
+      "package_imports": {
+        "axios": 5,
+        "child_process": 1,
+        "crypto": 1,
+        "express": 1,
+        "fs": 15,
+        "https-proxy-agent": 3,
+        "lodash": 4,
+        "module": 1,
+        "node:fs": 1,
+        "oicq": 1,
+        "p-limit": 3,
+        "path": 5,
+        "qs": 3,
+        "sharp": 1,
+        "yaml": 7
+      },
+      "feature_lexical_hits": {
+        "child_process": 8,
+        "context": 2,
+        "framework_task": 4,
+        "http_server": 5,
+        "redis": 97,
+        "scheduler": 1
+      },
+      "core_relative_import_files": 23
+    },
+    "xianxin-plugin": {
+      "source_files_scanned": 25,
+      "cross_plugin_dependencies": {
+        "other": 2
+      },
+      "package_imports": {
+        "child_process": 1,
+        "chokidar": 1,
+        "http": 1,
+        "https": 1,
+        "lodash": 10,
+        "md5": 1,
+        "module": 1,
+        "moment": 5,
+        "node-fetch": 5,
+        "node:fs": 10,
+        "oicq": 8,
+        "path": 1,
+        "yaml": 1
+      },
+      "feature_lexical_hits": {
+        "browser": 51,
+        "child_process": 8,
+        "context": 2,
+        "framework_task": 1,
+        "redis": 42
+      },
+      "core_relative_import_files": 16
+    },
+    "xitian-plugin": {
+      "source_files_scanned": 17,
+      "cross_plugin_dependencies": {
+        "other": 3
+      },
+      "package_imports": {
+        "acorn": 3,
+        "child_process": 1,
+        "chokidar": 2,
+        "lodash": 4,
+        "md5": 1,
+        "node-fetch": 1,
+        "node:child_process": 2,
+        "node:fs": 8,
+        "node:path": 8,
+        "node:url": 1,
+        "node:util": 1,
+        "oicq": 1,
+        "yaml": 2
+      },
+      "feature_lexical_hits": {
+        "browser": 12,
+        "child_process": 17,
+        "context": 27,
+        "http_server": 14
+      },
+      "core_relative_import_files": 10
+    },
+    "y-tian-plugin": {
+      "source_files_scanned": 190,
+      "cross_plugin_dependencies": {
+        "other": 1
+      },
+      "package_imports": {
+        "@koa/cors": 1,
+        "@koa/router": 1,
+        "axios": 8,
+        "chalk": 5,
+        "child_process": 3,
+        "crypto": 30,
+        "crypto-js": 2,
+        "dotenv": 5,
+        "events": 1,
+        "form-data": 3,
+        "fs": 50,
+        "http": 3,
+        "https": 6,
+        "https-proxy-agent": 4,
+        "https:": 4,
+        "icqq": 2,
+        "js-tiktoken": 2,
+        "jsonwebtoken": 1,
+        "koa": 1,
+        "koa-bodyparser": 1,
+        "koa-static": 1,
+        "lodash": 5,
+        "markmap-lib": 1,
+        "md5": 1,
+        "mime-types": 8,
+        "module": 12,
+        "moment": 1,
+        "net": 1,
+        "node-fetch": 63,
+        "node-schedule": 1,
+        "node:crypto": 1,
+        "node:fs": 1,
+        "oicq": 1,
+        "openai": 3,
+        "os": 3,
+        "p-limit": 1,
+        "path": 52,
+        "pdf-parse": 2,
+        "public-ip": 1,
+        "puppeteer": 11,
+        "puppeteer-extra": 2,
+        "puppeteer-extra-plugin-stealth": 2,
+        "querystring": 1,
+        "readline": 2,
+        "request": 1,
+        "stream": 10,
+        "textract": 1,
+        "url": 27,
+        "util": 6,
+        "ws": 2,
+        "yaml": 22
+      },
+      "feature_lexical_hits": {
+        "browser": 102,
+        "child_process": 17,
+        "context": 9,
+        "framework_task": 1,
+        "http_server": 2,
+        "redis": 30,
+        "scheduler": 4
+      },
+      "core_relative_import_files": 9
+    },
+    "yenai-plugin": {
+      "source_files_scanned": 100,
+      "cross_plugin_dependencies": {
+        "other": 1,
+        "system": 1
+      },
+      "package_imports": {
+        "abort-controller": 1,
+        "chalk": 1,
+        "cheerio": 3,
+        "child_process": 2,
+        "chokidar": 2,
+        "crypto": 1,
+        "fs": 11,
+        "https": 1,
+        "https-proxy-agent": 1,
+        "icqq": 10,
+        "jimp": 1,
+        "lodash": 39,
+        "md5": 5,
+        "module": 1,
+        "moment": 14,
+        "node-fetch": 4,
+        "node-schedule": 1,
+        "node:fs": 1,
+        "node:fs/promises": 3,
+        "node:v8": 3,
+        "os": 3,
+        "path": 6,
+        "puppeteer": 3,
+        "puppeteer-extra": 1,
+        "puppeteer-extra-plugin-stealth": 1,
+        "querystring": 1,
+        "systeminformation": 7,
+        "tls": 1,
+        "url": 3,
+        "util": 1,
+        "yaml": 2
+      },
+      "feature_lexical_hits": {
+        "browser": 52,
+        "child_process": 7,
+        "context": 29,
+        "framework_task": 4,
+        "redis": 34,
+        "scheduler": 3
+      },
+      "core_relative_import_files": 15
+    },
+    "yunzai-plugin-deer-pipe": {
+      "source_files_scanned": 12,
+      "cross_plugin_dependencies": {},
+      "package_imports": {
+        "chokidar": 1,
+        "fs": 2,
+        "lodash": 1,
+        "node:fs": 2,
+        "oicq": 1,
+        "path": 3,
+        "sharp": 1,
+        "yaml": 1
+      },
+      "feature_lexical_hits": {
+        "browser": 10,
+        "redis": 7
+      },
+      "core_relative_import_files": 2
+    },
+    "Yunzai.TRSS.me": {
+      "source_files_scanned": 16,
+      "cross_plugin_dependencies": {
+        "miao-plugin": 1
+      },
+      "package_imports": {
+        "@highlightjs/cdn-assets": 2,
+        "ansi_up": 3,
+        "crypto": 1,
+        "data:text": 7,
+        "lodash": 2,
+        "markdown-it": 1,
+        "md5": 7,
+        "node-fetch": 1,
+        "node:child_process": 1,
+        "node:fs/promises": 7,
+        "node:path": 2,
+        "oicq": 1,
+        "path": 1,
+        "qrcode": 2,
+        "yaml": 1
+      },
+      "feature_lexical_hits": {
+        "browser": 24,
+        "child_process": 3,
+        "context": 21
+      },
+      "core_relative_import_files": 6
+    },
+    "ZZZ-Plugin": {
+      "source_files_scanned": 218,
+      "cross_plugin_dependencies": {
+        "genshin": 3,
+        "other": 1,
+        "system": 1,
+        "xiaoyao-cvs-plugin": 1
+      },
+      "package_imports": {
+        "chalk": 1,
+        "child_process": 1,
+        "chokidar": 3,
+        "crypto": 2,
+        "fs": 14,
+        "icqq": 1,
+        "lodash": 31,
+        "md5": 1,
+        "node-fetch": 4,
+        "node:buffer": 1,
+        "oicq": 2,
+        "path": 14,
+        "redis": 1,
+        "url": 1,
+        "yaml": 2
+      },
+      "feature_lexical_hits": {
+        "child_process": 1,
+        "context": 13,
+        "framework_task": 2,
+        "redis": 24
+      },
+      "core_relative_import_files": 7
+    }
+  }
+}

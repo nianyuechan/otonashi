@@ -1,0 +1,7 @@
+time=2026-11-14T15:56:04.223+08:00 level=INFO msg=等待被测机器人连入 listen=127.0.0.1:3002 deadline=120s
+time=2026-11-14T15:56:05.318+08:00 level=INFO msg=被测机器人已连入
+time=2026-11-14T15:56:05.319+08:00 level=INFO msg=预热等待 duration=2s
+time=2026-11-14T15:56:07.320+08:00 level=INFO msg=开始突发负载 count=500 workload=reply
+time=2026-11-14T15:56:07.361+08:00 level=INFO msg=突发负载推送完成 took=39.8233ms
+time=2026-11-14T15:56:07.362+08:00 level=INFO msg=负载推送完成，等待尾部回复 grace=10s
+time=2026-11-14T15:56:17.365+08:00 level=INFO msg=基准完成 sent=500 paired=250 missing=0 eps=49.8 p50_ms=4.20 p95_ms=5.80 p99_ms=5.90 max_ms=5.90 cpu_avg=0.6 rss_max_mb=18.3 out=results\go-reply-burst.json

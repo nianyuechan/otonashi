@@ -1,0 +1,18 @@
+# 运行时与构建产物
+*.exe
+*.log
+*.sqlite
+*.db
+data/
+node_modules/
+.screenshots/
+
+# 基准环境：可重建，体积大
+bench/env/go-yunzai/
+bench/env/old-yunzai/
+mysy2/
+
+# Go 缓存（通常在项目目录之外，这里仅作兜底）
+gocache/
+gopath/
+gotmp/

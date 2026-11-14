@@ -1,0 +1,67 @@
+{
+  "onebot": {
+    "mode": "snapshot",
+    "networks": {
+      "httpServers": [
+        {
+          "name": "http-default",
+          "accessToken": "***",
+          "messageFormat": "array",
+          "reportSelfMessage": false,
+          "host": "127.0.0.1",
+          "port": 3000,
+          "path": "/",
+          "enableWebSocket": false
+        }
+      ],
+      "httpClients": [],
+      "wsServers": [
+        {
+          "name": "ws-default",
+          "accessToken": "***",
+          "messageFormat": "array",
+          "reportSelfMessage": false,
+          "host": "127.0.0.1",
+          "port": 3001,
+          "path": "/",
+          "role": "Universal"
+        }
+      ],
+      "wsClients": [
+        {
+          "name": "Maimai",
+          "messageFormat": "array",
+          "reportSelfMessage": false,
+          "url": "ws://127.0.0.1:7988/ws",
+          "role": "Universal",
+          "reconnectIntervalMs": 5000
+        }
+      ]
+    },
+    "statusCommand": {
+      "enabled": true,
+      "swallow": false,
+      "cooldownSeconds": 5,
+      "trigger": "#sl"
+    },
+    "historySync": {
+      "enabled": false
+    },
+    "notifications": {
+      "channelIds": []
+    }
+  },
+  "webui": {
+    "passwordHash": "***",
+    "passwordSalt": "***",
+    "mustChangePassword": "***",
+    "generatedAt": "2026-09-16T16:49:20.128Z",
+    "updatedAt": "2026-09-16T16:52:41.729Z"
+  },
+  "connection_evidence": {
+    "http_access_token_present": true,
+    "ws_access_token_present": true,
+    "http_clients_count": 0,
+    "ws_clients_count": 1
+  }
+}

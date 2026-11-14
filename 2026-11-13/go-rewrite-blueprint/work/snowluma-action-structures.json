@@ -1,0 +1,598 @@
+{
+  "record_count": 31,
+  "missing_echo_count": 31,
+  "missing_message_id_count": 31,
+  "missing_retcode_count": 31,
+  "note": "仅统计日志中 send_msg 提及对应的动作摘要行；缺失表示该行未提供字段，不推断协议实际响应不存在。",
+  "records": [
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40273,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "23:54:59 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40440,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "23:55:10 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40721,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "23:55:58 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 40887,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "23:56:22 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 41143,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "23:56:42 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 41282,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "23:56:55 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 41809,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "23:58:22 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-23.log",
+      "line": 41906,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "23:58:38 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 2318,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:05:40 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 2368,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:05:45 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 2551,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:06:14 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 2613,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:06:26 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 2905,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:08:05 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 3311,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:09:38 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 3360,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:09:53 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 3799,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:11:23 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 3930,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:12:18 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 4259,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:13:32 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 4450,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:14:30 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 4706,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:15:56 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 4967,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:16:54 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 5133,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:17:24 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 5266,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:17:54 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 5399,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:18:33 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 5707,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:19:42 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 8094,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:33:25 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 8256,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:33:57 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 8932,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:36:37 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 9440,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:38:57 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 9501,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:39:36 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    },
+    {
+      "file": "snowluma-2026-09-24.log",
+      "line": 11060,
+      "keys": [
+        "group_id",
+        "len",
+        "message",
+        "message_type",
+        "params"
+      ],
+      "redacted_shape": "00:44:35 DEBUG [<id>] [Bridge.Action] send_msg params=message_type=\"group\" group_id=\"<id>\" message=<text>",
+      "segment_types": [],
+      "has_success_word": false,
+      "has_error_word": false,
+      "has_message_id": false,
+      "has_echo": false,
+      "has_retcode": false,
+      "line_length": 118
+    }
+  ]
+}

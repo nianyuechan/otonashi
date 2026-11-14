@@ -1,0 +1,445 @@
+{
+  "unique_or_grouped_directories": [
+    {
+      "candidate_directories": [
+        "logier-plugin"
+      ],
+      "count": 790,
+      "methods": [
+        {
+          "method": "戳一戳表情包",
+          "count": 600
+        },
+        {
+          "method": "今日运势",
+          "count": 107
+        },
+        {
+          "method": "今日签到",
+          "count": 43
+        },
+        {
+          "method": "今日老婆",
+          "count": 35
+        },
+        {
+          "method": "算一卦",
+          "count": 4
+        },
+        {
+          "method": "表情包仓库",
+          "count": 1
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "rconsole-plugin"
+      ],
+      "count": 786,
+      "methods": [
+        {
+          "method": "bili",
+          "count": 565
+        },
+        {
+          "method": "douyin",
+          "count": 169
+        },
+        {
+          "method": "general",
+          "count": 42
+        },
+        {
+          "method": "netease",
+          "count": 6
+        },
+        {
+          "method": "qqMusic",
+          "count": 2
+        },
+        {
+          "method": "weibo",
+          "count": 1
+        },
+        {
+          "method": "xhs",
+          "count": 1
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "earth-k-plugin",
+        "earth-k-plugin-tmp"
+      ],
+      "count": 247,
+      "methods": [
+        {
+          "method": "jrys",
+          "count": 111
+        },
+        {
+          "method": "bzjx",
+          "count": 57
+        },
+        {
+          "method": "jrlp",
+          "count": 25
+        },
+        {
+          "method": "bqhc",
+          "count": 23
+        },
+        {
+          "method": "dawo",
+          "count": 19
+        },
+        {
+          "method": "shareMusic",
+          "count": 8
+        },
+        {
+          "method": "wc",
+          "count": 2
+        },
+        {
+          "method": "help",
+          "count": 1
+        },
+        {
+          "method": "bqlb",
+          "count": 1
+        }
+      ],
+      "mapping_statuses": [
+        "ambiguous"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "yenai-plugin"
+      ],
+      "count": 47,
+      "methods": [
+        {
+          "method": "thumbUp",
+          "count": 41
+        },
+        {
+          "method": "vilipixRandomImg",
+          "count": 5
+        },
+        {
+          "method": "ZFB",
+          "count": 1
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "xianxin-plugin"
+      ],
+      "count": 34,
+      "methods": [
+        {
+          "method": "searchCos",
+          "count": 25
+        },
+        {
+          "method": "cos",
+          "count": 4
+        },
+        {
+          "method": "startBlackjack",
+          "count": 1
+        },
+        {
+          "method": "searchsp",
+          "count": 1
+        },
+        {
+          "method": "searchAcgn",
+          "count": 1
+        },
+        {
+          "method": "searchStrategy",
+          "count": 1
+        },
+        {
+          "method": "map",
+          "count": 1
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "yunzai-plugin-deer-pipe"
+      ],
+      "count": 29,
+      "methods": [
+        {
+          "method": "lu",
+          "count": 28
+        },
+        {
+          "method": "leaderboard",
+          "count": 1
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "FanSky_Qs"
+      ],
+      "count": 20,
+      "methods": [
+        {
+          "method": "MagicCrystalSign",
+          "count": 16
+        },
+        {
+          "method": "Cx",
+          "count": 3
+        },
+        {
+          "method": "Hx",
+          "count": 1
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "genshin"
+      ],
+      "count": 10,
+      "methods": [
+        {
+          "method": "bingUid",
+          "count": 7
+        },
+        {
+          "method": "news",
+          "count": 1
+        },
+        {
+          "method": "strategy",
+          "count": 1
+        },
+        {
+          "method": "roleCard",
+          "count": 1
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "system"
+      ],
+      "count": 7,
+      "methods": [
+        {
+          "method": "recall",
+          "count": 6
+        },
+        {
+          "method": "status",
+          "count": 1
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "liangshi-calc"
+      ],
+      "count": 6,
+      "methods": [
+        {
+          "method": "GS",
+          "count": 6
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "memz-plugin"
+      ],
+      "count": 4,
+      "methods": [
+        {
+          "method": "whoAtme",
+          "count": 4
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "Speech-statistics-plugin"
+      ],
+      "count": 4,
+      "methods": [
+        {
+          "method": "showHelp",
+          "count": 2
+        },
+        {
+          "method": "showGroupInfo",
+          "count": 1
+        },
+        {
+          "method": "showUserAchievements",
+          "count": 1
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_only"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "StarRail-plugin"
+      ],
+      "count": 4,
+      "methods": [
+        {
+          "method": "StarRail",
+          "count": 2
+        },
+        {
+          "method": "update",
+          "count": 2
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "flower-plugin"
+      ],
+      "count": 2,
+      "methods": [
+        {
+          "method": "gacha",
+          "count": 2
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "mora-plugin"
+      ],
+      "count": 2,
+      "methods": [
+        {
+          "method": "roleGuide",
+          "count": 2
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "phi-plugin"
+      ],
+      "count": 2,
+      "methods": [
+        {
+          "method": "help",
+          "count": 1
+        },
+        {
+          "method": "randmic",
+          "count": 1
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    },
+    {
+      "candidate_directories": [
+        "ZZZ-Plugin"
+      ],
+      "count": 1,
+      "methods": [
+        {
+          "method": "handleRule",
+          "count": 1
+        }
+      ],
+      "mapping_statuses": [
+        "unique_name_and_method"
+      ]
+    }
+  ],
+  "unmapped": [
+    {
+      "name": "喵喵:角色面板",
+      "method": "profileRefresh",
+      "count": 20
+    },
+    {
+      "name": "喵喵:角色面板",
+      "method": "profileDetail",
+      "count": 15
+    },
+    {
+      "name": "喵喵:喵喵帮助",
+      "method": "help",
+      "count": 10
+    },
+    {
+      "name": "喵喵:戳一戳",
+      "method": "pockWife",
+      "count": 8
+    },
+    {
+      "name": "喵喵:角色面板",
+      "method": "profileList",
+      "count": 2
+    },
+    {
+      "name": "小飞插件_代发言",
+      "method": "replace",
+      "count": 1
+    }
+  ],
+  "rule": "唯一映射聚合到目录；歧义目录不拆分、不重复计数；未映射单列。"
+}

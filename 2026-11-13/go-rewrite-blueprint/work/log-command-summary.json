@@ -1,0 +1,3407 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-11-13T01:26:14+08:00",
+  "source": {
+    "project_root": "d:\\Toshikoshi_chan\\Agent\\音无\\mysy2\\mysy2\\home\\SERVER2\\TRSS_AllBot\\TRSS-Yunzai",
+    "log_directory": "d:\\Toshikoshi_chan\\Agent\\音无\\mysy2\\mysy2\\home\\SERVER2\\TRSS_AllBot\\TRSS-Yunzai\\logs",
+    "selection": "仅 logs/command.YYYY-MM-DD.log；不匹配或读取 .gz/.zst 等压缩文件",
+    "command_file_count": 15,
+    "uncompressed_log_file_count": 16,
+    "file_count_note": "目录枚举得到 15 个 command.YYYY-MM-DD.log；连同 error.log 共 16 个未压缩 .log。命令统计仅使用前者，不用压缩日志补足",
+    "compressed_files_read": 0,
+    "files": [
+      {
+        "name": "command.2025-11-05.log",
+        "file_date": "2025-11-05",
+        "bytes": 206684,
+        "command_complete_hits": 118,
+        "complete_date_from_filename": 359,
+        "complete_marker_lines": 359,
+        "lines": 2143,
+        "start_date_from_filename": 241,
+        "start_marker_lines": 241,
+        "task_complete_hits": 241,
+        "task_hits": 241
+      },
+      {
+        "name": "command.2025-11-14.log",
+        "file_date": "2025-11-14",
+        "bytes": 266684,
+        "command_complete_hits": 318,
+        "complete_date_from_filename": 828,
+        "complete_marker_lines": 831,
+        "lines": 2149,
+        "other_complete_lines_excluded": 3,
+        "start_date_from_filename": 510,
+        "start_marker_lines": 510,
+        "task_complete_hits": 510,
+        "task_hits": 510
+      },
+      {
+        "name": "command.2025-11-29.log",
+        "file_date": "2025-11-29",
+        "bytes": 768677,
+        "command_complete_hits": 239,
+        "complete_date_from_filename": 931,
+        "complete_marker_lines": 934,
+        "lines": 9285,
+        "other_complete_lines_excluded": 3,
+        "start_date_from_filename": 692,
+        "start_marker_lines": 692,
+        "task_complete_hits": 692,
+        "task_hits": 692
+      },
+      {
+        "name": "command.2026-01-07.log",
+        "file_date": "2026-01-07",
+        "bytes": 200184,
+        "command_complete_hits": 129,
+        "complete_date_from_filename": 358,
+        "complete_marker_lines": 358,
+        "lines": 1724,
+        "start_date_from_filename": 229,
+        "start_marker_lines": 229,
+        "task_complete_hits": 229,
+        "task_hits": 229
+      },
+      {
+        "name": "command.2026-01-08.log",
+        "file_date": "2026-01-08",
+        "bytes": 46339,
+        "command_complete_hits": 30,
+        "complete_date_from_filename": 59,
+        "complete_marker_lines": 59,
+        "lines": 457,
+        "start_date_from_filename": 29,
+        "start_marker_lines": 29,
+        "task_complete_hits": 29,
+        "task_hits": 29
+      },
+      {
+        "name": "command.2026-01-14.log",
+        "file_date": "2026-01-14",
+        "bytes": 338570,
+        "command_complete_hits": 228,
+        "complete_date_from_filename": 755,
+        "complete_marker_lines": 755,
+        "lines": 3232,
+        "start_date_from_filename": 527,
+        "start_marker_lines": 527,
+        "task_complete_hits": 527,
+        "task_hits": 527
+      },
+      {
+        "name": "command.2026-01-23.log",
+        "file_date": "2026-01-23",
+        "bytes": 74701,
+        "complete_date_from_filename": 304,
+        "complete_marker_lines": 309,
+        "lines": 726,
+        "other_complete_lines_excluded": 5,
+        "start_date_from_filename": 304,
+        "start_marker_lines": 304,
+        "task_complete_hits": 304,
+        "task_hits": 304
+      },
+      {
+        "name": "command.2026-01-26.log",
+        "file_date": "2026-01-26",
+        "bytes": 148865,
+        "command_complete_hits": 123,
+        "complete_date_from_filename": 477,
+        "complete_marker_lines": 477,
+        "lines": 1307,
+        "start_date_from_filename": 354,
+        "start_marker_lines": 354,
+        "task_complete_hits": 354,
+        "task_hits": 354
+      },
+      {
+        "name": "command.2026-01-28.log",
+        "file_date": "2026-01-28",
+        "bytes": 383437,
+        "command_complete_hits": 243,
+        "complete_date_from_filename": 833,
+        "complete_marker_lines": 838,
+        "lines": 3638,
+        "other_complete_lines_excluded": 5,
+        "start_date_from_filename": 590,
+        "start_marker_lines": 590,
+        "task_complete_hits": 590,
+        "task_hits": 590
+      },
+      {
+        "name": "command.2026-04-03.log",
+        "file_date": "2026-04-03",
+        "bytes": 399504,
+        "command_complete_hits": 352,
+        "complete_date_from_filename": 1004,
+        "complete_marker_lines": 1009,
+        "lines": 3418,
+        "other_complete_lines_excluded": 5,
+        "start_date_from_filename": 652,
+        "start_marker_lines": 652,
+        "task_complete_hits": 652,
+        "task_hits": 652
+      },
+      {
+        "name": "command.2026-04-11.log",
+        "file_date": "2026-04-11",
+        "bytes": 527116,
+        "command_complete_hits": 150,
+        "complete_date_from_filename": 527,
+        "complete_marker_lines": 532,
+        "lines": 6221,
+        "other_complete_lines_excluded": 5,
+        "start_date_from_filename": 377,
+        "start_marker_lines": 377,
+        "task_complete_hits": 377,
+        "task_hits": 377
+      },
+      {
+        "name": "command.2026-05-09.log",
+        "file_date": "2026-05-09",
+        "bytes": 932368,
+        "complete_date_from_filename": 302,
+        "complete_marker_lines": 311,
+        "lines": 13009,
+        "other_complete_lines_excluded": 9,
+        "start_date_from_filename": 302,
+        "start_marker_lines": 302,
+        "task_complete_hits": 302,
+        "task_hits": 302
+      },
+      {
+        "name": "command.2026-05-12.log",
+        "file_date": "2026-05-12",
+        "bytes": 253569,
+        "command_complete_hits": 121,
+        "complete_date_from_filename": 504,
+        "complete_marker_lines": 582,
+        "lines": 2945,
+        "other_complete_lines_excluded": 78,
+        "start_date_from_filename": 383,
+        "start_marker_lines": 383,
+        "task_complete_hits": 383,
+        "task_hits": 383
+      },
+      {
+        "name": "command.2026-08-11.log",
+        "file_date": "2026-08-11",
+        "bytes": 72220,
+        "complete_date_from_filename": 297,
+        "complete_marker_lines": 297,
+        "lines": 685,
+        "start_date_from_filename": 297,
+        "start_marker_lines": 297,
+        "task_complete_hits": 297,
+        "task_hits": 297
+      },
+      {
+        "name": "command.2026-08-21.log",
+        "file_date": "2026-08-21",
+        "bytes": 956701,
+        "complete_date_from_filename": 358,
+        "complete_marker_lines": 358,
+        "lines": 13099,
+        "start_date_from_filename": 358,
+        "start_marker_lines": 358,
+        "task_complete_hits": 358,
+        "task_hits": 358
+      }
+    ]
+  },
+  "date_range": {
+    "log_files": {
+      "first": "2025-11-05",
+      "last": "2026-08-21"
+    },
+    "parsed_start_hits": {
+      "first": "2025-11-05",
+      "last": "2026-08-21"
+    },
+    "parsed_complete_hits": {
+      "first": "2025-11-05",
+      "last": "2026-08-21"
+    },
+    "basis": "优先取行内完整时间戳日期；本样本事件行仅有时分秒，因此实际取 command.YYYY-MM-DD.log 文件名日期"
+  },
+  "total_hits": {
+    "command_start": 0,
+    "scheduled_task_start": 5845,
+    "command_complete": 2051,
+    "scheduled_task_complete": 5845,
+    "all_start_processing": 5845,
+    "all_complete": 7896,
+    "plugin_load_error": 0
+  },
+  "csv_semantics": {
+    "command": "开始处理：date + raw_plugin（显示名）+ method（规则方法名）+ count",
+    "task": "定时任务开始：date + raw_plugin（任务名）+ method（cron）+ count",
+    "command_complete": "普通规则完成日志：date + raw_plugin（显示名）+ method（规则方法名）+ count",
+    "task_complete": "定时任务完成日志：date + raw_plugin（任务名）+ method（cron）+ count",
+    "plugin_load_error": "仅写入 JSON，不混入 CSV"
+  },
+  "by_plugin": [],
+  "by_scheduled_task": [
+    {
+      "task_name": "FanSky_Qs仓库更新检测",
+      "count": 2783,
+      "active_date_count": 15,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 0/4 * * * ?",
+          "count": 2783
+        }
+      ]
+    },
+    {
+      "task_name": "ZZZ-Plugin式舆防卫战/危局强袭战提醒任务",
+      "count": 1116,
+      "active_date_count": 15,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 */10 * * * ?",
+          "count": 1116
+        }
+      ]
+    },
+    {
+      "task_name": "ZZZ-Plugin自动检测更新",
+      "count": 1116,
+      "active_date_count": 15,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 0/10 * * * ?",
+          "count": 1116
+        }
+      ]
+    },
+    {
+      "task_name": "[memz-plugin]定时检查仓库更新",
+      "count": 748,
+      "active_date_count": 15,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 */15 * * * *",
+          "count": 748
+        }
+      ]
+    },
+    {
+      "task_name": "摩拉资源更新检测",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 0 3 * * ?",
+          "count": 14
+        }
+      ]
+    },
+    {
+      "task_name": "森空岛签到任务",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 2 0 * * ?",
+          "count": 14
+        }
+      ]
+    },
+    {
+      "task_name": "清除打卡状态",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 0 0 * * *",
+          "count": 14
+        }
+      ]
+    },
+    {
+      "task_name": "自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 0 3 * * ?",
+          "count": 14
+        }
+      ]
+    },
+    {
+      "task_name": "赞",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 0 0 * * ?",
+          "count": 14
+        }
+      ]
+    },
+    {
+      "task_name": "[Waves-Plugin] 自动任务",
+      "count": 6,
+      "active_date_count": 6,
+      "first_date": "2026-04-03",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 10 0 * * ?",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "task_name": "[Waves-Plugin] 自动签到",
+      "count": 6,
+      "active_date_count": 6,
+      "first_date": "2026-04-03",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 10 0 * * ?",
+          "count": 6
+        }
+      ]
+    }
+  ],
+  "by_plugin_completion": [
+    {
+      "raw_plugin": "R插件工具和学习类",
+      "count": 786,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "methods": [
+        {
+          "name": "bili",
+          "count": 565
+        },
+        {
+          "name": "douyin",
+          "count": 169
+        },
+        {
+          "name": "general",
+          "count": 42
+        },
+        {
+          "name": "netease",
+          "count": 6
+        },
+        {
+          "name": "qqMusic",
+          "count": 2
+        },
+        {
+          "name": "weibo",
+          "count": 1
+        },
+        {
+          "name": "xhs",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 786,
+        "median_ms": 8642.5,
+        "p95_ms": 60619
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]戳一戳表情包",
+      "count": 600,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "methods": [
+        {
+          "name": "戳一戳表情包",
+          "count": 600
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 600,
+        "median_ms": 0.0,
+        "p95_ms": 0
+      }
+    },
+    {
+      "raw_plugin": "小功能",
+      "count": 134,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "methods": [
+        {
+          "name": "jrys",
+          "count": 111
+        },
+        {
+          "name": "bqhc",
+          "count": 23
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 134,
+        "median_ms": 84.0,
+        "p95_ms": 1450
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]今日运势",
+      "count": 107,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "methods": [
+        {
+          "name": "今日运势",
+          "count": 107
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 107,
+        "median_ms": 1812,
+        "p95_ms": 6970
+      }
+    },
+    {
+      "raw_plugin": "b站视频",
+      "count": 57,
+      "active_date_count": 5,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-11",
+      "methods": [
+        {
+          "name": "bzjx",
+          "count": 57
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 57,
+        "median_ms": 9640,
+        "p95_ms": 34423
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]今日签到",
+      "count": 43,
+      "active_date_count": 9,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-11",
+      "methods": [
+        {
+          "name": "今日签到",
+          "count": 43
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 43,
+        "median_ms": 2865,
+        "p95_ms": 22723
+      }
+    },
+    {
+      "raw_plugin": "椰奶点赞",
+      "count": 41,
+      "active_date_count": 10,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "methods": [
+        {
+          "name": "thumbUp",
+          "count": 41
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 41,
+        "median_ms": 2428,
+        "p95_ms": 15642
+      }
+    },
+    {
+      "raw_plugin": "喵喵:角色面板",
+      "count": 37,
+      "active_date_count": 5,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-03",
+      "methods": [
+        {
+          "name": "profileRefresh",
+          "count": 20
+        },
+        {
+          "name": "profileDetail",
+          "count": 15
+        },
+        {
+          "name": "profileList",
+          "count": 2
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 37,
+        "median_ms": 3666,
+        "p95_ms": 12082
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]今日老婆",
+      "count": 35,
+      "active_date_count": 6,
+      "first_date": "2025-11-05",
+      "last_date": "2026-01-28",
+      "methods": [
+        {
+          "name": "今日老婆",
+          "count": 35
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 35,
+        "median_ms": 9,
+        "p95_ms": 15
+      }
+    },
+    {
+      "raw_plugin": "米游社功能",
+      "count": 31,
+      "active_date_count": 3,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-11",
+      "methods": [
+        {
+          "name": "searchCos",
+          "count": 25
+        },
+        {
+          "name": "cos",
+          "count": 4
+        },
+        {
+          "name": "searchAcgn",
+          "count": 1
+        },
+        {
+          "name": "searchStrategy",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 31,
+        "median_ms": 2890,
+        "p95_ms": 11985
+      }
+    },
+    {
+      "raw_plugin": "🦌管",
+      "count": 28,
+      "active_date_count": 5,
+      "first_date": "2025-11-14",
+      "last_date": "2026-01-28",
+      "methods": [
+        {
+          "name": "lu",
+          "count": 28
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 28,
+        "median_ms": 1695.0,
+        "p95_ms": 1965
+      }
+    },
+    {
+      "raw_plugin": "[土块插件]娶群友",
+      "count": 25,
+      "active_date_count": 6,
+      "first_date": "2025-11-14",
+      "last_date": "2026-04-11",
+      "methods": [
+        {
+          "name": "jrlp",
+          "count": 25
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 25,
+        "median_ms": 1,
+        "p95_ms": 2013
+      }
+    },
+    {
+      "raw_plugin": "[土块插件]打我",
+      "count": 19,
+      "active_date_count": 8,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "methods": [
+        {
+          "name": "dawo",
+          "count": 19
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 19,
+        "median_ms": 0,
+        "p95_ms": 0
+      }
+    },
+    {
+      "raw_plugin": "打卡",
+      "count": 16,
+      "active_date_count": 6,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-03",
+      "methods": [
+        {
+          "name": "MagicCrystalSign",
+          "count": 16
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 16,
+        "median_ms": 5748.5,
+        "p95_ms": 13031
+      }
+    },
+    {
+      "raw_plugin": "喵喵:喵喵帮助",
+      "count": 10,
+      "active_date_count": 5,
+      "first_date": "2025-11-14",
+      "last_date": "2026-04-11",
+      "methods": [
+        {
+          "name": "help",
+          "count": 10
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 10,
+        "median_ms": 2115.5,
+        "p95_ms": 7939
+      }
+    },
+    {
+      "raw_plugin": "[土块插件]点歌",
+      "count": 8,
+      "active_date_count": 2,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-29",
+      "methods": [
+        {
+          "name": "shareMusic",
+          "count": 8
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 8,
+        "median_ms": 2021.5,
+        "p95_ms": 3252
+      }
+    },
+    {
+      "raw_plugin": "喵喵:戳一戳",
+      "count": 8,
+      "active_date_count": 3,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-03",
+      "methods": [
+        {
+          "name": "pockWife",
+          "count": 8
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 8,
+        "median_ms": 1.5,
+        "p95_ms": 3
+      }
+    },
+    {
+      "raw_plugin": "用户绑定",
+      "count": 7,
+      "active_date_count": 2,
+      "first_date": "2026-01-28",
+      "last_date": "2026-04-03",
+      "methods": [
+        {
+          "name": "bingUid",
+          "count": 7
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 7,
+        "median_ms": 3099,
+        "p95_ms": 3405
+      }
+    },
+    {
+      "raw_plugin": "回复撤回",
+      "count": 6,
+      "active_date_count": 1,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-14",
+      "methods": [
+        {
+          "name": "recall",
+          "count": 6
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 6,
+        "median_ms": 1.0,
+        "p95_ms": 1
+      }
+    },
+    {
+      "raw_plugin": "角色资源",
+      "count": 6,
+      "active_date_count": 3,
+      "first_date": "2025-11-29",
+      "last_date": "2026-04-03",
+      "methods": [
+        {
+          "name": "GS",
+          "count": 6
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 6,
+        "median_ms": 0.0,
+        "p95_ms": 2
+      }
+    },
+    {
+      "raw_plugin": "椰奶pixiv",
+      "count": 5,
+      "active_date_count": 2,
+      "first_date": "2025-11-14",
+      "last_date": "2026-01-26",
+      "methods": [
+        {
+          "name": "vilipixRandomImg",
+          "count": 5
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 5,
+        "median_ms": 0,
+        "p95_ms": 1
+      }
+    },
+    {
+      "raw_plugin": "FanSky小功能Index",
+      "count": 4,
+      "active_date_count": 4,
+      "first_date": "2025-11-14",
+      "last_date": "2026-01-28",
+      "methods": [
+        {
+          "name": "Cx",
+          "count": 3
+        },
+        {
+          "name": "Hx",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 4,
+        "median_ms": 458.0,
+        "p95_ms": 479
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]算一卦",
+      "count": 4,
+      "active_date_count": 3,
+      "first_date": "2026-04-03",
+      "last_date": "2026-05-12",
+      "methods": [
+        {
+          "name": "算一卦",
+          "count": 4
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 4,
+        "median_ms": 1730.5,
+        "p95_ms": 2988
+      }
+    },
+    {
+      "raw_plugin": "发言次数统计",
+      "count": 4,
+      "active_date_count": 1,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-14",
+      "methods": [
+        {
+          "name": "showHelp",
+          "count": 2
+        },
+        {
+          "name": "showGroupInfo",
+          "count": 1
+        },
+        {
+          "name": "showUserAchievements",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 4,
+        "median_ms": 2275.0,
+        "p95_ms": 3761
+      }
+    },
+    {
+      "raw_plugin": "星铁面板-兼容版",
+      "count": 4,
+      "active_date_count": 1,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-14",
+      "methods": [
+        {
+          "name": "StarRail",
+          "count": 2
+        },
+        {
+          "name": "update",
+          "count": 2
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 4,
+        "median_ms": 0.5,
+        "p95_ms": 1
+      }
+    },
+    {
+      "raw_plugin": "群聊功能",
+      "count": 4,
+      "active_date_count": 3,
+      "first_date": "2025-11-14",
+      "last_date": "2026-04-03",
+      "methods": [
+        {
+          "name": "whoAtme",
+          "count": 4
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 4,
+        "median_ms": 1.0,
+        "p95_ms": 2
+      }
+    },
+    {
+      "raw_plugin": "[土块插件]练习记忆力",
+      "count": 2,
+      "active_date_count": 2,
+      "first_date": "2026-01-14",
+      "last_date": "2026-01-28",
+      "methods": [
+        {
+          "name": "wc",
+          "count": 2
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 2,
+        "median_ms": 0.0,
+        "p95_ms": 0
+      }
+    },
+    {
+      "raw_plugin": "抽卡插件十连",
+      "count": 2,
+      "active_date_count": 2,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-03",
+      "methods": [
+        {
+          "name": "gacha",
+          "count": 2
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 2,
+        "median_ms": 3371.0,
+        "p95_ms": 3541
+      }
+    },
+    {
+      "raw_plugin": "米游社角色攻略",
+      "count": 2,
+      "active_date_count": 1,
+      "first_date": "2026-01-14",
+      "last_date": "2026-01-14",
+      "methods": [
+        {
+          "name": "roleGuide",
+          "count": 2
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 2,
+        "median_ms": 3973.0,
+        "p95_ms": 4119
+      }
+    },
+    {
+      "raw_plugin": "21点",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-04-11",
+      "last_date": "2026-04-11",
+      "methods": [
+        {
+          "name": "startBlackjack",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 1,
+        "p95_ms": 1
+      }
+    },
+    {
+      "raw_plugin": "[ZZZ-Plugin]Panel",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-04-03",
+      "last_date": "2026-04-03",
+      "methods": [
+        {
+          "name": "handleRule",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 2628,
+        "p95_ms": 2628
+      }
+    },
+    {
+      "raw_plugin": "[土块插件]帮助",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-26",
+      "last_date": "2026-01-26",
+      "methods": [
+        {
+          "name": "help",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 3411,
+        "p95_ms": 3411
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]表情包仓库",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-26",
+      "last_date": "2026-01-26",
+      "methods": [
+        {
+          "name": "表情包仓库",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 9,
+        "p95_ms": 9
+      }
+    },
+    {
+      "raw_plugin": "phi-help",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-14",
+      "methods": [
+        {
+          "name": "help",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 1308,
+        "p95_ms": 1308
+      }
+    },
+    {
+      "raw_plugin": "phi-图鉴",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-14",
+      "methods": [
+        {
+          "name": "randmic",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 1326,
+        "p95_ms": 1326
+      }
+    },
+    {
+      "raw_plugin": "土块表情包",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-26",
+      "last_date": "2026-01-26",
+      "methods": [
+        {
+          "name": "bqlb",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 10756,
+        "p95_ms": 10756
+      }
+    },
+    {
+      "raw_plugin": "小飞插件_代发言",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2025-11-05",
+      "last_date": "2025-11-05",
+      "methods": [
+        {
+          "name": "replace",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 0,
+        "p95_ms": 0
+      }
+    },
+    {
+      "raw_plugin": "椰奶娱乐",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-04-11",
+      "last_date": "2026-04-11",
+      "methods": [
+        {
+          "name": "ZFB",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 1,
+        "p95_ms": 1
+      }
+    },
+    {
+      "raw_plugin": "状态统计",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2025-11-29",
+      "last_date": "2025-11-29",
+      "methods": [
+        {
+          "name": "status",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 497,
+        "p95_ms": 497
+      }
+    },
+    {
+      "raw_plugin": "神秘指令",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-14",
+      "last_date": "2026-01-14",
+      "methods": [
+        {
+          "name": "searchsp",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 3,
+        "p95_ms": 3
+      }
+    },
+    {
+      "raw_plugin": "米游社公告",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2025-11-29",
+      "last_date": "2025-11-29",
+      "methods": [
+        {
+          "name": "news",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 4466,
+        "p95_ms": 4466
+      }
+    },
+    {
+      "raw_plugin": "米游社攻略",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-14",
+      "last_date": "2026-01-14",
+      "methods": [
+        {
+          "name": "strategy",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 253,
+        "p95_ms": 253
+      }
+    },
+    {
+      "raw_plugin": "角色查询",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-28",
+      "last_date": "2026-01-28",
+      "methods": [
+        {
+          "name": "roleCard",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 15,
+        "p95_ms": 15
+      }
+    },
+    {
+      "raw_plugin": "闲心小工具",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-26",
+      "last_date": "2026-01-26",
+      "methods": [
+        {
+          "name": "map",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 494,
+        "p95_ms": 494
+      }
+    },
+    {
+      "raw_plugin": "🦌管排行榜",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-28",
+      "last_date": "2026-01-28",
+      "methods": [
+        {
+          "name": "leaderboard",
+          "count": 1
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 2104,
+        "p95_ms": 2104
+      }
+    }
+  ],
+  "by_scheduled_task_completion": [
+    {
+      "task_name": "FanSky_Qs仓库更新检测",
+      "count": 2783,
+      "active_date_count": 15,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 0/4 * * * ?",
+          "count": 2783
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 2783,
+        "median_ms": 1,
+        "p95_ms": 1
+      }
+    },
+    {
+      "task_name": "ZZZ-Plugin式舆防卫战/危局强袭战提醒任务",
+      "count": 1116,
+      "active_date_count": 15,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 */10 * * * ?",
+          "count": 1116
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1116,
+        "median_ms": 7.0,
+        "p95_ms": 51
+      }
+    },
+    {
+      "task_name": "ZZZ-Plugin自动检测更新",
+      "count": 1116,
+      "active_date_count": 15,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 0/10 * * * ?",
+          "count": 1116
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 1116,
+        "median_ms": 3.0,
+        "p95_ms": 6
+      }
+    },
+    {
+      "task_name": "[memz-plugin]定时检查仓库更新",
+      "count": 748,
+      "active_date_count": 15,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 */15 * * * *",
+          "count": 748
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 748,
+        "median_ms": 1.0,
+        "p95_ms": 1
+      }
+    },
+    {
+      "task_name": "摩拉资源更新检测",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 0 3 * * ?",
+          "count": 14
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 14,
+        "median_ms": 1397126.5,
+        "p95_ms": 3157085
+      }
+    },
+    {
+      "task_name": "森空岛签到任务",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 2 0 * * ?",
+          "count": 14
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 14,
+        "median_ms": 620670.5,
+        "p95_ms": 5793257
+      }
+    },
+    {
+      "task_name": "清除打卡状态",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 0 0 * * *",
+          "count": 14
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 14,
+        "median_ms": 14.0,
+        "p95_ms": 36
+      }
+    },
+    {
+      "task_name": "自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 0 3 * * ?",
+          "count": 14
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 14,
+        "median_ms": 1.0,
+        "p95_ms": 3
+      }
+    },
+    {
+      "task_name": "赞",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 0 0 * * ?",
+          "count": 14
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 14,
+        "median_ms": 925.5,
+        "p95_ms": 240046
+      }
+    },
+    {
+      "task_name": "[Waves-Plugin] 自动任务",
+      "count": 6,
+      "active_date_count": 6,
+      "first_date": "2026-04-03",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 10 0 * * ?",
+          "count": 6
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 6,
+        "median_ms": 0.0,
+        "p95_ms": 1
+      }
+    },
+    {
+      "task_name": "[Waves-Plugin] 自动签到",
+      "count": 6,
+      "active_date_count": 6,
+      "first_date": "2026-04-03",
+      "last_date": "2026-08-21",
+      "cron_expressions": [
+        {
+          "name": "0 10 0 * * ?",
+          "count": 6
+        }
+      ],
+      "duration_ms": {
+        "sample_count": 6,
+        "median_ms": 0.5,
+        "p95_ms": 1
+      }
+    }
+  ],
+  "by_command_completion": [
+    {
+      "raw_plugin": "[鸢尾花插件]戳一戳表情包",
+      "method": "戳一戳表情包",
+      "count": 600,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 600,
+        "median_ms": 0.0,
+        "p95_ms": 0
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "logier-plugin",
+        "candidate_directories": [
+          "logier-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "R插件工具和学习类",
+      "method": "bili",
+      "count": 565,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 565,
+        "median_ms": 12225,
+        "p95_ms": 67323
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "rconsole-plugin",
+        "candidate_directories": [
+          "rconsole-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "R插件工具和学习类",
+      "method": "douyin",
+      "count": 169,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 169,
+        "median_ms": 2012,
+        "p95_ms": 11946
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "rconsole-plugin",
+        "candidate_directories": [
+          "rconsole-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "小功能",
+      "method": "jrys",
+      "count": 111,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 111,
+        "median_ms": 80,
+        "p95_ms": 1258
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]今日运势",
+      "method": "今日运势",
+      "count": 107,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 107,
+        "median_ms": 1812,
+        "p95_ms": 6970
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "logier-plugin",
+        "candidate_directories": [
+          "logier-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "b站视频",
+      "method": "bzjx",
+      "count": 57,
+      "active_date_count": 5,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 57,
+        "median_ms": 9640,
+        "p95_ms": 34423
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]今日签到",
+      "method": "今日签到",
+      "count": 43,
+      "active_date_count": 9,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 43,
+        "median_ms": 2865,
+        "p95_ms": 22723
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "logier-plugin",
+        "candidate_directories": [
+          "logier-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "R插件工具和学习类",
+      "method": "general",
+      "count": 42,
+      "active_date_count": 8,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 42,
+        "median_ms": 1458.5,
+        "p95_ms": 2308
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "rconsole-plugin",
+        "candidate_directories": [
+          "rconsole-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "椰奶点赞",
+      "method": "thumbUp",
+      "count": 41,
+      "active_date_count": 10,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 41,
+        "median_ms": 2428,
+        "p95_ms": 15642
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "yenai-plugin",
+        "candidate_directories": [
+          "yenai-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]今日老婆",
+      "method": "今日老婆",
+      "count": 35,
+      "active_date_count": 6,
+      "first_date": "2025-11-05",
+      "last_date": "2026-01-28",
+      "duration_ms": {
+        "sample_count": 35,
+        "median_ms": 9,
+        "p95_ms": 15
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "logier-plugin",
+        "candidate_directories": [
+          "logier-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "🦌管",
+      "method": "lu",
+      "count": 28,
+      "active_date_count": 5,
+      "first_date": "2025-11-14",
+      "last_date": "2026-01-28",
+      "duration_ms": {
+        "sample_count": 28,
+        "median_ms": 1695.0,
+        "p95_ms": 1965
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "yunzai-plugin-deer-pipe",
+        "candidate_directories": [
+          "yunzai-plugin-deer-pipe"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "[土块插件]娶群友",
+      "method": "jrlp",
+      "count": 25,
+      "active_date_count": 6,
+      "first_date": "2025-11-14",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 25,
+        "median_ms": 1,
+        "p95_ms": 2013
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "米游社功能",
+      "method": "searchCos",
+      "count": 25,
+      "active_date_count": 1,
+      "first_date": "2026-01-14",
+      "last_date": "2026-01-14",
+      "duration_ms": {
+        "sample_count": 25,
+        "median_ms": 3396,
+        "p95_ms": 8135
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "xianxin-plugin",
+        "candidate_directories": [
+          "xianxin-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "小功能",
+      "method": "bqhc",
+      "count": 23,
+      "active_date_count": 8,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 23,
+        "median_ms": 113,
+        "p95_ms": 3799
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "喵喵:角色面板",
+      "method": "profileRefresh",
+      "count": 20,
+      "active_date_count": 4,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-03",
+      "duration_ms": {
+        "sample_count": 20,
+        "median_ms": 3937.5,
+        "p95_ms": 12082
+      },
+      "directory_mapping": {
+        "status": "not_found",
+        "directory": null,
+        "candidate_directories": [],
+        "method_cross_checked": false
+      }
+    },
+    {
+      "raw_plugin": "[土块插件]打我",
+      "method": "dawo",
+      "count": 19,
+      "active_date_count": 8,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 19,
+        "median_ms": 0,
+        "p95_ms": 0
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "打卡",
+      "method": "MagicCrystalSign",
+      "count": 16,
+      "active_date_count": 6,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-03",
+      "duration_ms": {
+        "sample_count": 16,
+        "median_ms": 5748.5,
+        "p95_ms": 13031
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "FanSky_Qs",
+        "candidate_directories": [
+          "FanSky_Qs"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "喵喵:角色面板",
+      "method": "profileDetail",
+      "count": 15,
+      "active_date_count": 4,
+      "first_date": "2025-11-14",
+      "last_date": "2026-04-03",
+      "duration_ms": {
+        "sample_count": 15,
+        "median_ms": 3452,
+        "p95_ms": 5218
+      },
+      "directory_mapping": {
+        "status": "not_found",
+        "directory": null,
+        "candidate_directories": [],
+        "method_cross_checked": false
+      }
+    },
+    {
+      "raw_plugin": "喵喵:喵喵帮助",
+      "method": "help",
+      "count": 10,
+      "active_date_count": 5,
+      "first_date": "2025-11-14",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 10,
+        "median_ms": 2115.5,
+        "p95_ms": 7939
+      },
+      "directory_mapping": {
+        "status": "not_found",
+        "directory": null,
+        "candidate_directories": [],
+        "method_cross_checked": false
+      }
+    },
+    {
+      "raw_plugin": "[土块插件]点歌",
+      "method": "shareMusic",
+      "count": 8,
+      "active_date_count": 2,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-29",
+      "duration_ms": {
+        "sample_count": 8,
+        "median_ms": 2021.5,
+        "p95_ms": 3252
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "喵喵:戳一戳",
+      "method": "pockWife",
+      "count": 8,
+      "active_date_count": 3,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-03",
+      "duration_ms": {
+        "sample_count": 8,
+        "median_ms": 1.5,
+        "p95_ms": 3
+      },
+      "directory_mapping": {
+        "status": "not_found",
+        "directory": null,
+        "candidate_directories": [],
+        "method_cross_checked": false
+      }
+    },
+    {
+      "raw_plugin": "用户绑定",
+      "method": "bingUid",
+      "count": 7,
+      "active_date_count": 2,
+      "first_date": "2026-01-28",
+      "last_date": "2026-04-03",
+      "duration_ms": {
+        "sample_count": 7,
+        "median_ms": 3099,
+        "p95_ms": 3405
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "genshin",
+        "candidate_directories": [
+          "genshin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "R插件工具和学习类",
+      "method": "netease",
+      "count": 6,
+      "active_date_count": 2,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-29",
+      "duration_ms": {
+        "sample_count": 6,
+        "median_ms": 121.0,
+        "p95_ms": 5690
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "rconsole-plugin",
+        "candidate_directories": [
+          "rconsole-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "回复撤回",
+      "method": "recall",
+      "count": 6,
+      "active_date_count": 1,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-14",
+      "duration_ms": {
+        "sample_count": 6,
+        "median_ms": 1.0,
+        "p95_ms": 1
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "system",
+        "candidate_directories": [
+          "system"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "角色资源",
+      "method": "GS",
+      "count": 6,
+      "active_date_count": 3,
+      "first_date": "2025-11-29",
+      "last_date": "2026-04-03",
+      "duration_ms": {
+        "sample_count": 6,
+        "median_ms": 0.0,
+        "p95_ms": 2
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "liangshi-calc",
+        "candidate_directories": [
+          "liangshi-calc"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "椰奶pixiv",
+      "method": "vilipixRandomImg",
+      "count": 5,
+      "active_date_count": 2,
+      "first_date": "2025-11-14",
+      "last_date": "2026-01-26",
+      "duration_ms": {
+        "sample_count": 5,
+        "median_ms": 0,
+        "p95_ms": 1
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "yenai-plugin",
+        "candidate_directories": [
+          "yenai-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]算一卦",
+      "method": "算一卦",
+      "count": 4,
+      "active_date_count": 3,
+      "first_date": "2026-04-03",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 4,
+        "median_ms": 1730.5,
+        "p95_ms": 2988
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "logier-plugin",
+        "candidate_directories": [
+          "logier-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "米游社功能",
+      "method": "cos",
+      "count": 4,
+      "active_date_count": 2,
+      "first_date": "2025-11-05",
+      "last_date": "2026-01-14",
+      "duration_ms": {
+        "sample_count": 4,
+        "median_ms": 1972.5,
+        "p95_ms": 5084
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "xianxin-plugin",
+        "candidate_directories": [
+          "xianxin-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "群聊功能",
+      "method": "whoAtme",
+      "count": 4,
+      "active_date_count": 3,
+      "first_date": "2025-11-14",
+      "last_date": "2026-04-03",
+      "duration_ms": {
+        "sample_count": 4,
+        "median_ms": 1.0,
+        "p95_ms": 2
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "memz-plugin",
+        "candidate_directories": [
+          "memz-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "FanSky小功能Index",
+      "method": "Cx",
+      "count": 3,
+      "active_date_count": 3,
+      "first_date": "2025-11-14",
+      "last_date": "2026-01-28",
+      "duration_ms": {
+        "sample_count": 3,
+        "median_ms": 457,
+        "p95_ms": 459
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "FanSky_Qs",
+        "candidate_directories": [
+          "FanSky_Qs"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "R插件工具和学习类",
+      "method": "qqMusic",
+      "count": 2,
+      "active_date_count": 2,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-29",
+      "duration_ms": {
+        "sample_count": 2,
+        "median_ms": 3217.5,
+        "p95_ms": 3495
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "rconsole-plugin",
+        "candidate_directories": [
+          "rconsole-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "[土块插件]练习记忆力",
+      "method": "wc",
+      "count": 2,
+      "active_date_count": 2,
+      "first_date": "2026-01-14",
+      "last_date": "2026-01-28",
+      "duration_ms": {
+        "sample_count": 2,
+        "median_ms": 0.0,
+        "p95_ms": 0
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "发言次数统计",
+      "method": "showHelp",
+      "count": 2,
+      "active_date_count": 1,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-14",
+      "duration_ms": {
+        "sample_count": 2,
+        "median_ms": 3488.5,
+        "p95_ms": 3761
+      },
+      "directory_mapping": {
+        "status": "unique_name_only",
+        "directory": "Speech-statistics-plugin",
+        "candidate_directories": [
+          "Speech-statistics-plugin"
+        ],
+        "method_cross_checked": false
+      }
+    },
+    {
+      "raw_plugin": "喵喵:角色面板",
+      "method": "profileList",
+      "count": 2,
+      "active_date_count": 1,
+      "first_date": "2026-04-03",
+      "last_date": "2026-04-03",
+      "duration_ms": {
+        "sample_count": 2,
+        "median_ms": 1697.0,
+        "p95_ms": 3392
+      },
+      "directory_mapping": {
+        "status": "not_found",
+        "directory": null,
+        "candidate_directories": [],
+        "method_cross_checked": false
+      }
+    },
+    {
+      "raw_plugin": "抽卡插件十连",
+      "method": "gacha",
+      "count": 2,
+      "active_date_count": 2,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-03",
+      "duration_ms": {
+        "sample_count": 2,
+        "median_ms": 3371.0,
+        "p95_ms": 3541
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "flower-plugin",
+        "candidate_directories": [
+          "flower-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "星铁面板-兼容版",
+      "method": "StarRail",
+      "count": 2,
+      "active_date_count": 1,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-14",
+      "duration_ms": {
+        "sample_count": 2,
+        "median_ms": 1.0,
+        "p95_ms": 1
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "StarRail-plugin",
+        "candidate_directories": [
+          "StarRail-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "星铁面板-兼容版",
+      "method": "update",
+      "count": 2,
+      "active_date_count": 1,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-14",
+      "duration_ms": {
+        "sample_count": 2,
+        "median_ms": 0.0,
+        "p95_ms": 0
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "StarRail-plugin",
+        "candidate_directories": [
+          "StarRail-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "米游社角色攻略",
+      "method": "roleGuide",
+      "count": 2,
+      "active_date_count": 1,
+      "first_date": "2026-01-14",
+      "last_date": "2026-01-14",
+      "duration_ms": {
+        "sample_count": 2,
+        "median_ms": 3973.0,
+        "p95_ms": 4119
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "mora-plugin",
+        "candidate_directories": [
+          "mora-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "21点",
+      "method": "startBlackjack",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-04-11",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 1,
+        "p95_ms": 1
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "xianxin-plugin",
+        "candidate_directories": [
+          "xianxin-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "FanSky小功能Index",
+      "method": "Hx",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-26",
+      "last_date": "2026-01-26",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 479,
+        "p95_ms": 479
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "FanSky_Qs",
+        "candidate_directories": [
+          "FanSky_Qs"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "R插件工具和学习类",
+      "method": "weibo",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-14",
+      "last_date": "2026-01-14",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 3,
+        "p95_ms": 3
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "rconsole-plugin",
+        "candidate_directories": [
+          "rconsole-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "R插件工具和学习类",
+      "method": "xhs",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-04-11",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 73320,
+        "p95_ms": 73320
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "rconsole-plugin",
+        "candidate_directories": [
+          "rconsole-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "[ZZZ-Plugin]Panel",
+      "method": "handleRule",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-04-03",
+      "last_date": "2026-04-03",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 2628,
+        "p95_ms": 2628
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "ZZZ-Plugin",
+        "candidate_directories": [
+          "ZZZ-Plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "[土块插件]帮助",
+      "method": "help",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-26",
+      "last_date": "2026-01-26",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 3411,
+        "p95_ms": 3411
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]表情包仓库",
+      "method": "表情包仓库",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-26",
+      "last_date": "2026-01-26",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 9,
+        "p95_ms": 9
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "logier-plugin",
+        "candidate_directories": [
+          "logier-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "phi-help",
+      "method": "help",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-14",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 1308,
+        "p95_ms": 1308
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "phi-plugin",
+        "candidate_directories": [
+          "phi-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "phi-图鉴",
+      "method": "randmic",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-14",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 1326,
+        "p95_ms": 1326
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "phi-plugin",
+        "candidate_directories": [
+          "phi-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "发言次数统计",
+      "method": "showGroupInfo",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-14",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 1334,
+        "p95_ms": 1334
+      },
+      "directory_mapping": {
+        "status": "unique_name_only",
+        "directory": "Speech-statistics-plugin",
+        "candidate_directories": [
+          "Speech-statistics-plugin"
+        ],
+        "method_cross_checked": false
+      }
+    },
+    {
+      "raw_plugin": "发言次数统计",
+      "method": "showUserAchievements",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-14",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 445,
+        "p95_ms": 445
+      },
+      "directory_mapping": {
+        "status": "unique_name_only",
+        "directory": "Speech-statistics-plugin",
+        "candidate_directories": [
+          "Speech-statistics-plugin"
+        ],
+        "method_cross_checked": false
+      }
+    },
+    {
+      "raw_plugin": "土块表情包",
+      "method": "bqlb",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-26",
+      "last_date": "2026-01-26",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 10756,
+        "p95_ms": 10756
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "小飞插件_代发言",
+      "method": "replace",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2025-11-05",
+      "last_date": "2025-11-05",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 0,
+        "p95_ms": 0
+      },
+      "directory_mapping": {
+        "status": "not_found",
+        "directory": null,
+        "candidate_directories": [],
+        "method_cross_checked": false
+      }
+    },
+    {
+      "raw_plugin": "椰奶娱乐",
+      "method": "ZFB",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-04-11",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 1,
+        "p95_ms": 1
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "yenai-plugin",
+        "candidate_directories": [
+          "yenai-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "状态统计",
+      "method": "status",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2025-11-29",
+      "last_date": "2025-11-29",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 497,
+        "p95_ms": 497
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "system",
+        "candidate_directories": [
+          "system"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "神秘指令",
+      "method": "searchsp",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-14",
+      "last_date": "2026-01-14",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 3,
+        "p95_ms": 3
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "xianxin-plugin",
+        "candidate_directories": [
+          "xianxin-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "米游社公告",
+      "method": "news",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2025-11-29",
+      "last_date": "2025-11-29",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 4466,
+        "p95_ms": 4466
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "genshin",
+        "candidate_directories": [
+          "genshin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "米游社功能",
+      "method": "searchAcgn",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-04-11",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 2180,
+        "p95_ms": 2180
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "xianxin-plugin",
+        "candidate_directories": [
+          "xianxin-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "米游社功能",
+      "method": "searchStrategy",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-04-11",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 60250,
+        "p95_ms": 60250
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "xianxin-plugin",
+        "candidate_directories": [
+          "xianxin-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "米游社攻略",
+      "method": "strategy",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-14",
+      "last_date": "2026-01-14",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 253,
+        "p95_ms": 253
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "genshin",
+        "candidate_directories": [
+          "genshin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "角色查询",
+      "method": "roleCard",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-28",
+      "last_date": "2026-01-28",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 15,
+        "p95_ms": 15
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "genshin",
+        "candidate_directories": [
+          "genshin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "闲心小工具",
+      "method": "map",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-26",
+      "last_date": "2026-01-26",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 494,
+        "p95_ms": 494
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "xianxin-plugin",
+        "candidate_directories": [
+          "xianxin-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "🦌管排行榜",
+      "method": "leaderboard",
+      "count": 1,
+      "active_date_count": 1,
+      "first_date": "2026-01-28",
+      "last_date": "2026-01-28",
+      "duration_ms": {
+        "sample_count": 1,
+        "median_ms": 2104,
+        "p95_ms": 2104
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "yunzai-plugin-deer-pipe",
+        "candidate_directories": [
+          "yunzai-plugin-deer-pipe"
+        ],
+        "method_cross_checked": true
+      }
+    }
+  ],
+  "by_task_completion": [
+    {
+      "task_name": "FanSky_Qs仓库更新检测",
+      "cron": "0 0/4 * * * ?",
+      "count": 2783,
+      "active_date_count": 15,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "duration_ms": {
+        "sample_count": 2783,
+        "median_ms": 1,
+        "p95_ms": 1
+      }
+    },
+    {
+      "task_name": "ZZZ-Plugin式舆防卫战/危局强袭战提醒任务",
+      "cron": "0 */10 * * * ?",
+      "count": 1116,
+      "active_date_count": 15,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "duration_ms": {
+        "sample_count": 1116,
+        "median_ms": 7.0,
+        "p95_ms": 51
+      }
+    },
+    {
+      "task_name": "ZZZ-Plugin自动检测更新",
+      "cron": "0 0/10 * * * ?",
+      "count": 1116,
+      "active_date_count": 15,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "duration_ms": {
+        "sample_count": 1116,
+        "median_ms": 3.0,
+        "p95_ms": 6
+      }
+    },
+    {
+      "task_name": "[memz-plugin]定时检查仓库更新",
+      "cron": "0 */15 * * * *",
+      "count": 748,
+      "active_date_count": 15,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "duration_ms": {
+        "sample_count": 748,
+        "median_ms": 1.0,
+        "p95_ms": 1
+      }
+    },
+    {
+      "task_name": "摩拉资源更新检测",
+      "cron": "0 0 3 * * ?",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "duration_ms": {
+        "sample_count": 14,
+        "median_ms": 1397126.5,
+        "p95_ms": 3157085
+      }
+    },
+    {
+      "task_name": "森空岛签到任务",
+      "cron": "0 2 0 * * ?",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "duration_ms": {
+        "sample_count": 14,
+        "median_ms": 620670.5,
+        "p95_ms": 5793257
+      }
+    },
+    {
+      "task_name": "清除打卡状态",
+      "cron": "0 0 0 * * *",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "duration_ms": {
+        "sample_count": 14,
+        "median_ms": 14.0,
+        "p95_ms": 36
+      }
+    },
+    {
+      "task_name": "自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行",
+      "cron": "0 0 3 * * ?",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "duration_ms": {
+        "sample_count": 14,
+        "median_ms": 1.0,
+        "p95_ms": 3
+      }
+    },
+    {
+      "task_name": "赞",
+      "cron": "0 0 0 * * ?",
+      "count": 14,
+      "active_date_count": 14,
+      "first_date": "2025-11-05",
+      "last_date": "2026-08-21",
+      "duration_ms": {
+        "sample_count": 14,
+        "median_ms": 925.5,
+        "p95_ms": 240046
+      }
+    },
+    {
+      "task_name": "[Waves-Plugin] 自动任务",
+      "cron": "0 10 0 * * ?",
+      "count": 6,
+      "active_date_count": 6,
+      "first_date": "2026-04-03",
+      "last_date": "2026-08-21",
+      "duration_ms": {
+        "sample_count": 6,
+        "median_ms": 0.0,
+        "p95_ms": 1
+      }
+    },
+    {
+      "task_name": "[Waves-Plugin] 自动签到",
+      "cron": "0 10 0 * * ?",
+      "count": 6,
+      "active_date_count": 6,
+      "first_date": "2026-04-03",
+      "last_date": "2026-08-21",
+      "duration_ms": {
+        "sample_count": 6,
+        "median_ms": 0.5,
+        "p95_ms": 1
+      }
+    }
+  ],
+  "command_complete_top20": [
+    {
+      "raw_plugin": "[鸢尾花插件]戳一戳表情包",
+      "method": "戳一戳表情包",
+      "count": 600,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 600,
+        "median_ms": 0.0,
+        "p95_ms": 0
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "logier-plugin",
+        "candidate_directories": [
+          "logier-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "R插件工具和学习类",
+      "method": "bili",
+      "count": 565,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 565,
+        "median_ms": 12225,
+        "p95_ms": 67323
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "rconsole-plugin",
+        "candidate_directories": [
+          "rconsole-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "R插件工具和学习类",
+      "method": "douyin",
+      "count": 169,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 169,
+        "median_ms": 2012,
+        "p95_ms": 11946
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "rconsole-plugin",
+        "candidate_directories": [
+          "rconsole-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "小功能",
+      "method": "jrys",
+      "count": 111,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 111,
+        "median_ms": 80,
+        "p95_ms": 1258
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]今日运势",
+      "method": "今日运势",
+      "count": 107,
+      "active_date_count": 11,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 107,
+        "median_ms": 1812,
+        "p95_ms": 6970
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "logier-plugin",
+        "candidate_directories": [
+          "logier-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "b站视频",
+      "method": "bzjx",
+      "count": 57,
+      "active_date_count": 5,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 57,
+        "median_ms": 9640,
+        "p95_ms": 34423
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]今日签到",
+      "method": "今日签到",
+      "count": 43,
+      "active_date_count": 9,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 43,
+        "median_ms": 2865,
+        "p95_ms": 22723
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "logier-plugin",
+        "candidate_directories": [
+          "logier-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "R插件工具和学习类",
+      "method": "general",
+      "count": 42,
+      "active_date_count": 8,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 42,
+        "median_ms": 1458.5,
+        "p95_ms": 2308
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "rconsole-plugin",
+        "candidate_directories": [
+          "rconsole-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "椰奶点赞",
+      "method": "thumbUp",
+      "count": 41,
+      "active_date_count": 10,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 41,
+        "median_ms": 2428,
+        "p95_ms": 15642
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "yenai-plugin",
+        "candidate_directories": [
+          "yenai-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "[鸢尾花插件]今日老婆",
+      "method": "今日老婆",
+      "count": 35,
+      "active_date_count": 6,
+      "first_date": "2025-11-05",
+      "last_date": "2026-01-28",
+      "duration_ms": {
+        "sample_count": 35,
+        "median_ms": 9,
+        "p95_ms": 15
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "logier-plugin",
+        "candidate_directories": [
+          "logier-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "🦌管",
+      "method": "lu",
+      "count": 28,
+      "active_date_count": 5,
+      "first_date": "2025-11-14",
+      "last_date": "2026-01-28",
+      "duration_ms": {
+        "sample_count": 28,
+        "median_ms": 1695.0,
+        "p95_ms": 1965
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "yunzai-plugin-deer-pipe",
+        "candidate_directories": [
+          "yunzai-plugin-deer-pipe"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "[土块插件]娶群友",
+      "method": "jrlp",
+      "count": 25,
+      "active_date_count": 6,
+      "first_date": "2025-11-14",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 25,
+        "median_ms": 1,
+        "p95_ms": 2013
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "米游社功能",
+      "method": "searchCos",
+      "count": 25,
+      "active_date_count": 1,
+      "first_date": "2026-01-14",
+      "last_date": "2026-01-14",
+      "duration_ms": {
+        "sample_count": 25,
+        "median_ms": 3396,
+        "p95_ms": 8135
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "xianxin-plugin",
+        "candidate_directories": [
+          "xianxin-plugin"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "小功能",
+      "method": "bqhc",
+      "count": 23,
+      "active_date_count": 8,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 23,
+        "median_ms": 113,
+        "p95_ms": 3799
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "喵喵:角色面板",
+      "method": "profileRefresh",
+      "count": 20,
+      "active_date_count": 4,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-03",
+      "duration_ms": {
+        "sample_count": 20,
+        "median_ms": 3937.5,
+        "p95_ms": 12082
+      },
+      "directory_mapping": {
+        "status": "not_found",
+        "directory": null,
+        "candidate_directories": [],
+        "method_cross_checked": false
+      }
+    },
+    {
+      "raw_plugin": "[土块插件]打我",
+      "method": "dawo",
+      "count": 19,
+      "active_date_count": 8,
+      "first_date": "2025-11-05",
+      "last_date": "2026-05-12",
+      "duration_ms": {
+        "sample_count": 19,
+        "median_ms": 0,
+        "p95_ms": 0
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "打卡",
+      "method": "MagicCrystalSign",
+      "count": 16,
+      "active_date_count": 6,
+      "first_date": "2025-11-05",
+      "last_date": "2026-04-03",
+      "duration_ms": {
+        "sample_count": 16,
+        "median_ms": 5748.5,
+        "p95_ms": 13031
+      },
+      "directory_mapping": {
+        "status": "unique_name_and_method",
+        "directory": "FanSky_Qs",
+        "candidate_directories": [
+          "FanSky_Qs"
+        ],
+        "method_cross_checked": true
+      }
+    },
+    {
+      "raw_plugin": "喵喵:角色面板",
+      "method": "profileDetail",
+      "count": 15,
+      "active_date_count": 4,
+      "first_date": "2025-11-14",
+      "last_date": "2026-04-03",
+      "duration_ms": {
+        "sample_count": 15,
+        "median_ms": 3452,
+        "p95_ms": 5218
+      },
+      "directory_mapping": {
+        "status": "not_found",
+        "directory": null,
+        "candidate_directories": [],
+        "method_cross_checked": false
+      }
+    },
+    {
+      "raw_plugin": "喵喵:喵喵帮助",
+      "method": "help",
+      "count": 10,
+      "active_date_count": 5,
+      "first_date": "2025-11-14",
+      "last_date": "2026-04-11",
+      "duration_ms": {
+        "sample_count": 10,
+        "median_ms": 2115.5,
+        "p95_ms": 7939
+      },
+      "directory_mapping": {
+        "status": "not_found",
+        "directory": null,
+        "candidate_directories": [],
+        "method_cross_checked": false
+      }
+    },
+    {
+      "raw_plugin": "[土块插件]点歌",
+      "method": "shareMusic",
+      "count": 8,
+      "active_date_count": 2,
+      "first_date": "2025-11-14",
+      "last_date": "2025-11-29",
+      "duration_ms": {
+        "sample_count": 8,
+        "median_ms": 2021.5,
+        "p95_ms": 3252
+      },
+      "directory_mapping": {
+        "status": "ambiguous",
+        "directory": null,
+        "candidate_directories": [
+          "earth-k-plugin",
+          "earth-k-plugin-tmp"
+        ],
+        "method_cross_checked": true
+      }
+    }
+  ],
+  "duration_statistics": {
+    "unit": "ms",
+    "median": "排序后中位数；偶数样本取中间两数平均",
+    "p95": "最近秩（nearest-rank）：排序后第 ceil(0.95*N) 个值",
+    "command_complete": {
+      "sample_count": 2051,
+      "median_ms": 1678,
+      "p95_ms": 32270
+    },
+    "task_complete": {
+      "sample_count": 5845,
+      "median_ms": 1,
+      "p95_ms": 16
+    },
+    "excluded_invalid_duration_lines": 0
+  },
+  "directory_mapping": {
+    "source": "当前 plugins 目录下的 .js 源码静态字面量；排除 .git、node_modules",
+    "files_scanned": 3201,
+    "rules": {
+      "unique_name_and_method": "同一源码文件内 name 与 fnc 字面量组合只指向一个一级插件目录",
+      "unique_name_only": "name 字面量只出现于一个一级插件目录，但未找到同文件 fnc 交叉证据",
+      "ambiguous": "字面量候选指向多个目录，不选择单一目录",
+      "not_found": "当前源码未找到对应字面量，可能是动态名称、历史插件或已删除源码"
+    },
+    "reliability": "这是当前源码静态映射，不是完成日志内嵌目录，也不保证历史版本完全一致；ambiguous/not_found 不作猜测",
+    "all_command_pairs": {
+      "pair_count_by_status": {
+        "ambiguous": 9,
+        "not_found": 6,
+        "unique_name_and_method": 43,
+        "unique_name_only": 3
+      },
+      "completion_count_by_status": {
+        "ambiguous": 247,
+        "not_found": 56,
+        "unique_name_and_method": 1744,
+        "unique_name_only": 4
+      }
+    }
+  },
+  "plugin_load_errors": {
+    "counted": true,
+    "total": 0,
+    "by_directory": [],
+    "mapping_rule": "仅解析字面标记“插件加载错误 <key>”；依据 loader.js 的 key=目录或目录/文件.js，取首段目录名；横幅及不能可靠映射的行不计数",
+    "banner_lines_excluded": 0,
+    "unmapped_lines": 0,
+    "related_markers_not_in_total": {
+      "plugin_load_timeout": {
+        "total": 0,
+        "by_directory": []
+      },
+      "missing_dependency": {
+        "total": 0,
+        "by_directory": []
+      }
+    }
+  },
+  "parsing_rules": {
+    "ansi": "匹配前剔除 ANSI CSI/OSC 控制序列",
+    "timestamp": "优先使用行内完整日期；若行内仅有时分秒，则使用文件名日期，并逐文件记录日期来源数量",
+    "command": "末尾 [插件显示名(方法名)][开始处理]；括号内容不像 cron 时归为 command，对应 loader.js L255-L286",
+    "scheduled_task": "开始标记中括号内容为 5/6 段 cron 时归为 task，对应 loader.js L499-L535；支持任务名自身带一层方括号",
+    "command_complete": "末尾 [插件显示名(方法名)][完成<耗时>] 且方法不是 cron；对应 loader.js L266-L280 的 mark 完成日志",
+    "task_complete": "末尾 [任务名(cron)][完成<耗时>] 且括号内容为 5/6 段 cron；对应 loader.js L499-L512",
+    "duration": "仅接受 Bot.getTimeDiff 的天/时/分/秒及末尾无单位毫秒组合，转换为整数毫秒；不合法耗时不进入时长样本，但保留完成次数",
+    "other_complete_lines": "没有 loader 标签后缀的其他完成日志（例如 Shell Command）不计入 command_complete/task_complete，也不计为无法解析的 loader 行",
+    "load_error": "对应 loader.js L123、L128、L658 的字面“插件加载错误”；仅统计可提取目录名的行",
+    "privacy": "输出只含聚合名称、目录映射、日期、次数和耗时统计，不保留消息正文、账号、群号、URL、令牌或原始日志行"
+  },
+  "unparsed_lines": {
+    "start_processing": 0,
+    "start_processing_by_reason": {},
+    "complete_processing": 0,
+    "complete_processing_by_reason": {},
+    "complete_invalid_duration_still_counted": 0,
+    "other_complete_lines_excluded": 113,
+    "plugin_load_error_unmapped": 0,
+    "total": 0
+  },
+  "limitations": [
+    "目录中共有 16 个未压缩 .log，其中 15 个是 command.YYYY-MM-DD.log，另一个是 error.log；命令统计只读取 15 个 command 文件，未用压缩日志补足。",
+    "样本日期不连续；未读取任何 .gz/.zst 压缩日志，不能外推完整历史或总体使用率。",
+    "事件行仅含时分秒，日期取自文件名；若轮转文件实际混入其他日期的记录，本方法无法从行内识别。",
+    "command appender 阈值为 warn，普通规则开始为 info、完成为 mark，因此开始数为 0 不代表没有普通命令用量；开始与完成是独立事件计数，不作一一配对。",
+    "完成日志表示插件返回非 false 且未抛错后记录了完成，不保证外部 API、签到、更新等业务操作实际成功，更不等于成功业务数。",
+    "raw_plugin 是日志显示名而非目录名；目录映射来自当前源码静态字面量，历史变更、动态名称和同名插件可能造成歧义或无法映射。",
+    "耗时统计只覆盖格式可可靠解析的完成日志；P95 是样本最近秩，不是全历史性能指标，也不与开始日志配对计算。",
+    "定时任务依赖 5/6 段 cron 结构识别；非标准格式可能无法归类，相关行计入无法解析统计。",
+    "C 只统计可可靠映射目录名的字面“插件加载错误”行；加载超时、缺少依赖及错误横幅不混入该总数。",
+    "日志存在多进程写入、截断、轮转或级别配置差异的可能性；本统计不推断未记录事件。"
+  ]
+}

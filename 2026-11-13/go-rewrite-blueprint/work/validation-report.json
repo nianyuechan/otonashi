@@ -1,0 +1,364 @@
+{
+  "ok": true,
+  "checks": {
+    "command_usage_reconciles": true,
+    "task_counts_reconcile": true,
+    "uncompressed_log_scope": true,
+    "all_38_directories_covered": true,
+    "file_links_valid": true,
+    "file_link_count": 68,
+    "required_sections_present": true,
+    "onebot_only_scope": true,
+    "snowluma_topology_documented": true,
+    "live_gates_explicit": true,
+    "snowluma_log_stats": true,
+    "snowluma_log_stats_documented": true,
+    "credentials_redacted": true
+  },
+  "errors": [],
+  "blueprint_bytes": 69607,
+  "blueprint_lines": 672,
+  "batch_rows": 40,
+  "links": [
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/app.js",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/lib",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-12/trss-refactor-assessment/outputs/trss-yunzai-refactor-assessment.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-12/perf-baseline/outputs/TRSS-Yunzai-perf-stability-baseline.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/lib/bot.js#L256-L273",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/app.js#L1-L31",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/config/pm2.yaml#L1-L7",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/TRSS-Yunzai.sh#L1-L11",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/Main.sh#L2-L2",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/lib/plugins/loader.js#L188-L290",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/lib/events/message.js#L6-L13",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/lib/bot.js#L367-L375",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/lib/config/config.js#L107-L179",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/lib/plugins/plugin.js#L72-L117",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/lib/plugins/loader.js#L467-L488",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins/adapter/OneBotv11.js#L17-L43",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins/adapter/OneBotv11.js#L1012-L1057",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/lib/renderer/Renderer.js#L38-L81",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/renderers/puppeteer/lib/puppeteer.js#L159-L189",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///D:/Toshikoshi_chan/Agent/SnowLuma",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///D:/Toshikoshi_chan/Agent/SnowLuma/config/onebot_2406354517.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///D:/Toshikoshi_chan/Agent/SnowLuma/config/webui.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/snowluma-config-redacted.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///D:/Toshikoshi_chan/Agent/SnowLuma/logs/snowluma-2026-09-23.log#L42-L43",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/snowluma-connection-evidence-redacted.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/lib/bot.js#L147-L186",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/config/default_config/server.yaml#L1-L14",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/logs/error.log",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/lib/config/log.js#L51-L55",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/lib/plugins/loader.js#L266-L280",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/log-command-summary.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/aggregate_command_logs.py",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/usage-by-directory.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/plugin-imports.csv",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/plugin-dependency-summary.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins/genshin/model/user.js#L11-L12",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins/StarRail-plugin/apps/challenge.js#L4-L9",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins/ZZZ-Plugin/lib/plugin.js#L1-L8",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/plugin-imports.csv#L2686-L2722",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins/rconsole-plugin/apps/tools.js#L1-L12",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins/logier-plugin/apps/Poke.js#L4-L50",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins/logier-plugin/apps/Jrys.js#L206-L221",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins/logier-plugin/apps/Sign.js#L171-L188",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/plugin-imports.csv#L3839-L3839",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins/logier-plugin/apps/Poke.js#L27-L50",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins/yunzai-plugin-deer-pipe/utils/core.js#L50-L149",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins/rconsole-plugin/apps/tools.js#L1-L12",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/mysy2/mysy2/home/SERVER2/TRSS_AllBot/TRSS-Yunzai/plugins/yenai-plugin/apps/thumbUp.js#L5-L18",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/migration-batches.csv",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/snowluma-log-summary.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/snowluma-action-structures.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/log-command-usage.csv",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/log-command-summary.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/usage-by-directory.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/aggregate_command_logs.py",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/aggregate_usage_by_directory.py",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/plugin-imports.csv",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/plugin-dependencies.csv",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/plugin-dependency-summary.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/scan_plugin_dependencies.py",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/migration-batches.csv",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/snowluma-config-redacted.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/snowluma-log-summary.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/snowluma-connection-evidence-redacted.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/snowluma-action-structures.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/inspect_snowluma.py",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "link": "file:///d:/Toshikoshi_chan/Agent/音无/2026-11-13/go-rewrite-blueprint/work/analyze_snowluma_logs.py",
+      "exists": true,
+      "anchor_valid": true
+    }
+  ]
+}

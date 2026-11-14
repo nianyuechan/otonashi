@@ -1,0 +1,41 @@
+batch,directory_or_slice,observed_evidence,dependency_evidence,prerequisite,native_form,upstream_strategy
+B0,adapter,实际协议端为 SnowLuma v1.14.17；OneBot 历史故障 438 次同类异常,SnowLuma onebot 配置 ws-default 127.0.0.1:3001；plugins/adapter/OneBotv11.js L17-L43 L1012-L1057,仅 OneBot 正向 WS 客户端；Bearer 鉴权；array；事件 schema；超时；重连；mock SnowLuma,核心进程内适配器,按 SnowLuma OneBot 契约原生替代
+B1,system/recall-status,普通规则完成 7,lib/plugins/loader.js L188-L290；plugins/system 静态规则,B0 仅建立注册骨架；权限；账号与消息发送,核心内置插件,按本地契约原生替代
+B0,other,框架更新/重启能力；自动更新配置 1440 分钟,plugins/other/update.js；config/config/bot.yaml L14-L25,禁用直接 pull 覆盖；发布清单,核心生命周期与发布服务,原生替代；version 的 miao 部分后置 B5
+B0,example,无生产用量口径；作为测试样例,plugins/example,契约测试框架,仅测试插件,不进入生产
+B1,logier-plugin/Poke,戳一戳完成 600,apps/Poke.js L4-L50；无 Chromium/Redis 路径,B0；固定 RNG；图片下载 mock；GPT mock,进程内插件,原生分叉并选择性跟随上游
+B2,logier-plugin/rendered-and-stateful-slices,今日运势 107；签到 43；今日老婆 35；其余 5,apps/Jrys.js L24-L56 L206-L221；apps/Sign.js L23-L58 L171-L188,B1 + M3 独立 renderer 验收；Redis；固定时钟/RNG,进程内插件+独立渲染,原生分叉并选择性跟随上游
+B2,yunzai-plugin-deer-pipe,普通规则完成 29,apps/core.js L43-L123；utils/core.js L50-L149,Redis；图像合成对等；固定时钟,进程内插件+图像服务,按本地契约重写替代
+B3,rconsole-plugin/bili-douyin-general-first,bili 565；douyin 169；general 42；其余 10,apps/tools.js L1-L12 L152-L277；utils/ffmpeg-util.js；无跨插件 import 命中,独立媒体 worker；工具版本清单；下载/进程资源限制,核心薄插件+独立媒体服务,原生分叉；站点解析变化选择性移植
+B4,yenai-plugin/thumbUp-first,普通规则完成 47；其中 thumbUp 41,apps/thumbUp.js L5-L18 L28-L113,B0；账号好友接口；渲染/图片 mock,进程内功能切片；重型功能后续拆服务,原生分叉并选择性跟随上游
+B4,xianxin-plugin/mys-first,普通规则完成 34；其中 searchCos 25,apps/mys.js L1-L5 L19-L64 L89-L121,B0；转发消息；HTTP mock；600ms 私聊间隔,进程内插件,原生分叉并选择性跟随上游
+B4,memz-plugin/whoAtme-first,普通规则完成 4；仓库更新任务 748 次开始,任务统计；package/import 扫描含 Express/Puppeteer,先以统一发布检查替代仓库轮询；HTTP 服务边界评审,进程内命令+独立 Web 功能（如保留）,按本地契约替代；不保留自动 git 更新
+B5,miao-plugin,喵喵显示名候选 55 但静态映射未确认；扇出证据 ark/FanSky/genshin/liangshi,package.json L49-L52；plugin-imports.csv 中 miao 边；ProfileReq.js L1-L28,冻结共享 profile/domain API；确认历史名称映射；模板与资源清单,共享 Go 库+进程内命令+独立渲染,原生核心分叉；跟踪数据/API 差异
+B5,genshin,普通规则完成 10；被 StarRail/ZZZ/FanSky/ark 等 import,model/db/BaseModel.js L1-L25；plugin-imports.csv 中 genshin 边,SQLite 副本验证；Mys/User repository；共享 API 冻结,共享 Go 库+进程内插件,原生核心分叉；跟踪数据/API 差异
+B5,liangshi-calc,普通规则完成 6；145 个 #liangshi 自身别名引用及 miao/genshin 边,plugin-imports.csv L2686-L2722；ProfileDmg 调用,B5 共享模型与游戏数据版本；计算黄金向量,共享计算库+进程内插件,原生分叉；优先移植计算修正与数据
+B6,earth-k-plugin,与 tmp 合计歧义完成 247；不得拆分或双计,两目录统计近乎相同；genshin/other 词法边；直接 Puppeteer/调度,操作员选定唯一来源；映射历史显示名；B5 仅完整迁移需要,进程内功能+独立渲染/媒体,原生分叉；只跟踪选定来源
+B6,earth-k-plugin-tmp,与 earth-k 合计歧义完成 247；不得拆分或双计,目录统计近乎相同；入口存在,与上一行二选一；禁止两个目录同时迁移启用,不单独迁移或作为选定来源,未被选定的目录冻结不删除
+B6,FanSky_Qs/non-Teyvat,普通规则完成 20；仓库更新任务 2783 次开始,apps/MonitorTask.js L26-L32；Teyvat 对 genshin/miao import,统一发布检查；打卡等非 Teyvat 功能；Teyvat 明确延至 B7 且不属于 B6 完成条件,进程内插件+独立长任务,原生分叉；业务功能与更新检查分离
+B7,FanSky_Qs/Teyvat,Teyvat 对 genshin/miao 有静态 import；普通规则完成数并入 FanSky 20 不重复计,apps/Teyvat/BotEntry.js；plugin-imports.csv L162-L236,B5 + B6 非 Teyvat 切片；共享游戏数据与 Profile,进程内插件+共享库,原生分叉；Teyvat 唯一归属 B7
+B7,ark-plugin,样本未命中；45 个 miao 静态 import 命中（含 backup 词法上限）,plugin-imports.csv L1611-L1765,B5；确认 backup 是否实际加载；游戏数据版本,进程内插件+共享库,原生分叉；按启用功能移植
+B7,StarRail-plugin,普通规则完成 4；对 genshin 13/miao 2 静态边,plugin-imports.csv L683-L861,B5；缺失 xiaoyao-cvs-plugin 路径需判活,进程内插件+共享库,原生分叉
+B7,ZZZ-Plugin,普通规则完成 1；两类任务各 1116 次开始,plugin-imports.csv L1140-L1235；任务历史有长耗时离群,统一发布检查；B5；提醒任务防重与幂等,进程内插件+独立提醒 worker,原生分叉
+B7,flower-plugin,普通规则完成 2；genshin/miao 静态边,plugin-dependency-summary.json,B5；资源版本清单,进程内插件+资源共享,原生分叉；数据与代码分开更新
+B7,mora-plugin,普通规则完成 2；资源更新任务 14 次开始且历史耗时中位数约 23.2 分钟,plugin-dependency-summary.json；log-command-summary.json 任务耗时,B5；独立资源下载 worker；可恢复任务,进程内命令+独立资源 worker,原生分叉；数据与代码分开更新
+B7,phi-plugin,普通规则完成 2；大量上下文/任务/子进程词法命中,plugin-dependencies.csv；自有 Puppeteer/Redis,渲染与任务边界；确认启用功能,进程内命令+独立计算/渲染 worker,原生分叉；按启用功能移植
+B8,arknights-plugin,森空岛签到任务 14 次开始；历史任务耗时中位数约 10.3 分钟,log-command-summary.json；自有 Puppeteer/Redis/调度词法,独立签到 worker；账号凭据保管；部分失败重放,进程内命令+独立签到 worker,原生分叉；跟踪接口签名变化
+B8,Atlas,图鉴更新任务 14 次开始；样本无普通命令命中,任务统计；genshin import 词法边；大体积资源,资源清单；增量下载；B5 仅实际代码路径需要,独立资源服务+必要命令,资源管道替代优先
+B8,waves-plugin,自动任务/签到各 6 次开始；样本无普通命令命中,任务统计；Express/sharp/Redis 词法命中,独立 HTTP/签到边界；Redis 迁移,进程内命令+独立 Web/签到服务,原生分叉；跟踪游戏 API
+B8,Speech-statistics-plugin,普通规则完成 4（名称级映射）,backgroundServer.js 的 Express/multer/sharp；imageGenerator.js 的 Puppeteer,统计口径冻结；上传鉴权与限额；独立服务,独立统计/Web 服务+核心薄插件,按本地契约重写替代
+B8,Guoba-Plugin,样本未命中；管理面是否为切换硬门槛待操作员确认,Express/multer；miao/genshin/system 适配词法边,管理 API 与权限清单；插件配置 schema；B5 适配按需,独立管理服务,按本地契约重写替代；不移植整个 JS Web 框架
+B9,agent-plugin,样本未命中；子进程能力,index/apps 与 node:child_process 词法证据,明确启用工具；沙箱；取消/超时；输出限额,独立 agent worker,按本地契约重写替代
+B9,mc-plugin,样本未命中；RCON/WebSocket/子进程词法,plugin-dependencies.csv,确认服务器与凭据；协议 mock,进程内或独立网络插件,按本地契约重写替代
+B9,nai-plugin,样本未命中；外部 AI/对象存储/子进程词法,plugin-dependencies.csv,Provider 清单；配额与内容安全；独立故障域,独立 AI worker,按本地契约重写替代
+B9,pixiv-plugin,样本未命中；Express/sharp/PDF/代理词法,plugin-imports.csv L5128-L5193,独立 HTTP/图像边界；账号与代理配置,独立媒体/Web 服务,按本地契约重写替代
+B9,San-plugin,样本未命中；Puppeteer/Gradio/子进程词法,plugin-dependencies.csv,外部服务 mock；渲染服务；进程隔离,独立 AI/渲染 worker,按本地契约重写替代
+B9,TRSS-Plugin,样本未命中；与 Yunzai.TRSS.me 统计相同,两目录文件/源码统计相同；远程命令/脚本/子进程能力,操作员选定来源；高危命令逐项白名单,独立受控工具服务,按本地契约重写替代；不跟随远程执行功能自动更新
+B9,Yunzai.TRSS.me,样本未命中；与 TRSS-Plugin 统计相同,两目录文件/源码统计相同；无 .git 元数据,与上一行二选一；禁止双份同时启用,不单独迁移或作为选定来源,未被选定的目录冻结不删除
+B9,xitian-plugin,样本未命中；acorn/动态加载/子进程/HTTP 词法,plugin-dependencies.csv,是否保留动态脚本产品的决策；沙箱,独立脚本 worker 或退役,按本地契约重写替代
+B9,y-tian-plugin,样本未命中；大量 provider/Puppeteer/Koa/子进程词法,plugin-imports.csv L5763-L6279,只迁移实际启用 provider；API/配额/提示词资产清单,独立 AI 网关+核心薄插件,按本地契约重写替代；不移植未用 provider
+RETIRE,bin,无可加载入口；源码统计 0,plugin-metrics.csv entry_modules=0,无需迁移,空目录不迁移,不迁移
+RETIRE,plugins,无可加载入口；源码统计 0,plugin-metrics.csv entry_modules=0,无需迁移,空目录不迁移,不迁移

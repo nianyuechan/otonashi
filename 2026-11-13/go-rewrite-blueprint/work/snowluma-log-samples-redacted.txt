@@ -1,0 +1,104 @@
+===== snowluma-2026-09-23.log =====
+21:39:39 INFO               [App] SnowLuma starting
+21:39:39 INFO               [WebUI] login rate-limit keyed by: socket peer (default)
+21:39:39 INFO               [WebUI] awaiting EULA/PRIVACY consent before the panel unlocks
+21:39:39 INFO               [WebUI] listening http://127.0.0.1:5099
+21:39:48 INFO               [WebUI] agreements consent recorded (version=dcb31a7b03a0b64d)
+21:39:49 INFO               [Update] a newer release is available: v1.14.19 (running v1.14.17)
+21:40:07 INFO               [Hook] pipe connected: PID=<id>
+21:40:08 DEBUG              [Bridge] session started: UIN=<id>
+21:40:08 OK                 [Hook] login detected: PID=<id> UIN=<id>
+21:40:08 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=1 wireType=2 count=1 bytes=34 reason=no schema decoder path=body.richText
+21:40:08 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=10 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+21:40:08 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=12 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+21:40:08 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=13 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+21:40:08 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=16 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+21:40:08 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=17 wireType=0 count=1 bytes=3 reason=no schema decoder path=elem.generalFlags
+21:40:08 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=19 wireType=2 count=1 bytes=109 reason=no schema decoder path=elem.generalFlags
+21:40:08 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=9 wireType=2 count=1 bytes=7 reason=no schema decoder path=elem
+21:40:08 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=2 wireType=2 count=1 bytes=21 reason=no schema decoder path=commonElem.msgInfo.msgInfoBody[0].hashSum
+21:40:08 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=4 wireType=2 count=1 bytes=3 reason=no schema decoder path=commonElem.msgInfo.extBizInfo
+21:40:08 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=3 wireType=0 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+<middle omitted>
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=10 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=12 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=13 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=16 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=17 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=19 wireType=2 count=1 bytes=109 reason=no schema decoder path=elem.generalFlags
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=9 wireType=2 count=1 bytes=5 reason=no schema decoder path=elem
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=2 wireType=2 count=1 bytes=21 reason=no schema decoder path=commonElem.msgInfo.msgInfoBody[0].hashSum
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=4 wireType=2 count=1 bytes=3 reason=no schema decoder path=commonElem.msgInfo.extBizInfo
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=3 wireType=0 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=4 wireType=0 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=10 wireType=0 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=12 wireType=2 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=18 wireType=2 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=19 wireType=2 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=21 wireType=2 count=1 bytes=13 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=30 wireType=2 count=1 bytes=87 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=31 wireType=2 count=1 bytes=33 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+23:59:59 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=34 wireType=0 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+23:59:59 OK    [2406354517] [Event] <event-text-redacted>
+
+===== snowluma-2026-09-24.log =====
+00:00:01 WARN  [<id>] [OneBot.WS-Client] [Maimai] error ws://127.0.0.1:7988/ws: connect ECONNREFUSED 127.0.0.1:7988
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=1 wireType=2 count=1 bytes=33 reason=no schema decoder path=body.richText
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=10 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=12 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=13 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=16 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=17 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=19 wireType=2 count=1 bytes=109 reason=no schema decoder path=elem.generalFlags
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=9 wireType=2 count=1 bytes=6 reason=no schema decoder path=elem
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=2 wireType=2 count=1 bytes=21 reason=no schema decoder path=commonElem.msgInfo.msgInfoBody[0].hashSum
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=3 wireType=0 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=4 wireType=0 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=10 wireType=0 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=12 wireType=2 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=18 wireType=2 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=19 wireType=2 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=21 wireType=2 count=1 bytes=13 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=30 wireType=2 count=1 bytes=87 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=31 wireType=2 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+00:00:04 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=34 wireType=0 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+<middle omitted>
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=18 wireType=2 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=19 wireType=2 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=21 wireType=2 count=1 bytes=13 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=30 wireType=2 count=1 bytes=87 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=31 wireType=2 count=1 bytes=33 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=34 wireType=0 count=1 bytes=1 reason=no schema decoder path=commonElem.msgInfo.extBizInfo.pic.extData
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=1 wireType=2 count=1 bytes=34 reason=no schema decoder path=body.richText
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=10 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=12 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=13 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=16 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=17 wireType=0 count=1 bytes=1 reason=no schema decoder path=elem.generalFlags
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=19 wireType=2 count=1 bytes=105 reason=no schema decoder path=elem.generalFlags
+12:39:14 DEBUG              [MsgPush.UnknownElement] wire element ignored unknownTag=9 wireType=2 count=1 bytes=5 reason=no schema decoder path=elem
+12:39:14 OK    [2406354517] [Event] <event-text-redacted>
+12:39:14 OK    [2406354517] [Event] <event-text-redacted>
+12:39:17 DEBUG              [Bridge] session closed: UIN=<id>
+12:39:17 INFO  [<id>] [Bridge.Action] Action ingress quiesced
+12:39:17 INFO               [OneBot] session closed: UIN=<id>
+12:48:50 INFO               [Update] a newer release is available: v1.14.19 (running v1.14.17)
+
+===== stderr.log =====
+(node:<id>) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+===== stdout.log =====
+00:49:19 INFO               [App] SnowLuma starting
+00:49:20 INFO               [WebUI] ════════════════════════════════════════════════════════════════
+00:49:20 INFO               [WebUI]   ★ WebUI 初始登录凭据 / Initial WebUI Credentials ★
+00:49:20 INFO               [WebUI]   请立即登录并修改密码 —— 关闭程序后此密码无法找回。
+00:49:20 INFO               [WebUI]   若跳过初始改密，下次启动将自动生成新的随机密码。
+00:49:20 INFO               [WebUI]   Log in and change the password now; it will not be shown again.
+00:49:20 INFO               [WebUI] ────────────────────────────────────────────────────────────────
+00:49:20 INFO               [WebUI] initial credentials: ***
+00:49:20 INFO               [WebUI] ════════════════════════════════════════════════════════════════
+00:49:20 INFO               [WebUI] login rate-limit keyed by: socket peer (default)
+00:49:20 INFO               [WebUI] EULA/PRIVACY consent supplied by SNOWLUMA_ACCEPT_EULA and SNOWLUMA_ACCEPT_PRIVACY (agreements version=dcb31a7b03a0b64d)
+00:49:20 INFO               [WebUI] listening http://127.0.0.1:5099
+00:52:41 INFO               [WebUI] password updated; all sessions invalidated

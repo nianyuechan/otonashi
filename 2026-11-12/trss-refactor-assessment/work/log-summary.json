@@ -1,0 +1,25 @@
+{
+  "logs_root": "d:\\Toshikoshi_chan\\Agent\\音无\\mysy2\\mysy2\\home\\SERVER2\\TRSS_AllBot\\TRSS-Yunzai\\logs",
+  "log_file_count": 16,
+  "oldest_file": "command.2025-11-05.log",
+  "newest_file": "command.2026-08-21.log",
+  "category_counts": {
+    "process_restart": 0,
+    "chromium_restart_or_failure": 2,
+    "redis_connection_error": 218,
+    "plugin_load_error": 85,
+    "unhandled_or_memory": 0,
+    "network_timeout_or_reset": 28019,
+    "render_failure": 28
+  },
+  "historical_render_duration": {
+    "count": 86,
+    "min_ms": 864.0,
+    "mean_ms": 1739.98,
+    "p50_ms": 1607.0,
+    "p95_ms": 2438.0,
+    "p99_ms": 6968.0,
+    "max_ms": 6968.0
+  },
+  "note": "Historical log aggregation only; no process was started and no benchmark was run. Matching is lexical and categories are not necessarily independent."
+}

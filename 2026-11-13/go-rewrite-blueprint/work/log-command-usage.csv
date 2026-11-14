@@ -1,0 +1,485 @@
+﻿kind,date,raw_plugin,method,count
+task,2025-11-05,FanSky_Qs仓库更新检测,0 0/4 * * * ?,114
+task,2025-11-05,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,46
+task,2025-11-05,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,46
+task,2025-11-05,[memz-plugin]定时检查仓库更新,0 */15 * * * *,30
+task,2025-11-05,摩拉资源更新检测,0 0 3 * * ?,1
+task,2025-11-05,森空岛签到任务,0 2 0 * * ?,1
+task,2025-11-05,清除打卡状态,0 0 0 * * *,1
+task,2025-11-05,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2025-11-05,赞,0 0 0 * * ?,1
+task,2025-11-14,FanSky_Qs仓库更新检测,0 0/4 * * * ?,244
+task,2025-11-14,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,98
+task,2025-11-14,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,98
+task,2025-11-14,[memz-plugin]定时检查仓库更新,0 */15 * * * *,65
+task,2025-11-14,摩拉资源更新检测,0 0 3 * * ?,1
+task,2025-11-14,森空岛签到任务,0 2 0 * * ?,1
+task,2025-11-14,清除打卡状态,0 0 0 * * *,1
+task,2025-11-14,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2025-11-14,赞,0 0 0 * * ?,1
+task,2025-11-29,FanSky_Qs仓库更新检测,0 0/4 * * * ?,332
+task,2025-11-29,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,133
+task,2025-11-29,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,133
+task,2025-11-29,[memz-plugin]定时检查仓库更新,0 */15 * * * *,89
+task,2025-11-29,摩拉资源更新检测,0 0 3 * * ?,1
+task,2025-11-29,森空岛签到任务,0 2 0 * * ?,1
+task,2025-11-29,清除打卡状态,0 0 0 * * *,1
+task,2025-11-29,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2025-11-29,赞,0 0 0 * * ?,1
+task,2026-01-07,FanSky_Qs仓库更新检测,0 0/4 * * * ?,108
+task,2026-01-07,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,43
+task,2026-01-07,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,43
+task,2026-01-07,[memz-plugin]定时检查仓库更新,0 */15 * * * *,30
+task,2026-01-07,摩拉资源更新检测,0 0 3 * * ?,1
+task,2026-01-07,森空岛签到任务,0 2 0 * * ?,1
+task,2026-01-07,清除打卡状态,0 0 0 * * *,1
+task,2026-01-07,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2026-01-07,赞,0 0 0 * * ?,1
+task,2026-01-08,FanSky_Qs仓库更新检测,0 0/4 * * * ?,15
+task,2026-01-08,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,5
+task,2026-01-08,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,5
+task,2026-01-08,[memz-plugin]定时检查仓库更新,0 */15 * * * *,4
+task,2026-01-14,FanSky_Qs仓库更新检测,0 0/4 * * * ?,252
+task,2026-01-14,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,101
+task,2026-01-14,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,101
+task,2026-01-14,[memz-plugin]定时检查仓库更新,0 */15 * * * *,68
+task,2026-01-14,摩拉资源更新检测,0 0 3 * * ?,1
+task,2026-01-14,森空岛签到任务,0 2 0 * * ?,1
+task,2026-01-14,清除打卡状态,0 0 0 * * *,1
+task,2026-01-14,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2026-01-14,赞,0 0 0 * * ?,1
+task,2026-01-23,FanSky_Qs仓库更新检测,0 0/4 * * * ?,144
+task,2026-01-23,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,58
+task,2026-01-23,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,58
+task,2026-01-23,[memz-plugin]定时检查仓库更新,0 */15 * * * *,39
+task,2026-01-23,摩拉资源更新检测,0 0 3 * * ?,1
+task,2026-01-23,森空岛签到任务,0 2 0 * * ?,1
+task,2026-01-23,清除打卡状态,0 0 0 * * *,1
+task,2026-01-23,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2026-01-23,赞,0 0 0 * * ?,1
+task,2026-01-26,FanSky_Qs仓库更新检测,0 0/4 * * * ?,168
+task,2026-01-26,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,68
+task,2026-01-26,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,68
+task,2026-01-26,[memz-plugin]定时检查仓库更新,0 */15 * * * *,45
+task,2026-01-26,摩拉资源更新检测,0 0 3 * * ?,1
+task,2026-01-26,森空岛签到任务,0 2 0 * * ?,1
+task,2026-01-26,清除打卡状态,0 0 0 * * *,1
+task,2026-01-26,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2026-01-26,赞,0 0 0 * * ?,1
+task,2026-01-28,FanSky_Qs仓库更新检测,0 0/4 * * * ?,283
+task,2026-01-28,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,113
+task,2026-01-28,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,113
+task,2026-01-28,[memz-plugin]定时检查仓库更新,0 */15 * * * *,76
+task,2026-01-28,摩拉资源更新检测,0 0 3 * * ?,1
+task,2026-01-28,森空岛签到任务,0 2 0 * * ?,1
+task,2026-01-28,清除打卡状态,0 0 0 * * *,1
+task,2026-01-28,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2026-01-28,赞,0 0 0 * * ?,1
+task,2026-04-03,FanSky_Qs仓库更新检测,0 0/4 * * * ?,312
+task,2026-04-03,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,125
+task,2026-04-03,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,125
+task,2026-04-03,[Waves-Plugin] 自动任务,0 10 0 * * ?,1
+task,2026-04-03,[Waves-Plugin] 自动签到,0 10 0 * * ?,1
+task,2026-04-03,[memz-plugin]定时检查仓库更新,0 */15 * * * *,83
+task,2026-04-03,摩拉资源更新检测,0 0 3 * * ?,1
+task,2026-04-03,森空岛签到任务,0 2 0 * * ?,1
+task,2026-04-03,清除打卡状态,0 0 0 * * *,1
+task,2026-04-03,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2026-04-03,赞,0 0 0 * * ?,1
+task,2026-04-11,FanSky_Qs仓库更新检测,0 0/4 * * * ?,178
+task,2026-04-11,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,72
+task,2026-04-11,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,72
+task,2026-04-11,[Waves-Plugin] 自动任务,0 10 0 * * ?,1
+task,2026-04-11,[Waves-Plugin] 自动签到,0 10 0 * * ?,1
+task,2026-04-11,[memz-plugin]定时检查仓库更新,0 */15 * * * *,48
+task,2026-04-11,摩拉资源更新检测,0 0 3 * * ?,1
+task,2026-04-11,森空岛签到任务,0 2 0 * * ?,1
+task,2026-04-11,清除打卡状态,0 0 0 * * *,1
+task,2026-04-11,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2026-04-11,赞,0 0 0 * * ?,1
+task,2026-05-09,FanSky_Qs仓库更新检测,0 0/4 * * * ?,143
+task,2026-05-09,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,57
+task,2026-05-09,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,57
+task,2026-05-09,[Waves-Plugin] 自动任务,0 10 0 * * ?,1
+task,2026-05-09,[Waves-Plugin] 自动签到,0 10 0 * * ?,1
+task,2026-05-09,[memz-plugin]定时检查仓库更新,0 */15 * * * *,38
+task,2026-05-09,摩拉资源更新检测,0 0 3 * * ?,1
+task,2026-05-09,森空岛签到任务,0 2 0 * * ?,1
+task,2026-05-09,清除打卡状态,0 0 0 * * *,1
+task,2026-05-09,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2026-05-09,赞,0 0 0 * * ?,1
+task,2026-05-12,FanSky_Qs仓库更新检测,0 0/4 * * * ?,181
+task,2026-05-12,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,73
+task,2026-05-12,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,73
+task,2026-05-12,[Waves-Plugin] 自动任务,0 10 0 * * ?,1
+task,2026-05-12,[Waves-Plugin] 自动签到,0 10 0 * * ?,1
+task,2026-05-12,[memz-plugin]定时检查仓库更新,0 */15 * * * *,49
+task,2026-05-12,摩拉资源更新检测,0 0 3 * * ?,1
+task,2026-05-12,森空岛签到任务,0 2 0 * * ?,1
+task,2026-05-12,清除打卡状态,0 0 0 * * *,1
+task,2026-05-12,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2026-05-12,赞,0 0 0 * * ?,1
+task,2026-08-11,FanSky_Qs仓库更新检测,0 0/4 * * * ?,140
+task,2026-08-11,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,56
+task,2026-08-11,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,56
+task,2026-08-11,[Waves-Plugin] 自动任务,0 10 0 * * ?,1
+task,2026-08-11,[Waves-Plugin] 自动签到,0 10 0 * * ?,1
+task,2026-08-11,[memz-plugin]定时检查仓库更新,0 */15 * * * *,38
+task,2026-08-11,摩拉资源更新检测,0 0 3 * * ?,1
+task,2026-08-11,森空岛签到任务,0 2 0 * * ?,1
+task,2026-08-11,清除打卡状态,0 0 0 * * *,1
+task,2026-08-11,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2026-08-11,赞,0 0 0 * * ?,1
+task,2026-08-21,FanSky_Qs仓库更新检测,0 0/4 * * * ?,169
+task,2026-08-21,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,68
+task,2026-08-21,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,68
+task,2026-08-21,[Waves-Plugin] 自动任务,0 10 0 * * ?,1
+task,2026-08-21,[Waves-Plugin] 自动签到,0 10 0 * * ?,1
+task,2026-08-21,[memz-plugin]定时检查仓库更新,0 */15 * * * *,46
+task,2026-08-21,摩拉资源更新检测,0 0 3 * * ?,1
+task,2026-08-21,森空岛签到任务,0 2 0 * * ?,1
+task,2026-08-21,清除打卡状态,0 0 0 * * *,1
+task,2026-08-21,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task,2026-08-21,赞,0 0 0 * * ?,1
+command_complete,2025-11-05,R插件工具和学习类,bili,40
+command_complete,2025-11-05,R插件工具和学习类,douyin,12
+command_complete,2025-11-05,R插件工具和学习类,general,2
+command_complete,2025-11-05,[土块插件]打我,dawo,2
+command_complete,2025-11-05,[鸢尾花插件]今日签到,今日签到,3
+command_complete,2025-11-05,[鸢尾花插件]今日老婆,今日老婆,1
+command_complete,2025-11-05,[鸢尾花插件]今日运势,今日运势,1
+command_complete,2025-11-05,[鸢尾花插件]戳一戳表情包,戳一戳表情包,22
+command_complete,2025-11-05,b站视频,bzjx,10
+command_complete,2025-11-05,喵喵:戳一戳,pockWife,3
+command_complete,2025-11-05,喵喵:角色面板,profileRefresh,2
+command_complete,2025-11-05,小功能,bqhc,5
+command_complete,2025-11-05,小功能,jrys,6
+command_complete,2025-11-05,小飞插件_代发言,replace,1
+command_complete,2025-11-05,打卡,MagicCrystalSign,1
+command_complete,2025-11-05,抽卡插件十连,gacha,1
+command_complete,2025-11-05,椰奶点赞,thumbUp,4
+command_complete,2025-11-05,米游社功能,cos,2
+command_complete,2025-11-14,FanSky小功能Index,Cx,1
+command_complete,2025-11-14,R插件工具和学习类,bili,65
+command_complete,2025-11-14,R插件工具和学习类,douyin,27
+command_complete,2025-11-14,R插件工具和学习类,general,17
+command_complete,2025-11-14,R插件工具和学习类,netease,2
+command_complete,2025-11-14,R插件工具和学习类,qqMusic,1
+command_complete,2025-11-14,[土块插件]娶群友,jrlp,8
+command_complete,2025-11-14,[土块插件]打我,dawo,5
+command_complete,2025-11-14,[土块插件]点歌,shareMusic,6
+command_complete,2025-11-14,[鸢尾花插件]今日签到,今日签到,9
+command_complete,2025-11-14,[鸢尾花插件]今日老婆,今日老婆,9
+command_complete,2025-11-14,[鸢尾花插件]今日运势,今日运势,22
+command_complete,2025-11-14,[鸢尾花插件]戳一戳表情包,戳一戳表情包,73
+command_complete,2025-11-14,b站视频,bzjx,1
+command_complete,2025-11-14,phi-help,help,1
+command_complete,2025-11-14,phi-图鉴,randmic,1
+command_complete,2025-11-14,发言次数统计,showGroupInfo,1
+command_complete,2025-11-14,发言次数统计,showHelp,2
+command_complete,2025-11-14,发言次数统计,showUserAchievements,1
+command_complete,2025-11-14,喵喵:喵喵帮助,help,3
+command_complete,2025-11-14,喵喵:角色面板,profileDetail,1
+command_complete,2025-11-14,回复撤回,recall,6
+command_complete,2025-11-14,小功能,bqhc,2
+command_complete,2025-11-14,小功能,jrys,33
+command_complete,2025-11-14,打卡,MagicCrystalSign,5
+command_complete,2025-11-14,星铁面板-兼容版,StarRail,2
+command_complete,2025-11-14,星铁面板-兼容版,update,2
+command_complete,2025-11-14,椰奶pixiv,vilipixRandomImg,3
+command_complete,2025-11-14,椰奶点赞,thumbUp,4
+command_complete,2025-11-14,群聊功能,whoAtme,1
+command_complete,2025-11-14,🦌管,lu,4
+command_complete,2025-11-29,R插件工具和学习类,bili,59
+command_complete,2025-11-29,R插件工具和学习类,douyin,17
+command_complete,2025-11-29,R插件工具和学习类,general,5
+command_complete,2025-11-29,R插件工具和学习类,netease,4
+command_complete,2025-11-29,R插件工具和学习类,qqMusic,1
+command_complete,2025-11-29,[土块插件]打我,dawo,1
+command_complete,2025-11-29,[土块插件]点歌,shareMusic,2
+command_complete,2025-11-29,[鸢尾花插件]今日签到,今日签到,9
+command_complete,2025-11-29,[鸢尾花插件]今日老婆,今日老婆,17
+command_complete,2025-11-29,[鸢尾花插件]今日运势,今日运势,23
+command_complete,2025-11-29,[鸢尾花插件]戳一戳表情包,戳一戳表情包,38
+command_complete,2025-11-29,b站视频,bzjx,38
+command_complete,2025-11-29,小功能,jrys,13
+command_complete,2025-11-29,椰奶点赞,thumbUp,4
+command_complete,2025-11-29,状态统计,status,1
+command_complete,2025-11-29,米游社公告,news,1
+command_complete,2025-11-29,角色资源,GS,3
+command_complete,2025-11-29,🦌管,lu,3
+command_complete,2026-01-07,R插件工具和学习类,bili,29
+command_complete,2026-01-07,R插件工具和学习类,douyin,6
+command_complete,2026-01-07,R插件工具和学习类,general,2
+command_complete,2026-01-07,[土块插件]娶群友,jrlp,5
+command_complete,2026-01-07,[鸢尾花插件]今日签到,今日签到,8
+command_complete,2026-01-07,[鸢尾花插件]今日老婆,今日老婆,2
+command_complete,2026-01-07,[鸢尾花插件]今日运势,今日运势,8
+command_complete,2026-01-07,[鸢尾花插件]戳一戳表情包,戳一戳表情包,52
+command_complete,2026-01-07,喵喵:喵喵帮助,help,2
+command_complete,2026-01-07,小功能,bqhc,1
+command_complete,2026-01-07,小功能,jrys,7
+command_complete,2026-01-07,打卡,MagicCrystalSign,1
+command_complete,2026-01-07,椰奶点赞,thumbUp,6
+command_complete,2026-01-08,R插件工具和学习类,bili,7
+command_complete,2026-01-08,R插件工具和学习类,douyin,2
+command_complete,2026-01-08,[鸢尾花插件]今日签到,今日签到,1
+command_complete,2026-01-08,[鸢尾花插件]今日运势,今日运势,1
+command_complete,2026-01-08,[鸢尾花插件]戳一戳表情包,戳一戳表情包,15
+command_complete,2026-01-08,喵喵:戳一戳,pockWife,1
+command_complete,2026-01-08,小功能,jrys,3
+command_complete,2026-01-14,FanSky小功能Index,Cx,1
+command_complete,2026-01-14,R插件工具和学习类,bili,46
+command_complete,2026-01-14,R插件工具和学习类,douyin,11
+command_complete,2026-01-14,R插件工具和学习类,general,2
+command_complete,2026-01-14,R插件工具和学习类,weibo,1
+command_complete,2026-01-14,[土块插件]打我,dawo,2
+command_complete,2026-01-14,[土块插件]练习记忆力,wc,1
+command_complete,2026-01-14,[鸢尾花插件]今日签到,今日签到,8
+command_complete,2026-01-14,[鸢尾花插件]今日运势,今日运势,12
+command_complete,2026-01-14,[鸢尾花插件]戳一戳表情包,戳一戳表情包,78
+command_complete,2026-01-14,喵喵:喵喵帮助,help,1
+command_complete,2026-01-14,喵喵:角色面板,profileDetail,2
+command_complete,2026-01-14,喵喵:角色面板,profileRefresh,6
+command_complete,2026-01-14,小功能,bqhc,2
+command_complete,2026-01-14,小功能,jrys,6
+command_complete,2026-01-14,打卡,MagicCrystalSign,2
+command_complete,2026-01-14,椰奶点赞,thumbUp,10
+command_complete,2026-01-14,神秘指令,searchsp,1
+command_complete,2026-01-14,米游社功能,cos,2
+command_complete,2026-01-14,米游社功能,searchCos,25
+command_complete,2026-01-14,米游社攻略,strategy,1
+command_complete,2026-01-14,米游社角色攻略,roleGuide,2
+command_complete,2026-01-14,角色资源,GS,1
+command_complete,2026-01-14,🦌管,lu,5
+command_complete,2026-01-26,FanSky小功能Index,Hx,1
+command_complete,2026-01-26,R插件工具和学习类,bili,25
+command_complete,2026-01-26,R插件工具和学习类,douyin,6
+command_complete,2026-01-26,[土块插件]娶群友,jrlp,1
+command_complete,2026-01-26,[土块插件]帮助,help,1
+command_complete,2026-01-26,[鸢尾花插件]今日老婆,今日老婆,4
+command_complete,2026-01-26,[鸢尾花插件]今日运势,今日运势,10
+command_complete,2026-01-26,[鸢尾花插件]戳一戳表情包,戳一戳表情包,33
+command_complete,2026-01-26,[鸢尾花插件]表情包仓库,表情包仓库,1
+command_complete,2026-01-26,喵喵:喵喵帮助,help,2
+command_complete,2026-01-26,土块表情包,bqlb,1
+command_complete,2026-01-26,小功能,jrys,26
+command_complete,2026-01-26,椰奶pixiv,vilipixRandomImg,2
+command_complete,2026-01-26,椰奶点赞,thumbUp,2
+command_complete,2026-01-26,闲心小工具,map,1
+command_complete,2026-01-26,🦌管,lu,7
+command_complete,2026-01-28,FanSky小功能Index,Cx,1
+command_complete,2026-01-28,R插件工具和学习类,bili,100
+command_complete,2026-01-28,R插件工具和学习类,douyin,22
+command_complete,2026-01-28,R插件工具和学习类,general,4
+command_complete,2026-01-28,[土块插件]娶群友,jrlp,3
+command_complete,2026-01-28,[土块插件]打我,dawo,3
+command_complete,2026-01-28,[土块插件]练习记忆力,wc,1
+command_complete,2026-01-28,[鸢尾花插件]今日签到,今日签到,2
+command_complete,2026-01-28,[鸢尾花插件]今日老婆,今日老婆,2
+command_complete,2026-01-28,[鸢尾花插件]今日运势,今日运势,1
+command_complete,2026-01-28,[鸢尾花插件]戳一戳表情包,戳一戳表情包,58
+command_complete,2026-01-28,喵喵:角色面板,profileDetail,7
+command_complete,2026-01-28,喵喵:角色面板,profileRefresh,8
+command_complete,2026-01-28,小功能,bqhc,10
+command_complete,2026-01-28,小功能,jrys,1
+command_complete,2026-01-28,打卡,MagicCrystalSign,4
+command_complete,2026-01-28,椰奶点赞,thumbUp,1
+command_complete,2026-01-28,用户绑定,bingUid,2
+command_complete,2026-01-28,群聊功能,whoAtme,2
+command_complete,2026-01-28,角色查询,roleCard,1
+command_complete,2026-01-28,🦌管,lu,9
+command_complete,2026-01-28,🦌管排行榜,leaderboard,1
+command_complete,2026-04-03,R插件工具和学习类,bili,111
+command_complete,2026-04-03,R插件工具和学习类,douyin,33
+command_complete,2026-04-03,R插件工具和学习类,general,9
+command_complete,2026-04-03,[ZZZ-Plugin]Panel,handleRule,1
+command_complete,2026-04-03,[土块插件]娶群友,jrlp,2
+command_complete,2026-04-03,[土块插件]打我,dawo,2
+command_complete,2026-04-03,[鸢尾花插件]今日签到,今日签到,2
+command_complete,2026-04-03,[鸢尾花插件]今日运势,今日运势,12
+command_complete,2026-04-03,[鸢尾花插件]戳一戳表情包,戳一戳表情包,137
+command_complete,2026-04-03,[鸢尾花插件]算一卦,算一卦,1
+command_complete,2026-04-03,b站视频,bzjx,7
+command_complete,2026-04-03,喵喵:戳一戳,pockWife,4
+command_complete,2026-04-03,喵喵:角色面板,profileDetail,5
+command_complete,2026-04-03,喵喵:角色面板,profileList,2
+command_complete,2026-04-03,喵喵:角色面板,profileRefresh,4
+command_complete,2026-04-03,小功能,bqhc,1
+command_complete,2026-04-03,小功能,jrys,2
+command_complete,2026-04-03,打卡,MagicCrystalSign,3
+command_complete,2026-04-03,抽卡插件十连,gacha,1
+command_complete,2026-04-03,椰奶点赞,thumbUp,5
+command_complete,2026-04-03,用户绑定,bingUid,5
+command_complete,2026-04-03,群聊功能,whoAtme,1
+command_complete,2026-04-03,角色资源,GS,2
+command_complete,2026-04-11,21点,startBlackjack,1
+command_complete,2026-04-11,R插件工具和学习类,bili,52
+command_complete,2026-04-11,R插件工具和学习类,douyin,19
+command_complete,2026-04-11,R插件工具和学习类,general,1
+command_complete,2026-04-11,R插件工具和学习类,xhs,1
+command_complete,2026-04-11,[土块插件]娶群友,jrlp,6
+command_complete,2026-04-11,[土块插件]打我,dawo,3
+command_complete,2026-04-11,[鸢尾花插件]今日签到,今日签到,1
+command_complete,2026-04-11,[鸢尾花插件]今日运势,今日运势,11
+command_complete,2026-04-11,[鸢尾花插件]戳一戳表情包,戳一戳表情包,31
+command_complete,2026-04-11,[鸢尾花插件]算一卦,算一卦,2
+command_complete,2026-04-11,b站视频,bzjx,1
+command_complete,2026-04-11,喵喵:喵喵帮助,help,2
+command_complete,2026-04-11,小功能,bqhc,1
+command_complete,2026-04-11,小功能,jrys,13
+command_complete,2026-04-11,椰奶娱乐,ZFB,1
+command_complete,2026-04-11,椰奶点赞,thumbUp,2
+command_complete,2026-04-11,米游社功能,searchAcgn,1
+command_complete,2026-04-11,米游社功能,searchStrategy,1
+command_complete,2026-05-12,R插件工具和学习类,bili,31
+command_complete,2026-05-12,R插件工具和学习类,douyin,14
+command_complete,2026-05-12,[土块插件]打我,dawo,1
+command_complete,2026-05-12,[鸢尾花插件]今日运势,今日运势,6
+command_complete,2026-05-12,[鸢尾花插件]戳一戳表情包,戳一戳表情包,63
+command_complete,2026-05-12,[鸢尾花插件]算一卦,算一卦,1
+command_complete,2026-05-12,小功能,bqhc,1
+command_complete,2026-05-12,小功能,jrys,1
+command_complete,2026-05-12,椰奶点赞,thumbUp,3
+task_complete,2025-11-05,FanSky_Qs仓库更新检测,0 0/4 * * * ?,114
+task_complete,2025-11-05,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,46
+task_complete,2025-11-05,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,46
+task_complete,2025-11-05,[memz-plugin]定时检查仓库更新,0 */15 * * * *,30
+task_complete,2025-11-05,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2025-11-05,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2025-11-05,清除打卡状态,0 0 0 * * *,1
+task_complete,2025-11-05,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2025-11-05,赞,0 0 0 * * ?,1
+task_complete,2025-11-14,FanSky_Qs仓库更新检测,0 0/4 * * * ?,244
+task_complete,2025-11-14,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,98
+task_complete,2025-11-14,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,98
+task_complete,2025-11-14,[memz-plugin]定时检查仓库更新,0 */15 * * * *,65
+task_complete,2025-11-14,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2025-11-14,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2025-11-14,清除打卡状态,0 0 0 * * *,1
+task_complete,2025-11-14,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2025-11-14,赞,0 0 0 * * ?,1
+task_complete,2025-11-29,FanSky_Qs仓库更新检测,0 0/4 * * * ?,332
+task_complete,2025-11-29,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,133
+task_complete,2025-11-29,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,133
+task_complete,2025-11-29,[memz-plugin]定时检查仓库更新,0 */15 * * * *,89
+task_complete,2025-11-29,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2025-11-29,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2025-11-29,清除打卡状态,0 0 0 * * *,1
+task_complete,2025-11-29,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2025-11-29,赞,0 0 0 * * ?,1
+task_complete,2026-01-07,FanSky_Qs仓库更新检测,0 0/4 * * * ?,108
+task_complete,2026-01-07,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,43
+task_complete,2026-01-07,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,43
+task_complete,2026-01-07,[memz-plugin]定时检查仓库更新,0 */15 * * * *,30
+task_complete,2026-01-07,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2026-01-07,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2026-01-07,清除打卡状态,0 0 0 * * *,1
+task_complete,2026-01-07,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2026-01-07,赞,0 0 0 * * ?,1
+task_complete,2026-01-08,FanSky_Qs仓库更新检测,0 0/4 * * * ?,15
+task_complete,2026-01-08,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,5
+task_complete,2026-01-08,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,5
+task_complete,2026-01-08,[memz-plugin]定时检查仓库更新,0 */15 * * * *,4
+task_complete,2026-01-14,FanSky_Qs仓库更新检测,0 0/4 * * * ?,252
+task_complete,2026-01-14,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,101
+task_complete,2026-01-14,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,101
+task_complete,2026-01-14,[memz-plugin]定时检查仓库更新,0 */15 * * * *,68
+task_complete,2026-01-14,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2026-01-14,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2026-01-14,清除打卡状态,0 0 0 * * *,1
+task_complete,2026-01-14,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2026-01-14,赞,0 0 0 * * ?,1
+task_complete,2026-01-23,FanSky_Qs仓库更新检测,0 0/4 * * * ?,144
+task_complete,2026-01-23,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,58
+task_complete,2026-01-23,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,58
+task_complete,2026-01-23,[memz-plugin]定时检查仓库更新,0 */15 * * * *,39
+task_complete,2026-01-23,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2026-01-23,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2026-01-23,清除打卡状态,0 0 0 * * *,1
+task_complete,2026-01-23,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2026-01-23,赞,0 0 0 * * ?,1
+task_complete,2026-01-26,FanSky_Qs仓库更新检测,0 0/4 * * * ?,168
+task_complete,2026-01-26,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,68
+task_complete,2026-01-26,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,68
+task_complete,2026-01-26,[memz-plugin]定时检查仓库更新,0 */15 * * * *,45
+task_complete,2026-01-26,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2026-01-26,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2026-01-26,清除打卡状态,0 0 0 * * *,1
+task_complete,2026-01-26,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2026-01-26,赞,0 0 0 * * ?,1
+task_complete,2026-01-28,FanSky_Qs仓库更新检测,0 0/4 * * * ?,283
+task_complete,2026-01-28,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,113
+task_complete,2026-01-28,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,113
+task_complete,2026-01-28,[memz-plugin]定时检查仓库更新,0 */15 * * * *,76
+task_complete,2026-01-28,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2026-01-28,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2026-01-28,清除打卡状态,0 0 0 * * *,1
+task_complete,2026-01-28,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2026-01-28,赞,0 0 0 * * ?,1
+task_complete,2026-04-03,FanSky_Qs仓库更新检测,0 0/4 * * * ?,312
+task_complete,2026-04-03,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,125
+task_complete,2026-04-03,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,125
+task_complete,2026-04-03,[Waves-Plugin] 自动任务,0 10 0 * * ?,1
+task_complete,2026-04-03,[Waves-Plugin] 自动签到,0 10 0 * * ?,1
+task_complete,2026-04-03,[memz-plugin]定时检查仓库更新,0 */15 * * * *,83
+task_complete,2026-04-03,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2026-04-03,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2026-04-03,清除打卡状态,0 0 0 * * *,1
+task_complete,2026-04-03,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2026-04-03,赞,0 0 0 * * ?,1
+task_complete,2026-04-11,FanSky_Qs仓库更新检测,0 0/4 * * * ?,178
+task_complete,2026-04-11,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,72
+task_complete,2026-04-11,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,72
+task_complete,2026-04-11,[Waves-Plugin] 自动任务,0 10 0 * * ?,1
+task_complete,2026-04-11,[Waves-Plugin] 自动签到,0 10 0 * * ?,1
+task_complete,2026-04-11,[memz-plugin]定时检查仓库更新,0 */15 * * * *,48
+task_complete,2026-04-11,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2026-04-11,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2026-04-11,清除打卡状态,0 0 0 * * *,1
+task_complete,2026-04-11,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2026-04-11,赞,0 0 0 * * ?,1
+task_complete,2026-05-09,FanSky_Qs仓库更新检测,0 0/4 * * * ?,143
+task_complete,2026-05-09,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,57
+task_complete,2026-05-09,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,57
+task_complete,2026-05-09,[Waves-Plugin] 自动任务,0 10 0 * * ?,1
+task_complete,2026-05-09,[Waves-Plugin] 自动签到,0 10 0 * * ?,1
+task_complete,2026-05-09,[memz-plugin]定时检查仓库更新,0 */15 * * * *,38
+task_complete,2026-05-09,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2026-05-09,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2026-05-09,清除打卡状态,0 0 0 * * *,1
+task_complete,2026-05-09,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2026-05-09,赞,0 0 0 * * ?,1
+task_complete,2026-05-12,FanSky_Qs仓库更新检测,0 0/4 * * * ?,181
+task_complete,2026-05-12,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,73
+task_complete,2026-05-12,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,73
+task_complete,2026-05-12,[Waves-Plugin] 自动任务,0 10 0 * * ?,1
+task_complete,2026-05-12,[Waves-Plugin] 自动签到,0 10 0 * * ?,1
+task_complete,2026-05-12,[memz-plugin]定时检查仓库更新,0 */15 * * * *,49
+task_complete,2026-05-12,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2026-05-12,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2026-05-12,清除打卡状态,0 0 0 * * *,1
+task_complete,2026-05-12,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2026-05-12,赞,0 0 0 * * ?,1
+task_complete,2026-08-11,FanSky_Qs仓库更新检测,0 0/4 * * * ?,140
+task_complete,2026-08-11,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,56
+task_complete,2026-08-11,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,56
+task_complete,2026-08-11,[Waves-Plugin] 自动任务,0 10 0 * * ?,1
+task_complete,2026-08-11,[Waves-Plugin] 自动签到,0 10 0 * * ?,1
+task_complete,2026-08-11,[memz-plugin]定时检查仓库更新,0 */15 * * * *,38
+task_complete,2026-08-11,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2026-08-11,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2026-08-11,清除打卡状态,0 0 0 * * *,1
+task_complete,2026-08-11,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2026-08-11,赞,0 0 0 * * ?,1
+task_complete,2026-08-21,FanSky_Qs仓库更新检测,0 0/4 * * * ?,169
+task_complete,2026-08-21,ZZZ-Plugin式舆防卫战/危局强袭战提醒任务,0 */10 * * * ?,68
+task_complete,2026-08-21,ZZZ-Plugin自动检测更新,0 0/10 * * * ?,68
+task_complete,2026-08-21,[Waves-Plugin] 自动任务,0 10 0 * * ?,1
+task_complete,2026-08-21,[Waves-Plugin] 自动签到,0 10 0 * * ?,1
+task_complete,2026-08-21,[memz-plugin]定时检查仓库更新,0 */15 * * * *,46
+task_complete,2026-08-21,摩拉资源更新检测,0 0 3 * * ?,1
+task_complete,2026-08-21,森空岛签到任务,0 2 0 * * ?,1
+task_complete,2026-08-21,清除打卡状态,0 0 0 * * *,1
+task_complete,2026-08-21,自动更新最新Atlas图鉴图片-凌晨3-4点之间某一刻自动执行,0 0 3 * * ?,1
+task_complete,2026-08-21,赞,0 0 0 * * ?,1

@@ -1,0 +1,12 @@
+{
+  "name": "starrail-plugin",
+  "version": "1.0.0",
+  "author": "hewang1an",
+  "description": "StarRail-plugin",
+  "type": "module",
+  "scripts": {
+  },
+  "pnpm": {
+    "patchedDependencies": {}
+  }
+}
