@@ -1,0 +1,16 @@
+﻿START 2026-11-15 02:18:56
+run1 PRERUN 02:18:56 freePhysGB=2.96 freeVirtGB=1.58
+run1 POSTRUN exit=1 elapsedSec=11 freePhysGB=2.14 freeVirtGB=0.35
+run2 PRERUN 02:19:07 freePhysGB=2.08 freeVirtGB=0.29
+run2 POSTRUN exit=1 elapsedSec=2 freePhysGB=1.85 freeVirtGB=0.17
+run3 PRERUN 02:19:09 freePhysGB=1.81 freeVirtGB=0.12
+run3 POSTRUN exit=1 elapsedSec=2 freePhysGB=2.63 freeVirtGB=1.28
+END 2026-11-15 02:19:11
+START-P1 2026-11-15 02:20:22
+p1-run1 PRERUN 02:20:23 freePhysGB=3.04 freeVirtGB=1.84
+p1-run1 POSTRUN exit=0 elapsedSec=53 freePhysGB=3.59 freeVirtGB=3.97
+p1-run2 PRERUN 02:21:16 freePhysGB=3.58 freeVirtGB=3.97
+p1-run2 POSTRUN exit=1 elapsedSec=138 freePhysGB=3.68 freeVirtGB=4.12
+p1-run3 PRERUN 02:23:35 freePhysGB=3.66 freeVirtGB=4.1
+p1-run3 POSTRUN exit=0 elapsedSec=43 freePhysGB=3.65 freeVirtGB=4.03
+END-P1 2026-11-15 02:24:17
