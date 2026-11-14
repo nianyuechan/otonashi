@@ -28,6 +28,8 @@ type session struct {
 	sentAt      map[int64]int64
 	actionCount int
 	actionErrs  int
+	textReplies int
+	textSamples []string
 	writeMu     sync.Mutex
 }
 
@@ -144,6 +146,25 @@ func (s *session) respond(request incomingAction) []byte {
 					text += value
 				}
 			}
+		}
+		// 非序号文本回复（#ping/#help 固定文本、渲染降级文本）单独计数并保留
+		// 前几个样本：render 负载用它证明"渲染失败有降级文本"。
+		if text != "" && extractSequence(text) == 0 {
+			s.mu.Lock()
+			s.textReplies++
+			if len(s.textSamples) < 10 {
+				duplicate := false
+				for _, sample := range s.textSamples {
+					if sample == text {
+						duplicate = true
+						break
+					}
+				}
+				if !duplicate {
+					s.textSamples = append(s.textSamples, text)
+				}
+			}
+			s.mu.Unlock()
 		}
 		s.recordReply(text, time.Now())
 	case "get_login_info":
@@ -303,4 +324,11 @@ func (s *session) counters() (int, int, int64) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	return s.actionCount, s.actionErrs, s.msgID
+}
+
+// textReplyStats 返回非序号文本回复计数与前几个去重样本。
+func (s *session) textReplyStats() (int, []string) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	return s.textReplies, append([]string(nil), s.textSamples...)
 }

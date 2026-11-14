@@ -27,6 +27,7 @@ func main() {
 
 func run() error {
 	configPath := flag.String("config", "config.yaml", "path to YAML configuration")
+	storeWrites := flag.Bool("store", false, "register bench.store to write every message to plugin storage (phase-zero Z2 baseline)")
 	flag.Parse()
 
 	cfg, err := config.Load(*configPath)
@@ -40,8 +41,12 @@ func run() error {
 	defer pprofStop()
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
+	extra := []sdk.Plugin{bench.New()}
+	if *storeWrites {
+		extra = append(extra, bench.NewStore())
+	}
 	return app.RunWith(ctx, cfg, app.Options{
 		DisableBuiltinDebug: true,
-		ExtraPlugins:        []sdk.Plugin{bench.New()},
+		ExtraPlugins:        extra,
 	})
 }

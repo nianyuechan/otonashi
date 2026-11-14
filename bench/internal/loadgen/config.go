@@ -27,6 +27,9 @@ const (
 	WorkloadReply Workload = "reply"
 	// WorkloadScan 全部消息不命中任何规则，测量纯扫描成本。
 	WorkloadScan Workload = "scan"
+	// WorkloadRender 全部消息为 #render 命令（主人权限，固定页面），驱动阶段
+	// 零渲染链路基线；回复为图片或降级文本，不参与延迟配对。
+	WorkloadRender Workload = "render"
 )
 
 // Kind 选择负载节奏。
@@ -73,9 +76,9 @@ func (c Config) validate() error {
 		return fmt.Errorf("mode 必须是 server 或 client，当前 %q", c.Mode)
 	}
 	switch c.Workload {
-	case WorkloadReply, WorkloadScan:
+	case WorkloadReply, WorkloadScan, WorkloadRender:
 	default:
-		return fmt.Errorf("workload 必须是 reply 或 scan，当前 %q", c.Workload)
+		return fmt.Errorf("workload 必须是 reply、scan 或 render，当前 %q", c.Workload)
 	}
 	switch c.Kind {
 	case KindSteady, KindBurst:

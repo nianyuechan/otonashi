@@ -21,6 +21,9 @@ param(
     [int]$GroupCount = 1,
     [int]$UserCount = 1,
     [string]$OutFile = '',
+    # 追加到被测 Go bot 的命令行参数（如 -store、-config config-render.yaml）；
+    # 重复的 -config 以最后一个为准（flag 包语义）。
+    [string[]]$BotExtraArgs = @(),
     [switch]$KeepBot
 )
 
@@ -115,7 +118,7 @@ try {
         $botDir = Join-Path $envDir 'go-yunzai'
         Remove-Item -LiteralPath (Join-Path $botDir 'run.log') -Force -ErrorAction SilentlyContinue
         $botProc = Start-Process -FilePath (Join-Path $botDir 'yunzai-bench.exe') `
-            -ArgumentList '-config', 'config.yaml' `
+            -ArgumentList (@('-config', 'config.yaml') + $BotExtraArgs) `
             -WorkingDirectory $botDir -RedirectStandardOutput (Join-Path $botDir 'run.log') `
             -RedirectStandardError (Join-Path $botDir 'run.err') -PassThru -WindowStyle Hidden
         Start-Sleep -Seconds 2

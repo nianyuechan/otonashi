@@ -43,6 +43,9 @@ func (g *generator) next(index int) messageSpec {
 	if g.workload == WorkloadScan {
 		return messageSpec{Text: scanTexts[index%len(scanTexts)], IsScan: true}
 	}
+	if g.workload == WorkloadRender {
+		return messageSpec{Text: "#render"}
+	}
 	// reply 负载：偶数序号使用可配对的 bench 规则，奇数序号交替 #ping/#help。
 	if index%2 == 0 {
 		seq := g.nextSeq

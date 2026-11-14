@@ -37,6 +37,10 @@ type Summary struct {
 	ActionErrors    int     `json:"action_errors"`
 	ThroughputEPS   float64 `json:"throughput_eps"`
 	LoadWallMS      float64 `json:"load_wall_ms"`
+	// TextReplies 统计收到的非序号文本回复（#ping/#help 固定文本、渲染降级
+	// 文本）；render 负载用它证明失败路径发出了可读降级文本。
+	TextReplies      int      `json:"text_replies"`
+	TextReplySamples []string `json:"text_reply_samples,omitempty"`
 	// ActualInjectionEPS 由事件首尾 sent_ns 计算：负载窗口内的持续注入速率。
 	// 与命令行 requested（目标速率）和 ThroughputEPS（分母含 grace）区分，
 	// 容量判定以这个口径为准。
@@ -139,12 +143,14 @@ func actualInjectionEPS(events []EventRecord, sent int) float64 {
 }
 
 // BuildSummary 由事件与采样记录计算汇总。
-func BuildSummary(events []EventRecord, samples []SampleRecord, actionCount, actionErrors, loadWallMS float64, sent int) Summary {
+func BuildSummary(events []EventRecord, samples []SampleRecord, actionCount, actionErrors, loadWallMS float64, sent int, textReplies int, textSamples []string) Summary {
 	summary := Summary{
-		Sent:         sent,
-		ActionCount:  int(actionCount),
-		ActionErrors: int(actionErrors),
-		LoadWallMS:   loadWallMS,
+		Sent:             sent,
+		ActionCount:      int(actionCount),
+		ActionErrors:     int(actionErrors),
+		LoadWallMS:       loadWallMS,
+		TextReplies:      textReplies,
+		TextReplySamples: textSamples,
 	}
 	if loadWallMS > 0 {
 		summary.ThroughputEPS = float64(sent) / (loadWallMS / 1000)

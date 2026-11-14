@@ -255,7 +255,7 @@ func TestBuildSummaryCounts(t *testing.T) {
 		{Index: 2, Seq: 2, Text: "bench 2", SentNS: now},
 		{Index: 3, Text: "聊天内容", SentNS: now},
 	}
-	summary := BuildSummary(events, nil, 1, 0, 1000, 4)
+	summary := BuildSummary(events, nil, 1, 0, 1000, 4, 0, nil)
 	if summary.Sent != 4 || summary.ExpectedReplies != 2 || summary.PairedReplies != 1 || summary.MissingReplies != 1 {
 		t.Fatalf("计数错误: %+v", summary)
 	}
@@ -277,7 +277,7 @@ func TestBuildSummaryKeepsZeroLatencyPairedReplies(t *testing.T) {
 		{Index: 1, Seq: 2, Text: "bench 2", SentNS: now, ReplyNS: now + 1_000, LatencyMS: 0.001},
 		{Index: 2, Seq: 3, Text: "bench 3", SentNS: now},
 	}
-	summary := BuildSummary(events, nil, 2, 0, 1000, 3)
+	summary := BuildSummary(events, nil, 2, 0, 1000, 3, 0, nil)
 	if summary.PairedReplies != 2 || summary.MissingReplies != 1 {
 		t.Fatalf("配对计数错误: %+v", summary)
 	}
@@ -316,7 +316,7 @@ func TestBuildSummaryActualInjectionEPS(t *testing.T) {
 		events[i] = EventRecord{Index: i, Seq: int64(i + 1), SentNS: start + span*int64(i)/(count-1)}
 	}
 	// load_wall_ms = 2000ms（负载窗口 + grace）→ reported eps = 250。
-	summary := BuildSummary(events, nil, 0, 0, 2000, count)
+	summary := BuildSummary(events, nil, 0, 0, 2000, count, 0, nil)
 	if math.Abs(summary.ActualInjectionEPS-500) > 0.01 {
 		t.Fatalf("actual_injection_eps = %v, want 500", summary.ActualInjectionEPS)
 	}
@@ -335,6 +335,66 @@ func TestBuildSummaryActualInjectionEPS(t *testing.T) {
 	}
 	if got := actualInjectionEPS([]EventRecord{{SentNS: start}, {SentNS: start}}, 2); got != 0 {
 		t.Fatalf("时间跨度为 0 的 actual = %v, want 0", got)
+	}
+}
+
+// TestGeneratorRenderWorkload 验证 render 负载每条消息都是 #render 且不携带序号。
+func TestGeneratorRenderWorkload(t *testing.T) {
+	gen := newGenerator(WorkloadRender)
+	for index := 0; index < 5; index++ {
+		spec := gen.next(index)
+		if spec.Text != "#render" || spec.Seq != 0 {
+			t.Fatalf("render 负载第 %d 条 = %+v, want #render 无序号", index, spec)
+		}
+	}
+}
+
+// TestRespondCountsTextReplies 验证非序号文本回复计数与样本采集；可配对序号
+// 回复不计入。
+func TestRespondCountsTextReplies(t *testing.T) {
+	cfg := Config{SelfID: 2081344177, UserID: 10001, GroupID: 20001, Workload: WorkloadReply}
+	session := newSession(cfg, nil, slog.New(slog.NewTextHandler(os.Stderr, &slog.HandlerOptions{Level: slog.LevelError})))
+
+	fallback := incomingAction{
+		Action: "send_msg",
+		Params: mustJSON(t, map[string]any{
+			"message_type": "private",
+			"user_id":      cfg.UserID,
+			"message": []map[string]any{{
+				"type": "text",
+				"data": map[string]any{"text": "图片暂时不可用：browser unavailable"},
+			}},
+		}),
+		Echo: "m2-1",
+	}
+	if session.respond(fallback) == nil {
+		t.Fatal("send_msg 应有应答")
+	}
+	// 同文本重复回复只保留一个样本，但计数继续累加。
+	if session.respond(fallback) == nil {
+		t.Fatal("send_msg 应有应答")
+	}
+	paired := incomingAction{
+		Action: "send_msg",
+		Params: mustJSON(t, map[string]any{
+			"message_type": "private",
+			"user_id":      cfg.UserID,
+			"message": []map[string]any{{
+				"type": "text",
+				"data": map[string]any{"text": "[bench] 7"},
+			}},
+		}),
+		Echo: "m2-2",
+	}
+	if session.respond(paired) == nil {
+		t.Fatal("send_msg 应有应答")
+	}
+	count, samples := session.textReplyStats()
+	if count != 2 {
+		t.Fatalf("text_replies = %d, want 2（配对序号回复不计入）", count)
+	}
+	if len(samples) != 1 || !strings.Contains(samples[0], "图片暂时不可用") {
+		t.Fatalf("text samples = %v, want 含降级文本的单一去重样本", samples)
 	}
 }
 
@@ -370,6 +430,11 @@ func TestConfigValidate(t *testing.T) {
 		t.Fatal("client 模式缺少 url 应被拒绝")
 	}
 	good := base
+	good.Workload = WorkloadRender
+	if err := good.validate(); err != nil {
+		t.Fatalf("合法 render 负载被拒绝: %v", err)
+	}
+	good = base
 	good.MessageType = "group"
 	good.GroupCount = 1
 	good.UserCount = 1

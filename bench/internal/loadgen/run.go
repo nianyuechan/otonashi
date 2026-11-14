@@ -57,9 +57,10 @@ func Run(ctx context.Context, cfg Config, log *slog.Logger, monitor *pidMonitor)
 
 	events := session.eventRecords()
 	actionCount, actionErrs, _ := session.counters()
+	textReplies, textSamples := session.textReplyStats()
 	samples := monitor.samples()
 	wallMS := float64(time.Since(monitorStart)) / 1e6
-	summary := BuildSummary(events, samples, float64(actionCount), float64(actionErrs), wallMS, len(events))
+	summary := BuildSummary(events, samples, float64(actionCount), float64(actionErrs), wallMS, len(events), textReplies, textSamples)
 	result := Result{
 		ProtocolVersion: ProtocolVersion,
 		Mode:            string(cfg.Mode),
