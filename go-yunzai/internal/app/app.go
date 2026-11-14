@@ -75,11 +75,15 @@ func NewWith(cfg config.Config, opts Options) (*App, error) {
 		return nil, err
 	}
 
-	// 存储打开预算 30s：实测本机存在持续 ~30s 的机器级 IO 停滞（多进程同时被
-	// 拖慢），停滞期间 SQLite 的阻塞 IO 无法被 context 中断，ctx 只能在 IO 返回
-	// 后生效；放宽预算可避免"慢但能完成"的启动被过早判定失败。真正损坏的路径
-	// （权限/文件锁）仍然立即报错。
-	openCtx, cancelOpen := context.WithTimeout(context.Background(), 30*time.Second)
+	// 存储打开预算 60s：实测本机存在持续 ~30s 的机器级 IO 停滞（多进程同时被
+	// 拖慢，单次采证 30.23s），停滞期间 modernc SQLite 的阻塞 IO 无法被 context
+	// 中断，ctx 只能在 IO 返回后生效；旧预算 30s 小于实测停滞，同类停滞仍会把
+	// "慢但能完成"的启动判死，因此放宽到 60s（约 2 倍余量）。文件锁竞争在
+	// busy_timeout(2500) 下最多等待 2.5s 后报错，不是"立即报错"；同时注意
+	// busy_timeout 只约束 SQLite 文件锁等待，SetMaxOpenConns(1) 的连接池排队与
+	// 阻塞文件 IO 不受它限制——锁竞争并未被完全排除，只是其量级（≤2.5s）与
+	// 实测的 ~30s 停滞不符。权限不足、目录不可写等损坏路径仍然立即报错。
+	openCtx, cancelOpen := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancelOpen()
 	store, err := openStorage(openCtx, cfg.Storage)
 	if err != nil {

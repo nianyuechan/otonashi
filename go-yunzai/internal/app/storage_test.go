@@ -48,15 +48,17 @@ func TestNewWiresConfiguredRedisBackend(t *testing.T) {
 // application over a fake OneBot WebSocket, restarting the same SQLite file
 // when the caller reuses path. Any exit path must stop the application in a
 // fixed order (cancel → wait Run → Close → server.Close) before returning, so
-// t.TempDir cleanup never races a live SQLite handle. The overall deadline is
-// deliberately generous: one observed full-suite failure stalled a single
-// store operation for ≥8s (system IO hiccup, not lock contention —
-// busy_timeout caps lock waits at 2.5s and errors instead of hanging). The
-// deadline absorbs transient stalls, and step evidence plus a goroutine dump
-// make any real hang diagnosable instead of just reporting "timed out".
+// t.TempDir cleanup never races a live SQLite handle. The overall deadline
+// (90s) must exceed the app's own storage-open budget (60s): one observed
+// full-suite failure stalled blocking SQLite IO for 30.23s — context cannot
+// interrupt that IO, so openStorage only fails after the IO returns. File-lock
+// waits are capped at 2.5s by busy_timeout; connection-pool waits and blocking
+// file IO are not, and remain possible stall factors. Step evidence plus a
+// goroutine dump make any real hang diagnosable instead of just reporting
+// "timed out".
 func runNoteConversation(t *testing.T, path, messageType string, steps []noteStep, prepare func(*App)) {
 	t.Helper()
-	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 90*time.Second)
 	defer cancel()
 	conversation := make(chan error, 1)
 	var traceMu sync.Mutex
@@ -162,8 +164,8 @@ func runNoteConversation(t *testing.T, path, messageType string, steps []noteSte
 				if err != nil {
 					t.Errorf("application run error during cleanup: %v", err)
 				}
-			case <-time.After(5 * time.Second):
-				dump("清理期间应用 5 秒内未停止")
+			case <-time.After(15 * time.Second):
+				dump("清理期间应用 15 秒内未停止")
 			}
 			if err := application.Close(); err != nil {
 				t.Errorf("application close during cleanup: %v", err)
@@ -195,7 +197,7 @@ func runNoteConversation(t *testing.T, path, messageType string, steps []noteSte
 		if err != nil {
 			t.Fatal(err)
 		}
-	case <-time.After(5 * time.Second):
+	case <-time.After(15 * time.Second):
 		dump("application did not stop")
 		t.Fatal("application did not stop")
 	}

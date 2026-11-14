@@ -90,8 +90,9 @@ func TestSessionConversationAndShutdownThroughOneBot(t *testing.T) {
 		t.Run(messageType, func(t *testing.T) {
 			// 与 runNoteConversation 相同的停滞容忍口径：实测本机存在 ~30s 的
 			// 机器级 IO 停滞（多个并行测试包同时被拖慢），正常会话在数百毫秒内
-			// 完成；30s 只吸收瞬态停滞，真实卡死仍会失败并留下会话记录。
-			ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+			// 完成。90s 期限大于应用自身的存储打开预算（60s），避免测试先于
+			// 应用超时；真实卡死仍会失败并留下会话记录。
+			ctx, cancel := context.WithTimeout(context.Background(), 90*time.Second)
 			defer cancel()
 			conversation := make(chan error, 1)
 			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
@@ -199,7 +200,7 @@ func TestSessionConversationAndShutdownThroughOneBot(t *testing.T) {
 				if err != nil {
 					t.Fatal(err)
 				}
-			case <-time.After(2 * time.Second):
+			case <-time.After(15 * time.Second):
 				t.Fatal("application did not stop")
 			}
 			if !worker.stopped.Load() {

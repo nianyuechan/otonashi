@@ -297,3 +297,11 @@ ok   github.com/trss-yunzai/go-yunzai/internal/render 1.827s
 
 - 默认值按 100 群/2 万发送者轮转的容量验证结果（221 eps、p99 0.47ms）有充足余量；见 `bench/reports/capacity-100-groups-200rps.md`。
 - 若要压更高消息速率或接入耗时较长的插件处理，建议先调到 512 并用基准复测 p95/p99，不要无依据地调大。
+
+### 存储打开预算（60s）
+
+应用启动时插件存储（默认 SQLite）的打开与建表有 60s 预算：
+
+- 这不是正常路径耗时：正常打开在数百毫秒内完成。预算只为吸收本机已实测的机器级 IO 停滞（持续 ~30s、单次采证 30.23s）——停滞期间 modernc SQLite 的阻塞 IO 无法被 context 中断，ctx 只能在 IO 返回后生效，预算必须大于实测停滞才不会把"慢但能完成"的启动判死。
+- 文件锁竞争在 `busy_timeout(2500)` 下最多等待 2.5s 后报错，不会占满预算；`busy_timeout` 只约束 SQLite 文件锁等待，`SetMaxOpenConns(1)` 的连接池排队与阻塞文件 IO 不受它限制。权限不足、目录不可写等损坏路径仍然立即报错。
+- 若生产日志出现 `open plugin storage: context deadline exceeded`，说明停滞超过 60s 或存储路径有真实故障：先检查磁盘/杀毒/索引服务对数据目录的干扰，再查数据库文件本身。
