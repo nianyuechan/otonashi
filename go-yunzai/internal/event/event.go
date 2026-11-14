@@ -29,13 +29,16 @@ type Event struct {
 	Status        map[string]any
 }
 
+// Sender 字段必须带 json 标签：OneBot 载荷使用 snake_case（sender.user_id），
+// 无标签时编码/json 按字段名匹配不上，sender.user_id/role 等会永远解码为
+// 零值（2026-11-15 由 Z2 真实写入基准采证：群内按用户隔离全部失效）。
 type Sender struct {
-	UserID   int64
-	Nickname string
-	Card     string
-	Sex      string
-	Age      int
-	Role     string
+	UserID   int64  `json:"user_id"`
+	Nickname string `json:"nickname"`
+	Card     string `json:"card"`
+	Sex      string `json:"sex"`
+	Age      int    `json:"age"`
+	Role     string `json:"role"`
 }
 
 type Handler interface {

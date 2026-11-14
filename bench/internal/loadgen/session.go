@@ -299,6 +299,10 @@ func (s *session) push(ctx context.Context, spec messageSpec, index int) error {
 		},
 	}
 	if messageType == "group" {
+		// 真实 OneBot 实现在群消息里通常也带顶层 user_id；带上它让
+		// Runtime.UserID 与 sender.user_id 一致（此前不带，结合核心解码
+		// 缺陷导致群内用户维度失效）。
+		event["user_id"] = userID
 		event["group_id"] = groupID
 		event["sub_type"] = "normal"
 		event["sender"].(map[string]any)["role"] = "member"

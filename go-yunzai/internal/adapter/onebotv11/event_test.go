@@ -67,3 +67,21 @@ func TestDecodeEventRequiresPostType(t *testing.T) {
 		t.Fatal("DecodeEvent() accepted event without post_type")
 	}
 }
+
+// TestDecodeEventSenderFields 验证 sender.user_id/role 等字段真实解码。此前
+// event.Sender 缺少 json 标签，这些字段永远是零值（2026-11-15 Z2 采证）。
+func TestDecodeEventSenderFields(t *testing.T) {
+	raw := `{"post_type":"message","message_type":"group","group_id":20001,` +
+		`"message":[{"type":"text","data":{"text":"bench 1"}}],` +
+		`"sender":{"user_id":15885,"nickname":"bench-user","card":"bench-card","sex":"male","age":18,"role":"owner"}}`
+	evt, err := DecodeEvent([]byte(raw))
+	if err != nil {
+		t.Fatalf("DecodeEvent() error = %v", err)
+	}
+	if evt.Sender.UserID != 15885 {
+		t.Fatalf("Sender.UserID = %d, want 15885（无 json 标签时恒为 0）", evt.Sender.UserID)
+	}
+	if evt.Sender.Role != "owner" || evt.Sender.Nickname != "bench-user" || evt.Sender.Card != "bench-card" || evt.Sender.Age != 18 || evt.Sender.Sex != "male" {
+		t.Fatalf("sender fields not decoded: %+v", evt.Sender)
+	}
+}
