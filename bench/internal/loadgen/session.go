@@ -21,6 +21,10 @@ type session struct {
 	log   *slog.Logger
 	gen   *generator
 	msgID int64
+	// listener 仅 server 模式非空：被测机器人断线后可再次接入并续跑负载，
+	// 用于穿越机器级 IO 停滞等短暂断连（2026-11-15 加固）。
+	listener *listener
+	readErrs chan error
 
 	mu          sync.Mutex
 	events      []EventRecord
@@ -40,20 +44,64 @@ func newSession(cfg Config, conn *websocket.Conn, log *slog.Logger) *session {
 	}
 }
 
-// readLoop 读取连接直到出错或 ctx 结束。
-func (s *session) readLoop(ctx context.Context) error {
+// readLoop 读取指定连接直到出错或 ctx 结束；重连后由调用方对新连接再次启动。
+func (s *session) readLoop(ctx context.Context, conn *websocket.Conn) error {
 	for {
 		if ctx.Err() != nil {
 			return ctx.Err()
 		}
 		readCtx, cancel := context.WithTimeout(ctx, 90*time.Second)
-		_, data, err := s.conn.Read(readCtx)
+		_, data, err := conn.Read(readCtx)
 		cancel()
 		if err != nil {
 			return err
 		}
 		s.handleIncoming(data)
 	}
+}
+
+// startRead 为连接启动读循环；重连后对新连接再次调用，错误汇入同一通道。
+func (s *session) startRead(ctx context.Context, conn *websocket.Conn) {
+	if s.readErrs == nil {
+		s.readErrs = make(chan error, 8)
+	}
+	go func() { s.readErrs <- s.readLoop(ctx, conn) }()
+}
+
+// readErrors 返回读循环错误通道。
+func (s *session) readErrors() <-chan error { return s.readErrs }
+
+// currentConn 返回当前连接；没有连接时返回 nil。
+func (s *session) currentConn() *websocket.Conn {
+	s.writeMu.Lock()
+	defer s.writeMu.Unlock()
+	return s.conn
+}
+
+// reconnectable 表示断线后能否在同一负载会话内等待被测机器人重新接入。
+func (s *session) reconnectable() bool { return s.listener != nil }
+
+// reconnect 关闭旧连接并等待被测机器人重新接入；成功后由调用方对新连接重启
+// 读循环。被测机器人自身的重连退避在 0.5-2s 量级，这里给 60s 接入期限。
+func (s *session) reconnect(ctx context.Context, log *slog.Logger) (*websocket.Conn, error) {
+	s.writeMu.Lock()
+	old := s.conn
+	s.conn = nil
+	s.writeMu.Unlock()
+	if old != nil {
+		_ = old.Close(websocket.StatusInternalError, "loadgen reconnecting")
+	}
+	acceptCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
+	defer cancel()
+	conn, err := s.listener.accept(acceptCtx)
+	if err != nil {
+		return nil, fmt.Errorf("等待被测机器人重连失败: %w", err)
+	}
+	s.writeMu.Lock()
+	s.conn = conn
+	s.writeMu.Unlock()
+	log.Warn("被测机器人重连成功，继续负载", "mode", s.cfg.Mode)
+	return conn, nil
 }
 
 type incomingAction struct {
@@ -269,18 +317,11 @@ func (s *session) push(ctx context.Context, spec messageSpec, index int) error {
 	}
 	s.mu.Lock()
 	s.msgID++
-	record := EventRecord{
-		Index: index, Seq: spec.Seq, Text: spec.Text, SentNS: at.UnixNano(),
-		MessageType: messageType,
-	}
-	s.events = append(s.events, record)
-	eventIndex := len(s.events) - 1
 	messageID := s.msgID
-	if spec.Seq > 0 {
-		s.sentIndex[spec.Seq] = eventIndex
-		s.sentAt[spec.Seq] = clockNow()
-	}
 	s.mu.Unlock()
+	// 高精度计时起点取推送前一刻；登记测量记录放在写入成功之后，
+	// 失败重试不会留下孤儿记录。
+	startQPC := clockNow()
 
 	event := map[string]any{
 		"time":         at.Unix(),
@@ -314,7 +355,21 @@ func (s *session) push(ctx context.Context, spec messageSpec, index int) error {
 	if err != nil {
 		return fmt.Errorf("编码事件失败: %w", err)
 	}
-	return s.write(payload)
+	if err := s.write(payload); err != nil {
+		return err
+	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	record := EventRecord{
+		Index: index, Seq: spec.Seq, Text: spec.Text, SentNS: at.UnixNano(),
+		MessageType: messageType,
+	}
+	s.events = append(s.events, record)
+	if spec.Seq > 0 {
+		s.sentIndex[spec.Seq] = len(s.events) - 1
+		s.sentAt[spec.Seq] = startQPC
+	}
+	return nil
 }
 
 // events 返回测量记录的拷贝。

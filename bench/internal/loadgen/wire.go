@@ -24,21 +24,23 @@ func lifecycleEvent(cfg Config) []byte {
 }
 
 // listenAccept 在 server 模式下监听并接受一条连接（go-yunzai 正向客户端）。
-func listenAccept(ctx context.Context, cfg Config, log *slog.Logger) (*websocket.Conn, error) {
+// listenKeep 监听并接受被测机器人连入；监听器由调用方负责关闭（断线重连
+// 需要在同一监听器上等待重新接入）。
+func listenKeep(ctx context.Context, cfg Config, log *slog.Logger) (*websocket.Conn, *listener, error) {
 	listener, err := newListener(ctx, cfg.Listen)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	defer listener.close()
 	log.Info("等待被测机器人连入", "listen", cfg.Listen, "deadline", "120s")
 	acceptCtx, cancel := context.WithTimeout(ctx, 120*time.Second)
 	defer cancel()
 	conn, err := listener.accept(acceptCtx)
 	if err != nil {
-		return nil, err
+		listener.close()
+		return nil, nil, err
 	}
 	log.Info("被测机器人已连入")
-	return conn, nil
+	return conn, listener, nil
 }
 
 // listener 用 net/http + coder/websocket 完成一次升级握手。
