@@ -30,3 +30,5 @@
 | `next-agent-prompt.md`（未跟踪） | `docs/next-agent-prompt.md` |
 | 新建 | `docs/code-review-plan-2026-11-15.md` |
 | 新建 | `docs/fix-plan-2026-11-15.md` |
+| 新建 | `docs/engineering-quality-plan-2026-11-15.md` |
+| 新建 | `docs/engineering-quality-review-2026-11-15.md` |
