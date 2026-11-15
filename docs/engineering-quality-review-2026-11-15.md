@@ -48,3 +48,13 @@
 - 只读检查；未跑长测；未跑 `-race`。
 - 现有统一入口的四个目标此前已通过（见 `docs/fix-plan-2026-11-15.md` §5）；本次复审未改动代码，因此不重复长跑。
 - 复审报告与计划同时登记到 `docs/INDEX.md`。
+
+## 7. Phase 1 后续状态（2026-11-15）
+
+本报告是 HEAD `542d207` 时的只读快照；后续 Phase 1 提交已处理两项 P1：
+
+- Q1：`bdadc08` 增加 `schema_version`、`Result.Validate`、写入前校验、JSON Schema 和旧 JSON 读取测试；P1-1 的“无版本/不校验”已不再成立。
+- Q2：`5591f4b` + `daad916` 增加 `sqlite-diag` 测试、`Verify-All.ps1`、HEAD/日志记录和低并行默认；P1-2 的“无测试/无强制入口”已部分关闭，但仓库无 Git remote，CI 仍未接入，当前以本地统一入口为等价门禁。
+- README 的“三个模块”旧表述已在 `5591f4b` 修正为四个目标；P3-1 关闭。
+- 仍未关闭：P2-1 pprof、P2-2 鉴权/出站隔离、P2-3 32 KiB 读上限、P2-4 顶层 panic、P2-5 SDK 版本策略、P2-6 provider 选择、P2-7 Close 语义；这些留给 Phase 2/Batch D。
+- 验证：`Verify-All.ps1 -Parallelism 1` 在脚本 HEAD `daad916` 四目标 exit 0；日志 `bench/env/results/verify-daad916-20261115-145342.log`。未跑长测和 `-race`。

@@ -260,3 +260,25 @@ Q8 功能矩阵 → 按矩阵补功能 → 每项回归。
 - 文档和验证入口是否足以支撑规范。
 
 复审只读：不改代码、不重跑长测、不提交；复审报告单独落盘，发现按 P1/P2/P3 分级，并标注证据路径和行号。
+
+## 9. Phase 1 执行记录（2026-11-15）
+
+### Q1 结果 schema
+
+- 提交：`bdadc08 bench: version and validate result schema`。
+- `Result` 增加 `schema_version`，常量 `ResultSchemaVersion` 固定为 `"1"`；`protocol_version` 继续表示负载协议，两个版本不混用。
+- `Result.Validate` 校验版本、模式、负载、时间、`sent` 和计数非负；`WriteResult` 写入前调用，失败不落盘。
+- 机器 schema：`bench/schema/result-v1.schema.json`；口径文档：`docs/result-schema-v1.md`。
+- 测试：`TestWriteResultAtomic`、`TestWriteResultRejectsMissingSchemaVersion`、`TestLegacyResultJSONReads`、`TestResultSchemaFileIsValidJSON`；`go test ./internal/loadgen` 通过。
+- 旧结果不重写：没有 `schema_version` 的历史 JSON 仍可 `json.Unmarshal`，但不作为新结果模板。
+
+### Q2 统一验证/门禁
+
+- 提交：`5591f4b test: add four-target gate and verify log`、`daad916 test: serialize go checks for low-memory host`。
+- `bench/tools/sqlite-diag` 增加 `TestDBPathUsesTempDirectory`，不再依赖 `[no test files]`。
+- 新增 `scripts/Verify-All.ps1`：记录 HEAD、时间、日志路径；调用 `Test-Go.ps1`。
+- `Test-Go.ps1` 增加 HEAD 记录；默认 `-Parallelism 1`，可用参数覆盖，避免本机 16GB 内存下 Go 包级并行触发分页文件错误。
+- 修正 `go build`/`go vet` 的参数顺序，`-p` 必须在 `./...` 之前。
+- 当前仓库没有配置 Git remote，因此没有添加 GitHub Actions；本地统一入口作为当前等价门禁，待托管后接入 CI。
+- 验证：`Verify-All.ps1 -Parallelism 1` 在脚本 HEAD `daad916` 四目标 exit 0，日志 `bench/env/results/verify-daad916-20261115-145342.log`，用时 68.49s；此前代码 HEAD `5591f4b` 也通过（日志 `verify-5591f4b-20261115-145016.log`，121.13s）。文档提交不改代码。
+- 未跑：30 分钟/15 分钟长测、`-race`（仍受 CGO/C 编译器约束）；历史结果未重写。
