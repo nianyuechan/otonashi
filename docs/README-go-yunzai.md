@@ -55,7 +55,7 @@ Copy-Item config.example.yaml config.yaml
 
 脚本依次检查 `go-yunzai`、`go-render`、`bench` 和 `bench/tools/sqlite-diag` 的格式、单元测试、构建与 `vet`，遇到失败立即退出。默认使用 `G:\ALL WORK\音无\tools\go\bin\go.exe`，本次运行的 `GOPATH`、`GOMODCACHE`、`GOCACHE`、`GOTMPDIR`、`TEMP/TMP` 均放在 `G:\ALL WORK\音无` 下，结束后恢复原有进程环境。可用 `-GoExecutable`、`-CacheRoot` 覆盖路径。系统和用户级 Go 配置未全局迁移，直接调用 Go 时需要自行设置路径。
 
-2026-11-15，该脚本对四个验证目标的检查全部通过。需要留存 HEAD、时间和日志时，使用 `scripts/Verify-All.ps1`；它调用 `Test-Go.ps1` 并把输出写入 `bench/env/results/verify-<head>-<stamp>.log`（该目录的 `*.log` 仍被 `.gitignore` 忽略）。
+2026-11-15，该脚本对四个验证目标的检查全部通过。需要留存 HEAD、时间和日志时，使用 `scripts/Verify-All.ps1`；它调用 `Test-Go.ps1` 并把输出写入 `bench/env/results/verify-<head>-<stamp>.log`（该目录的 `*.log` 仍被 `.gitignore` 忽略）。本机默认使用 `-Parallelism 1` 降低 Go 包级并行内存；可用参数覆盖。
 
 假 OneBot WS 服务端覆盖：
 

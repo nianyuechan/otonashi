@@ -3,6 +3,7 @@ param(
     [string]$GoExecutable,
     [string]$CacheRoot,
     [switch]$Race,
+    [int]$Parallelism = 1,
     [string]$LogDirectory
 )
 
@@ -34,6 +35,7 @@ $testArguments = @{}
 if ($GoExecutable) { $testArguments['GoExecutable'] = $GoExecutable }
 if ($CacheRoot) { $testArguments['CacheRoot'] = $CacheRoot }
 if ($Race) { $testArguments['Race'] = $true }
+$testArguments['Parallelism'] = $Parallelism
 
 Write-Host "统一验证 HEAD=$head 时间=$stamp 日志=$logPath"
 $failed = $false

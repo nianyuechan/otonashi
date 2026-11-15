@@ -2,10 +2,14 @@
 param(
     [string]$GoExecutable,
     [string]$CacheRoot,
-    [switch]$Race
+    [switch]$Race,
+    [int]$Parallelism = 1
 )
 
 $ErrorActionPreference = 'Stop'
+if ($Parallelism -lt 1) {
+    throw 'Parallelism 必须大于 0。'
+}
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $workspaceParent = Split-Path -Parent $projectRoot
 if (-not $GoExecutable) {
@@ -79,11 +83,11 @@ try {
             }
             # 包级期限 120s：本机存在 ~30s 机器级 IO 停滞，60s 对 app/storage 等
             # 已知 ~30-40s 的并行测试包余量不足；应用预算与测试自身期限不变。
-            Invoke-GoCheck -Arguments @('test', './...', '-count=1', '-timeout=120s')
-            Invoke-GoCheck -Arguments @('build', './...')
-            Invoke-GoCheck -Arguments @('vet', './...')
+            Invoke-GoCheck -Arguments @('test', '-p', "$Parallelism", './...', '-count=1', '-timeout=120s')
+            Invoke-GoCheck -Arguments @('build', '-p', "$Parallelism", './...')
+            Invoke-GoCheck -Arguments @('vet', '-p', "$Parallelism", './...')
             if ($Race) {
-                Invoke-GoCheck -Arguments @('test', '-race', './...', '-count=1', '-timeout=120s')
+                Invoke-GoCheck -Arguments @('test', '-race', '-p', "$Parallelism", './...', '-count=1', '-timeout=120s')
             }
         }
         finally {
