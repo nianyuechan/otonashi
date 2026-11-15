@@ -1,0 +1,15 @@
+#!/bin/sh
+# 提交时 Fast 门禁：gofmt + build + vet（不运行 go test）。
+# 收口用 scripts/Verify-All.ps1 -Level Full。
+# 由 scripts/Install-GitHooks.ps1 安装到 .git/hooks/pre-commit。
+set -e
+cd "$(git rev-parse --show-toplevel)"
+if command -v pwsh >/dev/null 2>&1; then
+    PS=pwsh
+elif command -v powershell >/dev/null 2>&1; then
+    PS=powershell
+else
+    echo "pre-commit: PowerShell 不可用，跳过 Fast 门禁" >&2
+    exit 0
+fi
+"$PS" -NoProfile -ExecutionPolicy Bypass -File "scripts/Test-Go.ps1" -Level Fast

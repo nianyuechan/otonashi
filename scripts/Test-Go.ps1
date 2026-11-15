@@ -3,12 +3,17 @@ param(
     [string]$GoExecutable,
     [string]$CacheRoot,
     [switch]$Race,
-    [int]$Parallelism = 1
+    [int]$Parallelism = 1,
+    [ValidateSet('Fast', 'Full')]
+    [string]$Level = 'Full'
 )
 
 $ErrorActionPreference = 'Stop'
 if ($Parallelism -lt 1) {
     throw 'Parallelism 必须大于 0。'
+}
+if ($Level -eq 'Fast' -and $Race) {
+    throw 'Fast 门禁不运行 go test，因此不支持 -Race；需要竞态检测请用 -Level Full -Race。'
 }
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $workspaceParent = Split-Path -Parent $projectRoot
@@ -54,7 +59,10 @@ if ($gitCommand) {
     if ($LASTEXITCODE -ne 0 -or -not $head) { $head = 'unknown' }
 }
 $verificationStartedAt = Get-Date
-Write-Host "验证 HEAD=$head 开始时间=$($verificationStartedAt.ToString('s'))"
+Write-Host "验证 Level=$Level HEAD=$head 开始时间=$($verificationStartedAt.ToString('s'))"
+if ($Level -eq 'Fast') {
+    Write-Host 'Fast 门禁：gofmt + build + vet（不运行 go test；收口请用 -Level Full）'
+}
 
 function Invoke-GoCheck {
     param([string[]]$Arguments)
@@ -83,7 +91,9 @@ try {
             }
             # 包级期限 120s：本机存在 ~30s 机器级 IO 停滞，60s 对 app/storage 等
             # 已知 ~30-40s 的并行测试包余量不足；应用预算与测试自身期限不变。
-            Invoke-GoCheck -Arguments @('test', '-p', "$Parallelism", './...', '-count=1', '-timeout=120s')
+            if ($Level -eq 'Full') {
+                Invoke-GoCheck -Arguments @('test', '-p', "$Parallelism", './...', '-count=1', '-timeout=120s')
+            }
             Invoke-GoCheck -Arguments @('build', '-p', "$Parallelism", './...')
             Invoke-GoCheck -Arguments @('vet', '-p', "$Parallelism", './...')
             if ($Race) {
@@ -95,7 +105,7 @@ try {
         }
     }
     $verificationFinishedAt = Get-Date
-    Write-Host "四个验证目标全部通过（go-yunzai、go-render、bench、bench/tools/sqlite-diag）。HEAD=$head 用时=$([math]::Round(($verificationFinishedAt - $verificationStartedAt).TotalSeconds, 2))s"
+    Write-Host "$Level 门禁通过（go-yunzai、go-render、bench、bench/tools/sqlite-diag）。HEAD=$head 用时=$([math]::Round(($verificationFinishedAt - $verificationStartedAt).TotalSeconds, 2))s"
 }
 finally {
     foreach ($name in $previousEnvironment.Keys) {
