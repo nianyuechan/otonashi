@@ -67,9 +67,8 @@ verify-<head>-<yyyyMMdd-HHmmss>[-<level>].log
 
 | 内容 | 原因 |
 |---|---|
-| `bench/env/results/` 全部（逐事件 JSON、原始日志、指标快照） | 单个 Z2 轮次 67–70MB；逐事件数组对 diff 无意义。已整体写入 `.gitignore` |
-| `bench/env/profiles/` | pprof 文本体积大，且可由脚本重采 |
-| `bench/env/go-yunzai/`、`bench/env/old-yunzai/`、`mysy2/` | 可重建的运行环境 |
+| `bench/env/` 全部（results / profiles / verification / 原始 `.err`、`.log`、`.gz`） | 逐事件 JSON 单轮 65–70MB，profile 与验证记录可由脚本重采；整个目录写入 `.gitignore`，磁盘文件保留在本机 |
+| `mysy2/` | 可重建的运行环境 |
 | `*.exe`、`*.sqlite`、`*.db`、`*.log` | 构建/运行产物 |
 
 本机副本可以被后续运行覆盖或清理；**可复核性由 `git show` 保证**（见下节），不依赖本机是否还留着。

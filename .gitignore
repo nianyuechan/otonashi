@@ -7,13 +7,10 @@ data/
 node_modules/
 .screenshots/
 
-# 基准环境：可重建，体积大
-bench/env/go-yunzai/
-bench/env/old-yunzai/
+# 基准环境与运行产物：均由脚本重建/重采，只留本机，一律不入库。
+# 长期归档只看 docs/evidence/（见 docs/evidence-index.md）。
+bench/env/
 mysy2/
-
-# 基准运行结果：本机工作副本，默认不入库；长期归档只看 docs/evidence/（见 docs/evidence-index.md）
-bench/env/results/
 
 # Go 缓存（通常在项目目录之外，这里仅作兜底）
 gocache/
