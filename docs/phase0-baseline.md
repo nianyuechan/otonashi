@@ -161,23 +161,27 @@ powershell -File bench\scripts\Invoke-BenchScenario.ps1 -Variant old  -Workload 
 
 ### 9.3 Z2：真实插件 + SQLite 逐消息写入（WAL+NORMAL 实验开关，默认仍 FULL）
 
-`bench.store` 每消息 Set+Get、键按账号/群/用户隔离。三次运行全部 FAIL 于 `missing_replies>0`（硬标准）；store 错误均为 0，但 `action_errors` 分别为 0/1/1，run4 与 400target 同时不满足 `action_errors=0`，且当前没有事件级根因明细：
+`bench.store` 每消息 Set+Get、键按账号/群/用户隔离。共有四轮运行进入留存证据：200 target 30 分钟 run2/run3/run4 与 400 target 15 分钟 run1；全部 FAIL 于 `missing_replies>0`（硬标准）。run2/run3 的 `action_errors=0`，run4 与 400target 各为 1；run4、400target 同时不满足 `action_errors=0`，且当前没有事件级根因明细。下表的 store 错误、平均写入延迟和慢写计数来自历史报告，但对应 bot stderr 未留存，**无法从现存原始数据复核**；在补采前只作为历史记录，不作为排除存储瓶颈的依据。
 
-| 运行 | 时长 | requested/actual | sent | expected | paired | **missing** | **action_errors** | p99 | max | CPU | RSS 峰值 | 断连 | 慢写(>1s) | 结果 |
+| 运行 | 时长 | requested/actual | sent | expected | paired | **missing** | **action_errors** | p99 | max | CPU | RSS 峰值 | 断连 | 慢写(>1s)* | 结果 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|---|
-| 200 target run3（30 分钟） | 1800s | 250 / 215.3/s | 387530 | 193765 | 191680 | **2085（1.08%）** | **0** | 0.56ms | 12,302ms | 6.5% | 38.1MB | 1/8（03:00:07） | 865 | **FAIL** |
-| 200 target run4（30 分钟） | 1800s | 250 / 215.6/s | 388088 | 194044 | 191640 | **2404（1.24%）** | **1** | 0.51ms | 22,816ms | 6.3% | 36.3MB | 1/8（03:42:59） | 398 | **FAIL** |
-| 400 target run1（15 分钟） | 900s | 600 / 431.7/s | 388525 | 194263 | 188738 | **5525（2.84%）** | **1** | 0.50ms | 11,227ms | 7.2% | 38.5MB | 2/8（03:58:40、04:00:57） | 575 | **FAIL** |
+| 200 target run2（30 分钟） | 1800s | 250 / 209.7/s | 377380 | 188690 | 174835 | **13855（7.34%）** | **0** | 1.31ms | 29,407ms | 7.7% | 39.9MB | 7/8（9 窗口） | —（无 stderr） | **FAIL** |
+| 200 target run3（30 分钟） | 1800s | 250 / 215.3/s | 387530 | 193765 | 191680 | **2085（1.08%）** | **0** | 0.56ms | 12,302ms | 6.5% | 38.1MB | 1/8（03:00:07） | 865* | **FAIL** |
+| 200 target run4（30 分钟） | 1800s | 250 / 215.6/s | 388088 | 194044 | 191640 | **2404（1.24%）** | **1** | 0.51ms | 22,816ms | 6.3% | 36.3MB | 1/8（03:42:59） | 398* | **FAIL** |
+| 400 target run1（15 分钟） | 900s | 600 / 431.7/s | 388525 | 194263 | 188738 | **5525（2.84%）** | **1** | 0.50ms | 11,227ms | 7.2% | 38.5MB | 2/8（03:58:40、04:00:57） | 575* | **FAIL** |
+
+\* 慢写计数来自历史报告，对应 bot stderr 未留存，待补采复核。run2 的缺失占 expected 7.343%、占 sent 3.671%。
 
 逐窗口证据（missing 与断连时间逐秒对应，缺失全部集中在停滞窗口内已推送的事件）：
 
 - run3：02:59:52.084–03:00:07.250（15.2s，1640 条）↔ 03:00:07 断连；03:10:15.176–03:10:19.276（445 条）↔ 尾部 12.3s 停滞吃掉 grace。
 - run4：03:42:37.583–03:42:59.847（22.3s，2403 条）↔ 03:42:59.856 断连；另 1 条孤立。
 - 400target：03:58:26.745–03:58:40.231（13.5s，2922 条）↔ 03:58:40.236 断连；04:00:45.666–04:00:57.516（11.9s，2602 条）↔ 04:00:57.521 断连。
+- run2：01:26:44.832–01:53:47.578 共 9 个丢失窗口；`go-reply-group-realwrite-200-wal-run2.json.log.err` 记录 7 次重连尝试、8 条读循环提前结束。
 
-机制与 `phase0-profile-2026-11-14.md` §2.5 记录一致：**机器级 IO 停滞 ≥10s → 回复/心跳 10s 超时 → `conn.CloseNow()` 连接断开 → 停滞窗口内已推送事件的回复丢失并计入 missing**；负载器重连续跑（`87ba8cb`）使负载在断连后恢复，但窗口内回复不可恢复。当晚停滞频发的环境背景：系统提交限额 28.3/29.8GB 贴限（16GB 物理内存 + 14GB 页面文件），本轮三次运行各自出现 1–2 个停滞窗口。两次 30 分钟尝试均失败后按 handoff 停止重试。
+机制与 `phase0-profile-2026-11-14.md` §2.5 记录一致：**机器级 IO 停滞 ≥10s → 回复/心跳 10s 超时 → `conn.CloseNow()` 连接断开 → 停滞窗口内已推送事件的回复丢失并计入 missing**；负载器重连续跑（`87ba8cb`）使负载在断连后恢复，但窗口内回复不可恢复。当晚停滞频发的环境背景：系统提交限额 28.3/29.8GB 贴限（16GB 物理内存 + 14GB 页面文件），本轮 Z2 四轮运行均出现断连/丢失窗口；200 target 的三轮 30 分钟（run2/run3/run4）均失败后按 handoff 停止重试。
 
-写入路径本身（WAL+NORMAL）：store 错误 0；逐 2000 条汇总 avg 4.5–21ms（含 WAL 自动 checkpoint 停顿，单次 max 0.28–0.62s）；`-wal` 文件稳定在 ~4MB。
+写入路径本身（WAL+NORMAL）：历史报告记录 store 错误 0、逐 2000 条 avg 4.5–21ms（含 WAL 自动 checkpoint 停顿，单次 max 0.28–0.62s）、`-wal` 文件稳定在 ~4MB；但对应 bot stderr 未留存，上述数字无法复核，暂不作为阶段零结论的直接证据。
 
 ### 9.4 Z3：固定页面真实 Chromium/EdgeCore 渲染（PASS）
 
@@ -187,8 +191,10 @@ EdgeCore 157：`C:\Program Files (x86)\Microsoft\EdgeCore\157.0.4341.46\msedge.e
 |---|---|---|---|---|
 | 单次 | concurrency 1 / queue 1 | 1/s × 60s（60 条） | **60/60 图片段成功**（text_replies=0、action_errors=0）；单次渲染 avg 0.52s、全部 ≤1s；浏览器启动 1 次 | `go-render-single-run1.json` + `render-metrics-single.txt`（success=60） |
 | 并发/队列 | concurrency 2 / queue 2 | 8/s × 60s（478 条） | **success=234 + queue_full=244**（429 瞬时拒绝，累计 3.6ms）；bot 对应 234 图片 + **244 条降级文本**（1:1）；action_errors=0 | `go-render-concurrent-run1.json` + `render-metrics-concurrent.txt` |
-| 失败降级 | go-render 已停止 | 1/s × 10s（10 条） | **10/10 降级文本**"图片暂时不可用：渲染服务暂不可用，请稍后重试。"；无崩溃；**goroutine 总数 9**（与空载一致，无泄漏/无 pending 堆积） | `go-render-fallback-run1.json` + `goroutine-fallback-midrun.txt` |
+| 失败降级 | go-render 已停止 | 1/s × 10s（10 条） | **10/10 降级文本**"图片暂时不可用：渲染服务暂不可用，请稍后重试。"；无崩溃；**bot 主进程 goroutine 总数 9**（该转储无任何 go-render 栈帧，渲染器有界性未验证） | `go-render-fallback-run1.json` + `goroutine-fallback-midrun.txt` |
 | 恢复 | 重启 go-render（1/1） | 1/s × 30s（30 条） | **30/30 图片段成功**，渲染链路自动恢复 | `go-render-recovery-run1.json` + `render-metrics-recovery.txt` |
+
+说明：`goroutine-fallback-midrun.txt` 的 9 个栈全部属于 go-yunzai 主进程；go-render 未暴露 pprof/goroutine 端点，渲染器有界性未验证。不能把该证据写成“go-render 无泄漏”。
 
 渲染延迟单独成表，不与消息核心 p99 混算：固定页面单次 0.52s（并发 2 时 avg 0.97s）；降级文本即时返回。
 
@@ -230,7 +236,7 @@ EdgeCore 157：`C:\Program Files (x86)\Microsoft\EdgeCore\157.0.4341.46\msedge.e
 
 ### 9.8 阶段零收口限制
 
-- Z2 200 target 30 分钟 `missing=0` 硬标准未达成：瓶颈不在消息链路（p99 0.5ms、CPU 6.5%）也不在存储写入（store 错误 0、avg <21ms），而在**机器级 IO 停滞（≥10s）触发断连导致的窗口性回复丢失**；当晚提交限额贴限（28.3/29.8GB）加剧停滞频率。停滞为低频事件（历史全量测试约 1/10 出现率），30 分钟窗口命中概率不可忽略；在受控内存环境（commit 余量 ≥8GB）下的复测尚未进行，列为后续项。
+- Z2 200 target 30 分钟 `missing=0` 硬标准未达成：200 target 三轮（run2/run3/run4）均失败，其中 run2 是最差一轮（missing 13855，7.34%；9 个丢失窗口、7 次重连）。现有证据可把缺失与断连窗口逐秒对齐，但**不足以排除或确认存储写入**：存储侧原始 stderr 未留存，store 错误/avg/慢写无法复核。**机器级 IO 停滞**是当前最有力的方向性解释，但未完全闭合；在受控内存环境（commit 余量 ≥8GB）下的复测尚未进行，列为后续项。
 - Z2 run4 与 400target 各有 `action_errors=1`：这是独立于 missing 的未达标项；当前没有事件级明细，不能把它解释为“错误全 0”。
 - `-race` 仍未运行（CGO_ENABLED=0，缺 C 编译器）。
 - 渲染仅覆盖固定页面，不含任意 HTML/真实模板；单浏览器实例、未测崩溃恢复（仅测进程停止后的降级与重启恢复）。

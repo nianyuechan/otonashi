@@ -28,3 +28,5 @@
 | `plan.md` | `docs/plan.md` |
 | `review-new-changes-2026-11-14.md` | `docs/review-new-changes-2026-11-14.md` |
 | `next-agent-prompt.md`（未跟踪） | `docs/next-agent-prompt.md` |
+| 新建 | `docs/code-review-plan-2026-11-15.md` |
+| 新建 | `docs/fix-plan-2026-11-15.md` |

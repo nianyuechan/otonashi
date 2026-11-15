@@ -4,7 +4,7 @@
 - 项目根：`G:\ALL WORK\音无\音无`
 - 开工时核对 HEAD：**必须为 `87ba8cb`**
 - 执行者：下一位交接 Agent
-- 任务性质：**严格按 `plan.md` §3 阶段零、§4 当前优先级 1–2、§5 总体完成条件执行**
+- 任务性质：**严格按 `docs/plan.md` §3 阶段零、§4 当前优先级 1–2、§5 总体完成条件执行**
 - 本轮不是功能开发轮，也不是阶段九/十/十一；本轮目标是**把阶段零剩余的测量、证据、目标和结论收口**
 
 > 执行前先读完整本文件。任何“看起来可以顺便做”的改动，都不属于本轮；先记录、后报告，不擅自扩项。
@@ -30,7 +30,7 @@
 - 默认 FULL 的端到端采证已在推送第 **5,816** 条时断连，未产出 JSON；独立 SQLite 基准的源程序在 `artifacts-gocache\sqlite-diag\main.go`，但原始输出没有进入 Git，当前报告里的 8.9–9.7 提交/s等数字缺少可复现原始证据。
 - 当前 `Invoke-BenchScenario.ps1` 的 `-Workload` 只允许 `reply` 和 `scan`，**没有 `render`**；虽然 `loadgen` 已实现 `WorkloadRender`，但脚本无法直接跑 Z3。`bench/env/go-yunzai/config-render.yaml` 存在但位于被 `.gitignore` 忽略的目录，不能作为仓库内的可复现配置。
 - EdgeCore 157 已确认存在：`C:\Program Files (x86)\Microsoft\EdgeCore\157.0.4341.46\msedge.exe`。
-- `bench/reports/phase0-profile-2026-11-14.md` 仍未被 Git 跟踪，内容在 §2.5 结束，引用“见 §3”但没有 §3；旧 profile/结果/日志也大量未跟踪。
+- `docs/phase0-profile-2026-11-14.md` 仍未被 Git 跟踪，内容在 §2.5 结束，引用“见 §3”但没有 §3；旧 profile/结果/日志也大量未跟踪。
 - 机器存在已知的秒级到 30 秒级 IO 停滞；本机 16GB 内存，当前空闲物理/虚拟内存约 3.4/3.1GB，Go 链接器可能因提交限额 OOM。不要把内存不足误判为代码失败，也不要为了通过而删除/掩盖日志。
 
 ---
@@ -39,9 +39,9 @@
 
 1. `plan.md` §2 当前状态、§3 阶段零、§4 当前优先级、§5 总体完成条件。
 2. `audit-completed-work-2026-11-14.md` 第八节“本轮”各行。
-3. `bench/reports/phase0-baseline.md`（现有首轮基线）。
-4. `bench/reports/capacity-100-groups-200rps.md` 第 0 节三口径。
-5. `bench/reports/phase0-profile-2026-11-14.md`（历史报告；注意它不是当前 HEAD 的证据）。
+3. `docs/phase0-baseline.md`（现有首轮基线）。
+4. `docs/capacity-100-groups-200rps.md` 第 0 节三口径。
+5. `docs/phase0-profile-2026-11-14.md`（历史报告；注意它不是当前 HEAD 的证据）。
 6. `bench/internal/loadgen/config.go`、`session.go`、`metrics.go`、`run.go`、`scenario.go`。
 7. `bench/scripts/Invoke-BenchScenario.ps1`、`scripts/Test-Go.ps1`。
 8. `go-yunzai/internal/observability/pprof.go`、`go-yunzai/internal/storage/sqlite.go`。
@@ -122,7 +122,7 @@
   - 不引入任意 HTML 输入；仍只使用固定页面。
 - **Z4**：
   - 默认 FULL 的低速 30 分钟窗口有内存/goroutine/错误/重连趋势；
-  - 目标数值和回退门槛写入 `plan.md` §3 与 `bench/reports/phase0-baseline.md`；
+  - 目标数值和回退门槛写入 `docs/plan.md` §3 与 `docs/phase0-baseline.md`；
   - 明确回答 100 群/2 万用户/200 msg/s 下瓶颈是 CPU、锁、存储 IO 还是外部等待；
   - 若数据不足，写“证据不足”，不要拍脑袋定数。
 - **P0/当前 HEAD 验证**：
@@ -311,8 +311,8 @@ bench/env/profiles/current-2026-11-15/
 
 报告：
 
-- 新建 `bench/reports/phase0-profile-2026-11-15.md`；
-- 旧 `phase0-profile-2026-11-14.md` 顶部加一行“历史快照，二进制为 00:06 构建，不是当前 HEAD”；不重写旧数字；
+- 新建 `docs/phase0-profile-2026-11-15.md`；
+- 旧 `docs/phase0-profile-2026-11-14.md` 顶部加一行“历史快照，二进制为 00:06 构建，不是当前 HEAD”；不重写旧数字；
 - 新报告必须写采样窗口、负载、requested/actual、CPU 占用、heap/goroutine、block/mutex 结论；
 - 旧报告里“§3”不存在的问题在新报告中修正，不要继续保留悬空引用。
 
@@ -539,15 +539,15 @@ Remove-Item Env:YZGO_STORAGE_EXPERIMENT -ErrorAction SilentlyContinue
 
 在 Z1/Z2/Z3/Z4 数据完成后：
 
-- 更新 `plan.md` §3 阶段零，新增一张“阶段零目标/回退门槛”表，至少包含：
+- 更新 `docs/plan.md` §3 阶段零，新增一张“阶段零目标/回退门槛”表，至少包含：
   - 目标负载：100 群/2 万注册用户/200 msg/s；设计余量 400 msg/s；
   - 200 target 的 requested/actual/reported、missing、p99、CPU、RSS；
   - 400 target 的 actual、missing、p99；
   - 存储持久性方案和取舍；
   - 渲染单次/并发/队列/降级指标；
   - 明确“若 Z2-A 长窗口 missing>0，该目标不通过，不得写成达标”。
-- 更新 `bench/reports/phase0-baseline.md`，加入“2026-11-15 阶段零收口结果”一节；
-- 新建/完成 `bench/reports/phase0-profile-2026-11-15.md`；
+- 更新 `docs/phase0-baseline.md`，加入“2026-11-15 阶段零收口结果”一节；
+- 新建/完成 `docs/phase0-profile-2026-11-15.md`；
 - 不要把推测写成根因；对机器级停滞只能写“与断连窗口时间相关，需逐窗口证据”，除非已逐段核对。
 - 所有目标数值必须有测量依据；没有数据的指标写“未测量”，不要编造。
 
