@@ -42,7 +42,7 @@ const (
 	KindBurst Kind = "burst"
 )
 
-// ProtocolVersion 标识工作负载定义；新旧两侧与 plan.md 中的说明保持一致。
+// ProtocolVersion 标识工作负载定义；新旧两侧与 docs/plan.md 中的说明保持一致。
 const ProtocolVersion = "1"
 
 // Config 是一次基准运行的完整参数。

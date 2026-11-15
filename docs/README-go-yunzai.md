@@ -1,5 +1,7 @@
 # go-yunzai M1
 
+> 归档说明：原路径为 `go-yunzai/README.md`；以下源码路径仍相对于 `go-yunzai/`。
+
 TRSS-Yunzai 原生 Go 重写的 M1 骨架。当前实现 **OneBot v11 正向 WS 离线闭环**、**go-render HTTP 客户端**和**插件运行时基础能力**：连接、鉴权、事件分发、echo/retcode、心跳、重连、PNG 图片发送，以及插件规则、权限、accept、会话、任务和动态启停。
 
 - Module：`github.com/trss-yunzai/go-yunzai`

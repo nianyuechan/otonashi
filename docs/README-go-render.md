@@ -1,5 +1,7 @@
 # Go Render
 
+> 归档说明：原路径为 `go-render/README.md`；以下源码路径仍相对于 `go-render/`。
+
 独立的 Chromium HTML 渲染服务。核心进程只通过 HTTP 提交 HTML 和渲染选项；本服务独占浏览器与页面生命周期，不依赖 Node.js，也不会下载浏览器内核。
 
 ## 已实现
