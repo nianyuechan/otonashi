@@ -1,3 +1,9 @@
+# Go 源码必须保持 LF：gofmt 会把 CRLF 文件判为"未格式化"，
+# 而 Windows runner 默认按 core.autocrlf 检出成 CRLF，会让 Fast/Full 门禁误红。
+*.go text eol=lf
+go.mod text eol=lf
+go.sum text eol=lf
+
 # Shell 钩子必须保持 LF：Windows 上 CRLF 会让 Git Bash 报 "bad interpreter"。
 scripts/hooks/* text eol=lf
 
