@@ -78,7 +78,7 @@ verify-<head>-<yyyyMMdd-HHmmss>[-<level>].log
 
 | 场景 | 命令 | 覆盖 | 预算 |
 |---|---|---|---|
-| 每次提交前（含 `pre-commit` 钩子） | `scripts/Test-Go.ps1 -Level Fast` | gofmt + build + vet（不跑 `go test`） | 本机实测 < 30s |
+| 每次提交前（含 `pre-commit` 钩子） | `scripts/Test-Go.ps1 -Level Fast` | gofmt + build + vet（不跑 `go test`） | 本机三次实测 29.6–38.5s（30s 为预算，非稳定保证） |
 | 收口 / 合并前 | `scripts/Verify-All.ps1 -Level Full` | 四个目标：gofmt + test + build + vet | 约 68s（历史 Full 实测） |
 
 ```powershell
