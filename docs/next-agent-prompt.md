@@ -476,7 +476,7 @@ Invoke-RestMethod 'http://127.0.0.1:18080/healthz'
 
 - `#render` 只有主人可用，必须确保 `self_id`/`user_id` 与模板 masters 对齐；
 - 成功判定看 bot 出站消息是否为图片段，以及 go-render 日志/metrics；不要只看 loadgen 的 `paired`（render 工作负载没有文本配对）；
-- 抓取 `http://127.0.0.1:18080/metrics` 到 `bench/env/results/render-metrics-single.txt`。
+- 抓取 `http://127.0.0.1:18080/metrics` 到 `bench/env/results/render-metrics-single.txt`（历史证据，已退出索引；该轮数值已记入 `docs/phase0-baseline.md` §9.4）。
 
 #### 并发/队列
 
@@ -646,7 +646,7 @@ go-reply-group-default-full-low-30m-run1.json
 - 旧 `phase0-profile-2026-11-14.md`、旧 profile、旧失败日志：保留为历史，不覆盖；在报告中标注“历史/不是当前 HEAD”。
 - 独立 SQLite 诊断必须保存原始输出：
   - 源程序可复制到 `bench/tools/sqlite-diag/`（不要只留在 `artifacts-gocache`）；
-  - 运行输出保存为 `bench/env/results/sqlite-diag-2026-11-15.txt`；
+  - 运行输出保存为 `bench/env/results/sqlite-diag-2026-11-15.txt`（归档快照：`docs/evidence/sqlite-diag-2026-11-15.txt`）；
   - 如果无法重跑，报告写“原始输出未保存，表格仅为历史结论”，不能继续把它当新证据。
 - 如果清理旧结果，必须先列清单、确认 `git ls-files --error-unmatch` 未跟踪、保留至少一份失败证据；未明确批准不得删除。
 

@@ -8,7 +8,7 @@
 - 负载：`reply` 工作负载、group 模式、100 群/2 万发送者轮转、steady 180s；负载器 `onebot-bench` server 模式
 - 采集脚本：`bench/scripts/Invoke-Z1Profile.ps1`（可重复：构建 → SHA256 记录 → 启动 bot/负载器 → 负载 60s 处抓取 cpu(30s)/heap(?gc=1)/goroutine/block/mutex → 负载结束后 `go tool pprof -top` 文本 → 精确 PID 停止 bot → 端口释放确认）
 - 原始 profile 与 `-top` 文本：`bench/env/profiles/current-2026-11-15/`（含 `manifest.json`、逐档 `capture-<rate>.json`）
-- 结果 JSON 与日志：`bench/env/results/go-reply-group-z1-current-250.json(.log/.log.err/.bot.log/.bot.err)`、`go-reply-group-z1-current-600.json(...)`（同名跟随，未覆盖任何历史文件）
+- 结果 JSON 与日志：`bench/env/results/go-reply-group-z1-current-250.json(.log/.log.err/.bot.log/.bot.err)`、`go-reply-group-z1-current-600.json(...)`（同名跟随，未覆盖任何历史文件；历史证据，已退出索引，仅存本机副本，归档口径见 `docs/evidence-index.md`）
 
 > 历史关系：`phase0-profile-2026-11-14.md` 是 **00:06 构建二进制的历史快照**（其"01:07 重建"表述与实际 01:13 的二进制时间矛盾），不属于当前 HEAD 的证据，仅作对照保留；本报告取代它作为当前基线。旧报告 §2.4 所指的"Z4 稳定性窗口"结果现位于 `phase0-baseline.md` 的"2026-11-15 阶段零收口结果"一节与 `plan.md` §3 目标表（旧报告的"见 §3"为悬空引用，在此修正指向）。
 

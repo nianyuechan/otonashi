@@ -12,6 +12,9 @@ bench/env/go-yunzai/
 bench/env/old-yunzai/
 mysy2/
 
+# 基准运行结果：本机工作副本，默认不入库；长期归档只看 docs/evidence/（见 docs/evidence-index.md）
+bench/env/results/
+
 # Go 缓存（通常在项目目录之外，这里仅作兜底）
 gocache/
 gopath/

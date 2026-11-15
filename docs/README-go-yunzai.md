@@ -55,7 +55,7 @@ Copy-Item config.example.yaml config.yaml
 
 脚本依次检查 `go-yunzai`、`go-render`、`bench` 和 `bench/tools/sqlite-diag` 的格式、单元测试、构建与 `vet`，遇到失败立即退出。默认使用 `G:\ALL WORK\音无\tools\go\bin\go.exe`，本次运行的 `GOPATH`、`GOMODCACHE`、`GOCACHE`、`GOTMPDIR`、`TEMP/TMP` 均放在 `G:\ALL WORK\音无` 下，结束后恢复原有进程环境。可用 `-GoExecutable`、`-CacheRoot` 覆盖路径。系统和用户级 Go 配置未全局迁移，直接调用 Go 时需要自行设置路径。
 
-2026-11-15，该脚本对四个验证目标的检查全部通过。需要留存 HEAD、时间和日志时，使用 `scripts/Verify-All.ps1`；它调用 `Test-Go.ps1` 并把输出写入 `bench/env/results/verify-<head>-<stamp>.log`（该目录的 `*.log` 仍被 `.gitignore` 忽略）。本机默认使用 `-Parallelism 1` 降低 Go 包级并行内存；可用参数覆盖。
+2026-11-15，该脚本对四个验证目标的检查全部通过。需要留存 HEAD、时间和日志时，使用 `scripts/Verify-All.ps1`；它调用 `Test-Go.ps1` 并把输出写入 `bench/env/results/verify-<head>-<stamp>.log`（整个 `bench/env/results/` 已被 `.gitignore` 忽略，日志不进版本库）。本机默认使用 `-Parallelism 1` 降低 Go 包级并行内存；可用参数覆盖。
 
 假 OneBot WS 服务端覆盖：
 
@@ -297,7 +297,7 @@ ok   github.com/trss-yunzai/go-yunzai/internal/render 1.827s
 
 `dispatch.max_concurrent` 限制同时处理的事件数（配置范围 1–4096，默认 256），超出的事件在 OneBot 读循环处等待空闲槽位，形成背压，不会无限创建 goroutine。
 
-- 默认值按 100 群/2 万发送者轮转的容量验证结果（221 eps、p99 0.47ms）有充足余量；见 `bench/reports/capacity-100-groups-200rps.md`。
+- 默认值按 100 群/2 万发送者轮转的容量验证结果（221 eps、p99 0.47ms）有充足余量；见 `docs/capacity-100-groups-200rps.md`。
 - 若要压更高消息速率或接入耗时较长的插件处理，建议先调到 512 并用基准复测 p95/p99，不要无依据地调大。
 
 ### 存储打开预算（60s）

@@ -31,7 +31,7 @@
 | 250 | group（100 群） | 12959 | 6480 | 0 | 185.1 | 0.27 | 0.36 | 0.50 | 2.04 | 1.7% | 20.5 MB |
 | 300 | group（100 群） | 15478 | 7739 | 0 | 221.1 | 0.27 | 0.36 | 0.47 | 1.77 | 1.3% | 20.8 MB |
 
-原始结果：`bench/env/results/go-reply-steady-200rps.json`、`go-reply-group-200rps.json`、`go-reply-group-250rps.json`、`go-reply-group-300rps.json`。
+原始结果：`docs/evidence/go-reply-steady-200rps.json`、`docs/evidence/go-reply-group-200rps.json`（已归档快照）；`go-reply-group-250rps.json`、`go-reply-group-300rps.json`（历史证据，已退出索引，仅存 `bench/env/results/` 本机副本，见 `docs/evidence-index.md`）。
 
 ### 1.2 400–900 档（2 倍验证批，每档两轮 + 900 诊断一轮）
 
@@ -44,6 +44,8 @@
 | 700 | **543.3/s** | 465.5 | 32594 | 16297 | 0 | 0.238 | 0.377 | 0.490 | 1.08 | 2.4% | 19.4 MB | `go-reply-group-700rps-verified-run1.json` |
 | 700 | **543.1/s** | 465.4 | 32583 | 16292 | 0 | 0.240 | 0.376 | 0.494 | 1.60 | 2.4% | 19.3 MB | `go-reply-group-700rps-verified-run2.json` |
 | 900（诊断） | 639.2/s | 547.8 | 38351 | 19176 | 0 | 0.229 | 0.356 | 0.474 | 3.65 | 2.5% | 19.4 MB | `go-reply-group-900rps-loader-cap-run1.json` |
+
+表中 run1 结果文件已归档到 `docs/evidence/`（`go-reply-group-400rps-verified-run1.json` 等）；各档 run2 为历史证据，已退出索引、仅存本机副本。`actual injection` 需按事件首尾 `sent_ns` 复算，方法见 `docs/evidence-index.md` §4.4。
 
 ## 2. 结论
 

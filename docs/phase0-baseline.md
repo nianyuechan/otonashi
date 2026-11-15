@@ -129,7 +129,7 @@ powershell -File bench\scripts\Invoke-BenchScenario.ps1 -Variant old  -Workload 
 # scan 变体：-Workload scan（无延迟样本，看 CPU/RSS）
 ```
 
-原始结果（含逐事件记录与采样序列）在 `bench/env/results/*.json`；run1/run2 为保留的重复轮。
+原始结果（含逐事件记录与采样序列）在 `bench/env/results/*.json`（本机工作副本，2026-11-15 起整体退出索引、不进版本库）；本文直接引用的快照在 `docs/evidence/`，取回与复算方法见 `docs/evidence-index.md`。run1/run2 为保留的重复轮。
 
 ## 8. 阶段零后续项
 
@@ -163,6 +163,8 @@ powershell -File bench\scripts\Invoke-BenchScenario.ps1 -Variant old  -Workload 
 
 `bench.store` 每消息 Set+Get、键按账号/群/用户隔离。共有四轮运行进入留存证据：200 target 30 分钟 run2/run3/run4 与 400 target 15 分钟 run1；全部 FAIL 于 `missing_replies>0`（硬标准）。run2/run3 的 `action_errors=0`，run4 与 400target 各为 1；run4、400target 同时不满足 `action_errors=0`，且当前没有事件级根因明细。下表的 store 错误、平均写入延迟和慢写计数来自历史报告，但对应 bot stderr 未留存，**无法从现存原始数据复核**；在补采前只作为历史记录，不作为排除存储瓶颈的依据。
 
+证据位置说明：四轮逐事件 JSON 各 67–70MB，保存在 `bench/env/results/` 本机工作副本并已退出索引；`summary` 数字按 `docs/evidence-index.md` §4 取回复算。`docs/evidence/` 只归档了 run2 的同名 `.log.err`（35KB）。
+
 | 运行 | 时长 | requested/actual | sent | expected | paired | **missing** | **action_errors** | p99 | max | CPU | RSS 峰值 | 断连 | 慢写(>1s)* | 结果 |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|---|
 | 200 target run2（30 分钟） | 1800s | 250 / 209.7/s | 377380 | 188690 | 174835 | **13855（7.34%）** | **0** | 1.31ms | 29,407ms | 7.7% | 39.9MB | 7/8（9 窗口） | —（无 stderr） | **FAIL** |
@@ -177,7 +179,7 @@ powershell -File bench\scripts\Invoke-BenchScenario.ps1 -Variant old  -Workload 
 - run3：02:59:52.084–03:00:07.250（15.2s，1640 条）↔ 03:00:07 断连；03:10:15.176–03:10:19.276（445 条）↔ 尾部 12.3s 停滞吃掉 grace。
 - run4：03:42:37.583–03:42:59.847（22.3s，2403 条）↔ 03:42:59.856 断连；另 1 条孤立。
 - 400target：03:58:26.745–03:58:40.231（13.5s，2922 条）↔ 03:58:40.236 断连；04:00:45.666–04:00:57.516（11.9s，2602 条）↔ 04:00:57.521 断连。
-- run2：01:26:44.832–01:53:47.578 共 9 个丢失窗口；`go-reply-group-realwrite-200-wal-run2.json.log.err` 记录 7 次重连尝试、8 条读循环提前结束。
+- run2：01:26:44.832–01:53:47.578 共 9 个丢失窗口；`go-reply-group-realwrite-200-wal-run2.json.log.err`（归档快照见 `docs/evidence/`）记录 7 次重连尝试、8 条读循环提前结束。
 
 机制与 `phase0-profile-2026-11-14.md` §2.5 记录一致：**机器级 IO 停滞 ≥10s → 回复/心跳 10s 超时 → `conn.CloseNow()` 连接断开 → 停滞窗口内已推送事件的回复丢失并计入 missing**；负载器重连续跑（`87ba8cb`）使负载在断连后恢复，但窗口内回复不可恢复。当晚停滞频发的环境背景：系统提交限额 28.3/29.8GB 贴限（16GB 物理内存 + 14GB 页面文件），本轮 Z2 四轮运行均出现断连/丢失窗口；200 target 的三轮 30 分钟（run2/run3/run4）均失败后按 handoff 停止重试。
 
@@ -215,7 +217,7 @@ EdgeCore 157：`C:\Program Files (x86)\Microsoft\EdgeCore\157.0.4341.46\msedge.e
 
 ### 9.6 SQLite 独立基准原始输出（2026-11-15 重跑）
 
-源码入库 `bench/tools/sqlite-diag/`（原 `artifacts-gocache/sqlite-diag`，gofmt 修正）；原始输出 `bench/env/results/sqlite-diag-2026-11-15.txt`（100 提交 × 4 持久性组合 × G:/C: × 2 轮，顺序单连接）：
+源码入库 `bench/tools/sqlite-diag/`（原 `artifacts-gocache/sqlite-diag`，gofmt 修正）；原始输出 `docs/evidence/sqlite-diag-2026-11-15.txt`（同内容副本保留在 `bench/env/results/` 本机工作副本，该目录已退出索引）（100 提交 × 4 持久性组合 × G:/C: × 2 轮，顺序单连接）：
 
 | 组合 | G:（机械盘） | C:（NVMe） |
 |---|---:|---:|

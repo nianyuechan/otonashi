@@ -280,5 +280,5 @@ Q8 功能矩阵 → 按矩阵补功能 → 每项回归。
 - `Test-Go.ps1` 增加 HEAD 记录；默认 `-Parallelism 1`，可用参数覆盖，避免本机 16GB 内存下 Go 包级并行触发分页文件错误。
 - 修正 `go build`/`go vet` 的参数顺序，`-p` 必须在 `./...` 之前。
 - 当前仓库没有配置 Git remote，因此没有添加 GitHub Actions；本地统一入口作为当前等价门禁，待托管后接入 CI。
-- 验证：`Verify-All.ps1 -Parallelism 1` 在脚本 HEAD `daad916` 四目标 exit 0，日志 `bench/env/results/verify-daad916-20261115-145342.log`，用时 68.49s；此前代码 HEAD `5591f4b` 也通过（日志 `verify-5591f4b-20261115-145016.log`，121.13s）。文档提交不改代码。
+- 验证：`Verify-All.ps1 -Parallelism 1` 在脚本 HEAD `daad916` 四目标 exit 0，日志 `bench/env/results/verify-daad916-20261115-145342.log`（本机日志，已随结果目录退出索引，不进版本库），用时 68.49s；此前代码 HEAD `5591f4b` 也通过（日志 `verify-5591f4b-20261115-145016.log`，121.13s）。文档提交不改代码。
 - 未跑：30 分钟/15 分钟长测、`-race`（仍受 CGO/C 编译器约束）；历史结果未重写。

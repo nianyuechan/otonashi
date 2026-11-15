@@ -19,7 +19,7 @@
 ## 二、审计方法
 
 1. 复跑 `scripts/Test-Go.ps1`（输出留档 `bench/env/audit-test-go.log`）：go-yunzai、go-render、bench 三模块 fmt / test / build / vet 全部通过。
-2. 用 `bench/env/results/*.json` 的 `events` 原始数组复算 p50/p95/p99，与 `summary` 和报告对照（脚本与输出在审计工作区）。
+2. 用 `bench/env/results/*.json` 的 `events` 原始数组复算 p50/p95/p99，与 `summary` 和报告对照（脚本与输出在审计工作区）。（历史证据，已退出索引；按 `docs/evidence-index.md` §4 取回）
 3. 用最小 Go 程序观察 Windows 上 `time.Now().UnixNano()` 的更新间隔，并检查正延迟样本的最小值。
 4. 审读 `internal/adapter/onebotv11`、`internal/plugin`、`internal/storage`、`internal/render`、`internal/config`、`plugins/builtin`、`plugins/bench`、`go-render/internal/renderer`。
 5. 核对 README、plan.md、phase0-baseline.md 与实现/脚本。
@@ -28,7 +28,7 @@
 
 ### H1 稳态延迟分位数口径不一致，"1/11"不可引用
 
-证据（`bench/env/results`，本次复算）：
+证据（`bench/env/results` 本机副本；历史证据，已退出索引，见 `docs/evidence-index.md`，本次复算）：
 
 | 文件 | paired_replies | latency_count | latency=0 且 sent_ns==reply_ns |
 |---|---:|---:|---:|
@@ -139,7 +139,7 @@
 ## 五、低严重度与文档一致性
 
 - L1 `scripts/Test-Go.ps1` 末尾仍打印"两个 Go 模块全部验证通过"，实际检查三个模块；README 和 plan.md 的"两个模块"表述同步滞后。
-- L2 `bench/reports/phase0-baseline.md` 未披露 `latency_count` 和 `LatencyMS > 0` 过滤；"可精确配对"易被读成 593 个全部进分位数。
+- L2 `docs/phase0-baseline.md` 未披露 `latency_count` 和 `LatencyMS > 0` 过滤；"可精确配对"易被读成 593 个全部进分位数。
 - L3 `TestLegacyJSONCompatibilityFixture` 只是 Go 写、Go 读的往返，不是旧版真实写入字节的 fixture；测试名称容易高估兼容性验证范围。真实旧数据迁移仍是未完成项。
 - L4 `storage.path` 相对启动目录（`config.example.yaml` 已注释），不同 CWD 会打开不同数据库；建议改为相对配置文件目录，或在启动时打印绝对路径。
 - L5 `DecodeEvent` 接受 `"message": null` 为 nil 消息段；非标准 `message_type` 不校验，可能进入权限判断的默认分支。
@@ -205,7 +205,7 @@
 | 本轮-脚本防旧结果误判 | 已修 | `Invoke-BenchScenario.ps1` 删除旧 OutFile 改为 `-ErrorAction Stop` 并断言文件消失（删除失败即终止，不再静默）；运行结束后校验 `summary.sent > 0` 且 `finished_at` 在本次运行时间窗内，防止删除失败或负载器写入失败时把旧文件读成"本次成功"。验收：人为占用旧结果文件后运行脚本，脚本在启动负载器前报错退出（"文件正由另一进程使用"），未返回旧数据。 |
 | 本轮-旧结果清理 | 已完成 | 删除 4 个未跟踪旧结果 `go-reply-group-400rps.json`/`600rps.json`/`700rps.json`/`700rps-run2.json`（无自记录参数，已被 `*-verified-run*.json` 取代；删除前用 `git ls-files --error-unmatch` 逐一确认未跟踪）；`next-agent-prompt.md` 同步更新为新状态，未保留互相矛盾的交接副本。**提交口径说明**：`04aed40` 本身只改文档（交接提示词同步），不包含代码；上述 4 个旧结果是未跟踪文件的工作区删除操作，不出现在任何提交里，`git log --stat` 无法也不应看到它们。 |
 
-容量目标（2026-11-14 确认）：100 个群、2 万注册用户、峰值 200 msg/s，按 2 倍余量设计。新增 `-message-type group`、`-group-count`、`-user-count` 负载参数，并以 100 群/2 万发送者轮转实测到 **221 eps、0 丢失、p99 0.47ms、CPU 1.3%、RSS 20.8MB**。交接轮补充：2 倍目标已按实际注入验证——请求 600/700 msg/s 时实际注入 437–543 msg/s（四轮）、`missing_replies=0`、p99 ≤ 0.55ms；请求速率 ≠ 实际注入 ≠ reported eps（分母含 grace），三口径区分见 `bench/reports/capacity-100-groups-200rps.md`。负载器每周期 ~0.4–0.6ms 开销使 900 msg/s 请求只注入 639 msg/s，而服务端 p99 全程 ≤ 0.68ms、CPU ≤ 2.5%，未饱和；继续提高注入需多负载器或负载器改造。该结果只覆盖简单基准规则，不含真实插件、存储写入、渲染和多账号。负载器结果 JSON 自 2026-11-14 起自记录 `message_type`/`group_count`/`user_count` 等参数，参数证据不再依赖文件名；此前未提交的 400/600/700 结果（19:40–19:46 采集）无法自证参数，已由新采集的 `*-verified-run*.json` 取代。
+容量目标（2026-11-14 确认）：100 个群、2 万注册用户、峰值 200 msg/s，按 2 倍余量设计。新增 `-message-type group`、`-group-count`、`-user-count` 负载参数，并以 100 群/2 万发送者轮转实测到 **221 eps、0 丢失、p99 0.47ms、CPU 1.3%、RSS 20.8MB**。交接轮补充：2 倍目标已按实际注入验证——请求 600/700 msg/s 时实际注入 437–543 msg/s（四轮）、`missing_replies=0`、p99 ≤ 0.55ms；请求速率 ≠ 实际注入 ≠ reported eps（分母含 grace），三口径区分见 `docs/capacity-100-groups-200rps.md`。负载器每周期 ~0.4–0.6ms 开销使 900 msg/s 请求只注入 639 msg/s，而服务端 p99 全程 ≤ 0.68ms、CPU ≤ 2.5%，未饱和；继续提高注入需多负载器或负载器改造。该结果只覆盖简单基准规则，不含真实插件、存储写入、渲染和多账号。负载器结果 JSON 自 2026-11-14 起自记录 `message_type`/`group_count`/`user_count` 等参数，参数证据不再依赖文件名；此前未提交的 400/600/700 结果（19:40–19:46 采集）无法自证参数，已由新采集的 `*-verified-run*.json` 取代。
 
 验证（交接轮最终口径）：`TestNoteSurvivesApplicationRestartThroughOneBot -count=20` 通过（13.5s）；修复后 `scripts/Test-Go.ps1` 连续 3 次通过 go-yunzai、go-render、bench 三模块的 fmt/test/build/vet（日志 `bench/env` 工作区外留档 artifacts-gocache/testgo-final2-run1..3）。本轮修复后同口径复验：`TestNote... -count=20` 通过（14.5s），`scripts/Test-Go.ps1` 连续 3 次通过（日志 artifacts-gocache/testgo-actualinj-run1..3）。此前同日历史：原 pprof 未提交改动下的复跑曾出现 note 测试 10.06s 超时（单独复跑 0.85s 通过，当时误判为 M3 锁竞争）；交接轮第 1 次 3 连跑的 run2 真实复现同类停滞并定位根因为机器级 IO 停滞（见"交接轮-测试稳定化"行），据此扩大修复后获得 3 连通过。本报告旧版"M3 锁竞争导致测试失败"的表述作废。H1 已用 QPC 重采两轮并纳入基线报告，同批次重采见 4.4。`-race` 仍未运行（缺 CGO/C 编译器）。
 
