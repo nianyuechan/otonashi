@@ -34,6 +34,8 @@ foreach ($hook in $hooks) {
 }
 
 Write-Host ''
-Write-Host 'pre-commit 每次提交运行 scripts/Test-Go.ps1 -Level Fast（gofmt + build + vet，不跑 go test）。'
+Write-Host 'pre-commit：只检查本次暂存的 .go 文件格式（毫秒级），不构建、不跑测试。'
+Write-Host 'pre-push  ：运行 scripts/Test-Go.ps1 -Level Fast（gofmt + build + vet，不跑 go test），约 30-60s。'
 Write-Host '收口请运行 scripts/Verify-All.ps1 -Level Full（日志写入 bench/env/results）。'
-Write-Host '卸载：删除 .git\hooks\pre-commit。'
+Write-Host '临时跳过推送门禁：YZGO_SKIP_GATE=1 git push（会打印提示）。'
+Write-Host '卸载：删除 .git\hooks\pre-commit 与 .git\hooks\pre-push。'

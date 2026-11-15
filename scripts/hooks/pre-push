@@ -1,0 +1,23 @@
+#!/bin/sh
+# 推送前门禁：gofmt + build + vet（不跑 go test），跑完四个模块。
+# 允许明确跳过：YZGO_SKIP_GATE=1 git push
+# 收口仍用 scripts/Verify-All.ps1 -Level Full。
+# 由 scripts/Install-GitHooks.ps1 安装到 .git/hooks/pre-push。
+set -e
+cd "$(git rev-parse --show-toplevel)"
+
+if [ "${YZGO_SKIP_GATE:-0}" = "1" ]; then
+    echo "pre-push: YZGO_SKIP_GATE=1，跳过 Fast 门禁（请记得稍后自行跑 Verify-All）" >&2
+    exit 0
+fi
+
+if command -v pwsh >/dev/null 2>&1; then
+    PS=pwsh
+elif command -v powershell >/dev/null 2>&1; then
+    PS=powershell
+else
+    echo "pre-push: PowerShell 不可用，跳过 Fast 门禁" >&2
+    exit 0
+fi
+
+"$PS" -NoProfile -ExecutionPolicy Bypass -File "scripts/Test-Go.ps1" -Level Fast

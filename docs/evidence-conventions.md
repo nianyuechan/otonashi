@@ -78,8 +78,11 @@ verify-<head>-<yyyyMMdd-HHmmss>[-<level>].log
 
 | 场景 | 命令 | 覆盖 | 预算 |
 |---|---|---|---|
-| 每次提交前（含 `pre-commit` 钩子） | `scripts/Test-Go.ps1 -Level Fast` | gofmt + build + vet（不跑 `go test`） | 本机三次实测 29.6–38.5s（30s 为预算，非稳定保证） |
+| 每次提交（`pre-commit` 钩子） | `scripts/hooks/pre-commit` → 暂存 `.go` 的 gofmt + `git diff --cached --check` | 只查格式，不构建 | < 1s |
+| 每次推送（`pre-push` 钩子） | `scripts/Test-Go.ps1 -Level Fast` | gofmt + build + vet（不跑 `go test`） | 独立实测 29.6–38.5s；曾因本机 IO 停滞在提交内涨到 61.6s |
 | 收口 / 合并前 | `scripts/Verify-All.ps1 -Level Full` | 四个目标：gofmt + test + build + vet | 约 68s（历史 Full 实测） |
+
+分两层的理由：把完整 Fast 塞进 `pre-commit` 后，实际提交要等 61.6s；人会用 `--no-verify` 绕过，门禁反而失效。提交只拦"格式/空白"这类零成本错误，构建级检查移到推送前。
 
 ```powershell
 # 提交前
@@ -97,7 +100,8 @@ verify-<head>-<yyyyMMdd-HHmmss>[-<level>].log
 - `Fast` 只回答"没弄坏格式/编译/静态检查"，**不能证明测试通过**；
 - `Full` 是唯一可以作为"这批收口"的门禁；
 - 两者都必须串行（`-Parallelism 1` 默认）：本机内存偏紧，包级并行会 OOM 或触发停滞超时。
-- 钩子安装：`scripts/Install-GitHooks.ps1`（把 `scripts/hooks/pre-commit` 复制到 `.git/hooks`）。仓库目前没有 remote，钩子是本地唯一自动门禁；接上 remote 后由 `.github/workflows/verify.yml` 承担同一角色（见 §7）。
+- 钩子安装：`scripts/Install-GitHooks.ps1`（把 `scripts/hooks/pre-commit` 与 `pre-push` 复制到 `.git/hooks`）。仓库目前没有 remote，钩子是本地唯一自动门禁；接上 remote 后由 `.github/workflows/verify.yml` 承担同一角色（见 §7）。
+- 临时跳过推送门禁：`YZGO_SKIP_GATE=1 git push`（会打印提示，不是静默跳过）。
 
 ## 5. 按 HEAD 追溯一次验证
 

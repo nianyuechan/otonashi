@@ -1,15 +1,54 @@
 #!/bin/sh
-# 提交时 Fast 门禁：gofmt + build + vet（不运行 go test）。
-# 收口用 scripts/Verify-All.ps1 -Level Full。
+# 提交时只做"暂存区格式检查"：毫秒级，不构建、不跑测试。
+# build + vet 门禁放在 pre-push（scripts/hooks/pre-push），收口用 scripts/Verify-All.ps1 -Level Full。
+# 设计理由：完整 Fast 在本机实测 31.5s，装进 pre-commit 后实际提交时涨到 61.6s；
+# 每次提交等一分钟，人就会用 --no-verify 绕过，门禁等于没有。
 # 由 scripts/Install-GitHooks.ps1 安装到 .git/hooks/pre-commit。
 set -e
 cd "$(git rev-parse --show-toplevel)"
-if command -v pwsh >/dev/null 2>&1; then
-    PS=pwsh
-elif command -v powershell >/dev/null 2>&1; then
-    PS=powershell
-else
-    echo "pre-commit: PowerShell 不可用，跳过 Fast 门禁" >&2
+
+files=$(git diff --cached --name-only --diff-filter=ACM -- '*.go')
+if [ -z "$files" ]; then
     exit 0
 fi
-"$PS" -NoProfile -ExecutionPolicy Bypass -File "scripts/Test-Go.ps1" -Level Fast
+
+gofmt_bin=""
+if [ -x "../tools/go/bin/gofmt.exe" ]; then
+    gofmt_bin="../tools/go/bin/gofmt.exe"
+elif command -v gofmt >/dev/null 2>&1; then
+    gofmt_bin="gofmt"
+elif command -v go >/dev/null 2>&1; then
+    gofmt_bin="go fmt"
+fi
+
+if [ -z "$gofmt_bin" ]; then
+    echo "pre-commit: 未找到 gofmt，跳过格式检查（推送到远端前仍会跑 pre-push 的 build+vet）" >&2
+    exit 0
+fi
+
+# 只检查本次暂存的文件，不扫描整个仓库。
+bad=$(printf '%s\n' "$files" | while IFS= read -r f; do
+    [ -f "$f" ] || continue
+    if [ "$gofmt_bin" = "go fmt" ]; then
+        out=$(go fmt "$f" 2>&1) || true
+        if [ -n "$out" ]; then
+            echo "$f"
+        fi
+    else
+        if "$gofmt_bin" -l "$f" | grep -q .; then
+            echo "$f"
+        fi
+    fi
+done)
+
+if [ -n "$bad" ]; then
+    echo "pre-commit: 以下 Go 文件格式不合规，提交已阻止：" >&2
+    echo "$bad" >&2
+    echo "修复：gofmt -w <文件>，然后重新 git add。" >&2
+    exit 1
+fi
+
+# 顺手拦住行尾空白与冲突标记；这一步同样只看暂存区。
+git diff --cached --check
+
+exit 0
