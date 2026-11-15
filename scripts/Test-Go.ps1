@@ -73,7 +73,7 @@ try {
             Pop-Location
         }
     }
-    Write-Host '三个 Go 模块全部验证通过。'
+    Write-Host '四个验证目标全部通过（go-yunzai、go-render、bench、bench/tools/sqlite-diag）。'
 }
 finally {
     foreach ($name in $previousEnvironment.Keys) {
