@@ -2,10 +2,12 @@ package loadgen
 
 import (
 	"encoding/json"
+	"fmt"
 	"math"
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 )
 
 // EventRecord 是一条事件的测量结果。
@@ -66,8 +68,13 @@ type Summary struct {
 	RSSMaxBytes   uint64  `json:"rss_max_bytes"`
 }
 
+// ResultSchemaVersion 是结果 JSON 的契约版本，与工作负载协议版本
+// ProtocolVersion 分开：前者约束结果字段，后者约束 OneBot 负载定义。
+const ResultSchemaVersion = "1"
+
 // Result 是写入磁盘的完整结果。
 type Result struct {
+	SchemaVersion   string  `json:"schema_version"`
 	ProtocolVersion string  `json:"protocol_version"`
 	Mode            string  `json:"mode"`
 	Workload        string  `json:"workload"`
@@ -218,8 +225,62 @@ func BuildSummary(events []EventRecord, samples []SampleRecord, actionCount, act
 	return summary
 }
 
+// Validate 校验新写入结果的最小契约。历史结果可能没有 schema_version；
+// 读取历史 JSON 不调用本方法，只有 WriteResult 会拒绝缺版本的新结果。
+func (r Result) Validate() error {
+	if r.SchemaVersion == "" {
+		return fmt.Errorf("schema_version is required")
+	}
+	if r.SchemaVersion != ResultSchemaVersion {
+		return fmt.Errorf("unsupported schema_version %q (want %q)", r.SchemaVersion, ResultSchemaVersion)
+	}
+	if strings.TrimSpace(r.ProtocolVersion) == "" {
+		return fmt.Errorf("protocol_version is required")
+	}
+	if r.Mode != string(ModeServer) && r.Mode != string(ModeClient) {
+		return fmt.Errorf("mode must be server or client")
+	}
+	switch r.Workload {
+	case string(WorkloadReply), string(WorkloadScan), string(WorkloadRender):
+	default:
+		return fmt.Errorf("workload must be reply, scan, or render")
+	}
+	if r.Kind != string(KindSteady) && r.Kind != string(KindBurst) {
+		return fmt.Errorf("kind must be steady or burst")
+	}
+	if strings.TrimSpace(r.StartedAt) == "" || strings.TrimSpace(r.FinishedAt) == "" {
+		return fmt.Errorf("started_at and finished_at are required")
+	}
+	if r.Summary.Sent <= 0 {
+		return fmt.Errorf("summary.sent must be positive")
+	}
+	nonNegative := []struct {
+		name  string
+		value int
+	}{
+		{"summary.paired_replies", r.Summary.PairedReplies},
+		{"summary.unpaired_replies", r.Summary.UnpairedReplies},
+		{"summary.expected_replies", r.Summary.ExpectedReplies},
+		{"summary.missing_replies", r.Summary.MissingReplies},
+		{"summary.expected_text_replies", r.Summary.ExpectedTextReplies},
+		{"summary.missing_text_replies", r.Summary.MissingTextReplies},
+		{"summary.action_count", r.Summary.ActionCount},
+		{"summary.action_errors", r.Summary.ActionErrors},
+		{"summary.text_replies", r.Summary.TextReplies},
+	}
+	for _, item := range nonNegative {
+		if item.value < 0 {
+			return fmt.Errorf("%s must be non-negative", item.name)
+		}
+	}
+	return nil
+}
+
 // WriteResult 把结果写成 JSON 文件（自动创建父目录）。
 func WriteResult(path string, result Result) error {
+	if err := result.Validate(); err != nil {
+		return fmt.Errorf("validate result: %w", err)
+	}
 	if dir := filepath.Dir(path); dir != "." && dir != "" {
 		if err := os.MkdirAll(dir, 0o755); err != nil {
 			return err

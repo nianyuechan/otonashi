@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trss-yunzai.local/bench/result-v1.schema.json",
+  "title": "onebot-bench result v1",
+  "description": "Result contract for onebot-bench. ResultSchemaVersion in bench/internal/loadgen/metrics.go must match the schema_version constant.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "protocol_version",
+    "mode",
+    "workload",
+    "kind",
+    "started_at",
+    "finished_at",
+    "summary"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "protocol_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mode": {
+      "enum": ["server", "client"]
+    },
+    "workload": {
+      "enum": ["reply", "scan", "render"]
+    },
+    "kind": {
+      "enum": ["steady", "burst"]
+    },
+    "rate": {
+      "type": "number",
+      "minimum": 0
+    },
+    "duration_ms": {
+      "type": "number",
+      "minimum": 0
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "self_id": {
+      "type": "integer"
+    },
+    "user_id": {
+      "type": "integer"
+    },
+    "group_id": {
+      "type": "integer"
+    },
+    "message_type": {
+      "type": "string"
+    },
+    "group_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "user_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "started_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "finished_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "sent",
+        "paired_replies",
+        "unpaired_replies",
+        "expected_replies",
+        "missing_replies",
+        "expected_text_replies",
+        "missing_text_replies",
+        "action_count",
+        "action_errors",
+        "throughput_eps",
+        "load_wall_ms",
+        "text_replies",
+        "actual_injection_eps",
+        "latency_count",
+        "latency_mean_ms",
+        "latency_p50_ms",
+        "latency_p90_ms",
+        "latency_p95_ms",
+        "latency_p99_ms",
+        "latency_max_ms",
+        "cpu_avg_percent",
+        "cpu_max_percent",
+        "rss_avg_bytes",
+        "rss_max_bytes"
+      ],
+      "properties": {
+        "sent": { "type": "integer", "minimum": 1 },
+        "paired_replies": { "type": "integer", "minimum": 0 },
+        "unpaired_replies": { "type": "integer", "minimum": 0 },
+        "expected_replies": { "type": "integer", "minimum": 0 },
+        "missing_replies": { "type": "integer", "minimum": 0 },
+        "expected_text_replies": { "type": "integer", "minimum": 0 },
+        "missing_text_replies": { "type": "integer", "minimum": 0 },
+        "action_count": { "type": "integer", "minimum": 0 },
+        "action_errors": { "type": "integer", "minimum": 0 },
+        "throughput_eps": { "type": "number", "minimum": 0 },
+        "load_wall_ms": { "type": "number", "minimum": 0 },
+        "text_replies": { "type": "integer", "minimum": 0 },
+        "actual_injection_eps": { "type": "number", "minimum": 0 },
+        "latency_count": { "type": "integer", "minimum": 0 },
+        "latency_mean_ms": { "type": "number", "minimum": 0 },
+        "latency_p50_ms": { "type": "number", "minimum": 0 },
+        "latency_p90_ms": { "type": "number", "minimum": 0 },
+        "latency_p95_ms": { "type": "number", "minimum": 0 },
+        "latency_p99_ms": { "type": "number", "minimum": 0 },
+        "latency_max_ms": { "type": "number", "minimum": 0 },
+        "cpu_avg_percent": { "type": "number", "minimum": 0 },
+        "cpu_max_percent": { "type": "number", "minimum": 0 },
+        "rss_avg_bytes": { "type": "number", "minimum": 0 },
+        "rss_max_bytes": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "events": {
+      "type": ["array", "null"]
+    },
+    "samples": {
+      "type": ["array", "null"]
+    }
+  },
+  "additionalProperties": true
+}

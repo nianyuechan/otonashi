@@ -292,6 +292,46 @@ func TestBuildSummaryTextReplyCoverage(t *testing.T) {
 	}
 }
 
+func TestWriteResultRejectsMissingSchemaVersion(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "result.json")
+	result := Result{
+		ProtocolVersion: ProtocolVersion,
+		Mode:            "server",
+		Workload:        "reply",
+		Kind:            "steady",
+		StartedAt:       "2026-11-15T00:00:00Z",
+		FinishedAt:      "2026-11-15T00:00:01Z",
+		Summary:         Summary{Sent: 1},
+	}
+	if err := WriteResult(path, result); err == nil {
+		t.Fatal("WriteResult accepted a result without schema_version")
+	}
+	if _, err := os.Stat(path); !os.IsNotExist(err) {
+		t.Fatalf("invalid result should not be written: %v", err)
+	}
+}
+
+func TestLegacyResultJSONReads(t *testing.T) {
+	// 2026-11-15 之前的结果没有 schema_version；读取必须继续成功。
+	const legacy = `{
+		"protocol_version": "1",
+		"mode": "server",
+		"workload": "reply",
+		"kind": "steady",
+		"started_at": "2026-11-15T00:00:00Z",
+		"finished_at": "2026-11-15T00:00:01Z",
+		"summary": {"sent": 1}
+	}`
+	var result Result
+	if err := json.Unmarshal([]byte(legacy), &result); err != nil {
+		t.Fatalf("read legacy result: %v", err)
+	}
+	if result.SchemaVersion != "" || result.ProtocolVersion != "1" || result.Summary.Sent != 1 {
+		t.Fatalf("legacy result decode = %+v", result)
+	}
+}
+
 func TestBuildSummaryKeepsZeroLatencyPairedReplies(t *testing.T) {
 	now := time.Now().UnixNano()
 	events := []EventRecord{
@@ -314,7 +354,16 @@ func TestBuildSummaryKeepsZeroLatencyPairedReplies(t *testing.T) {
 func TestWriteResultAtomic(t *testing.T) {
 	dir := t.TempDir()
 	path := filepath.Join(dir, "result.json")
-	result := Result{ProtocolVersion: ProtocolVersion, Mode: "server", Summary: Summary{Sent: 1}}
+	result := Result{
+		SchemaVersion:   ResultSchemaVersion,
+		ProtocolVersion: ProtocolVersion,
+		Mode:            "server",
+		Workload:        "reply",
+		Kind:            "steady",
+		StartedAt:       "2026-11-15T00:00:00Z",
+		FinishedAt:      "2026-11-15T00:00:01Z",
+		Summary:         Summary{Sent: 1},
+	}
 	if err := WriteResult(path, result); err != nil {
 		t.Fatalf("WriteResult: %v", err)
 	}
@@ -324,6 +373,31 @@ func TestWriteResultAtomic(t *testing.T) {
 	}
 	if !strings.Contains(string(data), `"protocol_version": "1"`) {
 		t.Fatalf("结果内容异常: %s", data)
+	}
+	if !strings.Contains(string(data), `"schema_version": "1"`) {
+		t.Fatalf("结果缺少 schema_version: %s", data)
+	}
+}
+
+func TestResultSchemaFileIsValidJSON(t *testing.T) {
+	data, err := os.ReadFile(filepath.Join("..", "..", "schema", "result-v1.schema.json"))
+	if err != nil {
+		t.Fatalf("read result schema: %v", err)
+	}
+	var doc map[string]any
+	if err := json.Unmarshal(data, &doc); err != nil {
+		t.Fatalf("result schema is not valid JSON: %v", err)
+	}
+	if doc["$schema"] == "" {
+		t.Fatalf("result schema lacks $schema")
+	}
+	props, ok := doc["properties"].(map[string]any)
+	if !ok {
+		t.Fatalf("result schema lacks properties")
+	}
+	version, ok := props["schema_version"].(map[string]any)
+	if !ok || version["const"] != ResultSchemaVersion {
+		t.Fatalf("schema_version property = %#v, want const %q", props["schema_version"], ResultSchemaVersion)
 	}
 }
 

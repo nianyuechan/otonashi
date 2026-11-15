@@ -32,3 +32,4 @@
 | 新建 | `docs/fix-plan-2026-11-15.md` |
 | 新建 | `docs/engineering-quality-plan-2026-11-15.md` |
 | 新建 | `docs/engineering-quality-review-2026-11-15.md` |
+| 新建 | `docs/result-schema-v1.md` |

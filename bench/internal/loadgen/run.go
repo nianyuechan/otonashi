@@ -78,6 +78,7 @@ graceDrain:
 	wallMS := float64(time.Since(monitorStart)) / 1e6
 	summary := BuildSummary(events, samples, float64(actionCount), float64(actionErrs), wallMS, len(events), textReplies, textSamples)
 	result := Result{
+		SchemaVersion:   ResultSchemaVersion,
 		ProtocolVersion: ProtocolVersion,
 		Mode:            string(cfg.Mode),
 		Workload:        string(cfg.Workload),
