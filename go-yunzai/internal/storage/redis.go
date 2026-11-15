@@ -8,8 +8,8 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
 	"github.com/redis/go-redis/v9"
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
 )
 
 // RedisOptions describes one explicitly selected Redis endpoint. The adapter

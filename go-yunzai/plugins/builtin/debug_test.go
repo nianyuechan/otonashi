@@ -5,9 +5,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/trss-yunzai/go-yunzai/internal/event"
-	"github.com/trss-yunzai/go-yunzai/internal/message"
-	"github.com/trss-yunzai/go-yunzai/internal/render"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/event"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/message"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/render"
 )
 
 type captureSender struct {

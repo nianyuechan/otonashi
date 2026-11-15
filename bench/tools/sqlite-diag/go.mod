@@ -1,4 +1,4 @@
-module diag
+module github.com/nianyuechan/otonashi/bench/tools/sqlite-diag
 
 go 1.26.0
 

@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
 )
 
 // handleNote proves durable state using one note per account/conversation/user.

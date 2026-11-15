@@ -20,11 +20,11 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/trss-yunzai/go-yunzai/internal/dispatch"
-	"github.com/trss-yunzai/go-yunzai/internal/event"
-	"github.com/trss-yunzai/go-yunzai/internal/message"
-	"github.com/trss-yunzai/go-yunzai/internal/render"
-	"github.com/trss-yunzai/go-yunzai/plugins/builtin"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/dispatch"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/event"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/message"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/render"
+	"github.com/nianyuechan/otonashi/go-yunzai/plugins/builtin"
 )
 
 type fakeAction struct {

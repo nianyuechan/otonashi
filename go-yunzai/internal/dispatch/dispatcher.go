@@ -5,7 +5,7 @@ import (
 	"log/slog"
 	"sync"
 
-	"github.com/trss-yunzai/go-yunzai/internal/event"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/event"
 )
 
 // DefaultMaxConcurrent 限制同时处理的事件数，避免突发流量无限创建 goroutine。

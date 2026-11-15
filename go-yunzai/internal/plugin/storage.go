@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
 )
 
 // StoreProvider is an internal application dependency. Plugins receive only

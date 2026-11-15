@@ -13,8 +13,8 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 
-	"go-render/internal/httpapi"
-	"go-render/internal/renderer"
+	"github.com/nianyuechan/otonashi/go-render/internal/httpapi"
+	"github.com/nianyuechan/otonashi/go-render/internal/renderer"
 )
 
 func main() {

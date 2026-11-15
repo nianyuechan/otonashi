@@ -16,9 +16,9 @@ import (
 
 	"github.com/alicebob/miniredis/v2"
 	"github.com/coder/websocket"
-	"github.com/trss-yunzai/go-yunzai/internal/config"
-	"github.com/trss-yunzai/go-yunzai/internal/pluginconfig"
-	"github.com/trss-yunzai/go-yunzai/internal/storage"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/config"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/pluginconfig"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/storage"
 )
 
 type noteStep struct {

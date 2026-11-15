@@ -7,16 +7,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/trss-yunzai/go-yunzai/internal/adapter/onebotv11"
-	"github.com/trss-yunzai/go-yunzai/internal/config"
-	"github.com/trss-yunzai/go-yunzai/internal/dispatch"
-	"github.com/trss-yunzai/go-yunzai/internal/observability"
-	pluginmanager "github.com/trss-yunzai/go-yunzai/internal/plugin"
-	"github.com/trss-yunzai/go-yunzai/internal/pluginconfig"
-	renderclient "github.com/trss-yunzai/go-yunzai/internal/render"
-	"github.com/trss-yunzai/go-yunzai/internal/storage"
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
-	"github.com/trss-yunzai/go-yunzai/plugins/builtin"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/adapter/onebotv11"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/config"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/dispatch"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/observability"
+	pluginmanager "github.com/nianyuechan/otonashi/go-yunzai/internal/plugin"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/pluginconfig"
+	renderclient "github.com/nianyuechan/otonashi/go-yunzai/internal/render"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/storage"
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
+	"github.com/nianyuechan/otonashi/go-yunzai/plugins/builtin"
 )
 
 type App struct {

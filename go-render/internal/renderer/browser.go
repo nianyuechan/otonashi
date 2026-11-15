@@ -17,7 +17,7 @@ import (
 	cdpage "github.com/chromedp/cdproto/page"
 	"github.com/chromedp/chromedp"
 
-	"go-render/pkg/render/api"
+	"github.com/nianyuechan/otonashi/go-render/pkg/render/api"
 )
 
 type chromedpBrowser struct {

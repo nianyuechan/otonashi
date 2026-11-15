@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/trss-yunzai/go-yunzai/internal/event"
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/event"
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
 )
 
 func TestAcceptDecisionsRunBeforeRulesInPriorityOrder(t *testing.T) {

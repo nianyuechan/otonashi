@@ -3,7 +3,7 @@ package event
 import (
 	"context"
 
-	"github.com/trss-yunzai/go-yunzai/internal/message"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/message"
 )
 
 // Event 是 M1 各类 OneBot v11 事件的规范化表示。

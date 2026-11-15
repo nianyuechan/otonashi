@@ -13,8 +13,8 @@ import (
 	"time"
 
 	"github.com/coder/websocket"
-	"github.com/trss-yunzai/go-yunzai/internal/event"
-	"github.com/trss-yunzai/go-yunzai/internal/message"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/event"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/message"
 )
 
 var (

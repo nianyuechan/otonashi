@@ -9,7 +9,7 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
 )
 
 // Layers uses shallow field replacement. Groups are applied in legacy order:

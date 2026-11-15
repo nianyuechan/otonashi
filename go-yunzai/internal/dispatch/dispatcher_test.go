@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/trss-yunzai/go-yunzai/internal/event"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/event"
 )
 
 func TestDispatchBoundsConcurrency(t *testing.T) {

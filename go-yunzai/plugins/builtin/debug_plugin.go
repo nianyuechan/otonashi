@@ -4,10 +4,10 @@ import (
 	"context"
 	"time"
 
-	"github.com/trss-yunzai/go-yunzai/internal/event"
-	"github.com/trss-yunzai/go-yunzai/internal/message"
-	"github.com/trss-yunzai/go-yunzai/internal/render"
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/event"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/message"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/render"
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
 )
 
 // DebugPlugin exposes the existing M1 debug handler through the public plugin

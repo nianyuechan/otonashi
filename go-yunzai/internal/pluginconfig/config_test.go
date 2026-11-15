@@ -5,7 +5,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
 )
 
 func requireValue(t *testing.T, view sdk.ConfigView, key, want string) {

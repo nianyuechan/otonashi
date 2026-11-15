@@ -11,7 +11,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/trss-yunzai/bench/internal/loadgen"
+	"github.com/nianyuechan/otonashi/bench/internal/loadgen"
 )
 
 func main() {

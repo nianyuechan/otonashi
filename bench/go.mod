@@ -1,4 +1,4 @@
-module github.com/trss-yunzai/bench
+module github.com/nianyuechan/otonashi/bench
 
 go 1.26.0
 

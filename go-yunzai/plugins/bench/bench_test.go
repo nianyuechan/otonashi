@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
 )
 
 type recordedRule struct {

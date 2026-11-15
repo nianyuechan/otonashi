@@ -4,7 +4,7 @@
 
 TRSS-Yunzai 原生 Go 重写的 M1 骨架。当前实现 **OneBot v11 正向 WS 离线闭环**、**go-render HTTP 客户端**和**插件运行时基础能力**：连接、鉴权、事件分发、echo/retcode、心跳、重连、PNG 图片发送，以及插件规则、权限、accept、会话、任务和动态启停。
 
-- Module：`github.com/trss-yunzai/go-yunzai`
+- Module：`github.com/nianyuechan/otonashi/go-yunzai`
 - Go：实测 `go1.27.4 windows/amd64`
 - 协议端目标：SnowLuma v1.14.17，`ws://127.0.0.1:3001/`，`array` / Universal
 - 状态：**OneBot 离线 mock、go-render 真实联调、SnowLuma 真实 WebSocket 握手和一次真实 `send_private_msg` 动作均已通过；真实入站消息事件往返仍待外部测试账号。**

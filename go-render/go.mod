@@ -1,4 +1,4 @@
-module go-render
+module github.com/nianyuechan/otonashi/go-render
 
 go 1.27.4
 

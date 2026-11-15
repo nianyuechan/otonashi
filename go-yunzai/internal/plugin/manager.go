@@ -10,10 +10,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/trss-yunzai/go-yunzai/internal/event"
-	"github.com/trss-yunzai/go-yunzai/internal/message"
-	"github.com/trss-yunzai/go-yunzai/internal/pluginconfig"
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/event"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/message"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/pluginconfig"
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
 )
 
 // Manager owns plugin registration, lifecycle, and rule dispatch.

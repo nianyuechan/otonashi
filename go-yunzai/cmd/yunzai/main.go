@@ -9,9 +9,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/trss-yunzai/go-yunzai/internal/app"
-	"github.com/trss-yunzai/go-yunzai/internal/config"
-	"github.com/trss-yunzai/go-yunzai/internal/observability"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/app"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/config"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/observability"
 )
 
 func main() {

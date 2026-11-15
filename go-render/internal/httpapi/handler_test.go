@@ -14,7 +14,7 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 
-	"go-render/pkg/render/api"
+	"github.com/nianyuechan/otonashi/go-render/pkg/render/api"
 )
 
 type rendererFunc func(context.Context, api.Request) ([]byte, error)

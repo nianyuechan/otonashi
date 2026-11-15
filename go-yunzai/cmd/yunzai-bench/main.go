@@ -11,11 +11,11 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/trss-yunzai/go-yunzai/internal/app"
-	"github.com/trss-yunzai/go-yunzai/internal/config"
-	"github.com/trss-yunzai/go-yunzai/internal/observability"
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
-	"github.com/trss-yunzai/go-yunzai/plugins/bench"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/app"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/config"
+	"github.com/nianyuechan/otonashi/go-yunzai/internal/observability"
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
+	"github.com/nianyuechan/otonashi/go-yunzai/plugins/bench"
 )
 
 func main() {

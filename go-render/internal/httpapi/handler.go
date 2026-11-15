@@ -14,7 +14,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
-	"go-render/pkg/render/api"
+	"github.com/nianyuechan/otonashi/go-render/pkg/render/api"
 )
 
 type Renderer interface {

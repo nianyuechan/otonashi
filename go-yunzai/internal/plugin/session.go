@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
 )
 
 type sessionKey struct {

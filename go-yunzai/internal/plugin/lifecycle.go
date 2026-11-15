@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
 )
 
 const DefaultShutdownTimeout = 5 * time.Second

@@ -8,8 +8,8 @@ import (
 	"errors"
 	"time"
 
+	"github.com/nianyuechan/otonashi/go-yunzai/pkg/plugin/sdk"
 	"github.com/redis/go-redis/v9"
-	"github.com/trss-yunzai/go-yunzai/pkg/plugin/sdk"
 )
 
 // Legacy exposes raw Redis keys only to explicit compatibility and migration

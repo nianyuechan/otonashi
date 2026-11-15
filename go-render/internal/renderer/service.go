@@ -9,7 +9,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"go-render/pkg/render/api"
+	"github.com/nianyuechan/otonashi/go-render/pkg/render/api"
 )
 
 var (

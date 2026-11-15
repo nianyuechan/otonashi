@@ -1,4 +1,4 @@
-module github.com/trss-yunzai/go-yunzai
+module github.com/nianyuechan/otonashi/go-yunzai
 
 go 1.26.0
 
