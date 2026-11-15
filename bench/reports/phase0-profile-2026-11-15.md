@@ -71,7 +71,8 @@ CPU/heap/goroutine/block/mutex 抓取时刻：250 档 cpu 窗口 02:29:20–02:2
 ```powershell
 & .\bench\scripts\Invoke-Z1Profile.ps1 -Rate 250 -OutDir bench\env\profiles\<新目录名>
 & .\bench\scripts\Invoke-Z1Profile.ps1 -Rate 600 -OutDir bench\env\profiles\<新目录名>
-# manifest.json 由两档 capture-<rate>.json 汇总（commit/SHA256/构建时间/逐档 actual）
+& .\bench\scripts\New-Z1Manifest.ps1 -ProfileDir bench\env\profiles\<新目录名> -Force
+# manifest.json 由 New-Z1Manifest.ps1 从两档 capture-<rate>.json 汇总（commit/SHA256/构建时间/逐档 actual）
 ```
 
 脚本内置防覆盖（目标文件已存在即中止）、pprof 就绪探测、结果 `finished_at` 时间窗校验、精确 PID 停止与端口释放确认；构建前检查空闲虚拟内存 ≥1.5GB。

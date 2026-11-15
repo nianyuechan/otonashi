@@ -6,11 +6,13 @@
 # （server 模式，reply/steady/group 100 群 2 万发送者）→ 负载中段抓取
 # cpu(30s)/heap(?gc=1)/goroutine/block/mutex → 负载结束后生成 pprof -top 文本与
 # capture-<rate>.json → 按精确 PID 停止 bot 并确认端口释放。
-# manifest.json 由两档全部完成后另行汇总（见报告脚本），本脚本不写 manifest。
+# manifest.json 由 New-Z1Manifest.ps1 从两档 capture-<rate>.json 生成，
+# 本脚本只负责单档采集；失败时也由外层 finally 清理进程与端口。
 [CmdletBinding()]
 param(
     [ValidateSet(250, 600)][int]$Rate = 250,
-    [string]$Duration = '180s',
+    # Duration 仅保留为兼容旧调用；非空时必须与 DurationSec 一致。
+    [string]$Duration = '',
     [int]$DurationSec = 180,
     [string]$OutDir = '',
     [string]$PprofAddr = '127.0.0.1:6060'
@@ -27,6 +29,23 @@ $gitExe = 'C:\Program Files\Git\cmd\git.exe'
 $repoRoot = Split-Path -Parent $benchRoot                           # 音无\音无
 $resultsDir = Join-Path $envDir 'results'
 if (-not $OutDir) { $OutDir = Join-Path $envDir 'profiles\current-2026-11-15' }
+
+# 负载 60s 后抓 30s CPU window；短于 120s 时 profile 会跨到负载结束或抓不到中段。
+$profileStartSeconds = 60
+$cpuWindowSeconds = 30
+if ($DurationSec -lt ($profileStartSeconds + $cpuWindowSeconds + 30)) {
+    throw ("DurationSec={0}s 过短：至少需要 {1}s（60s 预热 + 30s CPU 窗口 + 30s 余量）" -f $DurationSec, ($profileStartSeconds + $cpuWindowSeconds + 30))
+}
+$durationArg = '{0}s' -f $DurationSec
+if ($Duration) {
+    if ($Duration -notmatch '^[0-9]+s$') {
+        throw "Duration 必须是 <秒>s 形式，例如 180s: $Duration"
+    }
+    $durationFromArg = [int]($Duration.TrimEnd('s'))
+    if ($durationFromArg -ne $DurationSec) {
+        throw ("Duration={0} 与 DurationSec={1} 不一致；只保留一个口径" -f $Duration, $DurationSec)
+    }
+}
 
 function Assert-FreeVirtualMemory {
     param([double]$MinimumGB)
@@ -101,6 +120,28 @@ foreach ($port in 3002, 6060) {
 }
 
 # ---------- 启动 bot（pprof 环境变量仅本进程） ----------
+# 从启动开始到 capture 写完都放在外层 try/finally：任何 profile 抓取、
+# 负载器超时或结果校验失败都必须回收 bot/负载器并释放端口。
+$botProc = $null
+$benchProc = $null
+function Stop-ProcessTree {
+    param($Proc)
+    if ($null -eq $Proc) { return }
+    try {
+        if (-not $Proc.HasExited) {
+            & taskkill /PID $Proc.Id /T /F 2>$null | Out-Null
+            $Proc.Refresh()
+            if (-not $Proc.HasExited) {
+                Start-Sleep -Milliseconds 500
+                $Proc.Refresh()
+                if (-not $Proc.HasExited) {
+                    Stop-Process -Id $Proc.Id -Force -ErrorAction SilentlyContinue
+                }
+            }
+        }
+    } catch {}
+}
+try {
 Assert-FreeVirtualMemory 1.5
 $env:YZGO_PPROF_ADDR = $PprofAddr
 $botLog = Join-Path $resultsDir ($outBase + '.json.bot.log')
@@ -136,7 +177,7 @@ $runStart = Get-Date
 $benchArgs = @(
     '-mode', 'server', '-listen', '127.0.0.1:3002',
     '-workload', 'reply', '-scenario', 'steady',
-    '-rate', "$Rate", '-duration', $Duration,
+    '-rate', "$Rate", '-duration', $durationArg,
     '-message-type', 'group', '-group-count', '100', '-user-count', '20000',
     '-pid', "$($botProc.Id)",
     '-out', ('results\' + (Split-Path -Leaf $outFile))
@@ -147,8 +188,7 @@ $benchProc = Start-Process -FilePath $benchExe -ArgumentList ($benchArgs -join '
 Write-Output ("负载器 pid={0} args={1}" -f $benchProc.Id, ($benchArgs -join ' '))
 
 # ---------- 负载中段抓取五类 profile ----------
-Start-Sleep -Seconds 60   # 预热(2s)+连接建立后约 56s，处于 180s 负载窗口中段
-$cpuWindowSeconds = 30
+Start-Sleep -Seconds $profileStartSeconds   # 预热(2s)+连接建立后约 56s，处于 180s 负载窗口中段
 Invoke-WebRequest -Uri ("http://{0}/debug/pprof/profile?seconds={1}" -f $PprofAddr, $cpuWindowSeconds) `
     -OutFile (Join-Path $OutDir ('cpu-{0}.pb.gz' -f $Rate)) -UseBasicParsing -TimeoutSec 90
 Invoke-WebRequest -Uri ("http://{0}/debug/pprof/heap?gc=1" -f $PprofAddr) `
@@ -195,19 +235,6 @@ try {
     foreach ($k in $pprofEnvSaved.Keys) { [Environment]::SetEnvironmentVariable($k, $pprofEnvSaved[$k], 'Process') }
 }
 
-# ---------- 停止 bot（精确 PID）并确认端口释放 ----------
-& taskkill /PID $botProc.Id /T /F 2>$null | Out-Null
-try {
-    $botProc.Refresh()
-    if (-not $botProc.HasExited) { Stop-Process -Id $botProc.Id -Force -ErrorAction SilentlyContinue }
-} catch {}
-Remove-Item Env:YZGO_PPROF_ADDR -ErrorAction SilentlyContinue
-Start-Sleep -Seconds 1
-foreach ($port in 3002, 6060) {
-    $c = Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue
-    if ($c) { Write-Warning ("端口 {0} 仍被监听 pid={1}" -f $port, ($c | Select-Object -First 1 -ExpandProperty OwningProcess)) } else { Write-Output ("端口 {0} 已释放" -f $port) }
-}
-
 # ---------- 结果摘要 + capture 元数据 ----------
 $s = $result.summary
 Write-Output ('Z1 结果: sent={0} paired={1} missing={2} actual={3:N1}/s reported={4:N1} p99={5:N2}ms cpu_avg={6:N1}% rss_max={7:N1}MB' -f `
@@ -226,6 +253,8 @@ Write-Output ('Z1 结果: sent={0} paired={1} missing={2} actual={3:N1}/s report
     rss_max_mb           = [math]::Round($s.rss_max_bytes/1MB, 2)
     started_at           = $runStart.ToString('o')
     finished_at          = $finishedAt.ToString('o')
+    duration_seconds     = $DurationSec
+    profile_start_seconds = $profileStartSeconds
     cpu_window_seconds   = $cpuWindowSeconds
     bot_pid              = $botProc.Id
     commit               = $commit
@@ -235,3 +264,22 @@ Write-Output ('Z1 结果: sent={0} paired={1} missing={2} actual={3:N1}/s report
     out_file             = $outFile
 } | ConvertTo-Json -Depth 3 | Set-Content -LiteralPath (Join-Path $OutDir ('capture-{0}.json' -f $Rate)) -Encoding utf8
 Write-Output 'Z1-PROFILE-DONE'
+} finally {
+    # 成功和失败路径统一回收；pprof 抓取失败时尤其不能把 bot/6060 留给下一轮。
+    Stop-ProcessTree $benchProc
+    Stop-ProcessTree $botProc
+    Remove-Item Env:YZGO_PPROF_ADDR -ErrorAction SilentlyContinue
+    Start-Sleep -Seconds 1
+    try {
+        foreach ($port in 3002, 6060) {
+            $c = Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue
+            if ($c) {
+                Write-Warning ("端口 {0} 仍被监听 pid={1}" -f $port, ($c | Select-Object -First 1 -ExpandProperty OwningProcess))
+            } else {
+                Write-Output ("端口 {0} 已释放" -f $port)
+            }
+        }
+    } catch {
+        Write-Warning ("端口清理检查失败: {0}" -f $_.Exception.Message)
+    }
+}

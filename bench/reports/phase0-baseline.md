@@ -161,13 +161,13 @@ powershell -File bench\scripts\Invoke-BenchScenario.ps1 -Variant old  -Workload 
 
 ### 9.3 Z2：真实插件 + SQLite 逐消息写入（WAL+NORMAL 实验开关，默认仍 FULL）
 
-`bench.store` 每消息 Set+Get、键按账号/群/用户隔离。三次运行全部 FAIL 于 `missing_replies>0`（硬标准），但 **store 错误全部为 0、action_errors ≤1、写入路径本身健康**：
+`bench.store` 每消息 Set+Get、键按账号/群/用户隔离。三次运行全部 FAIL 于 `missing_replies>0`（硬标准）；store 错误均为 0，但 `action_errors` 分别为 0/1/1，run4 与 400target 同时不满足 `action_errors=0`，且当前没有事件级根因明细：
 
-| 运行 | 时长 | requested/actual | sent | expected | paired | **missing** | p99 | max | CPU | RSS 峰值 | 断连 | 慢写(>1s) | 结果 |
-|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|---|
-| 200 target run3（30 分钟） | 1800s | 250 / 215.3/s | 387530 | 193765 | 191680 | **2085（1.08%）** | 0.56ms | 12,302ms | 6.5% | 38.1MB | 1/8（03:00:07） | 865 | **FAIL** |
-| 200 target run4（30 分钟） | 1800s | 250 / 215.6/s | 388088 | 194044 | 191640 | **2404（1.24%）** | 0.51ms | 22,816ms | 6.3% | 36.3MB | 1/8（03:42:59） | 398 | **FAIL** |
-| 400 target run1（15 分钟） | 900s | 600 / 431.7/s | 388525 | 194263 | 188738 | **5525（2.84%）** | 0.50ms | 11,227ms | 7.2% | 38.5MB | 2/8（03:58:40、04:00:57） | 575 | **FAIL** |
+| 运行 | 时长 | requested/actual | sent | expected | paired | **missing** | **action_errors** | p99 | max | CPU | RSS 峰值 | 断连 | 慢写(>1s) | 结果 |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|---|
+| 200 target run3（30 分钟） | 1800s | 250 / 215.3/s | 387530 | 193765 | 191680 | **2085（1.08%）** | **0** | 0.56ms | 12,302ms | 6.5% | 38.1MB | 1/8（03:00:07） | 865 | **FAIL** |
+| 200 target run4（30 分钟） | 1800s | 250 / 215.6/s | 388088 | 194044 | 191640 | **2404（1.24%）** | **1** | 0.51ms | 22,816ms | 6.3% | 36.3MB | 1/8（03:42:59） | 398 | **FAIL** |
+| 400 target run1（15 分钟） | 900s | 600 / 431.7/s | 388525 | 194263 | 188738 | **5525（2.84%）** | **1** | 0.50ms | 11,227ms | 7.2% | 38.5MB | 2/8（03:58:40、04:00:57） | 575 | **FAIL** |
 
 逐窗口证据（missing 与断连时间逐秒对应，缺失全部集中在停滞窗口内已推送的事件）：
 
@@ -223,14 +223,15 @@ EdgeCore 157：`C:\Program Files (x86)\Microsoft\EdgeCore\157.0.4341.46\msedge.e
 ### 9.7 本轮记录的实现事实与脚本改动
 
 - **`cmd/yunzai-bench` 入口硬编码 `DisableBuiltinDebug: true`**：基准入口永远不注册内置调试插件，`#render` 规则不存在——Z3 必须用 `cmd/yunzai`（尊重 `debug.enabled`）承载渲染负载。为此 `Invoke-BenchScenario.ps1` 新增 `-BotExecutable` 参数（默认不变，仍 yunzai-bench.exe），渲染轮传 `yunzai.exe`。
-- `Invoke-BenchScenario.ps1`：`-Workload` 增加 `render`；`render` 轮自动从仓库模板 `bench/configs/config-render.yaml` 复制运行时配置（运行时副本仍被 .gitignore 忽略，模板为唯一证据来源）。
+- `Invoke-BenchScenario.ps1`：`-Workload` 增加 `render`；`render` 轮必须显式提供非默认的 `-BotExecutable`，并强制追加 `-config config-render.yaml`；结果校验增加 `action_count>0` 与 `action_errors=0`，防止零动作轮被 `sent>0` 误报成功。
 - `bench/internal/loadgen/config.go`：`-workload` 帮助文本同步（reply、scan 或 render）；消息生成/指标/重连语义未动。
-- 新增 `bench/scripts/Invoke-Z1Profile.ps1`（Z1 剖析采集：构建+SHA256 记录+五类 profile+pprof top+manifest 元数据，防覆盖/端口检查/精确 PID 停止）。
+- 新增 `bench/scripts/Invoke-Z1Profile.ps1`（Z1 单档剖析采集：构建+SHA256 记录+五类 profile+pprof top+capture；防覆盖/端口检查/失败也回收进程）；新增 `bench/scripts/New-Z1Manifest.ps1` 从两档 capture 生成 manifest。
 - 全部为测量/脚本/文档改动，无生产语义修改；`go test` 全量通过（§9.1 默认三次）。
 
 ### 9.8 阶段零收口限制
 
 - Z2 200 target 30 分钟 `missing=0` 硬标准未达成：瓶颈不在消息链路（p99 0.5ms、CPU 6.5%）也不在存储写入（store 错误 0、avg <21ms），而在**机器级 IO 停滞（≥10s）触发断连导致的窗口性回复丢失**；当晚提交限额贴限（28.3/29.8GB）加剧停滞频率。停滞为低频事件（历史全量测试约 1/10 出现率），30 分钟窗口命中概率不可忽略；在受控内存环境（commit 余量 ≥8GB）下的复测尚未进行，列为后续项。
+- Z2 run4 与 400target 各有 `action_errors=1`：这是独立于 missing 的未达标项；当前没有事件级明细，不能把它解释为“错误全 0”。
 - `-race` 仍未运行（CGO_ENABLED=0，缺 C 编译器）。
 - 渲染仅覆盖固定页面，不含任意 HTML/真实模板；单浏览器实例、未测崩溃恢复（仅测进程停止后的降级与重启恢复）。
 - 长时稳定性仅 30 分钟窗口，≥6 小时 RSS 斜率窗口未做。

@@ -90,7 +90,29 @@ $candidateBotPaths = @((Join-Path $envDir 'go-yunzai\yunzai-bench.exe'))
 $botPath = Join-Path $envDir 'go-yunzai\yunzai-bench.exe'
 if ($BotExecutable) {
     $botPath = (Resolve-Path -LiteralPath $BotExecutable -ErrorAction Stop).Path
+    if (-not (Test-Path -LiteralPath $botPath -PathType Leaf)) {
+        throw "BotExecutable 不是文件: $botPath"
+    }
     $candidateBotPaths += $botPath
+}
+# render 不能用默认 yunzai-bench，也不能依赖调用者记得传 render 配置：
+# 默认入口硬编码 DisableBuiltinDebug=true，#render 规则不存在；而脚本只
+# 校验 sent>0，会把 action_count=0 的零渲染轮误报为成功。
+if ($Workload -eq 'render') {
+    if ($Variant -ne 'go') {
+        throw "Workload=render 只支持 Variant=go（旧版 Node bot 不提供 #render 链路）"
+    }
+    if (-not $BotExecutable) {
+        throw "Workload=render 必须显式指定 -BotExecutable（应使用 cmd/yunzai 构建的 yunzai.exe；默认 yunzai-bench 禁用内置调试插件）"
+    }
+    $defaultBotPath = Join-Path $envDir 'go-yunzai\yunzai-bench.exe'
+    if ([IO.Path]::GetFullPath($botPath) -eq [IO.Path]::GetFullPath($defaultBotPath)) {
+        throw "Workload=render 不能使用默认 yunzai-bench.exe（#render 规则不存在）"
+    }
+    # 强制把模板配置放到最后一个 -config：Go flag 包以最后一个为准，
+    # 即使调用者的 BotExtraArgs 里带了别的 -config，也不会退回默认配置。
+    $BotExtraArgs = @($BotExtraArgs + @('-config', 'config-render.yaml'))
+    Write-Host 'render: 已强制追加 -config config-render.yaml'
 }
 $strayBots = @(Get-Process yunzai-bench,yunzai -ErrorAction SilentlyContinue | Where-Object { $_.Path -in $candidateBotPaths })
 if ($strayBots.Count -gt 0) {
@@ -197,6 +219,16 @@ try {
     if (-not $s -or -not $s.sent -or [int]$s.sent -le 0) {
         throw "结果文件缺少 summary.sent 或 sent<=0，不是有效结果: $OutFile"
     }
+    if ($Workload -eq 'render') {
+        # render 的结果 expected_replies=0，missing=0 是恒定值；必须单独
+        # 确认机器人真的处理了动作，否则零动作轮会被 sent>0 误判为成功。
+        if ($null -eq $s.action_count -or [int]$s.action_count -le 0) {
+            throw "render 结果 action_count<=0，未触发任何渲染动作: $OutFile"
+        }
+        if ($null -eq $s.action_errors -or [int]$s.action_errors -ne 0) {
+            throw ("render 结果 action_errors={0}，不是零错误动作轮: {1}" -f $s.action_errors, $OutFile)
+        }
+    }
     $finishedAt = [DateTimeOffset]::Parse($result.finished_at)
     if ($finishedAt.LocalDateTime -lt $runStart.AddSeconds(-2)) {
         throw ("结果 finished_at ({0}) 早于本次运行开始 ({1})，疑似旧结果文件: {2}" -f `
@@ -220,6 +252,10 @@ try {
         $s.sent, $s.paired_replies, $s.missing_replies, $actual, $s.throughput_eps, `
         $s.latency_p50_ms, $s.latency_p95_ms, $s.latency_p99_ms, $s.latency_max_ms, `
         $s.cpu_avg_percent, ($s.rss_max_bytes / 1MB))
+    if ($Workload -eq 'render') {
+        Write-Host ("render 动作确认: action_count={0} action_errors={1} text_replies={2}" -f `
+            $s.action_count, $s.action_errors, $s.text_replies)
+    }
     Write-Host "输出: $OutFile"
 } finally {
     if (-not $KeepBot) { Stop-Tree $botProc }
