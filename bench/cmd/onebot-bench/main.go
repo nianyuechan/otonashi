@@ -48,6 +48,8 @@ func run() error {
 		"sent", summary.Sent,
 		"paired", summary.PairedReplies,
 		"missing", summary.MissingReplies,
+		"text_expected", summary.ExpectedTextReplies,
+		"text_missing", summary.MissingTextReplies,
 		"eps", fmt.Sprintf("%.1f", summary.ThroughputEPS),
 		"p50_ms", fmt.Sprintf("%.2f", summary.LatencyP50MS),
 		"p95_ms", fmt.Sprintf("%.2f", summary.LatencyP95MS),

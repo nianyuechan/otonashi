@@ -28,15 +28,21 @@ type SampleRecord struct {
 
 // Summary 是一次基准运行的汇总指标。
 type Summary struct {
-	Sent            int     `json:"sent"`
-	PairedReplies   int     `json:"paired_replies"`
-	UnpairedReplies int     `json:"unpaired_replies"`
-	ExpectedReplies int     `json:"expected_replies"`
-	MissingReplies  int     `json:"missing_replies"`
-	ActionCount     int     `json:"action_count"`
-	ActionErrors    int     `json:"action_errors"`
-	ThroughputEPS   float64 `json:"throughput_eps"`
-	LoadWallMS      float64 `json:"load_wall_ms"`
+	Sent            int `json:"sent"`
+	PairedReplies   int `json:"paired_replies"`
+	UnpairedReplies int `json:"unpaired_replies"`
+	ExpectedReplies int `json:"expected_replies"`
+	MissingReplies  int `json:"missing_replies"`
+	// ExpectedTextReplies 统计本应产生固定文本回复（#ping/#help 等）的事件数。
+	// fixed text 没有唯一序号，不能与某一条事件精确配对。
+	ExpectedTextReplies int `json:"expected_text_replies"`
+	// MissingTextReplies 是固定文本回复的保守缺失下界：期望数减去已观察到的
+	// 非序号文本回复数，最小为 0。它不等于“全量消息精确丢失数”。
+	MissingTextReplies int     `json:"missing_text_replies"`
+	ActionCount        int     `json:"action_count"`
+	ActionErrors       int     `json:"action_errors"`
+	ThroughputEPS      float64 `json:"throughput_eps"`
+	LoadWallMS         float64 `json:"load_wall_ms"`
 	// TextReplies 统计收到的非序号文本回复（#ping/#help 固定文本、渲染降级
 	// 文本）；render 负载用它证明失败路径发出了可读降级文本。
 	TextReplies      int      `json:"text_replies"`
@@ -156,6 +162,7 @@ func BuildSummary(events []EventRecord, samples []SampleRecord, actionCount, act
 		summary.ThroughputEPS = float64(sent) / (loadWallMS / 1000)
 	}
 	summary.ActualInjectionEPS = actualInjectionEPS(events, sent)
+	expectedTextReplies := 0
 	for _, event := range events {
 		if event.Seq > 0 {
 			summary.ExpectedReplies++
@@ -166,7 +173,12 @@ func BuildSummary(events []EventRecord, samples []SampleRecord, actionCount, act
 			}
 		} else if expectedReplyText(messageSpec{Text: event.Text}) != "" {
 			summary.UnpairedReplies++
+			expectedTextReplies++
 		}
+	}
+	summary.ExpectedTextReplies = expectedTextReplies
+	if expectedTextReplies > textReplies {
+		summary.MissingTextReplies = expectedTextReplies - textReplies
 	}
 	latencies := latencies(events)
 	summary.LatencyCount = len(latencies)

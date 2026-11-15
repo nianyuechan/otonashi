@@ -262,11 +262,33 @@ func TestBuildSummaryCounts(t *testing.T) {
 	if summary.UnpairedReplies != 1 {
 		t.Fatalf("unpaired = %d, want 1", summary.UnpairedReplies)
 	}
+	if summary.ExpectedTextReplies != 1 || summary.MissingTextReplies != 1 {
+		t.Fatalf("text coverage = expected %d / missing %d, want 1/1", summary.ExpectedTextReplies, summary.MissingTextReplies)
+	}
 	if summary.LatencyP50MS != 5 || summary.LatencyMaxMS != 5 {
 		t.Fatalf("延迟汇总错误: %+v", summary)
 	}
 	if summary.ThroughputEPS != 4 {
 		t.Fatalf("吞吐 = %v, want 4", summary.ThroughputEPS)
+	}
+}
+
+func TestBuildSummaryTextReplyCoverage(t *testing.T) {
+	now := time.Now().UnixNano()
+	events := []EventRecord{
+		{Index: 0, Text: "#ping", SentNS: now},
+		{Index: 1, Text: "#help", SentNS: now},
+		{Index: 2, Text: "聊天内容", SentNS: now},
+	}
+	// 只收到 1 条固定文本回复：期望 2 条，保守缺失下界为 1。
+	summary := BuildSummary(events, nil, 1, 0, 1000, 3, 1, nil)
+	if summary.ExpectedTextReplies != 2 || summary.MissingTextReplies != 1 || summary.TextReplies != 1 {
+		t.Fatalf("text coverage 错误: %+v", summary)
+	}
+	// 观察到的文本回复不少于期望数时，不产生负缺失。
+	summary = BuildSummary(events, nil, 2, 0, 1000, 3, 3, nil)
+	if summary.ExpectedTextReplies != 2 || summary.MissingTextReplies != 0 {
+		t.Fatalf("text coverage 上限错误: %+v", summary)
 	}
 }
 
