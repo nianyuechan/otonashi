@@ -97,7 +97,7 @@ verify-<head>-<yyyyMMdd-HHmmss>[-<level>].log
 - `Fast` 只回答"没弄坏格式/编译/静态检查"，**不能证明测试通过**；
 - `Full` 是唯一可以作为"这批收口"的门禁；
 - 两者都必须串行（`-Parallelism 1` 默认）：本机内存偏紧，包级并行会 OOM 或触发停滞超时。
-- 钩子安装：`scripts/Install-GitHooks.ps1`（把 `scripts/hooks/pre-commit` 复制到 `.git/hooks`；仓库无 remote，钩子是本地唯一自动门禁）。
+- 钩子安装：`scripts/Install-GitHooks.ps1`（把 `scripts/hooks/pre-commit` 复制到 `.git/hooks`）。仓库目前没有 remote，钩子是本地唯一自动门禁；接上 remote 后由 `.github/workflows/verify.yml` 承担同一角色（见 §7）。
 
 ## 5. 按 HEAD 追溯一次验证
 
@@ -125,3 +125,17 @@ git -C "G:\ALL WORK\音无\音无" cat-file -p "<sha>:bench/env/results/<file>" 
 - [ ] 未做的测量写成"未验证 + 原因"，不写成"已达标"；
 - [ ] 只有"文档正文引用 + ≤ 50MB"的文件才进 `docs/evidence/`，并在 `docs/evidence-index.md` 登记；
 - [ ] `git diff --check` 通过，`git status` 只包含本批预期变更。
+
+## 7. CI 与工具链解析
+
+本地与 CI 跑的是同一个脚本，差异只在"Go 从哪来、缓存写到哪"：
+
+| 项 | 解析顺序 | 本机结果 | CI 结果 |
+|---|---|---|---|
+| Go 可执行文件 | `-GoExecutable` → `YZGO_GO_BIN` → 工作区父目录 `tools\go\bin\go.exe` → `PATH` | 命中工作区自带 `tools\go` | 命中 `setup-go` 放进 `PATH` 的 `go` |
+| 缓存根 | `-CacheRoot` → `YZGO_CACHE_ROOT` → `RUNNER_TEMP` → 工作区父目录 | 落在 G 盘工作区 | 落在 runner 临时目录 |
+
+- 工作流文件：`.github/workflows/verify.yml`。`push` / `pull_request` 跑 `Fast`；`Full` 只能手动触发（`workflow_dispatch` 选 Full），避免每次提交都等一分钟。
+- Go 版本只认一个来源：`go-render/go.mod` 的 `go` 指令（四个模块里最高），不在工作流里另写死版本号。
+- **未验证**：本机从未在"没有 `tools\go`、只能走 PATH"的环境跑过这个脚本；该分支要等第一次 CI 执行才算实测。
+- 如果 CI 与本机结果不一致，先比对 `go version` 与 `GOFLAGS`，再怀疑代码——不要直接改测试让它变绿。

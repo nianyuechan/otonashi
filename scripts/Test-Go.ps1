@@ -17,15 +17,29 @@ if ($Level -eq 'Fast' -and $Race) {
 }
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $workspaceParent = Split-Path -Parent $projectRoot
+# Go 工具链解析顺序：显式参数 > 环境变量 > 本机工作区自带 > PATH。
+# 前三档保证本机行为不变；最后一档让 CI（如 GitHub Actions 的 windows-latest）
+# 在没有 G 盘、没有 tools\go 的环境里也能直接跑。
+if (-not $GoExecutable) { $GoExecutable = $env:YZGO_GO_BIN }
 if (-not $GoExecutable) {
-    $GoExecutable = Join-Path $workspaceParent 'tools\go\bin\go.exe'
+    $bundledGo = Join-Path $workspaceParent 'tools\go\bin\go.exe'
+    if (Test-Path -LiteralPath $bundledGo -PathType Leaf) { $GoExecutable = $bundledGo }
+}
+if (-not $GoExecutable) {
+    $goOnPath = Get-Command go.exe -ErrorAction SilentlyContinue
+    if ($goOnPath) { $GoExecutable = $goOnPath.Source }
+}
+if (-not $GoExecutable) {
+    throw '找不到 Go 工具链：请用 -GoExecutable 或环境变量 YZGO_GO_BIN 指定 go.exe，或确保 go 在 PATH 中。'
 }
 if (-not (Test-Path -LiteralPath $GoExecutable -PathType Leaf)) {
-    throw '找不到 Go 工具链，请使用 -GoExecutable 指定 go.exe。'
+    throw "指定的 Go 工具链不存在：$GoExecutable"
 }
-if (-not $CacheRoot) {
-    $CacheRoot = $workspaceParent
-}
+# 缓存根解析顺序：显式参数 > 环境变量 > CI 临时目录 > 本机工作区父目录。
+# 本机仍落在 G 盘工作区；CI 落到 RUNNER_TEMP，避免写只读或随机路径。
+if (-not $CacheRoot -and $env:YZGO_CACHE_ROOT) { $CacheRoot = $env:YZGO_CACHE_ROOT }
+if (-not $CacheRoot -and $env:RUNNER_TEMP) { $CacheRoot = $env:RUNNER_TEMP }
+if (-not $CacheRoot) { $CacheRoot = $workspaceParent }
 $gofmt = Join-Path (Split-Path -Parent $GoExecutable) 'gofmt.exe'
 if (-not (Test-Path -LiteralPath $gofmt -PathType Leaf)) {
     throw 'Go 工具链目录中缺少 gofmt.exe。'

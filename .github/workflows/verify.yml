@@ -1,0 +1,62 @@
+# 统一验证门禁：推送到仓库后由 GitHub Actions 执行。
+# 本地等价入口是 scripts/Test-Go.ps1；两者跑的是同一套检查，避免"本地绿、CI 红"。
+name: verify
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      level:
+        description: '验证级别：Fast 只做 gofmt/build/vet；Full 额外跑单元测试'
+        type: choice
+        options:
+          - Fast
+          - Full
+        default: Fast
+
+# 同一分支连续推送时取消上一次未完成的检查，避免排队浪费额度。
+concurrency:
+  group: verify-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  fast:
+    name: Fast 门禁（gofmt + build + vet）
+    if: github.event_name != 'workflow_dispatch' || inputs.level == 'Fast'
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Go
+        uses: actions/setup-go@v5
+        with:
+          # go-render 的 go.mod 声明了四个模块里最高的 Go 版本，用它作为唯一来源。
+          go-version-file: go-render/go.mod
+          cache-dependency-path: '**/go.sum'
+
+      - name: 运行 Fast 门禁
+        shell: pwsh
+        run: ./scripts/Test-Go.ps1 -Level Fast -Parallelism 1
+
+  full:
+    name: Full 门禁（含单元测试）
+    if: github.event_name == 'workflow_dispatch' && inputs.level == 'Full'
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go-render/go.mod
+          cache-dependency-path: '**/go.sum'
+
+      - name: 运行 Full 门禁
+        shell: pwsh
+        run: ./scripts/Test-Go.ps1 -Level Full -Parallelism 1
