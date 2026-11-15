@@ -138,7 +138,7 @@ git -C "G:\ALL WORK\音无\音无" cat-file -p "<sha>:bench/env/results/<file>" 
 | Go 可执行文件 | `-GoExecutable` → `YZGO_GO_BIN` → 工作区父目录 `tools\go\bin\go.exe` → `PATH` | 命中工作区自带 `tools\go` | 命中 `setup-go` 放进 `PATH` 的 `go` |
 | 缓存根 | `-CacheRoot` → `YZGO_CACHE_ROOT` → `RUNNER_TEMP` → 工作区父目录 | 落在 G 盘工作区 | 落在 runner 临时目录 |
 
-- 工作流文件：`.github/workflows/verify.yml`。`push` / `pull_request` 跑 `Fast`；`Full` 只能手动触发（`workflow_dispatch` 选 Full），避免每次提交都等一分钟。
+- 工作流文件：`.github/workflows/verify.yml`。运行矩阵：**默认分支 push 与 PR 跑 Full**（含单元测试，单测失败不能合并）；其他分支 push 跑 Fast（快速反馈）；`workflow_dispatch` 可选 Level。默认分支名取自 `github.event.repository.default_branch`，不写死 `master`。
 - Go 版本只认一个来源：`go-render/go.mod` 的 `go` 指令（四个模块里最高），不在工作流里另写死版本号。
 - **未验证**：本机从未在"没有 `tools\go`、只能走 PATH"的环境跑过这个脚本；该分支要等第一次 CI 执行才算实测。
 - 如果 CI 与本机结果不一致，先比对 `go version` 与 `GOFLAGS`，再怀疑代码——不要直接改测试让它变绿。

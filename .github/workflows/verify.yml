@@ -1,5 +1,11 @@
 # 统一验证门禁：推送到仓库后由 GitHub Actions 执行。
 # 本地等价入口是 scripts/Test-Go.ps1；两者跑的是同一套检查，避免"本地绿、CI 红"。
+#
+# 运行矩阵（关键：默认分支与 PR 必须跑单元测试，否则单测失败也能合并）：
+#   push 到默认分支      -> Full（gofmt + test + build + vet）
+#   pull_request         -> Full
+#   push 到其他分支      -> Fast（gofmt + build + vet，快速反馈）
+#   workflow_dispatch    -> 按选择的 Level 跑
 name: verify
 
 on:
@@ -21,10 +27,13 @@ concurrency:
   group: verify-${{ github.ref }}-${{ github.event_name }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   fast:
     name: Fast 门禁（gofmt + build + vet）
-    if: github.event_name != 'workflow_dispatch' || inputs.level == 'Fast'
+    if: (github.event_name == 'push' && github.ref != format('refs/heads/{0}', github.event.repository.default_branch)) || (github.event_name == 'workflow_dispatch' && inputs.level == 'Fast')
     runs-on: windows-latest
     timeout-minutes: 30
     steps:
@@ -44,7 +53,7 @@ jobs:
 
   full:
     name: Full 门禁（含单元测试）
-    if: github.event_name == 'workflow_dispatch' && inputs.level == 'Full'
+    if: (github.event_name == 'pull_request') || (github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)) || (github.event_name == 'workflow_dispatch' && inputs.level == 'Full')
     runs-on: windows-latest
     timeout-minutes: 60
     steps:

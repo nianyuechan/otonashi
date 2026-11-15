@@ -279,6 +279,16 @@ Q8 功能矩阵 → 按矩阵补功能 → 每项回归。
 - 新增 `scripts/Verify-All.ps1`：记录 HEAD、时间、日志路径；调用 `Test-Go.ps1`。
 - `Test-Go.ps1` 增加 HEAD 记录；默认 `-Parallelism 1`，可用参数覆盖，避免本机 16GB 内存下 Go 包级并行触发分页文件错误。
 - 修正 `go build`/`go vet` 的参数顺序，`-p` 必须在 `./...` 之前。
-- 当前仓库没有配置 Git remote，因此没有添加 GitHub Actions；本地统一入口作为当前等价门禁，待托管后接入 CI。
+- 当前仓库没有配置 Git remote，因此没有添加 GitHub Actions；本地统一入口作为当前等价门禁，待托管后接入 CI。（**已过期**：2026-11-15 仓库接上 `origin` 后已接入 Actions，见 §10。）
 - 验证：`Verify-All.ps1 -Parallelism 1` 在脚本 HEAD `daad916` 四目标 exit 0，日志 `bench/env/results/verify-daad916-20261115-145342.log`（本机日志，已随结果目录退出索引，不进版本库），用时 68.49s；此前代码 HEAD `5591f4b` 也通过（日志 `verify-5591f4b-20261115-145016.log`，121.13s）。文档提交不改代码。
 - 未跑：30 分钟/15 分钟长测、`-race`（仍受 CGO/C 编译器约束）；历史结果未重写。
+
+## 10. 后续执行记录（2026-11-15，Phase 1 收尾之后）
+
+- **Q7 已落地**（`7439c95`）：`docs/adr/` 四份决策记录（结果 schema、渲染 provider、存储错误分类、插件 SDK 稳定契约）、`docs/evidence-conventions.md`、`docs/INDEX.md` 重写。
+- **证据减负**（`6a3185f`、`64307cb`）：`bench/env` 全部 157 个跟踪文件退出索引（磁盘 18,311 个文件未删），`.gitignore` 改为整体忽略 `bench/env/`；`docs/evidence/` 保留 20 个可复核快照。
+- **模块路径统一**（`a71f133`）：四个模块改为 `github.com/nianyuechan/otonashi/<module>`，56 个文件替换；`go-render`、`sqlite-diag` 的裸模块名一并归位。
+- **CI 已接入**（`.github/workflows/verify.yml`）：默认分支 push 与 PR 跑 **Full**（gofmt + test + build + vet），其他分支 push 跑 **Fast**；手动触发可选 Level。脚本通过 `YZGO_GO_BIN` / `YZGO_CACHE_ROOT` / `RUNNER_TEMP` / `PATH` 解析工具链，本机仍走 `tools\go`。
+- **本地钩子分层**（`2cc8611`）：`pre-commit` 只查暂存 `.go` 的格式（实测 0.75s 可拦截）；`pre-push` 跑 Fast（首次真实推送实测 33.93s 通过），**找不到 PowerShell 时失败关闭**，跳过必须显式 `YZGO_SKIP_GATE=1`。
+- **未验证**：GitHub Actions 的实际运行结果尚未人工确认；脚本的 PATH 分支只能由 CI 验证。
+- **仍未开始**：Q3、Q4、Q5、Q6、Q8，以及 Batch D（32 KiB 读上限、顶层 panic、渲染 pprof、鉴权/出站隔离）。

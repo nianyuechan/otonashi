@@ -16,8 +16,9 @@ if command -v pwsh >/dev/null 2>&1; then
 elif command -v powershell >/dev/null 2>&1; then
     PS=powershell
 else
-    echo "pre-push: PowerShell 不可用，跳过 Fast 门禁" >&2
-    exit 0
+    echo "pre-push: 未找到 PowerShell，无法运行 Fast 门禁；推送已阻止。" >&2
+    echo "pre-push: 确需跳过请显式执行 YZGO_SKIP_GATE=1 git push（会在远端留下未验证提交）。" >&2
+    exit 1
 fi
 
 "$PS" -NoProfile -ExecutionPolicy Bypass -File "scripts/Test-Go.ps1" -Level Fast
