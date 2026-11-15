@@ -42,6 +42,13 @@ $benchExe = Join-Path $envDir 'onebot-bench.exe'
 if (-not $OutFile) {
     $OutFile = Join-Path $envDir ('results\{0}-{1}-{2}.json' -f $Variant, $Workload, $Scenario)
 }
+# bot 日志跟随结果文件名，避免固定 run.log/run.err 在每轮运行时覆盖历史证据。
+$outDir = Split-Path -Parent $OutFile
+if (-not $outDir) { $outDir = Join-Path $envDir 'results' }
+$outLeaf = Split-Path -Leaf $OutFile
+$botLog = Join-Path $outDir ('{0}.bot.log' -f $outLeaf)
+$botErr = Join-Path $outDir ('{0}.bot.err' -f $outLeaf)
+New-Item -ItemType Directory -Path $outDir -Force | Out-Null
 
 # 构建负载器（幂等，源码变更后自动重建）
 $benchSource = Join-Path $envRoot 'cmd\onebot-bench'
@@ -159,13 +166,15 @@ try {
             Copy-Item -LiteralPath $renderTemplate -Destination (Join-Path $botDir 'config-render.yaml') -Force
             Write-Host '已从仓库模板复制 config-render.yaml（Z3 渲染基线配置）'
         }
-        Remove-Item -LiteralPath (Join-Path $botDir 'run.log') -Force -ErrorAction SilentlyContinue
+        Remove-Item -LiteralPath $botLog -Force -ErrorAction SilentlyContinue
+        Remove-Item -LiteralPath $botErr -Force -ErrorAction SilentlyContinue
         $botProc = Start-Process -FilePath $botPath `
             -ArgumentList (@('-config', 'config.yaml') + $BotExtraArgs) `
-            -WorkingDirectory $botDir -RedirectStandardOutput (Join-Path $botDir 'run.log') `
-            -RedirectStandardError (Join-Path $botDir 'run.err') -PassThru -WindowStyle Hidden
+            -WorkingDirectory $botDir -RedirectStandardOutput $botLog `
+            -RedirectStandardError $botErr -PassThru -WindowStyle Hidden
         Start-Sleep -Seconds 2
         Write-Host "go-yunzai-bench 已启动 pid=$($botProc.Id)"
+        Write-Host "bot 日志: $botLog / $botErr"
     }
 
     # 负载器参数。-out 使用相对路径：绝对路径含空格（G:\ALL WORK\...），

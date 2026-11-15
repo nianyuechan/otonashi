@@ -7,6 +7,10 @@ data/
 node_modules/
 .screenshots/
 
+# 基准结果旁的运行日志按结果名保留，允许入库；其余 *.log 仍忽略
+!bench/env/results/**/*.log
+!bench/env/results/**/*.log.err
+
 # 基准环境：可重建，体积大
 bench/env/go-yunzai/
 bench/env/old-yunzai/

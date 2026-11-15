@@ -48,7 +48,7 @@ try {
         New-Item -ItemType Directory -Path $cacheEnvironment[$name] -Force | Out-Null
         [Environment]::SetEnvironmentVariable($name, $cacheEnvironment[$name], 'Process')
     }
-    foreach ($module in @('go-yunzai', 'go-render', 'bench')) {
+    foreach ($module in @('go-yunzai', 'go-render', 'bench', 'bench/tools/sqlite-diag')) {
         Write-Host "正在验证 $module"
         Push-Location (Join-Path $projectRoot $module)
         try {
