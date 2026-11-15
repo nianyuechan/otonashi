@@ -46,7 +46,7 @@ if (-not $OutFile) {
 $outDir = Split-Path -Parent $OutFile
 if (-not $outDir) { $outDir = Join-Path $envDir 'results' }
 $outLeaf = Split-Path -Leaf $OutFile
-$botLog = Join-Path $outDir ('{0}.bot.log' -f $outLeaf)
+$botLog = Join-Path $outDir ('{0}.bot.out' -f $outLeaf)
 $botErr = Join-Path $outDir ('{0}.bot.err' -f $outLeaf)
 New-Item -ItemType Directory -Path $outDir -Force | Out-Null
 
