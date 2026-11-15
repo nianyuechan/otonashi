@@ -35,6 +35,23 @@ foreach ($name in $cacheEnvironment.Keys) {
     $previousEnvironment[$name] = [Environment]::GetEnvironmentVariable($name, 'Process')
 }
 
+$head = 'unknown'
+$gitCommand = $null
+$git = Get-Command git.exe -ErrorAction SilentlyContinue
+if ($git) {
+    $gitCommand = $git.Source
+}
+else {
+    $gitCandidate = 'C:\Program Files\Git\cmd\git.exe'
+    if (Test-Path -LiteralPath $gitCandidate -PathType Leaf) { $gitCommand = $gitCandidate }
+}
+if ($gitCommand) {
+    $head = & $gitCommand -C $projectRoot rev-parse --short HEAD 2>$null
+    if ($LASTEXITCODE -ne 0 -or -not $head) { $head = 'unknown' }
+}
+$verificationStartedAt = Get-Date
+Write-Host "验证 HEAD=$head 开始时间=$($verificationStartedAt.ToString('s'))"
+
 function Invoke-GoCheck {
     param([string[]]$Arguments)
     & $GoExecutable @Arguments
@@ -73,7 +90,8 @@ try {
             Pop-Location
         }
     }
-    Write-Host '四个验证目标全部通过（go-yunzai、go-render、bench、bench/tools/sqlite-diag）。'
+    $verificationFinishedAt = Get-Date
+    Write-Host "四个验证目标全部通过（go-yunzai、go-render、bench、bench/tools/sqlite-diag）。HEAD=$head 用时=$([math]::Round(($verificationFinishedAt - $verificationStartedAt).TotalSeconds, 2))s"
 }
 finally {
     foreach ($name in $previousEnvironment.Keys) {

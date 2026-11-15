@@ -7,18 +7,23 @@ import (
 	"fmt"
 	"net/url"
 	"os"
+	"path/filepath"
 	"sort"
 	"time"
 
 	_ "modernc.org/sqlite"
 )
 
-func bench(dir, name string, pragmas []string, n int) {
-	path := dir + "/diag-" + name + ".db"
+func dbPath(dir, name string) string {
+	return filepath.Join(dir, "diag-"+name+".db")
+}
+
+func bench(dir, name string, pragmas []string, n int) error {
+	path := dbPath(dir, name)
 	for _, suffix := range []string{"", "-journal", "-wal", "-shm"} {
 		os.Remove(path + suffix)
 	}
-	u := url.URL{Scheme: "file", Path: "/" + path}
+	u := url.URL{Scheme: "file", Path: "/" + filepath.ToSlash(path)}
 	q := url.Values{}
 	for _, p := range pragmas {
 		q.Add("_pragma", p)
@@ -26,15 +31,13 @@ func bench(dir, name string, pragmas []string, n int) {
 	u.RawQuery = q.Encode()
 	db, err := sql.Open("sqlite", u.String())
 	if err != nil {
-		fmt.Println(name, "open error:", err)
-		return
+		return fmt.Errorf("%s open: %w", name, err)
 	}
 	db.SetMaxOpenConns(1)
 	db.SetMaxIdleConns(1)
 	defer db.Close()
 	if _, err := db.Exec(`CREATE TABLE IF NOT EXISTS t (k TEXT PRIMARY KEY, v TEXT) WITHOUT ROWID`); err != nil {
-		fmt.Println(name, "create error:", err)
-		return
+		return fmt.Errorf("%s create: %w", name, err)
 	}
 	durations := make([]time.Duration, 0, n)
 	value := []byte("0123456789abcdef0123456789abcdef")
@@ -42,8 +45,7 @@ func bench(dir, name string, pragmas []string, n int) {
 		key := fmt.Sprintf("k:%d", i%20000)
 		start := time.Now()
 		if _, err := db.Exec(`INSERT INTO t(k,v) VALUES(?,?) ON CONFLICT(k) DO UPDATE SET v=excluded.v`, key, value); err != nil {
-			fmt.Println(name, "write error:", err)
-			return
+			return fmt.Errorf("%s write: %w", name, err)
 		}
 		durations = append(durations, time.Since(start))
 	}
@@ -58,6 +60,7 @@ func bench(dir, name string, pragmas []string, n int) {
 	}
 	fmt.Printf("%-12s %s: n=%d avg=%.2fms p50=%.2fms p95=%.2fms max=%.2fms => %.1f commits/s\n",
 		name, dir[:2], n, float64(total)/float64(n)/1e6, pct(0.5), pct(0.95), float64(sorted[len(sorted)-1])/1e6, float64(n)/total.Seconds())
+	return nil
 }
 
 func main() {
@@ -77,7 +80,9 @@ func main() {
 		fmt.Printf("--- round %d ---\n", round)
 		for _, dir := range dirs {
 			for _, m := range modes {
-				bench(dir, m.name, m.pragmas, n)
+				if err := bench(dir, m.name, m.pragmas, n); err != nil {
+					fmt.Println(err)
+				}
 			}
 		}
 	}
