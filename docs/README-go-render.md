@@ -57,6 +57,7 @@ go build -o renderer.exe ./cmd/renderer
 | 参数 | 默认值 | 含义 |
 |---|---:|---|
 | `-addr` | `127.0.0.1:8080` | HTTP 监听地址 |
+| `-provider` | `chromedp` | 渲染后端名字；当前只注册了 `chromedp`，写错会报错并列出可用名字 |
 | `-chromium` | 环境变量 `CHROMIUM_PATH` | 现有浏览器可执行文件路径；必填 |
 | `-concurrency` | `2` | 工作页面数，也是最大同时渲染数；必须大于 0 |
 | `-queue-size` | `16` | 等待页面的最大请求数；0 表示不缓冲排队 |

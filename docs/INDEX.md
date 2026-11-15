@@ -9,7 +9,7 @@
 | 位置 | 内容 | 入口 |
 |---|---|---|
 | `docs/*.md` | 计划、基线、审查、两个 README 的归档 | 本文件 §3 |
-| `docs/adr/` | 架构决策记录 0001–0004（固定结构：状态/背景/决定/后果/备选方案） | `docs/adr/` |
+| `docs/adr/` | 架构决策记录 0001–0005（固定结构：状态/背景/决定/后果/备选方案） | `docs/adr/` |
 | `docs/evidence/` | 文档结论的可复核快照（20 个文件，单文件 ≤ 50MB） | `docs/evidence-index.md` §2 |
 | `docs/evidence-index.md` | 归档清单、未归档清单、按 HEAD 取回与复算方法、归档选择规则 | — |
 | `docs/evidence-conventions.md` | 结果/日志命名、进库口径、Fast/Full 门禁、评审清单 | — |
@@ -21,7 +21,8 @@
 | `docs/adr/0001-result-schema-versioning.md` | 结果 JSON 为什么用独立的 `schema_version`，v1 字段怎么增删 |
 | `docs/adr/0002-render-provider-interface.md` | `Page`/`Browser`/`BrowserFactory` 为什么这样切、provider 怎么替换 |
 | `docs/adr/0003-storage-error-taxonomy.md` | 存储为什么用六个哨兵错误、默认为什么保持 FULL |
-| `docs/adr/0004-plugin-sdk-stability.md` | 插件 SDK 哪些是稳定契约、哪些是实现、变更怎么处理 |
+| `docs/adr/0004-plugin-sdk-stability.md` | 插件 SDK 哪些是稳定契约、哪些是实现、变更怎么处理；稳定性分级已落地 |
+| `docs/adr/0005-render-provider-registry.md` | 渲染后端如何按名字注册与选择（Q4），以及它的已知边界 |
 | `docs/evidence-index.md` | 证据索引：哪些进 `docs/evidence/`、哪些只留本机、怎么按 HEAD 取回 |
 | `docs/evidence-conventions.md` | 证据与验证约定（命名/进库/门禁/追溯） |
 
@@ -62,7 +63,7 @@
 | 新建 | `docs/engineering-quality-plan-2026-11-15.md` |
 | 新建 | `docs/engineering-quality-review-2026-11-15.md` |
 | 新建 | `docs/result-schema-v1.md` |
-| 新建 | `docs/adr/`（4 份，见 §2） |
+| 新建 | `docs/adr/`（5 份，见 §2） |
 | 新建 | `docs/evidence-index.md` |
 | 新建 | `docs/evidence-conventions.md` |
 | 新建 | `docs/evidence/`（20 个快照，清单见 `docs/evidence-index.md` §2） |

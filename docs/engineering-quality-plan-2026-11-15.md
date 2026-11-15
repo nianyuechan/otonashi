@@ -291,4 +291,7 @@ Q8 功能矩阵 → 按矩阵补功能 → 每项回归。
 - **CI 已接入**（`.github/workflows/verify.yml`）：默认分支 push 与 PR 跑 **Full**（gofmt + test + build + vet），其他分支 push 跑 **Fast**；手动触发可选 Level。脚本通过 `YZGO_GO_BIN` / `YZGO_CACHE_ROOT` / `RUNNER_TEMP` / `PATH` 解析工具链，本机仍走 `tools\go`。
 - **本地钩子分层**（`2cc8611`）：`pre-commit` 只查暂存 `.go` 的格式（实测 0.75s 可拦截）；`pre-push` 跑 Fast（首次真实推送实测 33.93s 通过），**找不到 PowerShell 时失败关闭**，跳过必须显式 `YZGO_SKIP_GATE=1`。
 - **未验证**：GitHub Actions 的实际运行结果尚未人工确认；脚本的 PATH 分支只能由 CI 验证。
-- **仍未开始**：Q3、Q4、Q5、Q6、Q8，以及 Batch D（32 KiB 读上限、顶层 panic、渲染 pprof、鉴权/出站隔离）。
+- **仍未开始**：Q5（存储接口与错误分类）、Q6（配置 schema）、Q8（兼容矩阵），以及 Batch D（32 KiB 读上限、顶层 panic、渲染 pprof、鉴权/出站隔离）。
+- **Q3 已落地**（本批提交 `feat: declare plugin SDK stability levels`）：`go-yunzai/pkg/plugin/sdk/stability.go` 用 `stable` / `experimental` / `reserved` 三级声明公开符号；不设 `internal` 级，因为 SDK 里导出的东西按定义就是插件能碰到的。`stability_test.go` 用 `go/ast` 扫描本包，要求每个导出顶层符号都被登记、登记表里不能有已消失的符号——**新增导出符号忘了分级，测试直接失败**。生产行为零变化。
+- **Q4 已落地**（同一批提交 `feat: add render provider registry`）：`go-render/internal/renderer/registry.go` 提供进程内注册表，`provider_chromedp.go` 在 `init()` 里自注册，`main.go` 新增 `-provider` 参数（默认 `chromedp`，行为不变）。未知名字会报错并列出可用名字。ADR 0005 记录决定与两条已知边界（外包后端仍需一行空白导入；`-chromium` 目前仍全局必填）。契约测试 6 条。
+- **待人工完成（本轮不动作，仅登记）**：仓库当前是 **public**，而文档与证据里有真实 QQ 号（`2081344177` 等）与本机绝对路径 `D:/...`，建议改为 private；分支保护（Require status checks → `Full 门禁（含单元测试）`）未开启，因此 CI 红目前仍不阻止合并。

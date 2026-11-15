@@ -19,6 +19,7 @@ import (
 
 func main() {
 	addr := flag.String("addr", "127.0.0.1:8080", "HTTP listen address")
+	providerName := flag.String("provider", "chromedp", "render provider name; an unknown value lists the registered ones")
 	chromium := flag.String("chromium", os.Getenv("CHROMIUM_PATH"), "path to an existing Chromium/Chrome/Edge executable (or CHROMIUM_PATH)")
 	concurrency := flag.Int("concurrency", 2, "number of pooled pages and maximum concurrent renders")
 	queueSize := flag.Int("queue-size", 16, "maximum number of queued requests")
@@ -44,8 +45,13 @@ func main() {
 
 	registry := prometheus.NewRegistry()
 	metrics := renderer.NewMetrics(registry)
+	provider, err := renderer.LookupProvider(*providerName)
+	if err != nil {
+		logger.Error("invalid render provider", "error", err, "available", renderer.ProviderNames())
+		os.Exit(2)
+	}
 	service := renderer.NewService(func(ctx context.Context) (renderer.Browser, error) {
-		return renderer.NewChromedpBrowser(ctx, *chromium)
+		return provider.Factory(ctx, renderer.ProviderConfig{ChromiumPath: *chromium})
 	}, renderer.Config{
 		Concurrency:         *concurrency,
 		QueueSize:           *queueSize,

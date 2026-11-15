@@ -1,6 +1,6 @@
 # ADR 0002：渲染器用 Page / Browser / BrowserFactory 三层接口
 
-- 状态：已采纳（接口已落地，2026-11-15 复审确认）；provider 注册/选择机制待 Q4
+- 状态：已采纳（接口已落地，2026-11-15 复审确认）；provider 注册/选择机制已由 ADR 0005 补齐
 - 相关代码：`go-render/internal/renderer/service.go`（`Page`、`Browser`、`BrowserFactory`、`Service`）、`go-render/internal/renderer/browser.go`（`NewChromedpBrowser`）、`go-render/cmd/renderer/main.go`
 - 相关测试：`go-render/internal/renderer/service_test.go`（fake provider）
 
@@ -40,7 +40,7 @@ type BrowserFactory func(context.Context) (Browser, error)
 
 - 单元测试完全不启动 Chromium：`service_test.go` 用 fake `Page`/`Browser` 覆盖并发上限、队列满、排队超时、页面崩溃重建、浏览器崩溃重建、Close 超时后 worker 仍在跑的语义。这是阶段零 Z3 能"分阶段测渲染"的前提。
 - 换实现只需提供新的 `BrowserFactory`；`Service`、HTTP 层、指标层都不用改。
-- **已知边界（Q4 待办）**：provider 的"选择"仍写死在 `main.go`（一行 `renderer.NewChromedpBrowser`）。部署层换实现要改这行代码并重新编译，而不是通过配置切换。这属于 Q4 的"provider 注册/选择"范围，本轮不做。
+- **已知边界（Q4 已解决）**：provider 的"选择"曾写死在 `main.go`（一行 `renderer.NewChromedpBrowser`）。2026-11-15 由 ADR 0005 的进程内注册表 + `-provider` 参数补齐；`main.go` 不再直接引用具体实现。
 - `Service.Close` 超时返回后 worker 可能仍在运行（`service_test.go` 固定了该语义），契约尚未写明调用方如何处理——登记为 P2-7，不在本 ADR 解决。
 
 ## 备选方案与被否原因
