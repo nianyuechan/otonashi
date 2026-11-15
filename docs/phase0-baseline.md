@@ -114,7 +114,7 @@
 
 ```powershell
 # 1) 构建两个基准入口（Go 工具链在 G:\ALL WORK\音无\tools\go）
-& G:\ALL WORK\音无\音无\scripts\Test-Go.ps1   # 三个模块 fmt/test/build/vet 验证
+& G:\ALL WORK\音无\音无\scripts\Test-Go.ps1   # 四个验证目标 fmt/test/build/vet（go-yunzai、go-render、bench、bench/tools/sqlite-diag）；提交前可加 -Level Fast
 
 # 2) 旧版基准副本（首次）：junction node_modules/renderers、复制 lib/config、
 #    注入 bench 插件，然后修复 node_modules 解析
